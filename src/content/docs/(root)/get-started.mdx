@@ -37,28 +37,21 @@ npx shadcn@latest add @taut-ui/button @taut-ui/dialog @taut-ui/input @taut-ui/se
 
 ## Typography
 
-Components reference three font variables:
+Components use two font families, exposed through three variables:
 
 - `--font-sans`: UI controls, body copy, and labels
-- `--font-heading`: Display titles (`DialogTitle`, `AlertDialogTitle`, `SheetTitle`, `EmptyTitle`)
+- `--font-heading`: Display titles (`DialogTitle`, `AlertDialogTitle`, `SheetTitle`, `EmptyTitle`). It is an alias of `--font-sans` to keep the typography consistent, and can be overridden if you want a dedicated heading font
 - `--font-mono`: Code snippets and `<Kbd>` shortcuts
 
 Configure them with `next/font/google`:
 
 ```tsx title="lib/fonts.ts"
-import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
 export const fontSans = Inter({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-sans",
-});
-
-export const fontHeading = Plus_Jakarta_Sans({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-heading",
-  weight: ["500", "600", "700", "800"],
 });
 
 export const fontMono = JetBrains_Mono({
@@ -72,7 +65,7 @@ Apply the variables to `<body>` in `app/layout.tsx`:
 
 ```tsx title="app/layout.tsx"
 <body
-  className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} relative bg-sidebar font-sans text-foreground antialiased`}
+  className={`${fontSans.variable} ${fontMono.variable} relative bg-sidebar font-sans text-foreground antialiased`}
 >
 ```
 
