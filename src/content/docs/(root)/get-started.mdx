@@ -1,0 +1,97 @@
+---
+title: Quickstart
+description: Set up taut ui in your React 19 and Tailwind CSS v4 project.
+---
+
+Get **taut ui** running in your application in a few minutes.
+
+## Requirements
+
+- **React 19+**
+- **[Tailwind CSS v4](https://tailwindcss.com/)**
+
+## Installation
+
+Add components directly into your project using the CLI or by copying the source files.
+
+### Using the CLI
+
+Run the `shadcn` CLI to pull any component and its required local helpers (`ripple`, `morph`) into your codebase:
+
+```bash
+npx shadcn@latest add @taut-ui/button
+```
+
+Install multiple components in a single command:
+
+```bash
+npx shadcn@latest add @taut-ui/button @taut-ui/dialog @taut-ui/input @taut-ui/select
+```
+
+### Manual Copy
+
+1. Browse any component in [Components](/docs/components/accordion) or explore [Particles](/particles).
+2. Install the npm packages listed under the **Manual** tab (`@base-ui/react`, `class-variance-authority`, and `lucide-react`).
+3. Copy `lib/utils.ts` (plus `lib/ripple.tsx` or `lib/morph.tsx` when used) and the component source into your project, for example `components/ui/button.tsx`.
+4. Add the theme tokens to your `app/globals.css` from the [Theming](/docs/styling) guide.
+
+## Typography
+
+Components reference three font variables:
+
+- `--font-sans`: UI controls, body copy, and labels
+- `--font-heading`: Display titles (`DialogTitle`, `AlertDialogTitle`, `SheetTitle`, `EmptyTitle`)
+- `--font-mono`: Code snippets and `<Kbd>` shortcuts
+
+Configure them with `next/font/google`:
+
+```tsx title="lib/fonts.ts"
+import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+
+export const fontSans = Inter({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+export const fontHeading = Plus_Jakarta_Sans({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: ["500", "600", "700", "800"],
+});
+
+export const fontMono = JetBrains_Mono({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
+```
+
+Apply the variables to `<body>` in `app/layout.tsx`:
+
+```tsx title="app/layout.tsx"
+<body
+  className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} relative bg-sidebar font-sans text-foreground antialiased`}
+>
+```
+
+## Composition Patterns
+
+**taut ui** is built on **[Base UI](https://base-ui.com/)** primitives:
+
+1. **Use `render` instead of `asChild`:** Pass the target element to the `render` prop on triggers, links, and close buttons:
+
+```tsx
+<DialogTrigger render={<Button variant="outline" />}>
+  Open Dialog
+</DialogTrigger>
+```
+
+2. **Explicit slot names (`*Popup` and `*Panel`):** Overlays and collapsible containers use `*Popup` and `*Panel` (`DialogPopup`, `DialogPanel`, `MenuPopup`, `AccordionPanel`, `TabsPanel`).
+
+3. **Direct primitive access:** Every component re-exports its underlying Base UI namespace (such as `DialogPrimitive` or `SliderPrimitive`) for custom compositions:
+
+```tsx
+import { Slider, SliderValue, SliderPrimitive } from "@/components/ui/slider";
+```

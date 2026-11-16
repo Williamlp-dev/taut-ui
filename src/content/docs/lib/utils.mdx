@@ -1,0 +1,81 @@
+---
+title: Utils
+description: Class name merging helper combining clsx and tailwind-merge.
+---
+
+A small helper that joins conditional class names with `clsx` and resolves conflicting Tailwind CSS utility classes with `tailwind-merge`. Every component in **taut ui** imports `cn` from `@/lib/utils`.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/utils
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="utils" title="lib/utils.ts" />
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+### Conditional Classes & Overrides
+
+Pass strings, objects, arrays, or `undefined` values—later Tailwind utilities override earlier conflicting ones cleanly:
+
+```tsx
+import { cn } from "@/lib/utils";
+
+export function Surface({
+  active,
+  className,
+}: {
+  active?: boolean;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "rounded-2xl bg-card px-4 py-2 text-card-foreground",
+        active && "bg-primary text-primary-foreground",
+        className,
+      )}
+    />
+  );
+}
+```
+
+## API
+
+```ts
+function cn(...inputs: ClassValue[]): string
+```
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `...inputs` | `ClassValue[]` | Class strings, objects, arrays, or falsy values accepted by `clsx`. |

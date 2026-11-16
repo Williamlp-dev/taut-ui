@@ -1,0 +1,144 @@
+---
+title: Morph
+description: Tactile corner-radius morphing, spring curves, and shared sizing tokens for interactive controls.
+---
+
+A CVA utility module that powers shape morphing, press-state corner contraction, and consistent sizing tokens across interactive controls like `Button`, `Toggle`, `ToggleGroup`, `Pagination`, and `OTPField`.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/morph
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="morph" title="lib/morph.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## How It Works
+
+`morph.tsx` pairs three building blocks that work together via CSS custom properties (`--r-full`, `--r-square`, `--r-pressed`, `--icon`, `--iw`):
+
+1. **`tautSize`** sets the height, padding, icon size, and all three radius tokens (`--r-full`, `--r-square`, `--r-pressed`) for each size preset (`xs` through `xl`, plus `icon-*` presets).
+2. **`morphClasses`** binds an inline `linear()` spring curve (`--taut-spring`) to `border-radius`, along with crisp color/border/shadow transitions. When `press` is enabled, holding the control morphs its corners to `--r-pressed` and subtly adjusts variable font grade (`GRAD -50`).
+3. **`morphRadius(shape, selected, enabled)`** resolves whether a control should display `"full"` or `"square"` corners, inverting the resting `shape` when `selected` and `enabled` are both `true`.
+
+All transitions collapse to `0ms` automatically under `prefers-reduced-motion: reduce`.
+
+## Usage
+
+### Combining `morphClasses`, `tautSize`, and `morphRadius`
+
+```tsx
+import {
+  type MorphShape,
+  morphClasses,
+  morphRadius,
+  tautSize,
+} from "@/lib/morph";
+import { cn } from "@/lib/utils";
+
+interface PillActionProps extends React.ComponentProps<"button"> {
+  shape?: MorphShape;
+  morph?: boolean;
+  selected?: boolean;
+}
+
+export function PillAction({
+  className,
+  shape = "round",
+  morph = true,
+  selected = false,
+  ...props
+}: PillActionProps) {
+  return (
+    <button
+      className={cn(
+        tautSize({ size: "sm" }),
+        morphClasses({
+          press: morph,
+          radius: morphRadius(shape, selected, morph),
+        }),
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+```
+
+### Icon Width Presets
+
+Icon sizes (`icon-xs`, `icon-sm`, `icon`, `icon-md`, `icon-lg`, `icon-xl`) support optional `width` variants (`narrow` and `wide`) that override `--iw`:
+
+```tsx
+<button
+  className={cn(
+    tautSize({ size: "icon-md", width: "wide" }),
+    morphClasses({ radius: "full" }),
+  )}
+>
+  <PlusIcon />
+</button>
+```
+
+## API
+
+### `morphClasses`
+
+| Variant | Values | Default | Description |
+|---------|--------|---------|-------------|
+| `radius` | `"full" \| "square"` | `"full"` | Applies `--r-full` or `--r-square` border radius. |
+| `press` | `boolean` | `true` | Morphs corners to `--r-pressed` and shifts `GRAD` to `-50` while active. |
+
+### `morphRadius`
+
+```ts
+function morphRadius(
+  shape: MorphShape,
+  selected?: boolean,
+  enabled?: boolean,
+): "full" | "square"
+```
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `shape` | `"round" \| "square"` | — | Resting shape of the control. |
+| `selected` | `boolean` | `undefined` | When `true` and `enabled` is `true`, inverts the resolved radius. |
+| `enabled` | `boolean` | `true` | Enables selection-based shape inversion. |
+
+### `tautSize`
+
+| Variant | Values | Default | Description |
+|---------|--------|---------|-------------|
+| `size` | `"xs" \| "sm" \| "default" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"sm"` | Sets control height, gap, padding, `--icon`, and radius variables. |
+| `width` | `"narrow" \| "wide"` | — | Adjusts `--iw` width on `icon-*` size variants. |

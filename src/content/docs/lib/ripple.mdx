@@ -1,0 +1,100 @@
+---
+title: Ripple
+description: Zero-dependency tactile press ripple and hover state layer powered by the Web Animations API.
+---
+
+A lightweight Client Component that renders a radial press ripple and hover state layer inside any interactive parent element using the Web Animations API. Used across `Button`, `Accordion`, `Breadcrumb`, `Collapsible`, `Command`, `Drawer`, `NavigationRail`, `Pagination`, `Sidebar`, and `Toggle`.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/ripple
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="ripple" title="lib/ripple.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## How It Works
+
+- **Parent-attached listeners:** `Ripple` listens directly on its `parentElement` for pointer and keyboard (`Enter`, `Space`) events—no wrapper element required. If the parent has `position: static`, `Ripple` upgrades it to `relative` and clips via `border-radius: inherit` and `contain: paint`.
+- **Origin-aware expansion:** Pointer presses originate at the click coordinates and travel smoothly toward the center of the element, scaling across its full diagonal (`Math.hypot`). Keyboard activations originate from the center.
+- **Minimum press hold:** Releases wait until `minimumPressDuration` (`225ms` by default) has elapsed before fading out, preventing quick taps from flashing abruptly.
+- **Touch & disabled awareness:** Touch pointers skip the hover layer (`pointerType !== "touch"`), disabled controls (`disabled`, `aria-disabled="true"`, `data-disabled`) ignore presses, and `prefers-reduced-motion: reduce` collapses the growth duration to `0ms`.
+
+## Usage
+
+### Basic
+
+Place `<Ripple />` as a child inside any interactive trigger (`button`, `a`, or custom clickable container):
+
+```tsx
+import { Ripple } from "@/lib/ripple";
+
+export function InteractiveTile({ children }: { children: React.ReactNode }) {
+  return (
+    <button
+      className="relative overflow-hidden rounded-2xl border bg-card px-4 py-3 text-card-foreground"
+      type="button"
+    >
+      <Ripple />
+      <span className="relative z-10">{children}</span>
+    </button>
+  );
+}
+```
+
+### Press-Only Ripple (Without Hover Overlay)
+
+For items that already apply their own hover background (such as menu or drawer items), set `hoverOpacity={0}`:
+
+```tsx
+<Ripple hoverOpacity={0} />
+```
+
+### Custom Color and Intensity
+
+By default `Ripple` uses `currentColor`, matching the parent text color. You can override `color`, `opacity`, and `duration`:
+
+```tsx
+<Ripple color="var(--color-primary)" duration={500} opacity={0.16} />
+```
+
+## API
+
+### `RippleProps`
+
+Extends `React.HTMLAttributes<HTMLSpanElement>`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `color` | `string` | `"currentColor"` | CSS color used for both the radial ripple and hover overlay. |
+| `duration` | `number` | `450` | Ripple expansion duration in milliseconds. |
+| `opacity` | `number` | `0.1` | Peak opacity of the active press ripple. |
+| `hoverOpacity` | `number` | `0.08` | Opacity of the hover state layer (`0` disables hover tint). |
+| `hoverDuration` | `number` | `150` | Fade duration in milliseconds for the hover state layer. |
+| `minimumPressDuration` | `number` | `225` | Minimum milliseconds the ripple stays visible before fading out on release. |
+| `disabled` | `boolean` | `false` | Disables pointer/keyboard listeners and hides the hover state layer. |
