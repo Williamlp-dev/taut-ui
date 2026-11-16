@@ -1,14 +1,5 @@
 import { llms, loader } from "fumadocs-core/source";
-import { defineDocs } from "fumadocs-mdx/macro";
-
-const docs = defineDocs({
-  dir: "src/content/docs",
-  docs: {
-    postprocess: {
-      includeProcessedMarkdown: true,
-    },
-  },
-});
+import { docs } from "@/.source/server";
 
 export const source = loader({
   baseUrl: "/docs",
