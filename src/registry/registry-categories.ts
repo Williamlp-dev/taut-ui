@@ -1,0 +1,77 @@
+export const registryCategories = [
+  "accordion",
+  "alert dialog",
+  "autocomplete",
+  "avatar",
+  "badge",
+  "breadcrumb",
+  "button",
+  "card",
+  "checkbox",
+  "checkbox group",
+  "collapsible",
+  "command",
+  "dialog",
+  "drawer",
+  "empty",
+  "field",
+  "fieldset",
+  "form",
+  "group",
+  "input",
+  "input group",
+  "kbd",
+  "label",
+  "menu",
+  "navigation rail",
+  "number field",
+  "otp field",
+  "pagination",
+  "popover",
+  "preview card",
+  "radio group",
+  "scroll area",
+  "select",
+  "separator",
+  "sheet",
+  "sidebar",
+  "skeleton",
+  "slider",
+  "spinner",
+  "switch",
+  "tabs",
+  "textarea",
+  "toast",
+  "toggle",
+  "toggle group",
+  "toolbar",
+  "tooltip",
+  "async",
+  "copy",
+  "disabled",
+  "error",
+  "file",
+  "filter",
+  "info",
+  "loading",
+  "multiselect",
+  "password",
+  "search",
+  "success",
+  "validation",
+  "warning",
+  "zod",
+] as const;
+
+export type RegistryCategory = (typeof registryCategories)[number];
+
+export function getCategorySortOrder(category: string): number {
+  const index = registryCategories.indexOf(category as RegistryCategory);
+  return index === -1 ? Number.POSITIVE_INFINITY : index;
+}
+
+export function isValidRegistryCategory(
+  category: string,
+): category is RegistryCategory {
+  return registryCategories.includes(category as RegistryCategory);
+}
