@@ -2,7 +2,6 @@
 
 import { Check, Copy, Terminal } from "lucide-react";
 import * as React from "react";
-import { type PackageManager, useConfig } from "@/hooks/use-config";
 import { useCopyToClipboard } from "@/registry/default/hooks/use-copy-to-clipboard";
 import { Button } from "@/registry/default/ui/button";
 import { ScrollArea } from "@/registry/default/ui/scroll-area";
@@ -12,6 +11,7 @@ import {
   TooltipPopup,
   TooltipTrigger,
 } from "@/registry/default/ui/tooltip";
+import { type PackageManager, useConfig } from "@/hooks/use-config";
 
 export interface CodeBlockCommandProps extends React.ComponentProps<"pre"> {
   __npm__?: string;

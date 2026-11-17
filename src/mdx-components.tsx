@@ -3,14 +3,6 @@ import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
 import Link from "next/link";
 import type * as React from "react";
-import { CodeBlockCommand } from "@/components/code-block-command";
-import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
-import { CodeTabs } from "@/components/code-tabs";
-import { ComponentPreview } from "@/components/component-preview";
-import { ComponentSource } from "@/components/component-source";
-import { CopyButton } from "@/components/shared/copy-button";
-import { getIconForLanguageExtension } from "@/components/shared/icons";
-import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionItem,
@@ -20,6 +12,14 @@ import {
 import { Button } from "@/registry/default/ui/button";
 import { ScrollArea } from "@/registry/default/ui/scroll-area";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/registry/default/ui/tabs";
+import { CodeBlockCommand } from "@/components/code-block-command";
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
+import { CodeTabs } from "@/components/code-tabs";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import { CopyButton } from "@/components/shared/copy-button";
+import { getIconForLanguageExtension } from "@/components/shared/icons";
+import { cn } from "@/lib/utils";
 
 function slugifyHeading(children: React.ReactNode): string | undefined {
   return children

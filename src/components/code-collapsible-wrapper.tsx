@@ -2,9 +2,9 @@
 
 import { ChevronDownIcon } from "lucide-react";
 import * as React from "react";
-import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import { Separator } from "@/registry/default/ui/separator";
+import { cn } from "@/lib/utils";
 
 const COLLAPSED_MAX_HEIGHT = 256;
 

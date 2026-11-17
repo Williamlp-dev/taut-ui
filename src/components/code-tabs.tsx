@@ -1,8 +1,8 @@
 "use client";
 
 import type * as React from "react";
-import { type InstallationType, useConfig } from "@/hooks/use-config";
 import { Tabs } from "@/registry/default/ui/tabs";
+import { type InstallationType, useConfig } from "@/hooks/use-config";
 
 export function CodeTabs({
   children,

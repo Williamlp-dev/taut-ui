@@ -2,8 +2,6 @@
 
 import { CheckIcon } from "lucide-react";
 import type * as React from "react";
-import { Icons } from "@/components/shared/icons";
-import { cn } from "@/lib/utils";
 import { useCopyToClipboard } from "@/registry/default/hooks/use-copy-to-clipboard";
 import { Button } from "@/registry/default/ui/button";
 import {
@@ -11,6 +9,8 @@ import {
   TooltipPopup,
   TooltipTrigger,
 } from "@/registry/default/ui/tooltip";
+import { Icons } from "@/components/shared/icons";
+import { cn } from "@/lib/utils";
 
 export interface CopyRegistryProps extends React.ComponentProps<typeof Button> {
   value: string;

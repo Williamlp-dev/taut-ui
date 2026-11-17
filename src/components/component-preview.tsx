@@ -1,8 +1,8 @@
 import * as React from "react";
+import { Index } from "@/registry/__index__";
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
 import { ComponentSource } from "@/components/component-source";
 import { cn } from "@/lib/utils";
-import { Index } from "@/registry/__index__";
 
 type PreviewEntry = {
   component?: React.ComponentType | null;

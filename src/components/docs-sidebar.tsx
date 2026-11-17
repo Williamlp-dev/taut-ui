@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type * as React from "react";
-import { PAGES_NEW } from "@/lib/docs";
-import type { source } from "@/lib/source";
 import {
   Sidebar,
   SidebarContent,
@@ -15,6 +13,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/default/ui/sidebar";
+import { PAGES_NEW } from "@/lib/docs";
+import type { source } from "@/lib/source";
 
 export type DocsSidebarProps = React.ComponentProps<typeof Sidebar> & {
   tree: typeof source.pageTree;

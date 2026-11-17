@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
 import { Tabs, TabsList, TabsTab } from "@/registry/default/ui/tabs";
+import { cn } from "@/lib/utils";
 
 export interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
   align?: "center" | "start" | "end";

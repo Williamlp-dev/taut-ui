@@ -4,9 +4,6 @@ import { Atom, BookOpen, CornerDownLeft, Search } from "lucide-react";
 import Link from "next/link";
 import type { ComponentProps } from "react";
 import * as React from "react";
-import { type PackageManager, useConfig } from "@/hooks/use-config";
-import { useIsMac } from "@/hooks/use-is-mac";
-import type { source } from "@/lib/source";
 import { useCopyToClipboard } from "@/registry/default/hooks/use-copy-to-clipboard";
 import { Button } from "@/registry/default/ui/button";
 import {
@@ -25,6 +22,9 @@ import {
   CommandPanel,
 } from "@/registry/default/ui/command";
 import { Kbd, KbdGroup } from "@/registry/default/ui/kbd";
+import type { source } from "@/lib/source";
+import { type PackageManager, useConfig } from "@/hooks/use-config";
+import { useIsMac } from "@/hooks/use-is-mac";
 
 interface CommandEntry {
   value: string;

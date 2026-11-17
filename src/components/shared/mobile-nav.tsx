@@ -4,9 +4,9 @@ import { MenuIcon } from "lucide-react";
 import Link, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
-import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import { Sheet, SheetPopup, SheetTrigger } from "@/registry/default/ui/sheet";
+import { cn } from "@/lib/utils";
 
 export interface PageNode {
   type: "page";

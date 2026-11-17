@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import type * as React from "react";
+import { Button } from "@/registry/default/ui/button";
 import { Icons } from "@/components/shared/icons";
 import { appConfig } from "@/lib/config";
-import { Button } from "@/registry/default/ui/button";
 
 export interface GitHubLinkClientProps {
   stars?: React.ReactNode;

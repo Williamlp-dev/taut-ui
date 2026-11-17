@@ -1,6 +1,6 @@
 import * as React from "react";
-import { GitHubLinkClient } from "@/components/shared/github-link-client";
 import { Skeleton } from "@/registry/default/ui/skeleton";
+import { GitHubLinkClient } from "@/components/shared/github-link-client";
 
 const REPO_API_URL = "https://api.github.com/repos/taut-ui/taut-ui";
 

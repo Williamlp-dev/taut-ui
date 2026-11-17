@@ -1,8 +1,8 @@
 import type * as React from "react";
+import { ScrollArea } from "@/registry/default/ui/scroll-area";
 import { CopyButton } from "@/components/shared/copy-button";
 import { getIconForLanguageExtension } from "@/components/shared/icons";
 import { highlightCode } from "@/lib/highlight-code";
-import { ScrollArea } from "@/registry/default/ui/scroll-area";
 
 export interface CodeBlockProps {
   code: string;
