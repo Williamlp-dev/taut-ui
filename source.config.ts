@@ -15,6 +15,7 @@ export default defineConfig({
         // biome-ignore lint/suspicious/noExplicitAny: known
         rehypePrettyCode as any,
         {
+          defaultColor: false,
           theme: {
             dark: "github-dark",
             light: "github-light-default",

@@ -1,6 +1,7 @@
 import { transformerNotationWordHighlight } from "@shikijs/transformers";
+import * as React from "react";
 import type { ShikiTransformer } from "shiki";
-import { codeToHtml } from "shiki";
+import { codeToHast } from "shiki";
 
 export const transformers = [
   {
@@ -23,7 +24,6 @@ export const transformers = [
           node.properties.__bun__ = raw.replace("npx", "bunx --bun");
         }
 
-        // npm create.
         if (raw.startsWith("npm create")) {
           node.properties.__npm__ = raw;
           node.properties.__yarn__ = raw.replace("npm create", "yarn create");
@@ -50,14 +50,78 @@ export const transformers = [
   transformerNotationWordHighlight(),
 ] as ShikiTransformer[];
 
+type HastNode =
+  | { type: "text"; value: string }
+  | {
+      type: "element";
+      tagName: string;
+      properties?: Record<string, unknown>;
+      children?: HastNode[];
+    }
+  | { type: "root"; children?: HastNode[] };
+
+function parseInlineStyle(styleString: string): Record<string, string> {
+  const styleObject: Record<string, string> = {};
+  for (const declaration of styleString.split(";")) {
+    const colonIndex = declaration.indexOf(":");
+    if (colonIndex === -1) continue;
+    const prop = declaration.slice(0, colonIndex).trim();
+    const val = declaration.slice(colonIndex + 1).trim();
+    if (prop && val) {
+      styleObject[prop] = val;
+    }
+  }
+  return styleObject;
+}
+
+function hastNodeToReact(node: HastNode, key?: React.Key): React.ReactNode {
+  if (node.type === "text") {
+    return node.value;
+  }
+
+  if (node.type === "root") {
+    return node.children?.map((child, idx) => hastNodeToReact(child, idx));
+  }
+
+  if (node.type === "element") {
+    const rawProps = node.properties ?? {};
+    const reactProps: Record<string, unknown> = { key };
+
+    for (const [propName, propValue] of Object.entries(rawProps)) {
+      if (propName === "class" || propName === "className") {
+        reactProps.className = Array.isArray(propValue)
+          ? propValue.join(" ")
+          : String(propValue);
+      } else if (propName === "style" && typeof propValue === "string") {
+        reactProps.style = parseInlineStyle(propValue);
+      } else if (propName === "tabindex") {
+        reactProps.tabIndex = Number(propValue);
+      } else {
+        reactProps[propName] = propValue;
+      }
+    }
+
+    const children = node.children?.map((child, idx) =>
+      hastNodeToReact(child, idx),
+    );
+
+    return React.createElement(node.tagName, reactProps, children);
+  }
+
+  return null;
+}
+
 export async function highlightCode(
   code: string,
   language = "tsx",
   options?: { showLineNumbers?: boolean },
-) {
+): Promise<React.ReactNode> {
+  "use cache";
+
   const { showLineNumbers = true } = options ?? {};
 
-  const html = await codeToHtml(code, {
+  const hast = await codeToHast(code, {
+    defaultColor: false,
     lang: language,
     themes: {
       dark: "github-dark",
@@ -82,5 +146,5 @@ export async function highlightCode(
     ],
   });
 
-  return html;
+  return hastNodeToReact(hast as HastNode);
 }
