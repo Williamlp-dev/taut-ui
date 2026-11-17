@@ -39,17 +39,7 @@
       "react": "recommended"
     },
     "rules": {
-      "recommended": true,
-      "nursery": {
-        "useSortedClasses": {
-          "level": "warn",
-          "fix": "safe",
-          "options": {
-            "attributes": ["classList", "className"],
-            "functions": ["clsx", "cva", "cn", "twMerge"]
-          }
-        }
-      }
+      "recommended": true
     }
   },
   "assist": {
