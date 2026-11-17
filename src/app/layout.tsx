@@ -1,12 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/shared/theme-provider";
-import { SiteHeader } from "@/components/site-header";
-import { fontMono, fontSans } from "@/lib/fonts";
 import {
   AnchoredToastProvider,
   ToastProvider,
 } from "@/registry/default/ui/toast";
+import { ThemeProvider } from "@/components/shared/theme-provider";
+import { SiteHeader } from "@/components/site-header";
+import { fontMono, fontSans } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   description:

@@ -2,12 +2,6 @@ import { InfoIcon } from "lucide-react";
 import Link from "next/link";
 import type * as React from "react";
 import { cache } from "react";
-import { CodeBlockCommand } from "@/components/code-block-command";
-import { ComponentSource } from "@/components/component-source";
-import { CopyRegistry } from "@/components/copy-registry";
-import { Icons } from "@/components/shared/icons";
-import { appConfig } from "@/lib/config";
-import { getRegistryItem } from "@/lib/registry";
 import { Index } from "@/registry/__index__";
 import { Button } from "@/registry/default/ui/button";
 import {
@@ -16,6 +10,12 @@ import {
   DrawerPopup,
   DrawerTrigger,
 } from "@/registry/default/ui/drawer";
+import { CodeBlockCommand } from "@/components/code-block-command";
+import { ComponentSource } from "@/components/component-source";
+import { CopyRegistry } from "@/components/copy-registry";
+import { Icons } from "@/components/shared/icons";
+import { appConfig } from "@/lib/config";
+import { getRegistryItem } from "@/lib/registry";
 import { ParticleCardContainer } from "./particle-card-container";
 
 interface RegistryIndexItem {

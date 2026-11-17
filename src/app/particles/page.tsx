@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import type * as React from "react";
 import { Suspense } from "react";
+import { Index } from "@/registry/__index__";
+import { isValidRegistryCategory } from "@/registry/registry-categories";
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/shared/page-header";
 import { SiteFooter } from "@/components/shared/site-footer";
-import { Index } from "@/registry/__index__";
-import { isValidRegistryCategory } from "@/registry/registry-categories";
 import { ParticlesDisplay } from "./particles-display";
 import SearchContainer from "./search-container";
 

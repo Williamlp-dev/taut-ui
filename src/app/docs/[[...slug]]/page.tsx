@@ -2,12 +2,12 @@ import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { Button } from "@/registry/default/ui/button";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { SiteFooter } from "@/components/shared/site-footer";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
-import { Button } from "@/registry/default/ui/button";
 
 export function generateStaticParams() {
   return source.generateParams();

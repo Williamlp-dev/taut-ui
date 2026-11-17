@@ -2,13 +2,13 @@ import { ArrowUpRightIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type React from "react";
+import { Button } from "@/registry/default/ui/button";
 import { getCategoryThumbnail } from "@/components/category-thumbnails";
 import { SiteFooter } from "@/components/shared/site-footer";
 import { TerminalInstall } from "@/components/terminal-install";
-import { categories } from "@/config/categories";
 import { PAGES_NEW } from "@/lib/docs";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/default/ui/button";
+import { categories } from "@/config/categories";
 
 const description =
   "Base UI components with tactile spring motion. Typed, copy-paste, and written so your AI agent gets it right the first time.";

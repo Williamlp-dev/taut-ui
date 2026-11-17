@@ -4,10 +4,10 @@ import { Combobox as ComboboxPrimitive } from "@base-ui/react/combobox";
 import { CheckIcon, SearchIcon, TagIcon, XIcon } from "lucide-react";
 import * as React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
 import { Index } from "@/registry/__index__";
 import { ScrollArea } from "@/registry/default/ui/scroll-area";
 import { getCategorySortOrder } from "@/registry/registry-categories";
+import { cn } from "@/lib/utils";
 
 export interface CategoryOption {
   label: string;
@@ -162,7 +162,7 @@ export default function SearchField({
                 <ComboboxPrimitive.Input
                   aria-label="Search components"
                   autoFocus
-                  className="min-w-28 flex-1 bg-transparent py-1 ps-1 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+                  className="min-w-28 flex-1 bg-transparent py-1 ps-1 text-foreground text-sm outline-none placeholder:text-muted-foreground"
                   placeholder={
                     value?.length
                       ? "Add filter..."
