@@ -1,13 +1,15 @@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { Button } from "@/registry/default/ui/button";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { SiteFooter } from "@/components/shared/site-footer";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
+
+// Docs are fully prerendered via generateStaticParams, so the page may block.
+export const instant = false;
 
 export function generateStaticParams() {
   return source.generateParams();
@@ -31,20 +33,10 @@ export async function generateMetadata(props: {
   };
 }
 
-export default function Page(props: { params: Promise<{ slug?: string[] }> }) {
-  return (
-    <Suspense fallback={null}>
-      <DocsPage params={props.params} />
-    </Suspense>
-  );
-}
-
-async function DocsPage({
-  params: paramsPromise,
-}: {
+export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
-  const params = await paramsPromise;
+  const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) {
     notFound();
