@@ -15,9 +15,10 @@ type SidebarContextProps = {
   toggleSidebar: () => void;
 };
 
-const SidebarContext = React.createContext<SidebarContextProps | null>(null);
+const SidebarContext: React.Context<SidebarContextProps | null> =
+  React.createContext<SidebarContextProps | null>(null);
 
-export function useSidebar() {
+export function useSidebar(): SidebarContextProps {
   const context = React.useContext(SidebarContext);
   if (!context) {
     throw new Error("useSidebar must be used within a SidebarProvider");
@@ -37,11 +38,11 @@ export function SidebarProvider({
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
-}) {
+}): React.ReactElement {
   const [_open, _setOpen] = React.useState(defaultOpen);
   const open = openProp ?? _open;
   const setOpen = React.useCallback(
-    (value: boolean | ((value: boolean) => boolean)) => {
+    (value: boolean | ((value: boolean) => boolean)): void => {
       const openState = typeof value === "function" ? value(open) : value;
       if (setOpenProp) {
         setOpenProp(openState);
@@ -94,7 +95,7 @@ export function Sidebar({
   ...props
 }: useRender.ComponentProps<"aside"> & {
   collapsible?: "offcanvas" | "icon" | "none";
-}) {
+}): React.ReactElement {
   const defaultProps = {
     className: cn(
       "flex h-full w-(--sidebar-width) flex-col text-sidebar-foreground",
@@ -114,7 +115,7 @@ export function SidebarContent({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"div">) {
+}: useRender.ComponentProps<"div">): React.ReactElement {
   const defaultProps = {
     className: cn(
       "flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overflow-x-hidden [scrollbar-color:transparent_transparent] [scrollbar-gutter:stable] [scrollbar-width:thin] in-[[data-slot=sidebar]:hover]:[scrollbar-color:var(--border)_transparent] focus-within:[scrollbar-color:var(--border)_transparent] hover:[scrollbar-color:var(--border)_transparent] [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-transparent in-[[data-slot=sidebar]:hover]:[&::-webkit-scrollbar-thumb]:bg-border focus-within:[&::-webkit-scrollbar-thumb]:bg-border hover:[&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:size-1.5",
@@ -133,7 +134,7 @@ export function SidebarGroup({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"div">) {
+}: useRender.ComponentProps<"div">): React.ReactElement {
   const defaultProps = {
     className: cn("relative flex w-full min-w-0 flex-col", className),
     "data-slot": "sidebar-group",
@@ -149,7 +150,7 @@ export function SidebarGroupLabel({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"div">) {
+}: useRender.ComponentProps<"div">): React.ReactElement {
   const defaultProps = {
     className: cn(
       "flex h-8 shrink-0 items-center px-3 font-medium text-muted-foreground text-xs leading-4 outline-none",
@@ -168,7 +169,7 @@ export function SidebarGroupContent({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"div">) {
+}: useRender.ComponentProps<"div">): React.ReactElement {
   const defaultProps = {
     className: cn("w-full", className),
     "data-slot": "sidebar-group-content",
@@ -184,7 +185,7 @@ export function SidebarMenu({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"ul">) {
+}: useRender.ComponentProps<"ul">): React.ReactElement {
   const defaultProps = {
     className: cn(
       "m-0 flex w-full min-w-0 list-none flex-col gap-0.5 p-0",
@@ -203,7 +204,7 @@ export function SidebarMenuItem({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"li">) {
+}: useRender.ComponentProps<"li">): React.ReactElement {
   const defaultProps = {
     className: cn("relative list-none", className),
     "data-slot": "sidebar-menu-item",
@@ -225,7 +226,7 @@ export function SidebarMenuButton({
 }: useRender.ComponentProps<"button"> & {
   isActive?: boolean;
   morph?: boolean;
-}) {
+}): React.ReactElement {
   const defaultProps = {
     "aria-current": isActive ? ("page" as const) : undefined,
     children: (

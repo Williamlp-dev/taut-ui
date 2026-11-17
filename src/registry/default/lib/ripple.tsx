@@ -2,16 +2,6 @@
 
 import * as React from "react";
 
-export interface RippleProps extends React.HTMLAttributes<HTMLSpanElement> {
-  color?: string;
-  duration?: number;
-  opacity?: number;
-  hoverOpacity?: number;
-  hoverDuration?: number;
-  minimumPressDuration?: number;
-  disabled?: boolean;
-}
-
 type PressOptions = Required<
   Pick<RippleProps, "color" | "duration" | "opacity" | "minimumPressDuration">
 >;
@@ -74,7 +64,7 @@ function startPress(
   let released = false;
   let timer: number | undefined;
 
-  const cleanup = () => {
+  const cleanup = (): void => {
     window.clearTimeout(timer);
     grow.cancel();
     el.remove();
@@ -83,14 +73,14 @@ function startPress(
 
   return {
     cancel: cleanup,
-    release: () => {
+    release: (): void => {
       if (released) return;
       released = true;
       const wait = Math.max(
         0,
         minimumPressDuration - (performance.now() - startedAt),
       );
-      timer = window.setTimeout(() => {
+      timer = window.setTimeout((): void => {
         const fade = el.animate([{ opacity }, { opacity: 0 }], {
           duration: 375,
           fill: "forwards",
@@ -131,7 +121,7 @@ function Ripple({
     opacity,
   };
 
-  React.useEffect(() => {
+  React.useEffect((): (() => void) | undefined => {
     const container = containerRef.current;
     const parent = container?.parentElement;
     if (!container || !parent || disabled) return;
@@ -144,12 +134,12 @@ function Ripple({
     const presses = new Set<Press>();
     let current: Press | null = null;
 
-    const isDisabled = () =>
+    const isDisabled = (): boolean =>
       (parent as HTMLButtonElement).disabled === true ||
       parent.getAttribute("aria-disabled") === "true" ||
       parent.hasAttribute("data-disabled");
 
-    const setHover = (on: boolean) => {
+    const setHover = (on: boolean): void => {
       if (hoverRef.current) {
         hoverRef.current.style.opacity = on
           ? `${optionsRef.current.hoverOpacity}`
@@ -157,12 +147,12 @@ function Ripple({
       }
     };
 
-    const endPress = () => {
+    const endPress = (): void => {
       current?.release();
       current = null;
     };
 
-    const begin = (x?: number, y?: number) => {
+    const begin = (x?: number, y?: number): void => {
       endPress();
       const press = startPress(container, x, y, optionsRef.current, () =>
         presses.delete(press as Press),
@@ -173,23 +163,23 @@ function Ripple({
       }
     };
 
-    const onEnter = (e: PointerEvent) => {
+    const onEnter = (e: PointerEvent): void => {
       if (e.pointerType !== "touch" && !isDisabled()) setHover(true);
     };
-    const onLeave = () => {
+    const onLeave = (): void => {
       setHover(false);
       endPress();
     };
-    const onDown = (e: PointerEvent) => {
+    const onDown = (e: PointerEvent): void => {
       if (!e.isPrimary || e.button !== 0 || isDisabled()) return;
       begin(e.clientX, e.clientY);
     };
-    const onKeyDown = (e: KeyboardEvent) => {
+    const onKeyDown = (e: KeyboardEvent): void => {
       if (e.repeat || isDisabled() || (e.key !== "Enter" && e.key !== " "))
         return;
       begin();
     };
-    const onKeyUp = (e: KeyboardEvent) => {
+    const onKeyUp = (e: KeyboardEvent): void => {
       if (e.key === "Enter" || e.key === " ") endPress();
     };
 
@@ -242,6 +232,16 @@ function Ripple({
       />
     </span>
   );
+}
+
+export interface RippleProps extends React.HTMLAttributes<HTMLSpanElement> {
+  color?: string;
+  duration?: number;
+  opacity?: number;
+  hoverOpacity?: number;
+  hoverDuration?: number;
+  minimumPressDuration?: number;
+  disabled?: boolean;
 }
 
 export { Ripple };

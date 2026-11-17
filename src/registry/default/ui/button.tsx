@@ -44,7 +44,7 @@ export const buttonVariants = cva(
           "data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground",
         ],
         outline:
-          "border border-border text-foreground data-[size=icon-xl]:border-2 data-[size=xl]:border-2 data-[selected=true]:border-transparent data-[selected=true]:bg-secondary data-[selected=true]:text-secondary-foreground",
+          "border border-border text-foreground data-[selected=true]:border-transparent data-[size=icon-xl]:border-2 data-[size=xl]:border-2 data-[selected=true]:bg-secondary data-[selected=true]:text-secondary-foreground",
         ghost: "text-foreground",
         text: "text-foreground",
         link: "text-primary underline-offset-4 hover:underline",

@@ -4,12 +4,12 @@ import { Switch as SwitchPrimitive } from "@base-ui/react/switch";
 import type React from "react";
 import { cn } from "@/registry/default/lib/utils";
 
+const ease = "ease-[cubic-bezier(0.2,0,0,1)]";
+
 export interface SwitchProps extends SwitchPrimitive.Root.Props {
   icons?: "checked" | "both";
   size?: "sm" | "default" | "lg";
 }
-
-const ease = "ease-[cubic-bezier(0.2,0,0,1)]";
 
 export function Switch({
   className,

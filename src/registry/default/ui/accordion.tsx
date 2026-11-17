@@ -27,7 +27,7 @@ export function AccordionItem({
     <AccordionPrimitive.Item
       className={cn(
         "overflow-hidden border border-border bg-card text-card-foreground",
-        "rounded-sm last:rounded-b-2xl first:rounded-t-2xl data-panel-open:rounded-2xl",
+        "rounded-sm first:rounded-t-2xl last:rounded-b-2xl data-panel-open:rounded-2xl",
         "transition-[border-radius] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] motion-reduce:transition-none",
         "has-[[data-slot=accordion-trigger]:focus-visible]:ring-2 has-[[data-slot=accordion-trigger]:focus-visible]:ring-ring has-[[data-slot=accordion-trigger]:focus-visible]:ring-offset-2 has-[[data-slot=accordion-trigger]:focus-visible]:ring-offset-background",
         "data-disabled:pointer-events-none data-disabled:opacity-38",
