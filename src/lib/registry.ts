@@ -11,13 +11,27 @@ type RegistryFile = {
   content?: string;
 };
 
+type RegistryItem = {
+  name?: string;
+  categories?: string[];
+  component?: unknown;
+  dependencies?: string[];
+  description?: string;
+  files?: Array<string | RegistryFile>;
+  registryDependencies?: string[];
+  type?: string;
+  [key: string]: unknown;
+};
+
+const RegistryIndex = Index as Record<string, RegistryItem | undefined>;
+
 export function getRegistryComponent(name: string) {
-  return Index[name]?.component;
+  return RegistryIndex[name]?.component;
 }
 
 export async function getRegistryItem(name: string) {
-  const item =
-    Index[name] ??
+  const item: RegistryItem | undefined =
+    RegistryIndex[name] ??
     (name.startsWith("p-")
       ? {
           categories: ["particle"],
@@ -55,12 +69,14 @@ export async function getRegistryItem(name: string) {
   }
 
   if (Array.isArray(item.files)) {
-    item.files = item.files.map((file: unknown) =>
+    item.files = item.files.map((file) =>
       typeof file === "string" ? { path: file } : file,
     );
   }
 
-  const files: RegistryFile[] = Array.isArray(item.files) ? item.files : [];
+  const files: RegistryFile[] = (item.files ?? []).map((file) =>
+    typeof file === "string" ? { path: file } : file,
+  );
   const processedFiles: RegistryFile[] = [];
 
   for (const file of files) {
