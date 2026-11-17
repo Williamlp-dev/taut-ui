@@ -1,4 +1,4 @@
-import { InfoIcon } from "lucide-react";
+﻿import { InfoIcon } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,6 @@ import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { CodeTabs } from "@/components/code-tabs";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import { MediaQueryDemo } from "@/components/media-query-demo";
 import { CopyButton } from "@/components/shared/copy-button";
 import { getIconForLanguageExtension } from "@/components/shared/icons";
 import { cn } from "@/lib/utils";
@@ -282,7 +281,6 @@ export const mdxComponents = {
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li className={cn("mt-2", className)} {...props} />
   ),
-  MediaQueryDemo,
   ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
     <ol
       className={cn("my-6 ms-6 list-decimal text-muted-foreground", className)}

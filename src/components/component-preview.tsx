@@ -4,6 +4,11 @@ import { ComponentSource } from "@/components/component-source";
 import { cn } from "@/lib/utils";
 import { Index } from "@/registry/__index__";
 
+type PreviewEntry = {
+  component?: React.ComponentType | null;
+  meta?: { className?: string };
+};
+
 export interface ComponentPreviewProps
   extends Omit<React.ComponentProps<"div">, "ref"> {
   name: string;
@@ -19,8 +24,8 @@ export function ComponentPreview({
   hideCode = false,
   ...props
 }: ComponentPreviewProps): React.ReactElement {
-  const entry = Index[name];
-  const PreviewComponent =
+  const entry = (Index as Record<string, PreviewEntry | undefined>)[name];
+  const PreviewComponent: React.ComponentType | undefined =
     entry?.component ??
     (name.startsWith("p-")
       ? React.lazy(async () => {

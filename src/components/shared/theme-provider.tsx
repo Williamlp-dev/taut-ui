@@ -13,6 +13,7 @@ export function ThemeProvider({
 }: ThemeProviderProps): React.ReactElement {
   return (
     <RootProvider
+      search={{ enabled: false }}
       theme={{
         attribute: "class",
         defaultTheme: "system",
