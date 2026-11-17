@@ -9,10 +9,15 @@ export interface DocsUserConfig {
   installationType: InstallationType;
 }
 
-const docsConfigAtom = atomWithStorage<DocsUserConfig>("taut-ui:config", {
-  installationType: "cli",
-  packageManager: "pnpm",
-});
+const docsConfigAtom = atomWithStorage<DocsUserConfig>(
+  "taut-ui:config",
+  {
+    installationType: "cli",
+    packageManager: "pnpm",
+  },
+  undefined,
+  { getOnInit: false },
+);
 
 export function useConfig() {
   return useAtom(docsConfigAtom);
