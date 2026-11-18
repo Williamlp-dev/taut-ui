@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "accordion",
+    "autocomplete",
+    "badge",
+    "button",
+    "card",
+    "command",
+    "drawer",
+    "empty",
+    "input",
+    "kbd",
+    "menu",
+    "popover",
+    "scroll-area",
+    "separator",
+    "sheet",
+    "sidebar",
+    "skeleton",
+    "spinner",
+    "switch",
+    "tabs",
+    "toast",
+    "tooltip"
+  ],
+  "title": "Components"
+}

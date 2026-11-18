@@ -1,0 +1,280 @@
+---
+title: Menu
+description: A floating dropdown menu that supports items, checkboxes, radio groups, submenus, and keyboard navigation.
+links:
+  doc: https://base-ui.com/react/components/menu
+---
+
+<ComponentPreview name="menu" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/menu
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="menu" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopup,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuItem,
+  MenuCheckboxItem,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuSeparator,
+  MenuShortcut,
+  MenuSub,
+  MenuSubTrigger,
+  MenuSubPopup,
+  MenuLinkItem,
+} from "@/components/ui/menu"
+```
+
+```tsx
+<Menu>
+  <MenuTrigger>Open Menu</MenuTrigger>
+  <MenuPopup>
+    <MenuGroup>
+      <MenuGroupLabel>My Account</MenuGroupLabel>
+      <MenuItem>
+        Profile
+        <MenuShortcut>⌘P</MenuShortcut>
+      </MenuItem>
+      <MenuItem>Settings</MenuItem>
+    </MenuGroup>
+    <MenuSeparator />
+    <MenuItem variant="destructive">Log out</MenuItem>
+  </MenuPopup>
+</Menu>
+```
+
+## API
+
+### `Menu`
+
+Re-export of `MenuPrimitive.Root`. Accepts all Base UI `Menu.Root` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state of the menu. |
+| `defaultOpen` | `boolean` | `false` | Uncontrolled initial open state. |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback fired when the open state changes. |
+| `modal` | `boolean` | `true` | Whether the menu behaves as a modal. |
+
+---
+
+### `MenuTrigger`
+
+Button that opens the menu. Accepts all Base UI `Menu.Trigger` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes. |
+| `children` | `React.ReactNode` | — | Trigger content. |
+
+---
+
+### `MenuPopup`
+
+Wraps the positioner, portal, and popup. Composites `MenuPrimitive.Positioner` and `MenuPrimitive.Popup` into a single component.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `colorScheme` | `"standard" \| "vibrant"` | `"standard"` | Visual color scheme of the popup. |
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Preferred side to place the popup relative to the trigger. |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment of the popup along the cross axis. |
+| `sideOffset` | `number` | `6` | Distance in pixels between the popup and the trigger. |
+| `alignOffset` | `number` | — | Offset in pixels along the alignment axis. |
+| `anchor` | `MenuPrimitive.Positioner.Props["anchor"]` | — | Custom anchor element or ref to position against. |
+| `portalProps` | `MenuPrimitive.Portal.Props` | — | Props forwarded to the portal wrapper. |
+| `gap` | `boolean` | `false` | When `true`, renders child groups with visual spacing between them instead of a unified container. |
+| `scrollFade` | `boolean` | `true` | Whether to show a fade gradient at the scroll edges. |
+| `className` | `string` | — | Additional CSS classes for the popup element. |
+
+---
+
+### `MenuGroup`
+
+Groups related menu items together. Accepts all Base UI `Menu.Group` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes. |
+| `children` | `React.ReactNode` | — | Group content. |
+
+---
+
+### `MenuGroupLabel`
+
+Renders a non-interactive label for a `MenuGroup`. Accepts all Base UI `Menu.GroupLabel` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `inset` | `boolean` | — | When `true`, adds leading padding to align with inset items. |
+| `className` | `string` | — | Additional CSS classes. |
+
+---
+
+### `MenuItem`
+
+A single interactive menu item. Accepts all Base UI `Menu.Item` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive"` | `"default"` | Visual style variant. Use `"destructive"` for danger actions. |
+| `inset` | `boolean` | — | When `true`, adds leading padding to align text with icon-prefixed items. |
+| `className` | `string` | — | Additional CSS classes. |
+| `disabled` | `boolean` | — | Prevents interaction and applies reduced opacity. |
+| `onClick` | `(event: MouseEvent) => void` | — | Click handler. |
+
+---
+
+### `MenuLinkItem`
+
+A menu item that renders as a navigable link. Accepts all Base UI `Menu.LinkItem` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive"` | `"default"` | Visual style variant. |
+| `inset` | `boolean` | — | Adds leading padding when `true`. |
+| `closeOnClick` | `boolean` | `true` | Whether to close the menu when the link is clicked. |
+| `href` | `string` | — | The URL the link points to. |
+| `className` | `string` | — | Additional CSS classes. |
+
+---
+
+### `MenuCheckboxItem`
+
+A menu item with a toggleable checked state, rendered as a checkmark indicator or a switch.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "switch"` | `"default"` | `"default"` shows a checkmark; `"switch"` renders a toggle switch on the trailing side. |
+| `checked` | `boolean` | — | Controlled checked state. |
+| `defaultChecked` | `boolean` | `false` | Uncontrolled initial checked state. |
+| `onCheckedChange` | `(checked: boolean, event: Event) => void` | — | Callback fired when the checked state changes. |
+| `disabled` | `boolean` | — | Disables the item. |
+| `className` | `string` | — | Additional CSS classes. |
+
+---
+
+### `MenuRadioGroup`
+
+Container for a group of mutually exclusive `MenuRadioItem` elements. Accepts all Base UI `Menu.RadioGroup` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Controlled selected value. |
+| `defaultValue` | `string` | — | Uncontrolled initial selected value. |
+| `onValueChange` | `(value: string) => void` | — | Callback fired when the selected value changes. |
+
+---
+
+### `MenuRadioItem`
+
+A radio-style menu item that belongs to a `MenuRadioGroup`. Accepts all Base UI `Menu.RadioItem` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | The value this item represents within its radio group. |
+| `className` | `string` | — | Additional CSS classes. |
+| `disabled` | `boolean` | — | Disables the item. |
+
+---
+
+### `MenuSeparator`
+
+A thin horizontal rule used to visually separate groups of items.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes. |
+
+---
+
+### `MenuShortcut`
+
+Renders a keyboard shortcut hint aligned to the trailing side of a menu item using a `<kbd>` element.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes. |
+| `children` | `React.ReactNode` | — | Shortcut text, e.g. `⌘K` or `Ctrl+S`. |
+
+---
+
+### `MenuSub`
+
+Root for a nested submenu. Accepts all Base UI `Menu.SubmenuRoot` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state of the submenu. |
+| `defaultOpen` | `boolean` | `false` | Uncontrolled initial open state. |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback fired when the open state changes. |
+
+---
+
+### `MenuSubTrigger`
+
+An item inside a parent menu that opens the nested `MenuSubPopup` on hover or interaction.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `inset` | `boolean` | — | Adds leading padding when `true`. |
+| `className` | `string` | — | Additional CSS classes. |
+| `children` | `React.ReactNode` | — | Label content; a chevron icon is appended automatically. |
+
+---
+
+### `MenuSubPopup`
+
+The popup panel for a nested submenu. Shares the same props as `MenuPopup` minus `side` (always `inline-end`).
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `colorScheme` | `"standard" \| "vibrant"` | `"standard"` | Visual color scheme. |
+| `align` | `"start" \| "center" \| "end"` | `"start"` | Alignment along the cross axis. |
+| `sideOffset` | `number` | `0` | Distance between the submenu and its trigger. |
+| `alignOffset` | `number` | `-4` | Offset along the alignment axis (auto-set when not centered). |
+| `gap` | `boolean` | `false` | Enables gap-separated group layout. |
+| `scrollFade` | `boolean` | `true` | Whether to show scroll-edge fade gradients. |
+| `className` | `string` | — | Additional CSS classes. |

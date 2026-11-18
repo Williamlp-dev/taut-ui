@@ -1,0 +1,68 @@
+---
+title: Spinner
+description: An animated SVG spinner for indicating loading states, with size and style variants.
+---
+
+<ComponentPreview name="spinner" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/spinner
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="spinner" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Spinner } from "@/components/ui/spinner"
+```
+
+```tsx
+<Spinner />
+```
+
+## API
+
+### `Spinner`
+
+Extends all native `<svg>` props (except `children`).
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "contained"` | `"default"` | Visual style of the spinner. `"default"` inherits the current text color; `"contained"` renders inside a secondary-colored background pill. |
+| `size` | `"xs" \| "sm" \| "default" \| "lg" \| "xl"` | `"default"` | Size of the spinner. When `variant="contained"` the wrapper padding is adjusted automatically per size. |
+| `aria-label` | `string` | `"Loading"` | Accessible label announced to screen readers via the wrapping `<output>` element. |
+| `className` | `string` | — | Additional CSS classes merged onto the inner `<svg>` element. |

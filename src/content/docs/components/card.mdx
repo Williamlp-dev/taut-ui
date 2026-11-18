@@ -1,0 +1,320 @@
+---
+title: Card
+description: A flexible surface component for grouping related content, supporting elevated, filled, and outlined variants in vertical or horizontal orientations.
+---
+
+<ComponentPreview name="card" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/card
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardAction,
+  CardContent,
+  CardFooter,
+  CardMedia,
+} from "@/components/ui/card"
+```
+
+```tsx
+<Card variant="elevated">
+  <CardMedia>
+    <img src="/hero.jpg" alt="Hero" />
+  </CardMedia>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>A short description of this card.</CardDescription>
+    <CardAction>{/* optional action, e.g. a button or badge */}</CardAction>
+  </CardHeader>
+  <CardContent>
+    <p>Main body content goes here.</p>
+  </CardContent>
+  <CardFooter>
+    <button>Cancel</button>
+    <button>Confirm</button>
+  </CardFooter>
+</Card>
+```
+
+### Horizontal card
+
+```tsx
+<Card orientation="horizontal" variant="outlined">
+  <CardMedia>
+    <img src="/thumbnail.jpg" alt="Thumbnail" />
+  </CardMedia>
+  <CardHeader>
+    <CardTitle size="md">Horizontal Card</CardTitle>
+    <CardDescription>Media aligns to the left at a fixed width.</CardDescription>
+  </CardHeader>
+</Card>
+```
+
+### Card Frame (grouped cards)
+
+Use `CardFrame` to visually group multiple `Card` items into a single container.
+
+```tsx
+import {
+  CardFrame,
+  CardFrameHeader,
+  CardFrameTitle,
+  CardFrameDescription,
+  CardFrameAction,
+  CardFrameContent,
+  CardFrameFooter,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@/components/ui/card"
+
+<CardFrame>
+  <CardFrameHeader>
+    <CardFrameTitle>Group Title</CardFrameTitle>
+    <CardFrameDescription>A collection of related cards.</CardFrameDescription>
+  </CardFrameHeader>
+  <Card>
+    <CardHeader>
+      <CardTitle>Item One</CardTitle>
+    </CardHeader>
+    <CardContent>Content for item one.</CardContent>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle>Item Two</CardTitle>
+    </CardHeader>
+    <CardContent>Content for item two.</CardContent>
+  </Card>
+  <CardFrameFooter>
+    <span>Footer info</span>
+    <button>See all</button>
+  </CardFrameFooter>
+</CardFrame>
+```
+
+## API
+
+### `Card`
+
+The root card surface. Renders a `<div>` by default; pass `render={<button />}` or `render={<a />}` to make it interactive.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"elevated" \| "filled" \| "outlined"` | `"elevated"` | Visual style of the card. `elevated` adds a drop shadow; `filled` uses the muted background; `outlined` shows a border. |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Layout direction. `horizontal` arranges children in a row and reduces internal padding. |
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element (e.g. `<button>` or `<a>`). Inherited from Base UI `useRender`. |
+| `className` | `string` | — | Additional CSS classes merged with the variant classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | All other props are forwarded to the underlying element. |
+
+---
+
+### `CardMedia`
+
+A wrapper for images or videos inside a card. Applies `object-cover` sizing and handles rounded corners for both orientations.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardHeader`
+
+A grid container for the title, description, and optional action. Adjusts its layout automatically when a `CardAction` is present or when nested in a horizontal card.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardTitle`
+
+The card's heading text. Supports two sizes.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"md" \| "lg"` | `"md"` | `"md"` renders at `text-lg`; `"lg"` renders at `text-xl`. In horizontal cards the size is always reduced to `text-base`. |
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardDescription`
+
+Supplementary text rendered in `text-muted-foreground` beneath the title.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardAction`
+
+Floated action area (e.g. a menu button or badge) pinned to the top-right of `CardHeader`. Spans both title and description rows in vertical orientation; vertically centred in horizontal orientation.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardContent` (`CardPanel`)
+
+The main body region of a card. Automatically adjusts top/bottom padding when adjacent to a `CardHeader` or `CardFooter`. Also exported as `CardPanel`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardFooter`
+
+A flex row for bottom actions (e.g. confirm/cancel buttons). Automatically reduces top padding when a `CardContent` is above it.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardFrame`
+
+A container that groups multiple `Card` components into a unified muted-background frame with shared rounded corners.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardFrameHeader`
+
+A grid header for a `CardFrame`, accepting a title, description, and optional action.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardFrameTitle`
+
+Large heading (`text-xl`) for use inside `CardFrameHeader`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardFrameDescription`
+
+Muted supplementary text for use inside `CardFrameHeader`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardFrameAction`
+
+Floated action area pinned to the top-right of `CardFrameHeader`, vertically centred and spanning both title/description rows.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardFrameContent` (`CardFramePanel`)
+
+The main body region inside a `CardFrame`, styled with a card background and rounded corners. Also exported as `CardFramePanel`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |
+
+---
+
+### `CardFrameFooter`
+
+A flex row for bottom content inside a `CardFrame`, with space-between justification.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `<div>` | Override the rendered element. |
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | Forwarded to the underlying element. |

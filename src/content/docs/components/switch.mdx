@@ -1,0 +1,75 @@
+---
+title: Switch
+description: A toggleable control that allows users to turn a setting on or off.
+links:
+  doc: https://base-ui.com/react/components/switch
+---
+
+<ComponentPreview name="switch" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/switch
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="switch" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Switch } from "@/components/ui/switch"
+```
+
+```tsx
+<Switch defaultChecked />
+```
+
+## API
+
+### `Switch`
+
+Extends all props from [`SwitchPrimitive.Root`](https://base-ui.com/react/components/switch).
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icons` | `"checked" \| "both"` | `undefined` | Controls icon visibility inside the thumb. `"checked"` shows a checkmark only when on; `"both"` shows a checkmark when on and an × when off. |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Controls the overall size of the switch. |
+| `checked` | `boolean` | `undefined` | The controlled checked state of the switch. |
+| `defaultChecked` | `boolean` | `undefined` | The uncontrolled initial checked state of the switch. |
+| `onCheckedChange` | `(checked: boolean) => void` | `undefined` | Callback fired when the checked state changes. |
+| `disabled` | `boolean` | `false` | When `true`, prevents the user from interacting with the switch. |
+| `name` | `string` | `undefined` | The name submitted with the form when used inside a `<form>`. |
+| `value` | `string` | `undefined` | The value submitted with the form when the switch is checked. |
+| `className` | `string` | `undefined` | Additional CSS class names to apply to the root element. |

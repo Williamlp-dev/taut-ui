@@ -1,0 +1,103 @@
+---
+title: Input
+description: A styled text input field built on Base UI's Input primitive, supporting multiple variants, sizes, and shapes, with support for decorative children like icons and buttons.
+links:
+  doc: https://base-ui.com/react/components/input
+---
+
+<ComponentPreview name="input" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/input
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Input } from "@/components/ui/input"
+```
+
+```tsx
+<Input placeholder="Enter your email" type="email" />
+```
+
+With a leading icon and a trailing action button:
+
+```tsx
+import { SearchIcon } from "lucide-react"
+import { Input } from "@/components/ui/input"
+
+<Input placeholder="Search…" type="search">
+  <SearchIcon />
+</Input>
+```
+
+## API
+
+### `Input`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"filled" \| "outline" \| "outlined"` | `"filled"` | Visual style of the input container. |
+| `shape` | `"pill" \| "round" \| "rounded" \| "square"` | `"pill"` | Border-radius shape of the input container. |
+| `size` | `"sm" \| "default" \| "md" \| "lg" \| number` | `"default"` | Height and padding preset. Pass a number to set the HTML `size` attribute instead. |
+| `unstyled` | `boolean` | `false` | When `true`, suppresses all variant class names so you can apply your own styles. |
+| `nativeInput` | `boolean` | `false` | When `true`, renders a plain `<input>` element instead of the Base UI `Input` primitive. |
+| `children` | `React.ReactNode` | — | Decorative content (icons, buttons, badges) rendered inside the input container. |
+| `className` | `string` | — | Extra class names applied to the outer `<span>` wrapper. |
+| `style` | `React.CSSProperties` | — | Inline styles forwarded to the inner input element. |
+
+All other props (e.g. `type`, `placeholder`, `value`, `onChange`, `disabled`, `aria-invalid`, `ref`, …) are forwarded to the underlying Base UI `Input` or native `<input>` element.
+
+---
+
+### `inputVariants`
+
+A `cva` helper exported for composing the input styles in custom components.
+
+| Variant | Options | Default |
+|---------|---------|---------|
+| `variant` | `"filled"`, `"outline"`, `"outlined"` | `"filled"` |
+| `shape` | `"pill"`, `"round"`, `"rounded"`, `"square"` | `"pill"` |
+| `size` | `"sm"`, `"default"`, `"md"`, `"lg"` | `"default"` |
+
+---
+
+### `InputPrimitive`
+
+Re-exported Base UI `Input` primitive for advanced use cases where you need direct access to the unstyled primitive. See the [Base UI Input docs](https://base-ui.com/react/components/input) for its full API.

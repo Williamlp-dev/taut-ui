@@ -1,0 +1,130 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that display one panel at a time.
+links:
+  doc: https://base-ui.com/react/components/tabs
+---
+
+<ComponentPreview name="tabs" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/tabs
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tabs" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTab, TabsPanel } from "@/components/ui/tabs"
+```
+
+```tsx
+<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTab value="account">Account</TabsTab>
+    <TabsTab value="password">Password</TabsTab>
+  </TabsList>
+  <TabsPanel value="account">
+    Change your account settings here.
+  </TabsPanel>
+  <TabsPanel value="password">
+    Change your password here.
+  </TabsPanel>
+</Tabs>
+```
+
+## API
+
+### `Tabs`
+
+Extends [`TabsPrimitive.Root.Props`](https://base-ui.com/react/components/tabs) from `@base-ui/react/tabs`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `string` | — | The value of the tab that should be active when initially rendered (uncontrolled). |
+| `value` | `string` | — | The controlled value of the active tab. |
+| `onValueChange` | `(value: string) => void` | — | Callback fired when the active tab changes. |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The orientation of the tabs, affecting layout and keyboard navigation. |
+| `className` | `string` | — | Additional CSS classes to apply to the root element. |
+
+---
+
+### `TabsList`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "circular" \| "clean" \| "dot" \| "outline" \| "pill" \| "primary" \| "secondary" \| "underline"` | `"default"` | Visual style variant of the tab list. |
+| `stacked` | `boolean` | `false` | When `true`, stacks the icon and label inside each tab vertically. |
+| `className` | `string` | — | Additional CSS classes to apply to the list element. |
+
+#### `variant` options
+
+| Value | Description |
+|-------|-------------|
+| `default` | Rounded pill background on the active tab, contained within a muted background list. |
+| `circular` | Each tab is a perfect circle; ideal for icon-only tabs. |
+| `clean` | Full-width list with a rounded pill indicator, no background on the list itself. |
+| `dot` | Full-width underline list with a small dot indicator on the active tab. |
+| `outline` | Pill-shaped list with a border; active tab gets a filled background. |
+| `pill` | Pill-shaped list with a muted background; active tab gets a filled background. |
+| `primary` | Full-width underline list with a short primary-colored bar indicator. |
+| `secondary` | Full-width underline list with a full-width primary-colored bar indicator. |
+| `underline` | Minimal underline-only list with a full-width bar indicator matching the tab width. |
+
+---
+
+### `TabsTab`
+
+Extends [`TabsPrimitive.Tab.Props`](https://base-ui.com/react/components/tabs) from `@base-ui/react/tabs`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | **Required.** Unique identifier matching the corresponding `TabsPanel`. |
+| `disabled` | `boolean` | `false` | Disables the tab, preventing interaction. |
+| `className` | `string` | — | Additional CSS classes to apply to the tab element. |
+
+---
+
+### `TabsPanel`
+
+Extends [`TabsPrimitive.Panel.Props`](https://base-ui.com/react/components/tabs) from `@base-ui/react/tabs`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | **Required.** Unique identifier matching the corresponding `TabsTab`. |
+| `keepMounted` | `boolean` | `false` | When `true`, the panel stays mounted in the DOM even when inactive. |
+| `className` | `string` | — | Additional CSS classes to apply to the panel element. |

@@ -1,0 +1,143 @@
+---
+title: Empty
+description: A composable empty-state component with an optional media area, title, description, and action slot.
+---
+
+<ComponentPreview name="empty" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/empty
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="empty" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
+```
+
+```tsx
+<Empty>
+  <EmptyMedia variant="icon">
+    <InboxIcon />
+  </EmptyMedia>
+  <EmptyHeader>
+    <EmptyTitle>No messages</EmptyTitle>
+    <EmptyDescription>
+      You're all caught up! New messages will appear here.
+    </EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button>Compose</Button>
+  </EmptyContent>
+</Empty>
+```
+
+## API
+
+### `Empty`
+
+The root container. Renders a centered, full-height `<div>` column.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes to merge with the default styles. |
+| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` props are forwarded. |
+
+---
+
+### `EmptyMedia`
+
+An optional visual area displayed above the header. Supports three visual styles via the `variant` prop.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"icon" \| "vibrant" \| "default"` | `"icon"` | Controls the background and colour treatment. `"icon"` uses a muted secondary background; `"vibrant"` uses the primary colour; `"default"` renders children as-is with no background decoration. |
+| `className` | `string` | — | Additional CSS classes. |
+| `children` | `React.ReactNode` | — | Content placed inside the media area (typically an icon or image). |
+| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` props are forwarded. |
+
+---
+
+### `EmptyHeader`
+
+A wrapper that groups `EmptyTitle` and `EmptyDescription` with consistent spacing.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` props are forwarded. |
+
+---
+
+### `EmptyTitle`
+
+Renders an `<h3>` heading with semibold tracking-tight styles.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.ComponentProps<"h3">` | — | All standard `<h3>` props are forwarded. |
+
+---
+
+### `EmptyDescription`
+
+Renders a `<p>` tag styled as muted, small body text. Inline `<a>` tags are automatically styled with the primary colour.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.ComponentProps<"p">` | — | All standard `<p>` props are forwarded. |
+
+---
+
+### `EmptyContent`
+
+A flexible row that holds action elements (e.g. buttons or links) below the header.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes. |
+| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` props are forwarded. |

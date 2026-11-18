@@ -1,0 +1,143 @@
+---
+title: Tooltip
+description: A floating label that appears on hover or focus to provide brief contextual information about an element.
+links:
+  doc: https://base-ui.com/react/components/tooltip
+---
+
+<ComponentPreview name="tooltip" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/tooltip
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tooltip" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipPopup,
+} from "@/components/ui/tooltip"
+```
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>Hover me</TooltipTrigger>
+  <TooltipPopup>This is a tooltip</TooltipPopup>
+</Tooltip>
+```
+
+For rich tooltips with a title, description, and actions:
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger>Hover me</TooltipTrigger>
+    <TooltipPopup variant="rich" side="bottom">
+      <TooltipTitle>Tooltip heading</TooltipTitle>
+      <TooltipDescription>
+        Additional context about this element.
+      </TooltipDescription>
+      <TooltipActions>
+        <button>Learn more</button>
+      </TooltipActions>
+    </TooltipPopup>
+  </Tooltip>
+</TooltipProvider>
+```
+
+## API
+
+### `TooltipProvider`
+
+Wraps multiple `<Tooltip>` instances to share delay and open/close behaviour. Accepts all props from [`Tooltip.Provider`](https://base-ui.com/react/components/tooltip) in `@base-ui/react`.
+
+### `Tooltip`
+
+The root component that controls the open state of the tooltip. Accepts all props from [`Tooltip.Root`](https://base-ui.com/react/components/tooltip) in `@base-ui/react`.
+
+### `TooltipTrigger`
+
+The element that triggers the tooltip on hover or focus. Accepts all props from [`Tooltip.Trigger`](https://base-ui.com/react/components/tooltip) in `@base-ui/react`.
+
+### `TooltipPopup`
+
+The floating popup that renders the tooltip content. Internally composes `Tooltip.Portal`, `Tooltip.Positioner`, `Tooltip.Popup`, and `Tooltip.Viewport`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"plain" \| "rich" \| "vibrant"` | `"plain"` | Visual style of the tooltip. `plain` uses foreground/background colours; `rich` uses a popover surface with a shadow; `vibrant` uses the primary colour. |
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"top"` | Which side of the trigger the tooltip appears on. |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment of the tooltip relative to the trigger along the cross-axis. |
+| `sideOffset` | `number` | `8` | Distance in pixels between the tooltip and the trigger. |
+| `anchor` | `TooltipPrimitive.Positioner.Props["anchor"]` | — | Custom anchor element or ref to position the tooltip against. |
+| `portalProps` | `TooltipPrimitive.Portal.Props` | — | Props forwarded to the underlying `Tooltip.Portal` component. |
+| `className` | `string` | — | Additional class names merged onto the popup element. |
+| `children` | `React.ReactNode` | — | Content rendered inside the tooltip viewport. |
+
+### `TooltipTitle`
+
+A styled `<p>` element intended for the heading of a rich tooltip.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional class names merged with the default `font-medium text-foreground` styles. |
+| `...props` | `React.ComponentProps<"p">` | — | All standard `<p>` element props. |
+
+### `TooltipDescription`
+
+A plain `<p>` element for the body text of a rich tooltip.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Class names applied to the `<p>` element. |
+| `...props` | `React.ComponentProps<"p">` | — | All standard `<p>` element props. |
+
+### `TooltipActions`
+
+A `<div>` container for action buttons placed at the bottom of a rich tooltip.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional class names merged with the default flex layout styles. |
+| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` element props. |
+
+### `TooltipCreateHandle`
+
+Re-export of `Tooltip.createHandle` from `@base-ui/react/tooltip`. Use to programmatically control the tooltip's open state via a ref.

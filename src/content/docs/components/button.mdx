@@ -1,0 +1,89 @@
+---
+title: Button
+description: A versatile button component with multiple variants, sizes, shapes, loading state, and ripple feedback.
+links:
+  doc: https://base-ui.com/react/utils/use-render
+---
+
+<ComponentPreview name="button" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/button
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+```
+
+```tsx
+<Button variant="default" size="default">
+  Click me
+</Button>
+```
+
+## API
+
+### `Button`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "filled" \| "secondary" \| "tonal" \| "elevated" \| "outline" \| "ghost" \| "text" \| "link" \| "destructive" \| "destructive-outline"` | `"default"` | Visual style of the button. |
+| `size` | `"default" \| "sm" \| "lg" \| "icon" \| "icon-sm" \| "icon-lg" \| "icon-xl" \| "xl"` | `"default"` | Size of the button, controlling padding and icon sizing. |
+| `width` | `VariantProps<typeof tautSize>["width"]` | `—` | Optional width variant for controlling the button's width. |
+| `shape` | `"round" \| "square" \| "pill"` | `"round"` | Corner radius shape of the button. |
+| `morph` | `boolean` | `false` | Enables morphing press animation on the button. |
+| `loading` | `boolean` | `false` | Shows a spinner and disables the button while `true`. |
+| `selected` | `boolean` | `—` | Marks the button as pressed/selected, sets `aria-pressed` and adjusts styling via `data-selected`. |
+| `disabled` | `boolean` | `—` | Disables the button natively and sets `aria-disabled`. |
+| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `—` | Custom render element or render function (from `@base-ui/react/use-render`). |
+| `className` | `string` | `—` | Additional CSS classes merged with the generated variant classes. |
+| `children` | `React.ReactNode` | `—` | Content rendered inside the button. |
+
+### `buttonVariants`
+
+A `cva` helper exported for composing button styles in other components.
+
+```tsx
+import { buttonVariants } from "@/components/ui/button"
+
+<a className={buttonVariants({ variant: "outline", size: "sm" })} href="/docs">
+  Read the docs
+</a>
+```

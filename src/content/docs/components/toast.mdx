@@ -1,0 +1,156 @@
+---
+title: Toast
+description: A brief, non-blocking notification that appears temporarily to inform the user of an event or action result.
+links:
+  doc: https://base-ui.com/react/components/toast
+---
+
+<ComponentPreview name="toast" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/toast
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toast" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  ToastProvider,
+  toastManager,
+} from "@/components/ui/toast"
+```
+
+Wrap your application (or layout) with `ToastProvider`, then call `toastManager.add(...)` anywhere to trigger a toast.
+
+```tsx
+// In your root layout or app shell
+export default function Layout({ children }) {
+  return (
+    <ToastProvider position="bottom-right">
+      {children}
+    </ToastProvider>
+  )
+}
+
+// Anywhere in your app
+toastManager.add({
+  title: "Saved!",
+  description: "Your changes have been saved.",
+  type: "success",
+})
+```
+
+### Anchored toasts
+
+Use `AnchoredToastProvider` and `anchoredToastManager` to display toasts anchored to a specific element (e.g. a button):
+
+```tsx
+import {
+  AnchoredToastProvider,
+  anchoredToastManager,
+} from "@/components/ui/toast"
+
+// Wrap your app
+<AnchoredToastProvider>{children}</AnchoredToastProvider>
+
+// Trigger an anchored toast
+anchoredToastManager.add({
+  title: "Copied!",
+  type: "success",
+  positionerProps: { anchor: buttonRef },
+})
+```
+
+## API
+
+### `ToastProvider`
+
+Provides the toast context and renders the floating toast viewport at the given screen position.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `position` | `ToastPosition` | `"bottom-right"` | Screen position where toasts appear. |
+| `portalProps` | `React.ComponentProps<typeof Toast.Portal>` | `undefined` | Props forwarded to the Base UI `Toast.Portal`. |
+| `children` | `React.ReactNode` | — | Your application content. |
+| `...props` | `Toast.Provider.Props` | — | All other Base UI `Toast.Provider` props (e.g. `timeout`, `limit`). |
+
+### `AnchoredToastProvider`
+
+Like `ToastProvider` but renders toasts anchored to a target element via a `Positioner`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `portalProps` | `React.ComponentProps<typeof Toast.Portal>` | `undefined` | Props forwarded to the Base UI `Toast.Portal`. |
+| `children` | `React.ReactNode` | — | Your application content. |
+| `...props` | `Toast.Provider.Props` | — | All other Base UI `Toast.Provider` props. |
+
+### `toastManager` / `anchoredToastManager`
+
+Pre-created toast manager instances returned by `Toast.createToastManager()`. Pass to `toastManager.add(options)` to imperatively fire a toast.
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `title` | `string` | — | The toast's main heading text. |
+| `description` | `string` | `undefined` | Secondary body text shown below the title. |
+| `type` | `"error" \| "info" \| "loading" \| "success" \| "warning"` | `undefined` | Determines the icon and colour accent displayed in the toast. |
+| `actionProps` | `{ children: React.ReactNode }` | `undefined` | Renders an action button inside the toast when provided. |
+| `positionerProps` | `{ anchor: React.Ref \| Element; sideOffset?: number }` | `undefined` | *Anchored only.* Anchor element and offset for the positioner. |
+| `data` | `ToastData` | `undefined` | Extra data forwarded to the toast renderer (see `ToastData`). |
+
+### `ToastData`
+
+Custom per-toast data that can be passed via the `data` field of `toastManager.add(...)`.
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `rootProps` | `Omit<React.ComponentProps<typeof Toast.Root>, "children" \| "className" \| "swipeDirection" \| "toast">` | `undefined` | Additional props merged onto the underlying `Toast.Root` element. |
+| `tooltipStyle` | `boolean` | `false` | *Anchored only.* Renders the toast with a compact tooltip-style appearance (smaller radius, title-only). |
+
+### `ToastPosition`
+
+Union type for the `position` prop of `ToastProvider`.
+
+```ts
+type ToastPosition =
+  | "top-left"
+  | "top-center"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-center"
+  | "bottom-right"
+```

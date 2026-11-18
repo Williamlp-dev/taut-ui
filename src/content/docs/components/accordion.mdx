@@ -1,0 +1,125 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that reveal or hide associated content panels.
+links:
+  doc: https://base-ui.com/react/components/accordion
+---
+
+<ComponentPreview name="accordion" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/accordion
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="accordion" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionPanel,
+} from "@/components/ui/accordion"
+```
+
+```tsx
+<Accordion>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionPanel>
+      Yes. It adheres to the WAI-ARIA design pattern and is fully keyboard navigable.
+    </AccordionPanel>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Is it animated?</AccordionTrigger>
+    <AccordionPanel>
+      Yes. The panel height and trigger indicator both animate smoothly using spring-like easing.
+    </AccordionPanel>
+  </AccordionItem>
+  <AccordionItem value="item-3">
+    <AccordionTrigger>Can I style it?</AccordionTrigger>
+    <AccordionPanel>
+      Yes. Pass a <code>className</code> prop to any sub-component to override or extend styles.
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion>
+```
+
+## API
+
+### `Accordion`
+
+Wraps `@base-ui/react/accordion` `Accordion.Root`. All props from `AccordionPrimitive.Root.Props` are accepted.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `undefined` | Additional CSS classes merged with the default flex column layout. |
+| `openMultiple` | `boolean` | `true` | Whether multiple items can be open at the same time. |
+| `defaultValue` | `string \| string[]` | `undefined` | The initially open item(s) (uncontrolled). |
+| `value` | `string \| string[]` | `undefined` | The controlled open item(s). |
+| `onValueChange` | `(value: string \| string[]) => void` | `undefined` | Callback fired when the open item(s) change. |
+| `loop` | `boolean` | `true` | Whether keyboard navigation loops from the last item back to the first. |
+| `disabled` | `boolean` | `false` | Disables all items within the accordion. |
+
+### `AccordionItem`
+
+Wraps `AccordionPrimitive.Item`. All props from `AccordionPrimitive.Item.Props` are accepted.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | **Required.** A unique identifier for this item used to track open state. |
+| `className` | `string` | `undefined` | Additional CSS classes merged onto the item wrapper. |
+| `disabled` | `boolean` | `false` | Disables this specific item, preventing interaction. |
+
+### `AccordionTrigger`
+
+Wraps `AccordionPrimitive.Trigger` inside an `AccordionPrimitive.Header`. All props from `AccordionPrimitive.Trigger.Props` are accepted.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `undefined` | Additional CSS classes merged onto the trigger button. |
+| `children` | `React.ReactNode` | — | The trigger label content displayed inside the button. |
+
+### `AccordionPanel`
+
+Wraps `AccordionPrimitive.Panel` with an animated height transition. Also exported as `AccordionContent`. All props from `AccordionPrimitive.Panel.Props` are accepted.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `undefined` | Additional CSS classes merged onto the inner content `div`. |
+| `children` | `React.ReactNode` | — | The content displayed when the panel is open. |

@@ -1,0 +1,80 @@
+---
+title: Kbd
+description: Displays keyboard keys and shortcuts with a styled key-cap appearance.
+---
+
+<ComponentPreview name="kbd" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/kbd
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="kbd" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Kbd, KbdGroup } from "@/components/ui/kbd"
+```
+
+```tsx
+{/* Single key */}
+<Kbd>⌘</Kbd>
+
+{/* Key combination */}
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <Kbd>K</Kbd>
+</KbdGroup>
+```
+
+## API
+
+### `Kbd`
+
+Renders a single keyboard key with a styled key-cap appearance. Accepts all standard HTML `<kbd>` element props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `—` | Additional CSS classes to merge with the default styles. |
+| `children` | `React.ReactNode` | `—` | The key label or symbol to display (e.g. `⌘`, `Ctrl`, `Enter`). |
+| `...props` | `React.ComponentProps<"kbd">` | `—` | All other native `<kbd>` HTML attributes are forwarded to the underlying element. |
+
+---
+
+### `KbdGroup`
+
+A wrapper that lays out multiple `Kbd` keys side by side with consistent spacing. Accepts all standard HTML `<kbd>` element props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `—` | Additional CSS classes to merge with the default styles. |
+| `children` | `React.ReactNode` | `—` | One or more `Kbd` elements representing the keys in the shortcut. |
+| `...props` | `React.ComponentProps<"kbd">` | `—` | All other native `<kbd>` HTML attributes are forwarded to the underlying element. |

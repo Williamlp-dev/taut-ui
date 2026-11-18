@@ -1,0 +1,63 @@
+---
+title: Skeleton
+description: A placeholder loading element that uses a pulse animation to indicate content is being fetched.
+---
+
+<ComponentPreview name="skeleton" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/skeleton
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="skeleton" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Skeleton } from "@/components/ui/skeleton"
+```
+
+```tsx
+<div className="flex flex-col gap-3">
+  <Skeleton className="h-6 w-48" />
+  <Skeleton className="h-4 w-full" />
+  <Skeleton className="h-4 w-full" />
+  <Skeleton className="h-4 w-3/4" />
+</div>
+```
+
+## API
+
+### `Skeleton`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `—` | Additional CSS classes merged with the default pulse-animation styles. |
+| `...props` | `React.ComponentProps<"div">` | `—` | All standard `<div>` HTML attributes are forwarded to the underlying element. |
