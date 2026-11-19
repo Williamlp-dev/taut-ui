@@ -83,7 +83,7 @@ export function CommandDialogPopup({
       <CommandDialogViewport>
         <CommandDialogPrimitive.Popup
           className={cn(
-            "relative isolate row-start-1 flex max-h-124 min-h-0 w-full min-w-70 max-w-xl origin-center flex-col overflow-hidden rounded-3xl border border-border bg-popover not-dark:bg-clip-padding text-popover-foreground shadow-lg outline-none will-change-transform before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-[inherit] before:bg-muted/72",
+            "relative isolate row-start-1 flex max-h-124 min-h-0 w-full min-w-70 max-w-xl origin-center flex-col overflow-hidden rounded-3xl bg-[color-mix(in_oklab,var(--color-popover),var(--color-foreground)_5%)] text-popover-foreground shadow-[0_12px_36px_rgb(0_0_0/0.24),0_2px_8px_rgb(0_0_0/0.12)] outline-none will-change-transform dark:bg-popover",
             "scale-[calc(1-0.05*var(--nested-dialogs))] opacity-[calc(1-var(--nested-dialogs))]",
             "[transition-duration:350ms,150ms,350ms] [transition-property:scale,opacity,translate] [transition-timing-function:linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1),ease-out,linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)]",
             "data-ending-style:scale-85 data-starting-style:scale-85 data-ending-style:opacity-0 data-starting-style:opacity-0 data-ending-style:duration-150 data-ending-style:ease-out motion-reduce:transition-none",
@@ -118,7 +118,7 @@ export function Command({
 export function CommandInput({
   className,
   placeholder = undefined,
-  variant = "outline",
+  variant = "filled",
   ...props
 }: React.ComponentProps<typeof AutocompleteInput>): React.ReactElement {
   return (
@@ -126,7 +126,7 @@ export function CommandInput({
       <AutocompleteInput
         autoFocus
         className={cn(
-          "shadow-[inset_0_0_0_0.0625rem_var(--color-border)]",
+          "bg-background shadow-none focus-within:shadow-[inset_0_0_0_0.125rem_var(--color-primary)] data-popup-open:shadow-none data-popup-open:focus-within:shadow-[inset_0_0_0_0.125rem_var(--color-primary)]",
           className,
         )}
         placeholder={placeholder}
@@ -145,7 +145,7 @@ export function CommandPanel({
   return (
     <div
       className={cn(
-        "relative mx-2 not-has-[+[data-slot=command-footer]]:mb-2 min-h-0 flex-1 overflow-hidden rounded-2xl border border-border bg-background text-card-foreground",
+        "relative mx-2 not-has-[+[data-slot=command-footer]]:mb-2 min-h-0 flex-1 overflow-hidden rounded-2xl bg-background text-card-foreground",
         className,
       )}
       data-slot="command-panel"
