@@ -84,37 +84,33 @@ export function Spinner({
       <style href="taut-spinner" precedence="default">
         {styles}
       </style>
-      <output
+      <svg
         aria-label={ariaLabel}
-        className="inline-flex shrink-0 align-middle"
+        className={cn(spinnerVariants({ size, variant }), className)}
+        data-size={size ?? "default"}
+        data-slot="spinner"
+        data-variant={variant}
+        fill="none"
+        height={20}
+        role="status"
+        viewBox="0 0 100 100"
+        width={20}
+        {...props}
       >
-        <svg
-          aria-hidden="true"
-          className={cn(spinnerVariants({ size, variant }), className)}
-          data-size={size ?? "default"}
-          data-slot="spinner"
-          data-variant={variant}
-          fill="none"
-          height={20}
-          viewBox="00 00 100 100"
-          width={20}
-          {...props}
-        >
-          <circle
-            className="opacity-20"
-            cx="50"
-            cy="50"
-            r="44"
-            stroke="currentColor"
-            strokeWidth="12"
-          />
-          <rect
-            className="origin-center animate-[taut-pull_1.5s_cubic-bezier(0.65,0,0.35,1)_infinite] fill-current forced-color-adjust-none [width:calc(88%*sin(var(--taut))+12%)] [x:calc(44%*(1-sin(var(--taut))))] [y:calc(44%*(1-cos(var(--taut))))] motion-reduce:animate-none motion-reduce:[--taut:60deg]"
-            height="12"
-            rx="6"
-          />
-        </svg>
-      </output>
+        <circle
+          className="opacity-20"
+          cx="50"
+          cy="50"
+          r="44"
+          stroke="currentColor"
+          strokeWidth="12"
+        />
+        <rect
+          className="origin-center animate-[taut-pull_1.5s_cubic-bezier(0.65,0,0.35,1)_infinite] fill-current forced-color-adjust-none [width:calc(88%*sin(var(--taut))+12%)] [x:calc(44%*(1-sin(var(--taut))))] [y:calc(44%*(1-cos(var(--taut))))] motion-reduce:animate-none motion-reduce:[--taut:60deg]"
+          height="12"
+          rx="6"
+        />
+      </svg>
     </>
   );
 }

@@ -24,9 +24,8 @@ function startPress(
   if (!rect.width || !rect.height) return null;
 
   const maxDim = Math.max(rect.width, rect.height);
-  const softEdge = Math.max(0.35 * maxDim, 75);
   const size = Math.max(Math.floor(maxDim * 0.2), 1);
-  const scale = (Math.hypot(rect.width, rect.height) + 12 + softEdge) / size;
+  const scale = (Math.hypot(rect.width, rect.height) * 1.35 + 24) / size;
 
   const end = { x: (rect.width - size) / 2, y: (rect.height - size) / 2 };
   const start =
@@ -38,7 +37,7 @@ function startPress(
 
   const el = document.createElement("span");
   Object.assign(el.style, {
-    background: `radial-gradient(closest-side, ${color} max(100% - 70px, 65%), transparent 100%)`,
+    background: `radial-gradient(closest-side, ${color} 80%, transparent 100%)`,
     borderRadius: "50%",
     height: `${size}px`,
     left: "0",
@@ -210,7 +209,6 @@ function Ripple({
       ref={containerRef}
       style={{
         borderRadius: "inherit",
-        contain: "paint",
         inset: 0,
         overflow: "hidden",
         pointerEvents: "none",

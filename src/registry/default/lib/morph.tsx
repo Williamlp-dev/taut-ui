@@ -6,7 +6,7 @@ export const morphClasses = cva(
   [
     "[font-variation-settings:'GRAD'_0]",
     "[--taut-spring:linear(0,0.08_6%,0.25_14%,0.55_26%,0.82_40%,0.98_55%,1.015_68%,1.008_80%,1)]",
-    "[transition:border-radius_250ms_var(--taut-spring),background-color_150ms_cubic-bezier(0.2,0,0,1),color_150ms_cubic-bezier(0.2,0,0,1),border-color_150ms_cubic-bezier(0.2,0,0,1),box-shadow_150ms_cubic-bezier(0.2,0,0,1)]",
+    "[transition:border-radius_250ms_var(--taut-spring),box-shadow_150ms_cubic-bezier(0.2,0,0,1)]",
     "motion-reduce:transition-none",
   ],
   {
@@ -14,7 +14,7 @@ export const morphClasses = cva(
     variants: {
       press: {
         false: "",
-        true: "active:rounded-(--r-pressed) active:[font-variation-settings:'GRAD'_-50] active:[transition-duration:120ms,100ms,100ms,100ms,100ms]",
+        true: "active:rounded-(--r-pressed) active:[font-variation-settings:'GRAD'_-50] active:[transition-duration:120ms,100ms]",
       },
       radius: {
         full: "rounded-(--r-full)",
