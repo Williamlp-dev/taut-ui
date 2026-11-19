@@ -3,7 +3,7 @@
 import { Autocomplete as AutocompletePrimitive } from "@base-ui/react/autocomplete";
 import type { VariantProps } from "class-variance-authority";
 import { ChevronsUpDownIcon, XIcon } from "lucide-react";
-import type React from "react";
+import * as React from "react";
 import { cn } from "@/registry/default/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import {
@@ -16,8 +16,63 @@ import { menuPopupVariants } from "@/registry/default/ui/menu";
 const actionButtonClasses =
   "in-data-[size=lg]:size-10 in-data-[size=sm]:size-7 size-8 shrink-0 in-data-[shape=rounded]:rounded-lg in-data-[shape=square]:rounded-md rounded-full text-muted-foreground hover:text-foreground group-focus-within/input:text-primary in-data-invalid:text-destructive!";
 
-export const Autocomplete: typeof AutocompletePrimitive.Root =
-  AutocompletePrimitive.Root;
+const AutocompleteCtrlSpaceContext: React.Context<(() => void) | null> =
+  React.createContext<(() => void) | null>(null);
+
+export type AutocompleteProps = React.ComponentProps<
+  typeof AutocompletePrimitive.Root
+> & {
+  openOnCtrlSpace?: boolean;
+};
+
+export function Autocomplete({
+  openOnCtrlSpace = false,
+  open,
+  defaultOpen,
+  onOpenChange,
+  ...props
+}: AutocompleteProps): React.ReactElement {
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(
+    defaultOpen ?? false,
+  );
+  const isControlled = open !== undefined;
+
+  const openPopup = React.useCallback((): void => {
+    if (!isControlled) {
+      setUncontrolledOpen(true);
+    }
+  }, [isControlled]);
+
+  if (!openOnCtrlSpace) {
+    return (
+      <AutocompletePrimitive.Root
+        defaultOpen={defaultOpen}
+        onOpenChange={onOpenChange}
+        open={open}
+        {...props}
+      />
+    );
+  }
+
+  return (
+    <AutocompleteCtrlSpaceContext.Provider value={openPopup}>
+      <AutocompletePrimitive.Root
+        defaultOpen={defaultOpen}
+        onOpenChange={(
+          nextOpen: boolean,
+          eventDetails: AutocompletePrimitive.Root.OpenChangeEventDetails,
+        ): void => {
+          if (!isControlled) {
+            setUncontrolledOpen(nextOpen);
+          }
+          onOpenChange?.(nextOpen, eventDetails);
+        }}
+        open={isControlled ? open : uncontrolledOpen}
+        {...props}
+      />
+    </AutocompleteCtrlSpaceContext.Provider>
+  );
+}
 
 export function AutocompleteInput({
   className,
@@ -30,6 +85,7 @@ export function AutocompleteInput({
   ref,
   triggerProps,
   clearProps,
+  onKeyDown,
   ...props
 }: Omit<AutocompletePrimitive.Input.Props, "size"> &
   Pick<InputProps, "shape" | "variant"> & {
@@ -42,6 +98,7 @@ export function AutocompleteInput({
     clearProps?: AutocompletePrimitive.Clear.Props;
   }): React.ReactElement {
   const variantSize = typeof size === "number" ? "default" : size;
+  const openOnCtrlSpace = React.useContext(AutocompleteCtrlSpaceContext);
 
   return (
     <AutocompletePrimitive.InputGroup
@@ -67,6 +124,17 @@ export function AutocompleteInput({
       <AutocompletePrimitive.Input
         className="w-full"
         data-slot="autocomplete-input"
+        onKeyDown={(
+          event: Parameters<
+            NonNullable<AutocompletePrimitive.Input.Props["onKeyDown"]>
+          >[0],
+        ): void => {
+          if (openOnCtrlSpace && event.ctrlKey && event.code === "Space") {
+            event.preventDefault();
+            openOnCtrlSpace();
+          }
+          onKeyDown?.(event);
+        }}
         ref={ref}
         render={<Input nativeInput size={variantSize} unstyled />}
         {...props}
@@ -123,7 +191,7 @@ export function AutocompletePopup({
         <AutocompletePrimitive.Popup
           className={cn(
             menuPopupVariants({ colorScheme }),
-            "group/autocomplete-popup relative flex max-h-(--available-height) w-(--anchor-width) min-w-(--anchor-width) max-w-(--available-width) flex-col overflow-hidden bg-(--menu-bg) p-1.5 shadow-[0_0_0_0.0625rem_var(--menu-ring),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.15),0_0.0625rem_0.1875rem_0_rgb(0_0_0/0.3)]",
+            "group/autocomplete-popup relative flex max-h-(--available-height) w-(--anchor-width) min-w-(--anchor-width) max-w-(--available-width) flex-col overflow-hidden bg-(--menu-bg) p-1.5 shadow-[0_0_0_0.0625rem_var(--menu-ring),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.15),0_0.0625rem_0.1875rem_0_rgb(0_0_0/0.3)] data-ending-style:transition-none",
             className,
           )}
           data-slot="autocomplete-popup"

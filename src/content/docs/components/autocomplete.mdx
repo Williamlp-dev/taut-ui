@@ -1,9 +1,11 @@
 ---
 title: Autocomplete
 description: A text input that suggests and filters a list of options as the user types.
+links:
+  doc: https://base-ui.com/react/components/autocomplete#api-reference
 ---
 
-<ComponentPreview name="autocomplete" />
+<ComponentPreview name="p-autocomplete-1" />
 
 ## Installation
 
@@ -34,7 +36,7 @@ npm install @base-ui/react class-variance-authority lucide-react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="autocomplete" />
+<ComponentSource name="autocomplete" title="components/ui/autocomplete.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -49,216 +51,162 @@ npm install @base-ui/react class-variance-authority lucide-react
 ```tsx
 import {
   Autocomplete,
-  AutocompleteInput,
-  AutocompletePopup,
-  AutocompleteList,
-  AutocompleteItem,
   AutocompleteEmpty,
-  AutocompleteCollection,
-  useAutocompleteFilter,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteList,
+  AutocompletePopup,
 } from "@/components/ui/autocomplete"
 ```
 
 ```tsx
-const fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
+const fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry"]
 
-export function AutocompleteDemo() {
-  const { items, getInputProps } = useAutocompleteFilter({ items: fruits });
-
-  return (
-    <Autocomplete>
-      <AutocompleteInput
-        showTrigger
-        showClear
-        placeholder="Search fruit..."
-        {...getInputProps()}
-      />
-      <AutocompletePopup>
-        <AutocompleteList>
-          <AutocompleteCollection items={items}>
-            {(item) => (
-              <AutocompleteItem key={item} value={item}>
-                {item}
-              </AutocompleteItem>
-            )}
-          </AutocompleteCollection>
-          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
-        </AutocompleteList>
-      </AutocompletePopup>
-    </Autocomplete>
-  );
-}
+<Autocomplete items={fruits}>
+  <AutocompleteInput placeholder="Search fruits…" showClear />
+  <AutocompletePopup>
+    <AutocompleteEmpty>No results found.</AutocompleteEmpty>
+    <AutocompleteList>
+      {(fruit) => (
+        <AutocompleteItem key={fruit} value={fruit}>
+          {fruit}
+        </AutocompleteItem>
+      )}
+    </AutocompleteList>
+  </AutocompletePopup>
+</Autocomplete>
 ```
 
-## API
+## Examples
 
-### `Autocomplete`
+### Grouped Items
 
-Re-exported directly from `@base-ui/react/autocomplete`. Refer to the [Base UI Autocomplete docs](https://base-ui.com/react/components/autocomplete) for the full prop list.
+<ComponentPreview name="p-autocomplete-2" />
 
----
+### With Trigger & Leading Icon
 
-### `AutocompleteInput`
+<ComponentPreview name="p-autocomplete-3" />
 
-The styled input group that wraps the text field together with optional trigger and clear buttons.
+### Small
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"filled" \| "outlined" \| "ghost"` | `"filled"` | Visual style variant of the input. |
-| `shape` | `"pill" \| "rounded" \| "square"` | `"pill"` | Border radius shape of the input. |
-| `size` | `"sm" \| "default" \| "md" \| "lg" \| number` | `"default"` | Size of the input. Numeric values map to `"default"` for variant logic. |
-| `showTrigger` | `boolean` | `false` | When `true`, renders a chevron toggle button at the end of the input. |
-| `showClear` | `boolean` | `false` | When `true`, renders a clear (×) button at the end of the input. The trigger is hidden while the clear button is visible. |
-| `startAddon` | `React.ReactNode` | `—` | Node rendered before the text input (e.g. a search icon). |
-| `triggerProps` | `AutocompletePrimitive.Trigger.Props` | `—` | Extra props forwarded to the inner `AutocompleteTrigger`. |
-| `clearProps` | `AutocompletePrimitive.Clear.Props` | `—` | Extra props forwarded to the inner `AutocompleteClear`. |
-| `ref` | `React.Ref<HTMLInputElement>` | `—` | Ref forwarded to the native `<input>` element. |
-| `...props` | `AutocompletePrimitive.Input.Props` | `—` | All other props from Base UI's `Autocomplete.Input` (e.g. `placeholder`, `onChange`). |
+<ComponentPreview name="p-autocomplete-4" />
 
----
+### Large
 
-### `AutocompletePopup`
+<ComponentPreview name="p-autocomplete-5" />
 
-Wraps the Base UI portal, positioner, and popup into a single convenience component.
+### Rounded
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` | Which side of the anchor to place the popup. |
-| `sideOffset` | `number` | `6` | Distance in pixels between the popup and the anchor. |
-| `align` | `"start" \| "center" \| "end"` | `"start"` | Alignment of the popup relative to the anchor. |
-| `alignOffset` | `number` | `0` | Offset in pixels along the alignment axis. |
-| `anchor` | `AutocompletePrimitive.Positioner.Props["anchor"]` | `—` | Custom anchor element or ref for the positioner. |
-| `colorScheme` | `"default" \| "dark" \| "light"` | `—` | Color scheme variant applied via `menuPopupVariants`. |
-| `portalProps` | `AutocompletePrimitive.Portal.Props` | `—` | Extra props forwarded to the Base UI `Portal`. |
-| `...props` | `AutocompletePrimitive.Popup.Props` | `—` | All other props from Base UI's `Autocomplete.Popup`. |
+<ComponentPreview name="p-autocomplete-6" />
 
----
+### Open with Ctrl + Space
 
-### `AutocompleteList`
+<ComponentPreview name="p-autocomplete-7" />
 
-Scrollable container that holds `AutocompleteItem` elements. Hides itself when empty.
+## API Reference
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `...props` | `AutocompletePrimitive.List.Props` | `—` | All props from Base UI's `Autocomplete.List`. |
+### Autocomplete
 
----
+Wraps `Autocomplete.Root` from Base UI. Manages the input value, open state, and item filtering.
 
-### `AutocompleteItem`
+| Prop              | Type                             | Default | Description                                               |
+| ----------------- | -------------------------------- | ------- | --------------------------------------------------------- |
+| `items`           | `readonly unknown[]`             | -       | Items (or groups) used to filter and render the list      |
+| `openOnCtrlSpace` | `boolean`                        | `false` | Opens the suggestions popup when pressing `Ctrl + Space`  |
+| `value`           | `string`                         | -       | Controlled input value                                    |
+| `defaultValue`    | `string`                         | -       | Initial uncontrolled input value                          |
+| `onValueChange`   | `(value: string) => void`        | -       | Called when the input value changes                       |
+| `...props`        | Base UI Autocomplete Root props  | -       | All other Autocomplete Root props are supported           |
 
-A single selectable option inside the list.
+### AutocompleteInput
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `children` | `React.ReactNode` | `—` | Label content for the item. |
-| `...props` | `AutocompletePrimitive.Item.Props` | `—` | All props from Base UI's `Autocomplete.Item` (e.g. `value`, `disabled`). |
+Styled input group with optional leading addon, clear button, and dropdown trigger.
 
----
+| Prop           | Type                                         | Default     | Description                                       |
+| -------------- | -------------------------------------------- | ----------- | ------------------------------------------------- |
+| `variant`      | `"filled" \| "outline" \| "outlined"`        | `"filled"`  | Visual style variant                              |
+| `shape`        | `"pill" \| "round" \| "rounded" \| "square"` | `"pill"`    | Border radius shape                               |
+| `size`         | `"sm" \| "default" \| "md" \| "lg"`          | `"default"` | Size of the input and internal buttons            |
+| `showTrigger`  | `boolean`                                    | `false`     | Displays a trailing chevron trigger button        |
+| `showClear`    | `boolean`                                    | `false`     | Displays a clear button when the input has text   |
+| `startAddon`   | `React.ReactNode`                            | -           | Leading element (such as an icon)                 |
+| `triggerProps` | `Autocomplete.Trigger.Props`                 | -           | Props forwarded to the trigger button             |
+| `clearProps`   | `Autocomplete.Clear.Props`                   | -           | Props forwarded to the clear button               |
+| `...props`     | Base UI Autocomplete Input props             | -           | All standard autocomplete input props             |
 
-### `AutocompleteEmpty`
+### AutocompletePopup
 
-Message shown when the filtered list has no results.
+Positioned dropdown container rendered inside a portal.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `...props` | `AutocompletePrimitive.Empty.Props` | `—` | All props from Base UI's `Autocomplete.Empty`. |
+| Prop          | Type                                 | Default      | Description                                   |
+| ------------- | ------------------------------------ | ------------ | --------------------------------------------- |
+| `colorScheme` | `"standard" \| "vibrant"`            | `"standard"` | Surface tint scheme                           |
+| `side`        | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Preferred side relative to the input          |
+| `align`       | `"start" \| "center" \| "end"`       | `"start"`    | Alignment along the chosen side               |
+| `sideOffset`  | `number`                             | `6`          | Distance in pixels from the anchor            |
+| `alignOffset` | `number`                             | `0`          | Offset along the alignment axis               |
+| `portalProps` | `Autocomplete.Portal.Props`          | -            | Props forwarded to the internal portal        |
+| `...props`    | Base UI Autocomplete Popup props     | -            | All standard autocomplete popup props         |
 
----
+### AutocompleteList
 
-### `AutocompleteGroup`
+Scrollable container for suggestion items. Accepts a render function or static children.
 
-Groups a set of related items together with optional spacing.
+| Prop        | Type                            | Description                             |
+| ----------- | ------------------------------- | --------------------------------------- |
+| `className` | `string`                        | Additional CSS classes                  |
+| `...props`  | Base UI Autocomplete List props | All standard autocomplete list props    |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `...props` | `AutocompletePrimitive.Group.Props` | `—` | All props from Base UI's `Autocomplete.Group`. |
+### AutocompleteItem
 
----
+An individual selectable suggestion item.
 
-### `AutocompleteGroupLabel`
+| Prop        | Type                            | Description                             |
+| ----------- | ------------------------------- | --------------------------------------- |
+| `value`     | `unknown`                       | The value of the item                   |
+| `className` | `string`                        | Additional CSS classes                  |
+| `...props`  | Base UI Autocomplete Item props | All standard autocomplete item props    |
 
-Label displayed above an `AutocompleteGroup`.
+### AutocompleteEmpty
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `...props` | `AutocompletePrimitive.GroupLabel.Props` | `—` | All props from Base UI's `Autocomplete.GroupLabel`. |
+Displays a message when no items match the current query.
 
----
+| Prop        | Type                             | Description                             |
+| ----------- | -------------------------------- | --------------------------------------- |
+| `className` | `string`                         | Additional CSS classes                  |
+| `...props`  | Base UI Autocomplete Empty props | All standard autocomplete empty props   |
 
-### `AutocompleteSeparator`
+### AutocompleteGroup
 
-A thin horizontal divider for visually separating sections.
+Groups related items together.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `...props` | `AutocompletePrimitive.Separator.Props` | `—` | All props from Base UI's `Autocomplete.Separator`. |
+| Prop        | Type                             | Description                             |
+| ----------- | -------------------------------- | --------------------------------------- |
+| `items`     | `readonly unknown[]`             | Items that belong to this group         |
+| `className` | `string`                         | Additional CSS classes                  |
+| `...props`  | Base UI Autocomplete Group props | All standard autocomplete group props   |
 
----
+### AutocompleteGroupLabel
 
-### `AutocompleteTrigger`
+Displays a label for an `AutocompleteGroup`.
 
-Standalone chevron button that opens/closes the popup. Automatically included when `showTrigger` is set on `AutocompleteInput`.
+| Prop        | Type                                   | Description                                  |
+| ----------- | -------------------------------------- | -------------------------------------------- |
+| `className` | `string`                               | Additional CSS classes                       |
+| `...props`  | Base UI Autocomplete Group Label props | All standard autocomplete group label props  |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `children` | `React.ReactNode` | `<ChevronsUpDownIcon>` | Custom icon content; defaults to a chevrons-up-down icon. |
-| `...props` | `AutocompletePrimitive.Trigger.Props` | `—` | All props from Base UI's `Autocomplete.Trigger`. |
+### AutocompleteCollection
 
----
+Alias for `Autocomplete.Collection`. Used inside `AutocompleteGroup` to render grouped items.
 
-### `AutocompleteClear`
+### AutocompleteSeparator
 
-Standalone clear (×) button that resets the input value. Automatically included when `showClear` is set on `AutocompleteInput`.
+A visual divider between groups or items.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `children` | `React.ReactNode` | `<XIcon>` | Custom icon content; defaults to an × icon. |
-| `...props` | `AutocompletePrimitive.Clear.Props` | `—` | All props from Base UI's `Autocomplete.Clear`. |
+### AutocompleteStatus
 
----
+Live status region for async loading or result counts.
 
-### `AutocompleteRow`
+### AutocompleteTrigger / AutocompleteClear / AutocompleteValue / AutocompleteRow
 
-Renders items in a horizontal row layout (useful for grid-style option lists).
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `...props` | `AutocompletePrimitive.Row.Props` | `—` | All props from Base UI's `Autocomplete.Row`. |
-
----
-
-### `AutocompleteStatus`
-
-Displays an async status message (e.g. "Loading…") inside the popup.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes. |
-| `...props` | `AutocompletePrimitive.Status.Props` | `—` | All props from Base UI's `Autocomplete.Status`. |
-
----
-
-### `AutocompleteValue`
-
-Re-exported directly from `@base-ui/react/autocomplete`. Use it to render the current selected value outside the input.
-
----
-
-### `AutocompleteCollection`
-
-Re-exported directly from `@base-ui/react/autocomplete`. Renders a virtualized or plain collection of items from an array.
-
----
-
-### `useAutocompleteFilter`
-
-Re-exported directly from `@base-ui/react/autocomplete` as `useFilter`. Provides client-side string filtering and the input props needed to wire filtering to the autocomplete state.
+Lower-level primitives re-exported for custom compositions.
