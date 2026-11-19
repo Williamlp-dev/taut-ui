@@ -4,29 +4,31 @@ import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 import type React from "react";
+import { Ripple } from "@/registry/default/lib/ripple";
 import { cn } from "@/registry/default/lib/utils";
 
 export const cardVariants = cva(
   [
     "relative flex rounded-3xl text-card-foreground outline-none",
-    "transition-[box-shadow,background-color] duration-200 ease-out motion-reduce:transition-none",
+    "transition-shadow duration-200 ease-out motion-reduce:transition-none",
     "[button&,a&]:cursor-pointer [button&,a&]:text-start",
     "[button&,a&]:focus-visible:ring-2 [button&,a&]:focus-visible:ring-ring [button&,a&]:focus-visible:ring-offset-2 [button&,a&]:focus-visible:ring-offset-background",
     "[button&]:disabled:pointer-events-none [button&]:disabled:opacity-38",
   ],
   {
-    defaultVariants: { orientation: "vertical", variant: "elevated" },
+    defaultVariants: { orientation: "vertical", variant: "default" },
     variants: {
       orientation: {
         vertical: "flex-col",
         horizontal: "flex-row items-center gap-4 p-4",
       },
       variant: {
+        default: "bg-muted dark:bg-card [button&,a&]:hover:bg-accent",
         elevated:
-          "bg-card shadow-[0_0.0625rem_0.1875rem_rgb(0_0_0/0.2),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.1)] [button&,a&]:hover:bg-accent/50",
-        filled: "bg-muted [button&,a&]:hover:bg-muted/70",
+          "bg-card shadow-[0_0.0625rem_0.1875rem_rgb(0_0_0/0.2),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.1)] [button&,a&]:hover:bg-accent",
+        filled: "bg-muted dark:bg-card [button&,a&]:hover:bg-accent",
         outlined:
-          "border border-border bg-background [button&,a&]:hover:bg-accent/40",
+          "border border-border bg-background [button&,a&]:hover:bg-muted",
       },
     },
   },
@@ -35,16 +37,27 @@ export const cardVariants = cva(
 export interface CardProps extends useRender.ComponentProps<"div"> {
   variant?: VariantProps<typeof cardVariants>["variant"];
   orientation?: VariantProps<typeof cardVariants>["orientation"];
+  ripple?: boolean;
 }
 
 export function Card({
   className,
   variant,
   orientation = "vertical",
+  ripple = false,
   render,
+  children,
   ...props
 }: CardProps): React.ReactElement {
   const defaultProps = {
+    children: ripple ? (
+      <>
+        {children}
+        <Ripple />
+      </>
+    ) : (
+      children
+    ),
     className: cn(cardVariants({ orientation, variant }), className),
     "data-orientation": orientation,
     "data-slot": "card",
