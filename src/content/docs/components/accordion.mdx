@@ -2,10 +2,10 @@
 title: Accordion
 description: A vertically stacked set of interactive headings that reveal or hide associated content panels.
 links:
-  doc: https://base-ui.com/react/components/accordion
+  doc: https://base-ui.com/react/components/accordion#api-reference
 ---
 
-<ComponentPreview name="accordion" />
+<ComponentPreview name="p-accordion-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react lucide-react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="accordion" />
+<ComponentSource name="accordion" title="components/ui/accordion.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -52,13 +52,13 @@ npm install @base-ui/react lucide-react
 import {
   Accordion,
   AccordionItem,
-  AccordionTrigger,
   AccordionPanel,
+  AccordionTrigger,
 } from "@/components/ui/accordion"
 ```
 
 ```tsx
-<Accordion>
+<Accordion defaultValue={["item-1"]}>
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionPanel>
@@ -68,58 +68,63 @@ import {
   <AccordionItem value="item-2">
     <AccordionTrigger>Is it animated?</AccordionTrigger>
     <AccordionPanel>
-      Yes. The panel height and trigger indicator both animate smoothly using spring-like easing.
-    </AccordionPanel>
-  </AccordionItem>
-  <AccordionItem value="item-3">
-    <AccordionTrigger>Can I style it?</AccordionTrigger>
-    <AccordionPanel>
-      Yes. Pass a <code>className</code> prop to any sub-component to override or extend styles.
+      Yes. Panel height, corner morphing, and indicator rotation all animate with spring motion.
     </AccordionPanel>
   </AccordionItem>
 </Accordion>
 ```
 
-## API
+## Examples
 
-### `Accordion`
+### Multiple
 
-Wraps `@base-ui/react/accordion` `Accordion.Root`. All props from `AccordionPrimitive.Root.Props` are accepted.
+<ComponentPreview name="p-accordion-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `undefined` | Additional CSS classes merged with the default flex column layout. |
-| `openMultiple` | `boolean` | `true` | Whether multiple items can be open at the same time. |
-| `defaultValue` | `string \| string[]` | `undefined` | The initially open item(s) (uncontrolled). |
-| `value` | `string \| string[]` | `undefined` | The controlled open item(s). |
-| `onValueChange` | `(value: string \| string[]) => void` | `undefined` | Callback fired when the open item(s) change. |
-| `loop` | `boolean` | `true` | Whether keyboard navigation loops from the last item back to the first. |
-| `disabled` | `boolean` | `false` | Disables all items within the accordion. |
+### With Icons
 
-### `AccordionItem`
+<ComponentPreview name="p-accordion-3" />
 
-Wraps `AccordionPrimitive.Item`. All props from `AccordionPrimitive.Item.Props` are accepted.
+## API Reference
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | — | **Required.** A unique identifier for this item used to track open state. |
-| `className` | `string` | `undefined` | Additional CSS classes merged onto the item wrapper. |
-| `disabled` | `boolean` | `false` | Disables this specific item, preventing interaction. |
+### Accordion
 
-### `AccordionTrigger`
+Wraps `Accordion.Root` from Base UI. Manages open state and keyboard navigation across items.
 
-Wraps `AccordionPrimitive.Trigger` inside an `AccordionPrimitive.Header`. All props from `AccordionPrimitive.Trigger.Props` are accepted.
+| Prop            | Type                             | Default | Description                                                          |
+| --------------- | -------------------------------- | ------- | -------------------------------------------------------------------- |
+| `multiple`      | `boolean`                        | `false` | Whether multiple items can be open at the same time                  |
+| `value`         | `unknown[]`                      | -       | Controlled array of currently open item values                       |
+| `defaultValue`  | `unknown[]`                      | -       | Initial array of open item values when uncontrolled                  |
+| `onValueChange` | `(value: unknown[]) => void`     | -       | Called when the open items change                                    |
+| `loopFocus`     | `boolean`                        | `true`  | Whether keyboard focus loops from the last item back to the first    |
+| `disabled`      | `boolean`                        | `false` | Disables all items within the accordion                              |
+| `...props`      | Base UI Accordion Root props     | -       | All other Accordion Root props are supported                         |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `undefined` | Additional CSS classes merged onto the trigger button. |
-| `children` | `React.ReactNode` | — | The trigger label content displayed inside the button. |
+### AccordionItem
 
-### `AccordionPanel`
+A single collapsible section with segmented surface styling and corner morphing.
 
-Wraps `AccordionPrimitive.Panel` with an animated height transition. Also exported as `AccordionContent`. All props from `AccordionPrimitive.Panel.Props` are accepted.
+| Prop        | Type                          | Default | Description                                    |
+| ----------- | ----------------------------- | ------- | ---------------------------------------------- |
+| `value`     | `unknown`                     | -       | Unique identifier for the item                 |
+| `disabled`  | `boolean`                     | `false` | Disables this individual item                  |
+| `className` | `string`                      | -       | Additional CSS classes                         |
+| `...props`  | Base UI Accordion Item props  | -       | All standard accordion item props              |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `undefined` | Additional CSS classes merged onto the inner content `div`. |
-| `children` | `React.ReactNode` | — | The content displayed when the panel is open. |
+### AccordionTrigger
+
+The interactive header button that toggles the item's panel. Includes a ripple effect and rotating chevron indicator.
+
+| Prop        | Type                            | Description                             |
+| ----------- | ------------------------------- | --------------------------------------- |
+| `className` | `string`                        | Additional CSS classes                  |
+| `...props`  | Base UI Accordion Trigger props | All standard accordion trigger props    |
+
+### AccordionPanel
+
+The collapsible content container with animated height and opacity transitions. Also exported as `AccordionContent`.
+
+| Prop        | Type                          | Description                           |
+| ----------- | ----------------------------- | ------------------------------------- |
+| `className` | `string`                      | Additional CSS classes                |
+| `...props`  | Base UI Accordion Panel props | All standard accordion panel props    |
