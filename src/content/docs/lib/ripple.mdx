@@ -3,7 +3,7 @@ title: Ripple
 description: Zero-dependency tactile press ripple and hover state layer powered by the Web Animations API.
 ---
 
-A lightweight Client Component that renders a radial press ripple and hover state layer inside any interactive parent element using the Web Animations API. Used across `Button`, `Accordion`, `Breadcrumb`, `Collapsible`, `Command`, `Drawer`, `NavigationRail`, `Pagination`, `Sidebar`, and `Toggle`.
+A lightweight Client Component that renders a radial press ripple and hover state layer inside any interactive parent element using the Web Animations API. Used across `Button`, `Accordion`, `Card`, `Command`, `Drawer`, and `Sidebar`.
 
 ## Installation
 
@@ -40,7 +40,7 @@ npx shadcn@latest add @taut-ui/ripple
 
 ## How It Works
 
-- **Parent-attached listeners:** `Ripple` listens directly on its `parentElement` for pointer and keyboard (`Enter`, `Space`) events—no wrapper element required. If the parent has `position: static`, `Ripple` upgrades it to `relative` and clips via `border-radius: inherit` and `contain: paint`.
+- **Parent-attached listeners:** `Ripple` listens directly on its `parentElement` for pointer and keyboard (`Enter`, `Space`) events—no wrapper element required. If the parent has `position: static`, `Ripple` upgrades it to `relative` and clips via `border-radius: inherit` and `overflow: hidden`.
 - **Origin-aware expansion:** Pointer presses originate at the click coordinates and travel smoothly toward the center of the element, scaling across its full diagonal (`Math.hypot`). Keyboard activations originate from the center.
 - **Minimum press hold:** Releases wait until `minimumPressDuration` (`225ms` by default) has elapsed before fading out, preventing quick taps from flashing abruptly.
 - **Touch & disabled awareness:** Touch pointers skip the hover layer (`pointerType !== "touch"`), disabled controls (`disabled`, `aria-disabled="true"`, `data-disabled`) ignore presses, and `prefers-reduced-motion: reduce` collapses the growth duration to `0ms`.
