@@ -8,7 +8,7 @@ import { cn } from "@/registry/default/lib/utils";
 
 export const badgeVariants = cva(
   [
-    "relative inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full border border-transparent font-medium tabular-nums outline-none transition-shadow",
+    "relative inline-flex shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full border border-transparent font-medium tabular-nums outline-none",
     "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
     "disabled:pointer-events-none disabled:opacity-38 data-disabled:pointer-events-none data-disabled:opacity-38",
     "[&_svg:not([class*='opacity-'])]:opacity-80 [&_svg:not([class*='size-'])]:size-3 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -23,26 +23,24 @@ export const badgeVariants = cva(
       size: {
         default: "h-6 min-w-6 px-2.5 text-xs leading-4",
         dot: "size-2 p-0",
-        large: "h-4.5 min-w-4.5 px-1.5 text-xs leading-4",
         lg: "h-7 min-w-7 px-3 text-sm leading-5 [&_svg:not([class*='size-'])]:size-3.5",
         sm: "h-5 min-w-5 px-2 text-xs leading-4",
-        small: "size-1.5 p-0",
       },
       variant: {
         default:
-          "bg-primary text-primary-foreground [button&,a&]:hover:bg-primary/90",
+          "bg-primary text-primary-foreground [button&,a&]:hover:bg-[color-mix(in_oklab,var(--color-primary),var(--color-background)_10%)]",
         destructive:
-          "bg-destructive text-destructive-foreground [button&,a&]:hover:bg-destructive/90",
-        error: "bg-destructive/12 text-destructive dark:bg-destructive/20",
-        info: "bg-info/12 text-info-foreground dark:bg-info/20 dark:text-info",
+          "bg-destructive text-destructive-foreground [button&,a&]:hover:bg-[color-mix(in_oklab,var(--color-destructive),var(--color-background)_10%)]",
+        error: "bg-destructive-container text-destructive-container-foreground",
+        info: "bg-[color-mix(in_oklab,var(--color-card),var(--color-info)_14%)] text-info-foreground dark:bg-[color-mix(in_oklab,var(--color-card),var(--color-info)_20%)] dark:text-info",
         outline:
-          "border-input bg-background text-foreground dark:bg-input/32 [button&,a&]:hover:bg-accent/50 dark:[button&,a&]:hover:bg-input/48",
+          "border-border bg-card text-foreground [button&,a&]:hover:bg-accent",
         secondary:
-          "bg-secondary text-secondary-foreground [button&,a&]:hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground [button&,a&]:hover:bg-[color-mix(in_oklab,var(--color-secondary),var(--color-foreground)_8%)]",
         success:
-          "bg-success/12 text-success-foreground dark:bg-success/20 dark:text-success",
+          "bg-[color-mix(in_oklab,var(--color-card),var(--color-success)_14%)] text-success-foreground dark:bg-[color-mix(in_oklab,var(--color-card),var(--color-success)_20%)] dark:text-success",
         warning:
-          "bg-warning/12 text-warning-foreground dark:bg-warning/20 dark:text-warning",
+          "bg-[color-mix(in_oklab,var(--color-card),var(--color-warning)_14%)] text-warning-foreground dark:bg-[color-mix(in_oklab,var(--color-card),var(--color-warning)_20%)] dark:text-warning",
       },
     },
   },
@@ -83,8 +81,8 @@ export function BadgeAnchor({
     className: cn(
       "relative inline-flex shrink-0",
       "*:data-[slot=badge]:absolute",
-      "*:data-[slot=badge]:data-[size=dot]:-end-0.5 *:data-[slot=badge]:data-[size=small]:-end-0.5 *:data-[slot=badge]:data-[size=dot]:-top-0.5 *:data-[slot=badge]:data-[size=small]:-top-0.5",
-      "*:data-[slot=badge]:not-data-[size=dot]:not-data-[size=small]:start-1/2 *:data-[slot=badge]:not-data-[size=dot]:not-data-[size=small]:-top-1.5 *:data-[slot=badge]:not-data-[size=dot]:not-data-[size=small]:ms-0.5",
+      "*:data-[slot=badge]:data-[size=dot]:-end-0.5 *:data-[slot=badge]:data-[size=dot]:-top-0.5",
+      "*:data-[slot=badge]:not-data-[size=dot]:start-1/2 *:data-[slot=badge]:not-data-[size=dot]:-top-1.5 *:data-[slot=badge]:not-data-[size=dot]:ms-0.5",
       className,
     ),
     "data-slot": "badge-anchor",

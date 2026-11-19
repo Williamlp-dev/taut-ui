@@ -3,7 +3,7 @@ title: Badge
 description: A small label used to highlight status, counts, or categorical information, with support for anchoring on top of other elements.
 ---
 
-<ComponentPreview name="badge" />
+<ComponentPreview name="p-badge-1" />
 
 ## Installation
 
@@ -34,7 +34,7 @@ npm install @base-ui/react class-variance-authority
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="badge" />
+<ComponentSource name="badge" title="components/ui/badge.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -51,64 +51,59 @@ import { Badge, BadgeAnchor } from "@/components/ui/badge"
 ```
 
 ```tsx
-{/* Standalone badge */}
-<Badge variant="success">Active</Badge>
-
-{/* Badge anchored to another element */}
-<BadgeAnchor>
-  <button>Notifications</button>
-  <Badge size="dot" variant="destructive" />
-</BadgeAnchor>
+<Badge>Badge</Badge>
 ```
 
-## API
+## Examples
 
-### `Badge`
+### Secondary
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"default" \| "destructive" \| "error" \| "info" \| "outline" \| "secondary" \| "success" \| "warning"` | `"default"` | Controls the color scheme of the badge. |
-| `size` | `"default" \| "sm" \| "lg" \| "dot" \| "small" \| "large"` | `"default"` | Controls the size of the badge. Use `"dot"` or `"small"` for indicator-only badges with no text. |
-| `render` | `React.ReactElement \| ((props, state) => React.ReactElement)` | — | Custom render function or element, forwarded to `useRender`. Allows rendering as any HTML tag or component (e.g. `<a>`, `<button>`). |
-| `className` | `string` | — | Additional CSS classes merged with the variant classes. |
+<ComponentPreview name="p-badge-2" />
 
-> [!NOTE]
-> `Badge` accepts all standard `<span>` HTML attributes in addition to the props above, forwarded via `useRender` from `@base-ui/react`.
+### Outline
 
-#### `variant` options
+<ComponentPreview name="p-badge-3" />
 
-| Value | Description |
-|-------|-------------|
-| `default` | Primary color — high-emphasis label. |
-| `secondary` | Secondary color — medium-emphasis label. |
-| `destructive` | Filled destructive/red — for critical states. |
-| `error` | Soft destructive background — for error states. |
-| `info` | Soft info background — for informational states. |
-| `success` | Soft success background — for positive states. |
-| `warning` | Soft warning background — for cautionary states. |
-| `outline` | Bordered, transparent fill — for low-emphasis labels. |
+### Destructive
 
-#### `size` options
+<ComponentPreview name="p-badge-4" />
 
-| Value | Description |
-|-------|-------------|
-| `default` | Standard badge — `h-6`, suitable for text labels. |
-| `sm` | Small badge — `h-5`, tighter padding. |
-| `lg` | Large badge — `h-7`, slightly larger text. |
-| `large` | Compact indicator — `h-4.5`, small px for counts. |
-| `dot` | Dot indicator — `size-2`, no text, no padding. |
-| `small` | Smaller dot indicator — `size-1.5`, no text. |
+### With Icon
 
----
+<ComponentPreview name="p-badge-5" />
 
-### `BadgeAnchor`
+### Anchored Dot
 
-A wrapper that positions a `Badge` as an absolute overlay on top of a child element (e.g. an icon or button). The badge is automatically positioned at the top-end corner of the anchor.
+<ComponentPreview name="p-badge-6" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement \| ((props, state) => React.ReactElement)` | — | Custom render function or element, forwarded to `useRender`. |
-| `className` | `string` | — | Additional CSS classes merged with the anchor classes. |
+### Anchored Counter
 
-> [!TIP]
-> Place a `Badge` with `size="dot"` or `size="small"` inside `BadgeAnchor` to get a compact notification indicator that sits flush at the corner. Larger badge sizes are offset outward from the top-start edge automatically.
+<ComponentPreview name="p-badge-7" />
+
+### As Link
+
+<ComponentPreview name="p-badge-8" />
+
+## API Reference
+
+### Badge
+
+Renders a styled badge element. Supports polymorphic rendering via Base UI `useRender`.
+
+| Prop        | Type                                                                                                 | Default     | Description                                                        |
+| ----------- | ---------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
+| `variant`   | `"default" \| "secondary" \| "outline" \| "destructive" \| "error" \| "info" \| "success" \| "warning"` | `"default"` | Visual style variant                                               |
+| `size`      | `"dot" \| "sm" \| "default" \| "lg"`                                                                 | `"default"` | Size of the badge (`dot` renders a compact indicator with no text) |
+| `render`    | `React.ReactElement \| ((props, state) => React.ReactElement)`                                       | -           | Custom element to render (e.g. `<a>` or `<button>`)                |
+| `className` | `string`                                                                                             | -           | Additional CSS classes                                             |
+| `...props`  | `React.ComponentProps<"span">`                                                                       | -           | All standard span attributes are supported                         |
+
+### BadgeAnchor
+
+Wrapper that positions a child `Badge` relative to another element, such as an icon button or avatar.
+
+| Prop        | Type                                                           | Description                               |
+| ----------- | -------------------------------------------------------------- | ----------------------------------------- |
+| `render`    | `React.ReactElement \| ((props, state) => React.ReactElement)` | Custom element to render as the wrapper   |
+| `className` | `string`                                                       | Additional CSS classes                    |
+| `...props`  | `React.ComponentProps<"span">`                                 | All standard span attributes are supported |
