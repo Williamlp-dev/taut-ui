@@ -52,8 +52,12 @@ export default async function Page(props: {
 
   return (
     <div className="flex items-stretch gap-6 xl:w-full" data-slot="docs">
-      <div className="relative flex w-full min-w-0 flex-1 flex-col lg:my-4">
-        <div className="flex flex-1 flex-col bg-background px-4 py-6 sm:px-8 lg:rounded-4xl lg:border lg:border-border/60 lg:p-8 xl:p-10">
+      <div className="relative flex w-full min-w-0 flex-1 flex-col lg:mt-5 lg:mb-4">
+        <div
+          className="flex flex-1 flex-col bg-background px-4 py-6 motion-reduce:transition-none! sm:px-8 lg:rounded-4xl lg:border lg:border-border/60 lg:p-8 lg:data-[docked=true]:rounded-t-none lg:data-[docked=true]:border-t-transparent xl:p-10 lg:[transition:border-radius_150ms_cubic-bezier(0.16,1,0.3,1),border-top-color_100ms_ease-out]"
+          data-docked="false"
+          data-slot="docs-surface"
+        >
           <div className="mx-auto w-full max-w-3xl flex-1">
             <div className="flex min-w-0 flex-col gap-10">
               <header className="flex flex-col gap-5 rounded-3xl bg-secondary/60 p-6 sm:p-8">
