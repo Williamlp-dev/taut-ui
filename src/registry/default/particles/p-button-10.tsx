@@ -1,12 +1,21 @@
-import { DownloadIcon } from "lucide-react";
-import type React from "react";
+"use client";
+
+import { HeartIcon } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/registry/default/ui/button";
 
-export default function Particle(): React.ReactElement {
+export default function Particle() {
+  const [selected, setSelected] = useState(false);
+
   return (
-    <Button>
-      <DownloadIcon aria-hidden="true" />
-      Download
+    <Button
+      morph
+      onClick={() => setSelected((prev) => !prev)}
+      selected={selected}
+      variant="secondary"
+    >
+      <HeartIcon className={selected ? "fill-current" : undefined} />
+      Favorite
     </Button>
   );
 }

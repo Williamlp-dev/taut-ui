@@ -1,6 +1,10 @@
-import type React from "react";
+import { PlusIcon } from "lucide-react";
 import { Button } from "@/registry/default/ui/button";
 
-export default function Particle(): React.ReactElement {
-  return <Button size="md">Medium</Button>;
+export default function Particle() {
+  return (
+    <Button aria-label="Add item" size="icon" variant="secondary">
+      <PlusIcon />
+    </Button>
+  );
 }

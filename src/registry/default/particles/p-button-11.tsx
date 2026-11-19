@@ -1,23 +1,23 @@
 "use client";
 
-import { BookmarkIcon } from "lucide-react";
-import * as React from "react";
+import { ArrowUpRightIcon } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/registry/default/ui/button";
 
-export default function Particle(): React.ReactElement {
-  const [saved, setSaved] = React.useState(false);
-
+export default function Particle() {
   return (
     <Button
-      morph
-      onClick={(): void => setSaved((prev) => !prev)}
-      selected={saved}
+      render={
+        <Link
+          href="#as-link"
+          onClick={(e) => e.preventDefault()}
+          prefetch={false}
+        />
+      }
+      variant="outline"
     >
-      <BookmarkIcon
-        aria-hidden="true"
-        className={saved ? "fill-current" : undefined}
-      />
-      {saved ? "Saved" : "Save"}
+      Documentation
+      <ArrowUpRightIcon />
     </Button>
   );
 }

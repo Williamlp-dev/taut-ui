@@ -1,11 +1,11 @@
 ---
 title: Button
-description: A versatile button component with multiple variants, sizes, shapes, loading state, and ripple feedback.
+description: A versatile button component with multiple variants, sizes, shapes, morphing press feedback, loading state, and ripple.
 links:
   doc: https://base-ui.com/react/utils/use-render
 ---
 
-<ComponentPreview name="button" />
+<ComponentPreview name="p-button-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react class-variance-authority
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="button" />
+<ComponentSource name="button" title="components/ui/button.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,37 +53,84 @@ import { Button } from "@/components/ui/button"
 ```
 
 ```tsx
-<Button variant="default" size="default">
-  Click me
-</Button>
+<Button>Button</Button>
 ```
 
-## API
+## Examples
 
-### `Button`
+### Secondary
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"default" \| "filled" \| "secondary" \| "tonal" \| "elevated" \| "outline" \| "ghost" \| "text" \| "link" \| "destructive" \| "destructive-outline"` | `"default"` | Visual style of the button. |
-| `size` | `"default" \| "sm" \| "lg" \| "icon" \| "icon-sm" \| "icon-lg" \| "icon-xl" \| "xl"` | `"default"` | Size of the button, controlling padding and icon sizing. |
-| `width` | `VariantProps<typeof tautSize>["width"]` | `—` | Optional width variant for controlling the button's width. |
-| `shape` | `"round" \| "square" \| "pill"` | `"round"` | Corner radius shape of the button. |
-| `morph` | `boolean` | `false` | Enables morphing press animation on the button. |
-| `loading` | `boolean` | `false` | Shows a spinner and disables the button while `true`. |
-| `selected` | `boolean` | `—` | Marks the button as pressed/selected, sets `aria-pressed` and adjusts styling via `data-selected`. |
-| `disabled` | `boolean` | `—` | Disables the button natively and sets `aria-disabled`. |
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | `—` | Custom render element or render function (from `@base-ui/react/use-render`). |
-| `className` | `string` | `—` | Additional CSS classes merged with the generated variant classes. |
-| `children` | `React.ReactNode` | `—` | Content rendered inside the button. |
+<ComponentPreview name="p-button-2" />
 
-### `buttonVariants`
+### Elevated
 
-A `cva` helper exported for composing button styles in other components.
+<ComponentPreview name="p-button-3" />
+
+### Outline
+
+<ComponentPreview name="p-button-4" />
+
+### Ghost
+
+<ComponentPreview name="p-button-5" />
+
+### Destructive
+
+<ComponentPreview name="p-button-6" />
+
+### With Icon
+
+<ComponentPreview name="p-button-7" />
+
+### Icon Only
+
+<ComponentPreview name="p-button-8" />
+
+### Loading
+
+<ComponentPreview name="p-button-9" />
+
+### Morph & Selected
+
+<ComponentPreview name="p-button-10" />
+
+### As Link
+
+<ComponentPreview name="p-button-11" />
+
+## API Reference
+
+### Button
+
+Renders an interactive button element with ripple feedback, optional shape morphing, and polymorphic rendering via Base UI `useRender`.
+
+| Prop        | Type                                                                                                                          | Default     | Description                                                        |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
+| `variant`   | `"default" \| "filled" \| "secondary" \| "tonal" \| "elevated" \| "outline" \| "ghost" \| "text" \| "link" \| "destructive" \| "destructive-outline"` | `"default"` | Visual style variant                                               |
+| `size`      | `"xs" \| "sm" \| "default" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"default"` | Size of the button, controlling height, padding, and icon sizing   |
+| `width`     | `"narrow" \| "wide"`                                                                                                          | -           | Adjusts the width of icon-only buttons                             |
+| `shape`     | `"round" \| "square"`                                                                                                         | `"round"`   | Base corner radius shape                                           |
+| `morph`     | `boolean`                                                                                                                     | `false`     | Enables spring corner morphing on press and when `selected`        |
+| `selected`  | `boolean`                                                                                                                     | -           | Sets `aria-pressed` and `data-selected` for toggleable buttons     |
+| `loading`   | `boolean`                                                                                                                     | `false`     | Shows a centered `Spinner` and disables interaction while `true`   |
+| `disabled`  | `boolean`                                                                                                                     | `false`     | Disables the button natively and sets `aria-disabled`              |
+| `render`    | `React.ReactElement \| ((props, state) => React.ReactElement)`                                                                | -           | Custom element to render (e.g. `<Link />` or `<a />`)              |
+| `className` | `string`                                                                                                                      | -           | Additional CSS classes                                             |
+| `...props`  | `React.ComponentProps<"button">`                                                                                              | -           | All standard button attributes are supported                       |
+
+### buttonVariants
+
+A `cva` helper exported for composing button variant styles on custom elements (pair with `tautSize` for sizing).
 
 ```tsx
+import { cn } from "@/lib/utils"
+import { tautSize } from "@/lib/morph"
 import { buttonVariants } from "@/components/ui/button"
 
-<a className={buttonVariants({ variant: "outline", size: "sm" })} href="/docs">
+<a
+  className={cn(buttonVariants({ variant: "outline" }), tautSize({ size: "sm" }))}
+  href="/docs"
+>
   Read the docs
 </a>
 ```

@@ -32,9 +32,9 @@ export const buttonVariants = cva(
         filled:
           "bg-primary text-primary-foreground data-[selected=false]:bg-muted data-[selected=false]:text-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground data-[selected=false]:bg-secondary/60",
+          "bg-secondary text-secondary-foreground data-[selected=false]:bg-muted",
         tonal:
-          "bg-secondary text-secondary-foreground data-[selected=false]:bg-secondary/60",
+          "bg-secondary text-secondary-foreground data-[selected=false]:bg-muted",
         elevated: [
           "bg-[color-mix(in_oklab,var(--color-card),var(--color-primary)_5%)] text-primary",
           "shadow-[0_0.0625rem_0.125rem_0_rgb(0_0_0/0.3),0_0.0625rem_0.1875rem_0.0625rem_rgb(0_0_0/0.15)]",
