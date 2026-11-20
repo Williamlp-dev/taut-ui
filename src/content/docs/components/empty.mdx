@@ -1,9 +1,9 @@
 ---
 title: Empty
-description: A composable empty-state component with an optional media area, title, description, and action slot.
+description: A composable empty-state component with an expressive squircle media badge, title, description, and action slot.
 ---
 
-<ComponentPreview name="empty" />
+<ComponentPreview name="p-empty-1" />
 
 ## Installation
 
@@ -34,7 +34,7 @@ npm install class-variance-authority
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="empty" />
+<ComponentSource name="empty" title="components/ui/empty.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -47,6 +47,7 @@ npm install class-variance-authority
 ## Usage
 
 ```tsx
+import { Button } from "@/components/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -59,85 +60,68 @@ import {
 
 ```tsx
 <Empty>
-  <EmptyMedia variant="icon">
+  <EmptyMedia>
     <InboxIcon />
   </EmptyMedia>
   <EmptyHeader>
-    <EmptyTitle>No messages</EmptyTitle>
+    <EmptyTitle>No messages yet</EmptyTitle>
     <EmptyDescription>
-      You're all caught up! New messages will appear here.
+      When you receive messages, they will appear here.
     </EmptyDescription>
   </EmptyHeader>
   <EmptyContent>
-    <Button>Compose</Button>
+    <Button>Compose message</Button>
   </EmptyContent>
 </Empty>
 ```
 
-## API
+## Examples
 
-### `Empty`
+### Vibrant
 
-The root container. Renders a centered, full-height `<div>` column.
+<ComponentPreview name="p-empty-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes to merge with the default styles. |
-| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` props are forwarded. |
+### In Card
 
----
+<ComponentPreview name="p-empty-3" />
 
-### `EmptyMedia`
+### With Input
 
-An optional visual area displayed above the header. Supports three visual styles via the `variant` prop.
+<ComponentPreview name="p-empty-4" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"icon" \| "vibrant" \| "default"` | `"icon"` | Controls the background and colour treatment. `"icon"` uses a muted secondary background; `"vibrant"` uses the primary colour; `"default"` renders children as-is with no background decoration. |
-| `className` | `string` | — | Additional CSS classes. |
-| `children` | `React.ReactNode` | — | Content placed inside the media area (typically an icon or image). |
-| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` props are forwarded. |
+## API Reference
 
----
+### Empty
 
-### `EmptyHeader`
+Root centered flex-column container for the empty state.
 
-A wrapper that groups `EmptyTitle` and `EmptyDescription` with consistent spacing.
+| Prop        | Type                          | Description                               |
+| ----------- | ----------------------------- | ----------------------------------------- |
+| `className` | `string`                      | Additional CSS classes                    |
+| `...props`  | `React.ComponentProps<"div">` | All standard div attributes are supported |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes. |
-| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` props are forwarded. |
+### EmptyMedia
 
----
+Visual media container displayed above `EmptyHeader`, featuring a layered squircle backdrop for icon variants.
 
-### `EmptyTitle`
+| Prop        | Type                              | Default  | Description                                                                   |
+| ----------- | --------------------------------- | -------- | ----------------------------------------------------------------------------- |
+| `variant`   | `"icon" \| "vibrant" \| "default"` | `"icon"` | `"icon"` uses neutral surfaces, `"vibrant"` uses primary, `"default"` is bare |
+| `className` | `string`                          | -        | Additional CSS classes                                                        |
+| `...props`  | `React.ComponentProps<"div">`     | -        | All standard div attributes are supported                                     |
 
-Renders an `<h3>` heading with semibold tracking-tight styles.
+### EmptyHeader
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes. |
-| `...props` | `React.ComponentProps<"h3">` | — | All standard `<h3>` props are forwarded. |
+Groups `EmptyTitle` and `EmptyDescription` with centered text alignment.
 
----
+### EmptyTitle
 
-### `EmptyDescription`
+Heading (`<h3>`) for the empty-state title.
 
-Renders a `<p>` tag styled as muted, small body text. Inline `<a>` tags are automatically styled with the primary colour.
+### EmptyDescription
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes. |
-| `...props` | `React.ComponentProps<"p">` | — | All standard `<p>` props are forwarded. |
+Supporting paragraph (`<p>`) with balanced line width (`max-w-[36ch]`) and styled inline links.
 
----
+### EmptyContent
 
-### `EmptyContent`
-
-A flexible row that holds action elements (e.g. buttons or links) below the header.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes. |
-| `...props` | `React.ComponentProps<"div">` | — | All standard `<div>` props are forwarded. |
+Flexible row container for primary actions, secondary buttons, or inline inputs.

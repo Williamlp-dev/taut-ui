@@ -53,8 +53,10 @@ export function EmptyMedia({
           <span
             aria-hidden="true"
             className={cn(
-              "pointer-events-none absolute inset-0 rotate-12 scale-105 rounded-[inherit] opacity-30",
-              variant === "vibrant" ? "bg-primary" : "bg-secondary",
+              "pointer-events-none absolute inset-0 rotate-12 scale-105 rounded-[inherit]",
+              variant === "vibrant"
+                ? "bg-[color-mix(in_oklab,var(--color-background),var(--color-primary)_26%)]"
+                : "bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_6%)]",
             )}
           />
           <span
@@ -62,7 +64,7 @@ export function EmptyMedia({
               "relative flex size-full items-center justify-center rounded-[inherit] [&_svg:not([class*='size-'])]:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0",
               variant === "vibrant"
                 ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-secondary-foreground",
+                : "bg-[color-mix(in_oklab,var(--color-card),var(--color-foreground)_10%)] text-secondary-foreground",
             )}
           >
             {children}
