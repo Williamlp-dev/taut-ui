@@ -15,54 +15,18 @@ const styles = `
 `;
 
 export const spinnerVariants = cva(
-  "inline-block shrink-0 animate-[spin_5s_linear_infinite] rounded-full align-middle",
+  "inline-block shrink-0 animate-[spin_5s_linear_infinite] rounded-full align-middle text-current",
   {
-    compoundVariants: [
-      {
-        class: "size-6 p-1",
-        size: "xs",
-        variant: "contained",
-      },
-      {
-        class: "size-8 p-1.5",
-        size: "sm",
-        variant: "contained",
-      },
-      {
-        class: "size-10 p-2",
-        size: undefined,
-        variant: "contained",
-      },
-      {
-        class: "size-10 p-2",
-        size: "default",
-        variant: "contained",
-      },
-      {
-        class: "size-12 p-2.5",
-        size: "lg",
-        variant: "contained",
-      },
-      {
-        class: "size-16 p-3.5",
-        size: "xl",
-        variant: "contained",
-      },
-    ],
     defaultVariants: {
-      variant: "default",
+      size: "default",
     },
     variants: {
       size: {
-        default: "size-5",
-        lg: "size-6",
-        sm: "size-4",
-        xl: "size-8",
-        xs: "size-3.5",
-      },
-      variant: {
-        contained: "bg-secondary text-secondary-foreground",
-        default: "text-current",
+        default: "size-8",
+        lg: "size-10",
+        sm: "size-6",
+        xl: "size-12",
+        xs: "size-4",
       },
     },
   },
@@ -74,8 +38,7 @@ export interface SpinnerProps
 
 export function Spinner({
   className,
-  size,
-  variant = "default",
+  size = "default",
   "aria-label": ariaLabel = "Loading",
   ...props
 }: SpinnerProps): React.ReactElement {
@@ -86,15 +49,14 @@ export function Spinner({
       </style>
       <svg
         aria-label={ariaLabel}
-        className={cn(spinnerVariants({ size, variant }), className)}
-        data-size={size ?? "default"}
+        className={cn(spinnerVariants({ size }), className)}
+        data-size={size}
         data-slot="spinner"
-        data-variant={variant}
         fill="none"
-        height={20}
+        height={32}
         role="status"
         viewBox="0 0 100 100"
-        width={20}
+        width={32}
         {...props}
       >
         <circle

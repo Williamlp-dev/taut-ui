@@ -104,7 +104,7 @@ export function Button({
         </span>
         {loading && (
           <Spinner
-            className="pointer-events-none absolute z-20"
+            className="pointer-events-none absolute z-20 size-(--icon)"
             data-slot="button-loading-indicator"
           />
         )}

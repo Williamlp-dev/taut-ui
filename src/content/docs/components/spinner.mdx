@@ -1,9 +1,9 @@
 ---
 title: Spinner
-description: An animated SVG spinner for indicating loading states, with size and style variants.
+description: Animated SVG loading indicator with organic arc stretching and five size presets.
 ---
 
-<ComponentPreview name="spinner" />
+<ComponentPreview name="p-spinner-1" />
 
 ## Installation
 
@@ -34,7 +34,7 @@ npm install class-variance-authority
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="spinner" />
+<ComponentSource name="spinner" title="components/ui/spinner.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -54,15 +54,33 @@ import { Spinner } from "@/components/ui/spinner"
 <Spinner />
 ```
 
-## API
+## Examples
 
-### `Spinner`
+### Extra Small
 
-Extends all native `<svg>` props (except `children`).
+<ComponentPreview name="p-spinner-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"default" \| "contained"` | `"default"` | Visual style of the spinner. `"default"` inherits the current text color; `"contained"` renders inside a secondary-colored background pill. |
-| `size` | `"xs" \| "sm" \| "default" \| "lg" \| "xl"` | `"default"` | Size of the spinner. When `variant="contained"` the wrapper padding is adjusted automatically per size. |
-| `aria-label` | `string` | `"Loading"` | Accessible label announced to screen readers via the wrapping `<output>` element. |
-| `className` | `string` | — | Additional CSS classes merged onto the inner `<svg>` element. |
+### Small
+
+<ComponentPreview name="p-spinner-3" />
+
+### Large
+
+<ComponentPreview name="p-spinner-4" />
+
+### Extra Large
+
+<ComponentPreview name="p-spinner-5" />
+
+## API Reference
+
+### Spinner
+
+Renders an accessible `<svg role="status">` spinner element.
+
+| Prop         | Type                                            | Default     | Description                                         |
+| ------------ | ----------------------------------------------- | ----------- | --------------------------------------------------- |
+| `size`       | `"xs" \| "sm" \| "default" \| "lg" \| "xl"`     | `"default"` | Spinner dimensions (`16px` up to `48px`, `32px` default) |
+| `aria-label` | `string`                                        | `"Loading"` | Accessible status label announced to screen readers |
+| `className`  | `string`                                        | -           | Additional CSS classes                              |
+| `...props`   | `Omit<React.ComponentProps<"svg">, "children">` | -           | All standard `<svg>` attributes                     |
