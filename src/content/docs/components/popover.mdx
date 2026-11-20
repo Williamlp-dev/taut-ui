@@ -1,11 +1,11 @@
 ---
 title: Popover
-description: A floating panel that displays rich content relative to a trigger element, with configurable placement and color schemes.
+description: A floating tonal surface anchored to a trigger element, supporting rich content, actions, and spring entrance motion.
 links:
-  doc: https://base-ui.com/react/components/popover
+  doc: https://base-ui.com/react/components/popover#api-reference
 ---
 
-<ComponentPreview name="popover" />
+<ComponentPreview name="p-popover-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react class-variance-authority
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="popover" />
+<ComponentSource name="popover" title="components/ui/popover.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -49,110 +49,84 @@ npm install @base-ui/react class-variance-authority
 ## Usage
 
 ```tsx
+import { Button } from "@/components/ui/button"
 import {
   Popover,
-  PopoverTrigger,
+  PopoverActions,
+  PopoverClose,
+  PopoverDescription,
   PopoverPopup,
   PopoverTitle,
-  PopoverDescription,
-  PopoverClose,
-  PopoverActions,
+  PopoverTrigger,
 } from "@/components/ui/popover"
 ```
 
 ```tsx
 <Popover>
-  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverTrigger render={<Button variant="outline">Open Popover</Button>} />
   <PopoverPopup>
     <PopoverTitle>Popover Title</PopoverTitle>
     <PopoverDescription>
-      This is some descriptive content inside the popover.
+      Supporting copy displayed inside the popover surface.
     </PopoverDescription>
     <PopoverActions>
-      <PopoverClose>Close</PopoverClose>
+      <PopoverClose render={<Button size="xs" />}>Done</PopoverClose>
     </PopoverActions>
   </PopoverPopup>
 </Popover>
 ```
 
-## API
+## Examples
 
-### `Popover`
+### With Actions
 
-The root component that manages open/close state. Renders no DOM element of its own.
+<ComponentPreview name="p-popover-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | — | Controlled open state of the popover. |
-| `defaultOpen` | `boolean` | `false` | Uncontrolled initial open state. |
-| `onOpenChange` | `(open: boolean) => void` | — | Callback fired when the open state changes. |
-| `modal` | `boolean` | `false` | When `true`, interaction outside the popover is blocked. |
+### Vibrant
 
-### `PopoverTrigger`
+<ComponentPreview name="p-popover-3" />
 
-The element that opens the popover when interacted with. Accepts all props of its underlying element.
+### With Form
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes. |
-| `children` | `React.ReactNode` | — | Trigger content. |
+<ComponentPreview name="p-popover-4" />
 
-### `PopoverPopup`
+## API Reference
 
-The floating popup panel. Internally renders a `Portal → Positioner → Popup` hierarchy.
+### Popover
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `colorScheme` | `"standard" \| "vibrant"` | `"standard"` | Controls the background and ring color of the popup. `"vibrant"` blends more primary color into the background. |
-| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Preferred side of the trigger to place the popup. |
-| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment of the popup along the cross-axis. |
-| `sideOffset` | `number` | `8` | Distance in pixels between the popup and the trigger along the main axis. |
-| `alignOffset` | `number` | `0` | Distance in pixels to offset the popup along the cross-axis. |
-| `anchor` | `PopoverPrimitive.Positioner.Props["anchor"]` | — | Custom anchor element or ref to position the popup relative to. |
-| `portalProps` | `PopoverPrimitive.Portal.Props` | — | Props forwarded to the underlying `Portal` component. |
-| `className` | `string` | — | Additional CSS classes applied to the popup element. |
-| `children` | `React.ReactNode` | — | Content rendered inside the popup. |
+Alias for `Popover.Root` from Base UI. Manages open state.
 
-### `PopoverClose`
+| Prop           | Type                      | Default | Description                                |
+| -------------- | ------------------------- | ------- | ------------------------------------------ |
+| `open`         | `boolean`                 | -       | Controlled open state                      |
+| `defaultOpen`  | `boolean`                 | `false` | Initial uncontrolled open state            |
+| `onOpenChange` | `(open: boolean) => void` | -       | Called when the open state changes         |
+| `modal`        | `boolean`                 | `false` | Blocks interaction outside when `true`     |
+| `...props`     | Base UI Popover Root props | -      | All other Popover Root props are supported |
 
-A button that closes the popover when activated. Accepts all native button props.
+### PopoverPopup
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `React.ReactNode` | — | Button content. |
-| `className` | `string` | — | Additional CSS classes. |
+The positioned floating container rendered inside a portal. Also exported as `PopoverContent`.
 
-### `PopoverTitle`
+| Prop          | Type                                     | Default      | Description                                   |
+| ------------- | ---------------------------------------- | ------------ | --------------------------------------------- |
+| `colorScheme` | `"standard" \| "vibrant"`                | `"standard"` | Surface tint scheme                           |
+| `side`        | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"`   | Preferred side relative to the anchor         |
+| `align`       | `"start" \| "center" \| "end"`           | `"center"`   | Alignment along the chosen side               |
+| `sideOffset`  | `number`                                 | `8`          | Distance in pixels from the anchor            |
+| `alignOffset` | `number`                                 | `0`          | Offset along the alignment axis               |
+| `anchor`      | `Popover.Positioner.Props["anchor"]`     | -            | Custom anchor element                         |
+| `portalProps` | `Popover.Portal.Props`                   | -            | Props forwarded to the internal portal        |
+| `...props`    | Base UI Popover Popup props              | -            | All standard popover popup props              |
 
-A heading element for the popover. Rendered as the accessible title.
+### PopoverTrigger / PopoverClose
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes merged with the default heading styles. |
-| `children` | `React.ReactNode` | — | Title text. |
+Trigger and dismiss primitives wrapping Base UI `Popover.Trigger` and `Popover.Close`.
 
-### `PopoverDescription`
+### PopoverTitle / PopoverDescription
 
-A paragraph element for supplementary popover content. Linked to the popup for accessibility.
+Accessible heading and supporting description slots inside `PopoverPopup`.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes merged with the default description styles. |
-| `children` | `React.ReactNode` | — | Description text. |
+### PopoverActions
 
-### `PopoverActions`
-
-A flex container for action elements (e.g., buttons) anchored to the bottom-right of the popup.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional CSS classes merged with the default action bar styles. |
-| `children` | `React.ReactNode` | — | Action elements such as buttons or links. |
-
-### `PopoverPortal`
-
-Re-exported `PopoverPrimitive.Portal`. Use this directly when you need fine-grained control over where the popup is portalled in the DOM.
-
-### `PopoverCreateHandle`
-
-Re-exported `PopoverPrimitive.createHandle`. Allows imperative control of the popover (e.g., opening or closing programmatically via a ref).
+Right-aligned action row at the bottom of `PopoverPopup` for buttons and `PopoverClose`.

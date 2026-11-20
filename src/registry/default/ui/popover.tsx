@@ -18,9 +18,9 @@ export const popoverPopupVariants = cva(
     variants: {
       colorScheme: {
         standard:
-          "[--pop-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_8%)] [--pop-fg:var(--color-popover-foreground)] [--pop-ring:color-mix(in_oklab,var(--color-primary)_18%,transparent)]",
+          "[--pop-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_8%)] [--pop-fg:var(--color-popover-foreground)] [--pop-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_22%)]",
         vibrant:
-          "[--pop-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_18%)] [--pop-fg:var(--color-secondary-foreground)] [--pop-ring:color-mix(in_oklab,var(--color-primary)_28%,transparent)]",
+          "[--pop-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_18%)] [--pop-fg:var(--color-secondary-foreground)] [--pop-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_32%)]",
       },
     },
   },
