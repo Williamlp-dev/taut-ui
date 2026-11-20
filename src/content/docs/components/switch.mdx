@@ -1,11 +1,11 @@
 ---
 title: Switch
-description: A toggleable control that allows users to turn a setting on or off.
+description: A tactile Material 3 toggle switch with dynamic thumb scaling, optional state icons, and three size presets.
 links:
-  doc: https://base-ui.com/react/components/switch
+  doc: https://base-ui.com/react/components/switch#api-reference
 ---
 
-<ComponentPreview name="switch" />
+<ComponentPreview name="p-switch-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="switch" />
+<ComponentSource name="switch" title="components/ui/switch.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -56,20 +56,45 @@ import { Switch } from "@/components/ui/switch"
 <Switch defaultChecked />
 ```
 
-## API
+## Examples
 
-### `Switch`
+### Checked Icon
 
-Extends all props from [`SwitchPrimitive.Root`](https://base-ui.com/react/components/switch).
+<ComponentPreview name="p-switch-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `icons` | `"checked" \| "both"` | `undefined` | Controls icon visibility inside the thumb. `"checked"` shows a checkmark only when on; `"both"` shows a checkmark when on and an × when off. |
-| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Controls the overall size of the switch. |
-| `checked` | `boolean` | `undefined` | The controlled checked state of the switch. |
-| `defaultChecked` | `boolean` | `undefined` | The uncontrolled initial checked state of the switch. |
-| `onCheckedChange` | `(checked: boolean) => void` | `undefined` | Callback fired when the checked state changes. |
-| `disabled` | `boolean` | `false` | When `true`, prevents the user from interacting with the switch. |
-| `name` | `string` | `undefined` | The name submitted with the form when used inside a `<form>`. |
-| `value` | `string` | `undefined` | The value submitted with the form when the switch is checked. |
-| `className` | `string` | `undefined` | Additional CSS class names to apply to the root element. |
+### Both Icons
+
+<ComponentPreview name="p-switch-3" />
+
+### Small
+
+<ComponentPreview name="p-switch-4" />
+
+### Large
+
+<ComponentPreview name="p-switch-5" />
+
+### Disabled
+
+<ComponentPreview name="p-switch-6" />
+
+### In Card
+
+<ComponentPreview name="p-switch-7" />
+
+## API Reference
+
+### Switch
+
+Wraps Base UI `Switch.Root` and `Switch.Thumb` with Material 3 thumb scaling and optional icons.
+
+| Prop              | Type                         | Default     | Description                                                                   |
+| ----------------- | ---------------------------- | ----------- | ----------------------------------------------------------------------------- |
+| `icons`           | `"checked" \| "both"`        | -           | `"checked"` shows a check when on; `"both"` also shows an `×` when off        |
+| `size`            | `"sm" \| "default" \| "lg"`  | `"default"` | Overall track and thumb size preset                                           |
+| `checked`         | `boolean`                    | -           | Controlled checked state                                                      |
+| `defaultChecked`  | `boolean`                    | `false`     | Initial uncontrolled checked state                                            |
+| `onCheckedChange` | `(checked: boolean) => void` | -           | Called when the checked state changes                                         |
+| `disabled`        | `boolean`                    | `false`     | Disables interaction and dims the switch                                      |
+| `className`       | `string`                     | -           | Additional CSS classes                                                        |
+| `...props`        | Base UI Switch Root props    | -           | All standard switch attributes (`name`, `value`, `required`, etc.)            |

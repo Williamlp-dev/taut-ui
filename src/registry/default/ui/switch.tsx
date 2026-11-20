@@ -20,9 +20,9 @@ export function Switch({
   return (
     <SwitchPrimitive.Root
       className={cn(
-        "group/switch relative isolate inline-flex h-(--h) w-[calc(var(--h)*1.625)] shrink-0 cursor-pointer items-center rounded-full bg-muted outline-none",
+        "group/switch relative isolate inline-flex h-(--h) w-[calc(var(--h)*1.625)] shrink-0 cursor-pointer items-center rounded-full bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_8%)] outline-none",
         "before:absolute before:inset-0 before:rounded-full before:bg-primary before:opacity-0 before:transition-opacity before:duration-200 data-checked:before:opacity-100 motion-reduce:before:transition-none",
-        "inset-ring-2 inset-ring-muted-foreground/60 data-checked:inset-ring-transparent",
+        "inset-ring-2 inset-ring-[color-mix(in_oklab,var(--color-background),var(--color-muted-foreground)_60%)] data-checked:inset-ring-transparent",
         "pointer-coarse:after:absolute pointer-coarse:after:inset-x-0 pointer-coarse:after:-inset-y-2",
         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "data-disabled:cursor-not-allowed data-disabled:opacity-38",
@@ -56,7 +56,7 @@ export function Switch({
           className={cn(
             "absolute inset-0 rounded-full bg-muted-foreground",
             "scale-(--disc-active,var(--disc))",
-            "transition-[scale,background-color] duration-280 motion-reduce:transition-none",
+            "transition-[scale] duration-280 motion-reduce:transition-none",
             "group-data-checked/thumb:bg-primary-foreground",
             "group-active/switch:not-group-data-disabled/switch:duration-150",
             ease,
