@@ -1,11 +1,11 @@
 ---
 title: Scroll Area
-description: A scrollable container with custom-styled, overlay scrollbars that appear on hover or scroll.
+description: A scrollable viewport with custom overlay scrollbars, edge fade masks, and overscroll containment built on Base UI.
 links:
-  doc: https://base-ui.com/react/components/scroll-area
+  doc: https://base-ui.com/react/components/scroll-area#api-reference
 ---
 
-<ComponentPreview name="scroll-area" />
+<ComponentPreview name="p-scroll-area-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="scroll-area" />
+<ComponentSource name="scroll-area" title="components/ui/scroll-area.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -53,38 +53,53 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 ```
 
 ```tsx
-<ScrollArea className="h-72 w-48 rounded-md border">
+<ScrollArea className="h-56 w-64" scrollFade>
   <div className="p-4">
-    {Array.from({ length: 50 }).map((_, i) => (
-      <div key={i} className="py-1 text-sm">
-        Item {i + 1}
-      </div>
-    ))}
+    {/* Scrollable content */}
   </div>
 </ScrollArea>
 ```
 
-## API
+## Examples
 
-### `ScrollArea`
+### Scroll Fade
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `scrollFade` | `boolean` | `false` | Adds a gradient fade mask at the edges of the viewport to indicate overflow content. |
-| `scrollbarGutter` | `boolean` | `false` | Adds padding on the overflow axis when a scrollbar is present, preventing content from being obscured. |
-| `fill` | `boolean` | `false` | Makes the inner content area fill the full size of the viewport (`size-full`). |
-| `clampContentMinWidth` | `boolean` | `true` | Sets `minWidth: 0` on the content element to prevent it from overflowing its container. |
-| `overscrollContain` | `boolean` | `false` | Applies `overscroll-contain` on the overflow axis to prevent scroll chaining to the parent. |
-| `className` | `string` | — | Additional CSS classes applied to the root element. |
-| `children` | `React.ReactNode` | — | The content to render inside the scroll area. |
+<ComponentPreview name="p-scroll-area-2" />
 
-> All other props are forwarded to the underlying `ScrollArea.Root` from `@base-ui/react/scroll-area`.
+### Horizontal
 
-### `ScrollBar`
+<ComponentPreview name="p-scroll-area-3" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | The axis along which the scrollbar operates. |
-| `className` | `string` | — | Additional CSS classes applied to the scrollbar element. |
+### Both Axes
 
-> All other props are forwarded to the underlying `ScrollArea.Scrollbar` from `@base-ui/react/scroll-area`.
+<ComponentPreview name="p-scroll-area-4" />
+
+### Scrollbar Gutter
+
+<ComponentPreview name="p-scroll-area-5" />
+
+## API Reference
+
+### ScrollArea
+
+Wraps Base UI `ScrollArea.Root`, `Viewport`, `Content`, both vertical and horizontal `ScrollBar`s, and `Corner`.
+
+| Prop                   | Type                             | Default | Description                                                               |
+| ---------------------- | -------------------------------- | ------- | ------------------------------------------------------------------------- |
+| `scrollFade`           | `boolean`                        | `false` | Applies smooth edge fade masks along overflowing axes                     |
+| `scrollbarGutter`      | `boolean`                        | `false` | Reserves padding along the scrollbar edge when content overflows          |
+| `fill`                 | `boolean`                        | `false` | Expands the inner content wrapper to `size-full`                          |
+| `clampContentMinWidth` | `boolean`                        | `true`  | Sets `min-width: 0` on the content element to prevent flex overflow       |
+| `overscrollContain`    | `boolean`                        | `false` | Applies `overscroll-contain` on overflowing axes to stop scroll chaining  |
+| `className`            | `string`                         | -       | Additional CSS classes applied to the root element                        |
+| `...props`             | Base UI ScrollArea Root props    | -       | All other ScrollArea Root props are supported                             |
+
+### ScrollBar
+
+Overlay scrollbar track and draggable thumb that appears on hover or active scrolling.
+
+| Prop          | Type                         | Default      | Description                                   |
+| ------------- | ---------------------------- | ------------ | --------------------------------------------- |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Scrollbar axis                                |
+| `className`   | `string`                     | -            | Additional CSS classes                        |
+| `...props`    | Base UI Scrollbar props      | -            | All standard scrollbar attributes             |

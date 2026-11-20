@@ -78,7 +78,7 @@ export function ScrollBar({
       {...props}
     >
       <ScrollAreaPrimitive.Thumb
-        className="relative flex-1 rounded-full bg-foreground/35 transition-colors duration-150 hover:bg-foreground/60 active:bg-primary motion-reduce:transition-none"
+        className="relative flex-1 rounded-full bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_28%)] hover:bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_48%)] active:bg-primary"
         data-slot="scroll-area-thumb"
       />
     </ScrollAreaPrimitive.Scrollbar>
