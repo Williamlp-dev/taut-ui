@@ -1,11 +1,11 @@
 ---
 title: Toast
-description: A brief, non-blocking notification that appears temporarily to inform the user of an event or action result.
+description: Non-blocking stacked and anchored notifications with spring physics, swipe-to-dismiss, and promise state transitions.
 links:
-  doc: https://base-ui.com/react/components/toast
+  doc: https://base-ui.com/react/components/toast#api-reference
 ---
 
-<ComponentPreview name="toast" />
+<ComponentPreview name="p-toast-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react lucide-react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="toast" />
+<ComponentSource name="toast" title="components/ui/toast.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -48,109 +48,78 @@ npm install @base-ui/react lucide-react
 
 ## Usage
 
-```tsx
-import {
-  ToastProvider,
-  toastManager,
-} from "@/components/ui/toast"
-```
-
-Wrap your application (or layout) with `ToastProvider`, then call `toastManager.add(...)` anywhere to trigger a toast.
+Mount `ToastProvider` (and optionally `AnchoredToastProvider`) once in your root layout:
 
 ```tsx
-// In your root layout or app shell
-export default function Layout({ children }) {
+import { AnchoredToastProvider, ToastProvider } from "@/components/ui/toast"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ToastProvider position="bottom-right">
-      {children}
+      <AnchoredToastProvider>{children}</AnchoredToastProvider>
     </ToastProvider>
   )
 }
-
-// Anywhere in your app
-toastManager.add({
-  title: "Saved!",
-  description: "Your changes have been saved.",
-  type: "success",
-})
 ```
 
-### Anchored toasts
-
-Use `AnchoredToastProvider` and `anchoredToastManager` to display toasts anchored to a specific element (e.g. a button):
+Trigger notifications anywhere using `toastManager`:
 
 ```tsx
-import {
-  AnchoredToastProvider,
-  anchoredToastManager,
-} from "@/components/ui/toast"
+import { toastManager } from "@/components/ui/toast"
 
-// Wrap your app
-<AnchoredToastProvider>{children}</AnchoredToastProvider>
-
-// Trigger an anchored toast
-anchoredToastManager.add({
-  title: "Copied!",
+toastManager.add({
+  title: "Changes saved",
+  description: "Your workspace preferences have been updated.",
   type: "success",
-  positionerProps: { anchor: buttonRef },
 })
 ```
 
-## API
+## Examples
 
-### `ToastProvider`
+### Success
 
-Provides the toast context and renders the floating toast viewport at the given screen position.
+<ComponentPreview name="p-toast-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `position` | `ToastPosition` | `"bottom-right"` | Screen position where toasts appear. |
-| `portalProps` | `React.ComponentProps<typeof Toast.Portal>` | `undefined` | Props forwarded to the Base UI `Toast.Portal`. |
-| `children` | `React.ReactNode` | — | Your application content. |
-| `...props` | `Toast.Provider.Props` | — | All other Base UI `Toast.Provider` props (e.g. `timeout`, `limit`). |
+### Error
 
-### `AnchoredToastProvider`
+<ComponentPreview name="p-toast-3" />
 
-Like `ToastProvider` but renders toasts anchored to a target element via a `Positioner`.
+### With Action
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `portalProps` | `React.ComponentProps<typeof Toast.Portal>` | `undefined` | Props forwarded to the Base UI `Toast.Portal`. |
-| `children` | `React.ReactNode` | — | Your application content. |
-| `...props` | `Toast.Provider.Props` | — | All other Base UI `Toast.Provider` props. |
+<ComponentPreview name="p-toast-4" />
 
-### `toastManager` / `anchoredToastManager`
+### Promise & Loading
 
-Pre-created toast manager instances returned by `Toast.createToastManager()`. Pass to `toastManager.add(options)` to imperatively fire a toast.
+<ComponentPreview name="p-toast-5" />
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `title` | `string` | — | The toast's main heading text. |
-| `description` | `string` | `undefined` | Secondary body text shown below the title. |
-| `type` | `"error" \| "info" \| "loading" \| "success" \| "warning"` | `undefined` | Determines the icon and colour accent displayed in the toast. |
-| `actionProps` | `{ children: React.ReactNode }` | `undefined` | Renders an action button inside the toast when provided. |
-| `positionerProps` | `{ anchor: React.Ref \| Element; sideOffset?: number }` | `undefined` | *Anchored only.* Anchor element and offset for the positioner. |
-| `data` | `ToastData` | `undefined` | Extra data forwarded to the toast renderer (see `ToastData`). |
+### Anchored
 
-### `ToastData`
+<ComponentPreview name="p-toast-6" />
 
-Custom per-toast data that can be passed via the `data` field of `toastManager.add(...)`.
+## API Reference
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `rootProps` | `Omit<React.ComponentProps<typeof Toast.Root>, "children" \| "className" \| "swipeDirection" \| "toast">` | `undefined` | Additional props merged onto the underlying `Toast.Root` element. |
-| `tooltipStyle` | `boolean` | `false` | *Anchored only.* Renders the toast with a compact tooltip-style appearance (smaller radius, title-only). |
+### ToastProvider
 
-### `ToastPosition`
+Wraps Base UI `Toast.Provider` and renders the floating toast stack viewport.
 
-Union type for the `position` prop of `ToastProvider`.
+| Prop          | Type                                                                                           | Default          | Description                                      |
+| ------------- | ---------------------------------------------------------------------------------------------- | ---------------- | ------------------------------------------------ |
+| `position`    | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"bottom-right"` | Viewport corner or edge where toasts stack       |
+| `timeout`     | `number`                                                                                       | `5000`           | Auto-dismiss duration in milliseconds            |
+| `limit`       | `number`                                                                                       | `3`              | Maximum number of visible stacked toasts         |
+| `portalProps` | `Toast.Portal.Props`                                                                           | -                | Props forwarded to the internal `Toast.Portal`   |
 
-```ts
-type ToastPosition =
-  | "top-left"
-  | "top-center"
-  | "top-right"
-  | "bottom-left"
-  | "bottom-center"
-  | "bottom-right"
-```
+### AnchoredToastProvider
+
+Renders toasts anchored to specific DOM elements via `anchoredToastManager`.
+
+### toastManager / anchoredToastManager
+
+Imperative manager instances created with `Toast.createToastManager()`.
+
+| Method                    | Description                                                      |
+| ------------------------- | ---------------------------------------------------------------- |
+| `add(options)`            | Creates a toast and returns its `id`                             |
+| `update(id, options)`     | Updates an existing toast by `id`                                |
+| `close(id)`               | Dismisses a toast by `id`                                        |
+| `promise(promise, state)` | Transitions a toast through `loading`, `success`, and `error`    |

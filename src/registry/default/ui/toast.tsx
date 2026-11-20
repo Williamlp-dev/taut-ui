@@ -5,18 +5,18 @@ import {
   CircleAlertIcon,
   CircleCheckIcon,
   InfoIcon,
-  LoaderCircleIcon,
   TriangleAlertIcon,
 } from "lucide-react";
 import type React from "react";
 import { tautSize } from "@/registry/default/lib/morph";
 import { cn } from "@/registry/default/lib/utils";
 import { buttonVariants } from "@/registry/default/ui/button";
+import { Spinner } from "@/registry/default/ui/spinner";
 
 const TOAST_ICONS = {
   error: CircleAlertIcon,
   info: InfoIcon,
-  loading: LoaderCircleIcon,
+  loading: Spinner,
   success: CircleCheckIcon,
   warning: TriangleAlertIcon,
 } as const;
@@ -81,7 +81,7 @@ function Toasts({
             <Toast.Root
               key={toast.id}
               className={cn(
-                "absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full select-none rounded-2xl border border-border bg-popover not-dark:bg-clip-padding text-popover-foreground shadow-lg",
+                "absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full select-none rounded-2xl bg-popover text-popover-foreground shadow-[0_0_0_0.0625rem_var(--toast-ring),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.15),0_0.0625rem_0.1875rem_0_rgb(0_0_0/0.3)] [--toast-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_22%)] dark:[--toast-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_32%)]",
                 "[transition-duration:450ms,350ms,200ms] [transition-property:transform,opacity,height] [transition-timing-function:linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1),ease,ease] motion-reduce:transition-none",
                 "data-[position*=right]:right-0 data-[position*=right]:left-auto",
                 "data-[position*=left]:right-auto data-[position*=left]:left-0",
@@ -122,10 +122,10 @@ function Toasts({
                 <div className="flex items-start gap-3">
                   {Icon && (
                     <div
-                      className="mt-0.5 [&>svg]:size-4.5 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+                      className="mt-0.5 [&_svg]:pointer-events-none [&_svg]:shrink-0"
                       data-slot="toast-icon"
                     >
-                      <Icon className="in-data-[type=loading]:animate-spin in-data-[type=error]:text-destructive in-data-[type=info]:text-info in-data-[type=success]:text-success in-data-[type=warning]:text-warning in-data-[type=loading]:opacity-80" />
+                      <Icon className="size-4.5 in-data-[type=error]:text-destructive in-data-[type=info]:text-info in-data-[type=success]:text-success in-data-[type=warning]:text-warning" />
                     </div>
                   )}
 
@@ -145,6 +145,7 @@ function Toasts({
                     className={cn(
                       tautSize({ size: "xs" }),
                       buttonVariants({ variant: "outline" }),
+                      "rounded-(--r-full)",
                     )}
                     data-slot="toast-action"
                   >
@@ -195,10 +196,8 @@ function AnchoredToasts({
             >
               <Toast.Root
                 className={cn(
-                  "relative text-balance border border-border bg-popover not-dark:bg-clip-padding text-popover-foreground text-xs transition-[scale,opacity] duration-200 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] data-ending-style:scale-95 data-starting-style:scale-95 data-ending-style:opacity-0 data-starting-style:opacity-0 motion-reduce:transition-none",
-                  tooltipStyle
-                    ? "rounded-xl shadow-md"
-                    : "rounded-2xl shadow-lg",
+                  "relative text-balance bg-popover text-popover-foreground text-xs shadow-[0_0_0_0.0625rem_var(--toast-ring),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.15),0_0.0625rem_0.1875rem_0_rgb(0_0_0/0.3)] transition-[scale,opacity] duration-200 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] [--toast-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_22%)] data-ending-style:scale-95 data-starting-style:scale-95 data-ending-style:opacity-0 data-starting-style:opacity-0 motion-reduce:transition-none dark:[--toast-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_32%)]",
+                  tooltipStyle ? "rounded-xl" : "rounded-2xl",
                 )}
                 {...toastData?.rootProps}
                 data-slot="toast-popup"
@@ -213,10 +212,10 @@ function AnchoredToasts({
                     <div className="flex items-center gap-2">
                       {Icon && (
                         <div
-                          className="[&>svg]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+                          className="[&_svg]:pointer-events-none [&_svg]:shrink-0"
                           data-slot="toast-icon"
                         >
-                          <Icon className="in-data-[type=loading]:animate-spin in-data-[type=error]:text-destructive in-data-[type=info]:text-info in-data-[type=success]:text-success in-data-[type=warning]:text-warning in-data-[type=loading]:opacity-80" />
+                          <Icon className="size-4 in-data-[type=error]:text-destructive in-data-[type=info]:text-info in-data-[type=success]:text-success in-data-[type=warning]:text-warning" />
                         </div>
                       )}
 
@@ -236,6 +235,7 @@ function AnchoredToasts({
                         className={cn(
                           tautSize({ size: "xs" }),
                           buttonVariants({ variant: "outline" }),
+                          "rounded-(--r-full)",
                         )}
                         data-slot="toast-action"
                       >
