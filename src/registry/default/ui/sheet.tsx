@@ -35,7 +35,7 @@ export function SheetBackdrop({
   return (
     <SheetPrimitive.Backdrop
       className={cn(
-        "fixed inset-0 z-50 bg-black/32 backdrop-blur-xs transition-opacity duration-200 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0 motion-reduce:transition-none",
+        "fixed inset-0 z-50 bg-black/32 transition-opacity duration-200 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0 motion-reduce:transition-none",
         className,
       )}
       data-slot="sheet-backdrop"
@@ -112,25 +112,22 @@ export function SheetPopup({
               "w-full after:inset-x-0 after:top-full after:h-12 data-ending-style:translate-y-[calc(100%+1rem)] data-starting-style:translate-y-[calc(100%+1rem)]",
             side === "top" &&
               "w-full after:inset-x-0 after:bottom-full after:h-12 data-ending-style:-translate-y-[calc(100%+1rem)] data-starting-style:-translate-y-[calc(100%+1rem)]",
-            variant === "default" &&
-              side === "left" &&
-              "rounded-e-3xl border-border border-e",
-            variant === "default" &&
-              side === "right" &&
-              "rounded-s-3xl border-border border-s",
+            variant === "default" && side === "left" && "rounded-e-3xl",
+            variant === "default" && side === "right" && "rounded-s-3xl",
             variant === "default" &&
               side === "bottom" &&
-              "rounded-t-3xl border-border border-t",
+              "max-h-[calc(100dvh-3rem)] rounded-t-3xl",
             variant === "default" &&
               side === "top" &&
-              "rounded-b-3xl border-border border-b",
+              "max-h-[calc(100dvh-3rem)] rounded-b-3xl",
             variant === "inset" &&
-              "rounded-3xl border border-border after:hidden",
+              "max-h-[calc(100dvh-2rem)] rounded-3xl after:hidden",
             className,
           )}
           data-closable={showCloseButton ? "" : undefined}
           data-side={side}
           data-slot="sheet-popup"
+          data-variant={variant}
           {...props}
         >
           {children}
@@ -157,7 +154,7 @@ export function SheetHeader({
 }: useRender.ComponentProps<"div">): React.ReactElement {
   const defaultProps = {
     className: cn(
-      "flex flex-col gap-1.5 px-6 in-data-closable:pe-14 pt-6 in-[[data-slot=sheet-popup]:not(:has([data-slot=sheet-panel],[data-slot=sheet-footer]))]:pb-6 pb-4",
+      "flex shrink-0 flex-col gap-1.5 px-6 in-data-closable:pe-14 pt-6 in-[[data-slot=sheet-popup]:not(:has([data-slot=sheet-panel],[data-slot=sheet-footer]))]:pb-6 pb-4",
       className,
     ),
     "data-slot": "sheet-header",
@@ -182,14 +179,15 @@ export function SheetFooter({
 }: SheetFooterProps): React.ReactElement {
   const defaultProps = {
     className: cn(
-      "flex flex-col-reverse gap-2 px-6 sm:flex-row sm:items-center sm:justify-end",
+      "mt-auto flex shrink-0 flex-col-reverse gap-2 px-6 sm:flex-row sm:items-center sm:justify-end",
       variant === "default" &&
-        "rounded-b-[inherit] border-border border-t bg-muted/40 py-4",
+        "rounded-b-[inherit] bg-[color-mix(in_oklab,var(--color-popover),var(--color-foreground)_4%)] py-4 dark:bg-card",
       variant === "bare" &&
         "in-[[data-slot=sheet-popup]:has([data-slot=sheet-panel])]:pt-2 pt-4 pb-6",
       className,
     ),
     "data-slot": "sheet-footer",
+    "data-variant": variant,
   };
 
   return useRender({
@@ -206,7 +204,7 @@ export function SheetTitle({
   return (
     <SheetPrimitive.Title
       className={cn(
-        "font-heading font-semibold text-xl leading-7 tracking-tight",
+        "font-heading font-semibold text-foreground text-xl leading-7 tracking-tight",
         className,
       )}
       data-slot="sheet-title"
@@ -230,31 +228,43 @@ export function SheetDescription({
 
 export interface SheetPanelProps extends useRender.ComponentProps<"div"> {
   scrollFade?: boolean;
+  scrollable?: boolean;
 }
 
 export function SheetPanel({
   className,
-  scrollFade = true,
+  scrollFade = false,
+  scrollable = true,
   render,
   ...props
 }: SheetPanelProps): React.ReactElement {
   const defaultProps = {
     className: cn(
-      "p-6 in-[[data-slot=sheet-popup]:has([data-slot=sheet-header])]:pt-2 in-[[data-slot=sheet-popup]:has([data-slot=sheet-footer]:not(.border-t))]:pb-2",
+      "p-6 in-[[data-slot=sheet-popup]:has([data-slot=sheet-header])]:pt-2 in-[[data-slot=sheet-popup]:has([data-slot=sheet-footer][data-variant=bare])]:pb-2",
       className,
     ),
     "data-slot": "sheet-panel",
   };
 
-  return (
-    <ScrollArea overscrollContain scrollFade={scrollFade}>
-      {useRender({
-        defaultTagName: "div",
-        props: mergeProps<"div">(defaultProps, props),
-        render,
-      })}
-    </ScrollArea>
-  );
+  const content = useRender({
+    defaultTagName: "div",
+    props: mergeProps<"div">(defaultProps, props),
+    render,
+  });
+
+  if (scrollable) {
+    return (
+      <ScrollArea
+        className="h-auto min-h-0 flex-1"
+        overscrollContain
+        scrollFade={scrollFade}
+      >
+        {content}
+      </ScrollArea>
+    );
+  }
+
+  return content;
 }
 
 export {
