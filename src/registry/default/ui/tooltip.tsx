@@ -20,7 +20,7 @@ export const tooltipPopupVariants = cva(
       variant: {
         plain:
           "max-w-60 rounded-xl font-medium text-xs leading-5 [--tt-bg:var(--color-foreground)] [--tt-fg:var(--color-background)] [--tt-px:0.75rem] [--tt-py:0.375rem]",
-        rich: "min-w-28 max-w-80 rounded-2xl text-sm leading-5 shadow-lg/10 [--tt-bg:var(--color-popover)] [--tt-fg:var(--color-muted-foreground)] [--tt-px:1rem] [--tt-py:1rem]",
+        rich: "min-w-28 max-w-80 rounded-2xl text-sm leading-5 shadow-[0_0_0_0.0625rem_var(--tt-ring),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.15),0_0.0625rem_0.1875rem_0_rgb(0_0_0/0.3)] [--tt-bg:var(--color-popover)] [--tt-fg:var(--color-muted-foreground)] [--tt-px:1rem] [--tt-py:1rem] [--tt-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_22%)] dark:[--tt-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_32%)]",
         vibrant:
           "max-w-60 rounded-xl font-medium text-xs leading-5 [--tt-bg:var(--color-primary)] [--tt-fg:var(--color-primary-foreground)] [--tt-px:0.75rem] [--tt-py:0.375rem]",
       },
