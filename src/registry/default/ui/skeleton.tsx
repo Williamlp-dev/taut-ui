@@ -10,7 +10,7 @@ export function Skeleton({
   return (
     <div
       className={cn(
-        "animate-pulse rounded-lg bg-muted motion-reduce:animate-none",
+        "animate-pulse rounded-lg bg-[color-mix(in_oklab,var(--color-card),var(--color-foreground)_8%)] motion-reduce:animate-none",
         className,
       )}
       data-slot="skeleton"

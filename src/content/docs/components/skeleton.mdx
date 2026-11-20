@@ -1,9 +1,9 @@
 ---
 title: Skeleton
-description: A placeholder loading element that uses a pulse animation to indicate content is being fetched.
+description: Solid tonal placeholder block with a subtle pulse animation while content is loading.
 ---
 
-<ComponentPreview name="skeleton" />
+<ComponentPreview name="p-skeleton-1" />
 
 ## Installation
 
@@ -28,7 +28,7 @@ npx shadcn@latest add @taut-ui/skeleton
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="skeleton" />
+<ComponentSource name="skeleton" title="components/ui/skeleton.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -48,16 +48,27 @@ import { Skeleton } from "@/components/ui/skeleton"
 <div className="flex flex-col gap-3">
   <Skeleton className="h-6 w-48" />
   <Skeleton className="h-4 w-full" />
-  <Skeleton className="h-4 w-full" />
   <Skeleton className="h-4 w-3/4" />
 </div>
 ```
 
-## API
+## Examples
 
-### `Skeleton`
+### Card
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes merged with the default pulse-animation styles. |
-| `...props` | `React.ComponentProps<"div">` | `—` | All standard `<div>` HTML attributes are forwarded to the underlying element. |
+<ComponentPreview name="p-skeleton-2" />
+
+### List
+
+<ComponentPreview name="p-skeleton-3" />
+
+## API Reference
+
+### Skeleton
+
+Renders a `<div>` placeholder with a pulse animation and solid tonal background.
+
+| Prop        | Type                          | Default | Description                     |
+| ----------- | ----------------------------- | ------- | ------------------------------- |
+| `className` | `string`                      | -       | Sizing, border-radius, and layout classes |
+| `...props`  | `React.ComponentProps<"div">` | -       | All standard `<div>` attributes |
