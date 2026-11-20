@@ -1,9 +1,9 @@
 ---
 title: Sidebar
-description: A composable, responsive sidebar system with open/closed state management, mobile support, and collapsible modes.
+description: Composable navigation sidebar with grouped menu items, solid tonal active surfaces, corner morphing, and ripple feedback.
 ---
 
-<ComponentPreview name="sidebar" />
+<ComponentPreview name="p-sidebar-1" />
 
 ## Installation
 
@@ -34,7 +34,7 @@ npm install @base-ui/react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="sidebar" />
+<ComponentSource name="sidebar" title="components/ui/sidebar.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -48,38 +48,28 @@ npm install @base-ui/react
 
 ```tsx
 import {
-  SidebarProvider,
   Sidebar,
   SidebarContent,
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuItem,
   SidebarMenuButton,
-  useSidebar,
+  SidebarMenuItem,
+  SidebarProvider,
 } from "@/components/ui/sidebar"
 ```
 
 ```tsx
 <SidebarProvider>
-  <Sidebar collapsible="icon">
+  <Sidebar>
     <SidebarContent>
       <SidebarGroup>
-        <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+        <SidebarGroupLabel>Workspace</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton isActive>
-                <HomeIcon />
-                Dashboard
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton>
-                <SettingsIcon />
-                Settings
-              </SidebarMenuButton>
+              <SidebarMenuButton isActive>Dashboard</SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
@@ -89,128 +79,50 @@ import {
 </SidebarProvider>
 ```
 
-## API
+## Examples
 
-### `SidebarProvider`
+### Groups & Badges
 
-Provides sidebar state (open/closed, mobile detection) to all descendant sidebar components via context. Renders a full-height wrapper `div`.
+<ComponentPreview name="p-sidebar-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `defaultOpen` | `boolean` | `true` | Initial open state when uncontrolled. |
-| `open` | `boolean` | — | Controlled open state for desktop sidebar. |
-| `onOpenChange` | `(open: boolean) => void` | — | Callback fired when the desktop open state changes. |
-| `className` | `string` | — | Additional CSS classes for the wrapper element. |
-| `style` | `React.CSSProperties` | — | Inline styles for the wrapper element. |
-| `children` | `React.ReactNode` | — | Child elements rendered inside the provider. |
+### Static Radius
 
----
+<ComponentPreview name="p-sidebar-3" />
 
-### `useSidebar`
+## API Reference
 
-A hook that returns the current sidebar context. Must be used inside `SidebarProvider`.
+### SidebarProvider
 
-```tsx
-const { open, setOpen, openMobile, setOpenMobile, isMobile, toggleSidebar } = useSidebar()
-```
+Provides sidebar open/close state and mobile detection via context. Sets `--sidebar-width: 16rem` by default.
 
-| Return value | Type | Description |
-|---|---|---|
-| `open` | `boolean` | Whether the desktop sidebar is open. |
-| `setOpen` | `(open: boolean) => void` | Setter for the desktop open state. |
-| `openMobile` | `boolean` | Whether the mobile sidebar is open. |
-| `setOpenMobile` | `(open: boolean) => void` | Setter for the mobile open state. |
-| `isMobile` | `boolean` | `true` when viewport width is below 1024 px. |
-| `toggleSidebar` | `() => void` | Toggles the appropriate sidebar (mobile or desktop) based on current viewport. |
+| Prop           | Type                      | Default | Description                                |
+| -------------- | ------------------------- | ------- | ------------------------------------------ |
+| `defaultOpen`  | `boolean`                 | `true`  | Initial uncontrolled open state            |
+| `open`         | `boolean`                 | -       | Controlled desktop open state              |
+| `onOpenChange` | `(open: boolean) => void` | -       | Called when the desktop open state changes |
+| `className`    | `string`                  | -       | Additional CSS classes                     |
 
----
+### Sidebar
 
-### `Sidebar`
+Root `<aside>` container sized to `w-(--sidebar-width,16rem)`.
 
-The root sidebar element (renders as `<aside>` by default). Supports polymorphic rendering via the `render` prop.
+| Prop          | Type                              | Default       | Description                        |
+| ------------- | --------------------------------- | ------------- | ---------------------------------- |
+| `collapsible` | `"offcanvas" \| "icon" \| "none"` | `"offcanvas"` | Collapsible mode metadata          |
+| `render`      | `React.ReactElement`              | -             | Custom element to render           |
+| `className`   | `string`                          | -             | Additional CSS classes             |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `collapsible` | `"offcanvas" \| "icon" \| "none"` | `"offcanvas"` | Collapse behaviour. `"offcanvas"` slides the sidebar off-screen, `"icon"` collapses it to icon width, `"none"` disables collapsing. |
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | — | Override the rendered element or component (Base UI `useRender` pattern). |
-| `className` | `string` | — | Additional CSS classes. |
+### SidebarMenuButton
 
----
+Interactive menu item button with solid tonal hover/active surfaces, corner morphing, and `<Ripple />`.
 
-### `SidebarContent`
+| Prop        | Type                 | Default | Description                                                  |
+| ----------- | -------------------- | ------- | ------------------------------------------------------------ |
+| `isActive`  | `boolean`            | `false` | Marks the item as active (`aria-current="page"`)             |
+| `morph`     | `boolean`            | `true`  | Morphs border-radius from `rounded-lg` to `rounded-xl`       |
+| `render`    | `React.ReactElement` | -       | Custom element (e.g. Next.js `<Link />`)                     |
+| `className` | `string`             | -       | Additional CSS classes                                       |
 
-Scrollable content area inside the sidebar. Renders as `<div>` with custom scrollbar styling that appears on hover or focus.
+### SidebarContent / SidebarGroup / SidebarGroupLabel / SidebarGroupContent / SidebarMenu / SidebarMenuItem / useSidebar
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | — | Override the rendered element or component. |
-| `className` | `string` | — | Additional CSS classes. |
-
----
-
-### `SidebarGroup`
-
-A logical grouping container inside `SidebarContent`. Renders as `<div>`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | — | Override the rendered element or component. |
-| `className` | `string` | — | Additional CSS classes. |
-
----
-
-### `SidebarGroupLabel`
-
-A label/heading for a `SidebarGroup`. Renders as `<div>` with muted foreground text styling.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | — | Override the rendered element or component. |
-| `className` | `string` | — | Additional CSS classes. |
-
----
-
-### `SidebarGroupContent`
-
-Wrapper for the content (usually a `SidebarMenu`) inside a `SidebarGroup`. Renders as `<div>`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | — | Override the rendered element or component. |
-| `className` | `string` | — | Additional CSS classes. |
-
----
-
-### `SidebarMenu`
-
-An unordered list (`<ul>`) that holds `SidebarMenuItem` elements.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | — | Override the rendered element or component. |
-| `className` | `string` | — | Additional CSS classes. |
-
----
-
-### `SidebarMenuItem`
-
-A single list item (`<li>`) inside `SidebarMenu`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | — | Override the rendered element or component. |
-| `className` | `string` | — | Additional CSS classes. |
-
----
-
-### `SidebarMenuButton`
-
-An interactive button inside a `SidebarMenuItem`. Renders as `<button>` with ripple effect, active state styling, and an optional morphing border-radius animation.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `isActive` | `boolean` | — | Marks the button as the currently active/selected item. Sets `aria-current="page"` and applies accent background. |
-| `morph` | `boolean` | `true` | When `true`, the border-radius animates from `rounded-lg` to `rounded-xl` on hover/active for a morphing effect. Set to `false` for a static `rounded-lg`. |
-| `render` | `React.ReactElement \| ((props, ref) => React.ReactElement)` | — | Override the rendered element or component. |
-| `className` | `string` | — | Additional CSS classes. |
-| `children` | `React.ReactNode` | — | Button content — typically an icon and a label. |
+Composable layout primitives and context hook for building structured navigation trees.

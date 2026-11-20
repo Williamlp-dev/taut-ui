@@ -79,7 +79,12 @@ export function SidebarProvider({
       <div
         className={cn("flex min-h-svh w-full", className)}
         data-slot="sidebar-wrapper"
-        style={style}
+        style={
+          {
+            "--sidebar-width": "16rem",
+            ...style,
+          } as React.CSSProperties
+        }
         {...props}
       >
         {children}
@@ -118,7 +123,7 @@ export function SidebarContent({
 }: useRender.ComponentProps<"div">): React.ReactElement {
   const defaultProps = {
     className: cn(
-      "flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overflow-x-hidden [scrollbar-color:transparent_transparent] [scrollbar-gutter:stable] [scrollbar-width:thin] in-[[data-slot=sidebar]:hover]:[scrollbar-color:var(--border)_transparent] focus-within:[scrollbar-color:var(--border)_transparent] hover:[scrollbar-color:var(--border)_transparent] [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-transparent in-[[data-slot=sidebar]:hover]:[&::-webkit-scrollbar-thumb]:bg-border focus-within:[&::-webkit-scrollbar-thumb]:bg-border hover:[&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:size-1.5",
+      "flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overflow-x-hidden [scrollbar-color:transparent_transparent] [scrollbar-gutter:stable] [scrollbar-width:thin] in-[[data-slot=sidebar]:hover]:[scrollbar-color:color-mix(in_oklab,var(--color-background),var(--color-muted-foreground)_35%)_transparent] focus-within:[scrollbar-color:color-mix(in_oklab,var(--color-background),var(--color-muted-foreground)_35%)_transparent] hover:[scrollbar-color:color-mix(in_oklab,var(--color-background),var(--color-muted-foreground)_35%)_transparent] [&::-webkit-scrollbar-thumb:hover]:bg-[color-mix(in_oklab,var(--color-background),var(--color-muted-foreground)_55%)] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-transparent in-[[data-slot=sidebar]:hover]:[&::-webkit-scrollbar-thumb]:bg-[color-mix(in_oklab,var(--color-background),var(--color-muted-foreground)_35%)] focus-within:[&::-webkit-scrollbar-thumb]:bg-[color-mix(in_oklab,var(--color-background),var(--color-muted-foreground)_35%)] hover:[&::-webkit-scrollbar-thumb]:bg-[color-mix(in_oklab,var(--color-background),var(--color-muted-foreground)_35%)] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:size-1.5",
       className,
     ),
     "data-slot": "sidebar-content",
@@ -236,14 +241,13 @@ export function SidebarMenuButton({
       </>
     ),
     className: cn(
-      "group relative flex min-h-10 w-full select-none items-center justify-between gap-3 px-3.5 py-2 font-medium text-sidebar-foreground text-sm leading-5 outline-none [&_svg]:size-4.5 [&_svg]:shrink-0",
+      "group relative flex min-h-10 w-full cursor-pointer select-none items-center justify-start gap-3 overflow-hidden px-3.5 py-2 text-start font-medium text-sidebar-foreground text-sm leading-5 outline-none [&_svg]:size-4.5 [&_svg]:shrink-0",
       morph
         ? "rounded-lg transition-[border-radius] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl active:rounded-xl data-[active=true]:rounded-xl motion-reduce:transition-none"
         : "rounded-lg",
-      "before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:bg-current before:opacity-0",
-      "hover:before:opacity-8 focus-visible:before:opacity-10 active:before:opacity-10",
+      "hover:bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_5%)]",
       "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-      "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground data-[active=true]:before:opacity-0",
+      "data-[active=true]:bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_9%)] data-[active=true]:text-sidebar-accent-foreground dark:data-[active=true]:bg-sidebar-accent",
       className,
     ),
     "data-active": isActive,
