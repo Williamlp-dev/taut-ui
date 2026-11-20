@@ -1,11 +1,11 @@
 ---
 title: Tabs
-description: A set of layered sections of content—known as tab panels—that display one panel at a time.
+description: Layered content panels with a spring-animated active indicator, nine visual variants, stacked icon layout, and vertical orientation.
 links:
-  doc: https://base-ui.com/react/components/tabs
+  doc: https://base-ui.com/react/components/tabs#api-reference
 ---
 
-<ComponentPreview name="tabs" />
+<ComponentPreview name="p-tabs-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react class-variance-authority
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="tabs" />
+<ComponentSource name="tabs" title="components/ui/tabs.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -49,7 +49,7 @@ npm install @base-ui/react class-variance-authority
 ## Usage
 
 ```tsx
-import { Tabs, TabsList, TabsTab, TabsPanel } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs"
 ```
 
 ```tsx
@@ -58,73 +58,80 @@ import { Tabs, TabsList, TabsTab, TabsPanel } from "@/components/ui/tabs"
     <TabsTab value="account">Account</TabsTab>
     <TabsTab value="password">Password</TabsTab>
   </TabsList>
-  <TabsPanel value="account">
-    Change your account settings here.
-  </TabsPanel>
-  <TabsPanel value="password">
-    Change your password here.
-  </TabsPanel>
+  <TabsPanel value="account">Account settings.</TabsPanel>
+  <TabsPanel value="password">Password settings.</TabsPanel>
 </Tabs>
 ```
 
-## API
+## Examples
 
-### `Tabs`
+### Pill
 
-Extends [`TabsPrimitive.Root.Props`](https://base-ui.com/react/components/tabs) from `@base-ui/react/tabs`.
+<ComponentPreview name="p-tabs-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `defaultValue` | `string` | — | The value of the tab that should be active when initially rendered (uncontrolled). |
-| `value` | `string` | — | The controlled value of the active tab. |
-| `onValueChange` | `(value: string) => void` | — | Callback fired when the active tab changes. |
-| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The orientation of the tabs, affecting layout and keyboard navigation. |
-| `className` | `string` | — | Additional CSS classes to apply to the root element. |
+### Underline
 
----
+<ComponentPreview name="p-tabs-3" />
 
-### `TabsList`
+### Primary Stacked
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"default" \| "circular" \| "clean" \| "dot" \| "outline" \| "pill" \| "primary" \| "secondary" \| "underline"` | `"default"` | Visual style variant of the tab list. |
-| `stacked` | `boolean` | `false` | When `true`, stacks the icon and label inside each tab vertically. |
-| `className` | `string` | — | Additional CSS classes to apply to the list element. |
+<ComponentPreview name="p-tabs-4" />
 
-#### `variant` options
+### Dot
 
-| Value | Description |
-|-------|-------------|
-| `default` | Rounded pill background on the active tab, contained within a muted background list. |
-| `circular` | Each tab is a perfect circle; ideal for icon-only tabs. |
-| `clean` | Full-width list with a rounded pill indicator, no background on the list itself. |
-| `dot` | Full-width underline list with a small dot indicator on the active tab. |
-| `outline` | Pill-shaped list with a border; active tab gets a filled background. |
-| `pill` | Pill-shaped list with a muted background; active tab gets a filled background. |
-| `primary` | Full-width underline list with a short primary-colored bar indicator. |
-| `secondary` | Full-width underline list with a full-width primary-colored bar indicator. |
-| `underline` | Minimal underline-only list with a full-width bar indicator matching the tab width. |
+<ComponentPreview name="p-tabs-5" />
 
----
+### Circular
 
-### `TabsTab`
+<ComponentPreview name="p-tabs-6" />
 
-Extends [`TabsPrimitive.Tab.Props`](https://base-ui.com/react/components/tabs) from `@base-ui/react/tabs`.
+### Vertical
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | — | **Required.** Unique identifier matching the corresponding `TabsPanel`. |
-| `disabled` | `boolean` | `false` | Disables the tab, preventing interaction. |
-| `className` | `string` | — | Additional CSS classes to apply to the tab element. |
+<ComponentPreview name="p-tabs-7" />
 
----
+## API Reference
 
-### `TabsPanel`
+### Tabs
 
-Extends [`TabsPrimitive.Panel.Props`](https://base-ui.com/react/components/tabs) from `@base-ui/react/tabs`.
+Wraps Base UI `Tabs.Root`. Manages active tab state and layout orientation.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | — | **Required.** Unique identifier matching the corresponding `TabsTab`. |
-| `keepMounted` | `boolean` | `false` | When `true`, the panel stays mounted in the DOM even when inactive. |
-| `className` | `string` | — | Additional CSS classes to apply to the panel element. |
+| Prop            | Type                         | Default        | Description                                |
+| --------------- | ---------------------------- | -------------- | ------------------------------------------ |
+| `value`         | `unknown`                    | -              | Controlled active tab value                |
+| `defaultValue`  | `unknown`                    | -              | Initial uncontrolled active tab value      |
+| `onValueChange` | `(value: unknown) => void`   | -              | Called when the active tab changes         |
+| `orientation`   | `"horizontal" \| "vertical"` | `"horizontal"` | Layout direction and arrow-key navigation  |
+| `className`     | `string`                     | -              | Additional CSS classes                     |
+| `...props`      | Base UI Tabs Root props      | -              | All other Tabs Root props are supported    |
+
+### TabsList
+
+Container for `TabsTab` triggers with a built-in spring-animated `Tabs.Indicator`.
+
+| Prop        | Type                                                                                                      | Default     | Description                                       |
+| ----------- | --------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------- |
+| `variant`   | `"default" \| "pill" \| "outline" \| "circular" \| "primary" \| "secondary" \| "underline" \| "clean" \| "dot"` | `"default"` | Indicator and surface style preset                |
+| `stacked`   | `boolean`                                                                                                 | `false`     | Stacks icon above label vertically inside each tab |
+| `className` | `string`                                                                                                  | -           | Additional CSS classes                            |
+| `...props`  | Base UI Tabs List props                                                                                   | -           | All standard tabs list props                      |
+
+### TabsTab / TabsTrigger
+
+Interactive tab button associated with a `TabsPanel` via `value`.
+
+| Prop        | Type                    | Default | Description                           |
+| ----------- | ----------------------- | ------- | ------------------------------------- |
+| `value`     | `unknown`               | -       | Identifier matching a `TabsPanel`     |
+| `disabled`  | `boolean`               | `false` | Disables interaction and dims the tab |
+| `className` | `string`                | -       | Additional CSS classes                |
+| `...props`  | Base UI Tabs Tab props  | -       | All standard tab attributes           |
+
+### TabsPanel / TabsContent
+
+Content panel displayed when its `value` matches the active tab.
+
+| Prop        | Type                     | Description                    |
+| ----------- | ------------------------ | ------------------------------ |
+| `value`     | `unknown`                | Identifier matching a `TabsTab` |
+| `className` | `string`                 | Additional CSS classes         |
+| `...props`  | Base UI Tabs Panel props | All standard panel attributes  |

@@ -7,7 +7,7 @@ import { cn } from "@/registry/default/lib/utils";
 
 export const tabsListVariants = cva(
   [
-    "group/tabs-list relative z-0 flex items-center text-muted-foreground",
+    "group/tabs-list relative z-0 flex items-center justify-center text-muted-foreground",
     "data-[orientation=vertical]:w-fit data-[orientation=vertical]:flex-col",
     "data-stacked:[--tab-h:4rem]",
   ],
@@ -16,19 +16,19 @@ export const tabsListVariants = cva(
     variants: {
       variant: {
         circular:
-          "w-fit gap-1.5 rounded-full border border-border bg-muted p-1 [--tab-h:2.25rem] [--tab-on:var(--color-primary-foreground)] [--tab-r:calc(infinity*1rem)]",
+          "w-fit gap-1.5 rounded-full bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_6%)] p-1 [--tab-h:2.25rem] [--tab-on:var(--color-primary-foreground)] [--tab-r:calc(infinity*1rem)]",
         clean:
-          "w-full justify-center [--tab-h:3rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] *:flex-1",
+          "w-full [--tab-h:3rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] *:data-[slot=tabs-tab]:flex-1",
         default:
-          "w-fit gap-0.5 rounded-xl bg-muted p-1 [--tab-h:2rem] [--tab-on:var(--color-primary-foreground)] [--tab-r:var(--radius-lg)]",
-        dot: "w-full justify-center [--tab-h:3rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] *:flex-1 data-[orientation=horizontal]:shadow-[inset_0_-0.0625rem_0_var(--color-border)] data-[orientation=vertical]:shadow-[inset_-0.0625rem_0_0_var(--color-border)]",
+          "w-fit gap-0.5 rounded-xl bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_6%)] p-1 [--tab-h:2rem] [--tab-on:var(--color-primary-foreground)] [--tab-r:var(--radius-lg)]",
+        dot: "w-full [--tab-h:3rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] data-[orientation=horizontal]:shadow-[inset_0_-0.0625rem_0_var(--color-border)] data-[orientation=vertical]:shadow-[inset_-0.0625rem_0_0_var(--color-border)] *:data-[slot=tabs-tab]:flex-1",
         outline:
           "w-fit gap-1 rounded-full border border-border p-1 [--tab-h:2.25rem] [--tab-on:var(--color-primary-foreground)] [--tab-r:calc(infinity*1rem)]",
-        pill: "w-fit gap-1 rounded-full bg-muted p-1 [--tab-h:2.25rem] [--tab-on:var(--color-primary-foreground)] [--tab-r:calc(infinity*1rem)]",
+        pill: "w-fit gap-1 rounded-full bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_6%)] p-1 [--tab-h:2.25rem] [--tab-on:var(--color-primary-foreground)] [--tab-r:calc(infinity*1rem)]",
         primary:
-          "w-full justify-center [--tab-h:3rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] *:flex-1 data-[orientation=horizontal]:shadow-[inset_0_-0.0625rem_0_var(--color-border)] data-[orientation=vertical]:shadow-[inset_-0.0625rem_0_0_var(--color-border)]",
+          "w-full [--tab-h:3rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] data-[orientation=horizontal]:shadow-[inset_0_-0.0625rem_0_var(--color-border)] data-[orientation=vertical]:shadow-[inset_-0.0625rem_0_0_var(--color-border)] *:data-[slot=tabs-tab]:flex-1",
         secondary:
-          "w-full justify-center [--tab-h:3rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] *:flex-1 data-[orientation=horizontal]:shadow-[inset_0_-0.0625rem_0_var(--color-border)] data-[orientation=vertical]:shadow-[inset_-0.0625rem_0_0_var(--color-border)]",
+          "w-full [--tab-h:3rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] data-[orientation=horizontal]:shadow-[inset_0_-0.0625rem_0_var(--color-border)] data-[orientation=vertical]:shadow-[inset_-0.0625rem_0_0_var(--color-border)] *:data-[slot=tabs-tab]:flex-1",
         underline:
           "w-fit gap-1 [--tab-h:2.5rem] [--tab-on:var(--color-primary)] [--tab-r:0rem] data-[orientation=horizontal]:shadow-[inset_0_-0.0625rem_0_var(--color-border)] data-[orientation=vertical]:shadow-[inset_-0.0625rem_0_0_var(--color-border)]",
       },
@@ -83,9 +83,9 @@ export function TabsList({
           (variant === "default" ||
             variant === "pill" ||
             variant === "outline") &&
-            "-z-1 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-(--active-tab-bottom) rounded-(--tab-r) bg-primary text-primary-foreground shadow-xs",
+            "-z-1 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-(--active-tab-bottom) rounded-(--tab-r) bg-primary shadow-xs",
           variant === "circular" &&
-            "-z-1 h-(--active-tab-height) w-(--active-tab-height) translate-x-[calc(var(--active-tab-left)+(var(--active-tab-width)-var(--active-tab-height))/2)] -translate-y-(--active-tab-bottom) rounded-full bg-primary text-primary-foreground shadow-xs",
+            "-z-1 h-(--active-tab-height) w-(--active-tab-height) translate-x-[calc(var(--active-tab-left)+(var(--active-tab-width)-var(--active-tab-height))/2)] -translate-y-(--active-tab-bottom) rounded-full bg-primary shadow-xs",
           (variant === "primary" || variant === "clean") &&
             "z-10 rounded-full bg-primary data-[orientation=vertical]:right-0 data-[orientation=vertical]:left-auto data-[orientation=horizontal]:h-0.75 data-[orientation=vertical]:h-[calc(var(--active-tab-height)*0.5)] data-[orientation=horizontal]:w-[min(3rem,calc(var(--active-tab-width)*0.6))] data-[orientation=vertical]:w-0.75 data-[orientation=horizontal]:translate-x-[calc(var(--active-tab-left)+(var(--active-tab-width)-min(3rem,calc(var(--active-tab-width)*0.6)))/2)] data-[orientation=horizontal]:-translate-y-(--active-tab-bottom) data-[orientation=vertical]:-translate-y-[calc(var(--active-tab-bottom)+var(--active-tab-height)*0.25)]",
           (variant === "secondary" || variant === "underline") &&
@@ -106,7 +106,7 @@ export function TabsTab({
   return (
     <TabsPrimitive.Tab
       className={cn(
-        "relative z-1 flex h-(--tab-h) shrink-0 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-(--tab-r) px-3.5 font-medium text-muted-foreground text-sm leading-5 outline-none transition-[color,background-color,box-shadow] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset data-disabled:pointer-events-none data-active:text-(--tab-on,var(--color-primary-foreground)) data-disabled:opacity-38 data-active:hover:text-(--tab-on,var(--color-primary-foreground))",
+        "relative z-1 flex h-(--tab-h) shrink-0 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-(--tab-r) px-3.5 font-medium text-muted-foreground text-sm leading-5 outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset data-disabled:pointer-events-none data-active:text-(--tab-on,var(--color-primary-foreground)) data-disabled:opacity-38 data-active:hover:text-(--tab-on,var(--color-primary-foreground))",
         "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
         "group-data-[variant=circular]/tabs-list:size-(--tab-h) group-data-[variant=circular]/tabs-list:px-0",
         "group-data-stacked/tabs-list:flex-col group-data-stacked/tabs-list:gap-1",
