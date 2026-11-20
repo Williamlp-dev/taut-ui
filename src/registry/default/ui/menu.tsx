@@ -21,9 +21,9 @@ export const menuPopupVariants = cva(
     variants: {
       colorScheme: {
         standard:
-          "[--menu-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_8%)] [--menu-fg:var(--color-popover-foreground)] [--menu-ring:color-mix(in_oklab,var(--color-primary)_18%,transparent)] [--menu-sel-bg:var(--color-secondary)] [--menu-sel-fg:var(--color-secondary-foreground)]",
+          "[--menu-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_8%)] [--menu-fg:var(--color-popover-foreground)] [--menu-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_22%)] [--menu-sel-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_16%)] [--menu-sel-fg:var(--color-secondary-foreground)]",
         vibrant:
-          "[--menu-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_18%)] [--menu-fg:var(--color-secondary-foreground)] [--menu-ring:color-mix(in_oklab,var(--color-primary)_28%,transparent)] [--menu-sel-bg:var(--color-primary)] [--menu-sel-fg:var(--color-primary-foreground)]",
+          "[--menu-bg:color-mix(in_oklab,var(--color-popover),var(--color-primary)_18%)] [--menu-fg:var(--color-secondary-foreground)] [--menu-ring:color-mix(in_oklab,var(--color-popover),var(--color-primary)_32%)] [--menu-sel-bg:var(--color-primary)] [--menu-sel-fg:var(--color-primary-foreground)]",
       },
     },
   },
@@ -99,7 +99,7 @@ export function MenuPopup({
           {...props}
         >
           {gap ? (
-            <div className="flex flex-col gap-1">{children}</div>
+            <div className="flex flex-col gap-1.5">{children}</div>
           ) : (
             <ScrollArea
               clampContentMinWidth={false}
@@ -123,7 +123,7 @@ export function MenuGroup({
   return (
     <MenuPrimitive.Group
       className={cn(
-        "flex flex-col gap-0.5 group-data-gap/menu-popup:rounded-xl group-data-gap/menu-popup:bg-(--menu-bg) group-data-gap/menu-popup:p-1.5 group-data-gap/menu-popup:shadow-[0_0_0_0.0625rem_var(--menu-ring),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.15),0_0.0625rem_0.1875rem_0_rgb(0_0_0/0.3)] group-data-gap/menu-popup:last:rounded-b-2xl group-data-gap/menu-popup:first:rounded-t-2xl",
+        "flex flex-col gap-0.5 group-data-gap/menu-popup:rounded-2xl group-data-gap/menu-popup:bg-(--menu-bg) group-data-gap/menu-popup:p-1.5 group-data-gap/menu-popup:shadow-[0_0_0_0.0625rem_var(--menu-ring),0_0.25rem_0.5rem_0.1875rem_rgb(0_0_0/0.15),0_0.0625rem_0.1875rem_0_rgb(0_0_0/0.3)]",
         className,
       )}
       data-slot="menu-group"
@@ -359,7 +359,7 @@ export function MenuSubTrigger({
 
 export function MenuSubPopup({
   className,
-  sideOffset = 0,
+  sideOffset = 4,
   alignOffset,
   align = "start",
   ...props
