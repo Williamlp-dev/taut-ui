@@ -1,4 +1,4 @@
-import { CompassIcon, FlameIcon, SparklesIcon } from "lucide-react";
+import { BookmarkIcon, CompassIcon, FlameIcon } from "lucide-react";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/registry/default/ui/tabs";
 
 export default function Particle() {
@@ -13,9 +13,9 @@ export default function Particle() {
           <FlameIcon />
           Trending
         </TabsTab>
-        <TabsTab value="for-you">
-          <SparklesIcon />
-          For you
+        <TabsTab value="saved">
+          <BookmarkIcon />
+          Saved
         </TabsTab>
       </TabsList>
       <TabsPanel className="min-h-14 pt-3 text-center" value="explore">
@@ -28,9 +28,9 @@ export default function Particle() {
           Most popular picks across the community.
         </p>
       </TabsPanel>
-      <TabsPanel className="min-h-14 pt-3 text-center" value="for-you">
+      <TabsPanel className="min-h-14 pt-3 text-center" value="saved">
         <p className="text-muted-foreground text-sm">
-          Personalized picks from recent activity.
+          Bookmarked items from your recent activity.
         </p>
       </TabsPanel>
     </Tabs>

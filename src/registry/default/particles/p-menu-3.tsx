@@ -1,8 +1,8 @@
 import {
   BookmarkIcon,
   DownloadIcon,
+  FileTextIcon,
   Link2Icon,
-  SparklesIcon,
 } from "lucide-react";
 import { Button } from "@/registry/default/ui/button";
 import {
@@ -19,7 +19,7 @@ export default function Particle() {
       <MenuTrigger render={<Button variant="secondary">Vibrant Menu</Button>} />
       <MenuPopup colorScheme="vibrant">
         <MenuItem>
-          <SparklesIcon />
+          <FileTextIcon />
           Summarize
         </MenuItem>
         <MenuItem>

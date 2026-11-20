@@ -1,4 +1,4 @@
-import { SparklesIcon } from "lucide-react";
+import { ZapIcon } from "lucide-react";
 import { Button } from "@/registry/default/ui/button";
 import {
   Popover,
@@ -16,7 +16,7 @@ export default function Particle() {
       <PopoverTrigger
         render={
           <Button variant="secondary">
-            <SparklesIcon />
+            <ZapIcon />
             Quick tip
           </Button>
         }
