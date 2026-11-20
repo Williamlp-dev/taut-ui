@@ -7,11 +7,10 @@ import { cn } from "@/registry/default/lib/utils";
 
 export const inputVariants = cva(
   [
-    "group/input relative inline-flex w-full min-w-0 items-center bg-background not-dark:bg-clip-padding text-foreground outline-none dark:bg-input/32",
-    "shadow-[inset_0_0_0_0.0625rem_var(--color-input)]",
+    "group/input relative inline-flex w-full min-w-0 items-center text-foreground outline-none",
     "focus-within:shadow-[inset_0_0_0_0.125rem_var(--color-primary)]",
     "has-[[aria-invalid=true]]:shadow-[inset_0_0_0_0.125rem_var(--color-destructive)]! data-invalid:shadow-[inset_0_0_0_0.125rem_var(--color-destructive)]!",
-    "has-autofill:bg-foreground/4 dark:has-autofill:bg-foreground/8",
+    "has-autofill:bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_8%)]",
     "has-disabled:pointer-events-none has-disabled:opacity-38 data-disabled:pointer-events-none data-disabled:opacity-38",
     "[&_svg]:shrink-0 [&_svg]:transition-none",
     "[&_button]:transition-none",
@@ -19,9 +18,9 @@ export const inputVariants = cva(
     "[&_svg:not(button_*)]:text-muted-foreground focus-within:[&_svg:not(button_*)]:text-primary",
     "has-[[aria-invalid=true]]:[&_svg:not(button_*)]:text-destructive! data-invalid:[&_svg:not(button_*)]:text-destructive!",
     "[&_button[data-variant=ghost]:hover]:text-foreground [&_button[data-variant=ghost]:hover_svg]:text-foreground [&_button[data-variant=ghost]]:text-muted-foreground focus-within:[&_button[data-variant=ghost]]:text-primary",
-    "[&:not(:has([data-align=block-start],[data-align=block-end]))_button:not([class*='size-'])]:h-[calc(100%-0.5rem)]",
-    "[&:not(:has([data-align=block-start],[data-align=block-end]))_button[data-size^=icon]:not([class*='size-'])]:aspect-square [&:not(:has([data-align=block-start],[data-align=block-end]))_button[data-size^=icon]:not([class*='size-'])]:w-auto",
-    "[&:not(:has([data-align=block-start],[data-align=block-end]))_[data-slot=badge]:not([data-size=dot],[data-size=small],[class*='size-'])]:h-[calc(100%-0.5rem)] [&:not(:has([data-align=block-start],[data-align=block-end]))_[data-slot=badge]:not([data-size=dot],[data-size=small],[class*='size-'])]:min-w-[calc(100%-0.5rem)] [&:not(:has([data-align=block-start],[data-align=block-end]))_[data-slot=badge]:not([data-size=dot],[data-size=small],[class*='size-'])]:px-3",
+    "[&:not(:has([data-align=block-start],[data-align=block-end]))_button]:h-[calc(100%-0.5rem)]",
+    "[&:not(:has([data-align=block-start],[data-align=block-end]))_button[data-size^=icon]]:aspect-square [&:not(:has([data-align=block-start],[data-align=block-end]))_button[data-size^=icon]]:w-auto",
+    "[&:not(:has([data-align=block-start],[data-align=block-end]))_[data-slot=badge]:not([data-size=dot])]:h-[calc(100%-0.5rem)] [&:not(:has([data-align=block-start],[data-align=block-end]))_[data-slot=badge]:not([data-size=dot])]:px-3",
     "data-[shape=rounded]:[&_button]:[--r-full:0.5rem] data-[shape=square]:[&_button]:[--r-full:0.375rem]",
     "data-[shape=rounded]:[&_[data-slot=badge]]:rounded-lg data-[shape=square]:[&_[data-slot=badge]]:rounded-md",
   ],
@@ -46,9 +45,12 @@ export const inputVariants = cva(
         sm: "h-9 gap-2 px-3 text-sm has-[>[data-slot=badge]:first-child]:ps-1 has-[>button:first-child]:ps-1 has-[>[data-slot=badge]:last-child]:pe-1 has-[>button:last-child]:pe-1 [&_svg:not([class*='size-'])]:size-4",
       },
       variant: {
-        filled: "",
-        outline: "dark:bg-background",
-        outlined: "dark:bg-background",
+        filled:
+          "bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_6%)]",
+        outline:
+          "bg-background shadow-[inset_0_0_0_0.0625rem_var(--color-input)]",
+        outlined:
+          "bg-background shadow-[inset_0_0_0_0.0625rem_var(--color-input)]",
       },
     },
   },
@@ -60,6 +62,7 @@ export type InputProps = Omit<
 > &
   VariantProps<typeof inputVariants> & {
     size?: VariantProps<typeof inputVariants>["size"] | number;
+    startAddon?: React.ReactNode;
     unstyled?: boolean;
     nativeInput?: boolean;
     children?: React.ReactNode;
@@ -70,6 +73,7 @@ export function Input({
   variant = "filled",
   shape = "pill",
   size = "default",
+  startAddon,
   unstyled = false,
   nativeInput = false,
   style,
@@ -101,6 +105,15 @@ export function Input({
       data-slot="input-control"
       data-variant={variant}
     >
+      {startAddon && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none flex shrink-0 items-center justify-center"
+          data-slot="input-start-addon"
+        >
+          {startAddon}
+        </span>
+      )}
       {nativeInput ? (
         <input
           className={inputClassName}

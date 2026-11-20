@@ -1,11 +1,11 @@
 ---
 title: Input
-description: A styled text input field built on Base UI's Input primitive, supporting multiple variants, sizes, and shapes, with support for decorative children like icons and buttons.
+description: A surface-first text input built on Base UI's Input primitive, with filled and outlined variants, shapes, sizes, leading addons, and inline button/badge support.
 links:
-  doc: https://base-ui.com/react/components/input
+  doc: https://base-ui.com/react/components/input#api-reference
 ---
 
-<ComponentPreview name="input" />
+<ComponentPreview name="p-input-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react class-variance-authority
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="input" />
+<ComponentSource name="input" title="components/ui/input.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -56,48 +56,62 @@ import { Input } from "@/components/ui/input"
 <Input placeholder="Enter your email" type="email" />
 ```
 
-With a leading icon and a trailing action button:
+## Examples
 
-```tsx
-import { SearchIcon } from "lucide-react"
-import { Input } from "@/components/ui/input"
+### Outline
 
-<Input placeholder="Search…" type="search">
-  <SearchIcon />
-</Input>
-```
+<ComponentPreview name="p-input-2" />
 
-## API
+### Rounded
 
-### `Input`
+<ComponentPreview name="p-input-3" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"filled" \| "outline" \| "outlined"` | `"filled"` | Visual style of the input container. |
-| `shape` | `"pill" \| "round" \| "rounded" \| "square"` | `"pill"` | Border-radius shape of the input container. |
-| `size` | `"sm" \| "default" \| "md" \| "lg" \| number` | `"default"` | Height and padding preset. Pass a number to set the HTML `size` attribute instead. |
-| `unstyled` | `boolean` | `false` | When `true`, suppresses all variant class names so you can apply your own styles. |
-| `nativeInput` | `boolean` | `false` | When `true`, renders a plain `<input>` element instead of the Base UI `Input` primitive. |
-| `children` | `React.ReactNode` | — | Decorative content (icons, buttons, badges) rendered inside the input container. |
-| `className` | `string` | — | Extra class names applied to the outer `<span>` wrapper. |
-| `style` | `React.CSSProperties` | — | Inline styles forwarded to the inner input element. |
+### Small
 
-All other props (e.g. `type`, `placeholder`, `value`, `onChange`, `disabled`, `aria-invalid`, `ref`, …) are forwarded to the underlying Base UI `Input` or native `<input>` element.
+<ComponentPreview name="p-input-4" />
 
----
+### Large
 
-### `inputVariants`
+<ComponentPreview name="p-input-5" />
 
-A `cva` helper exported for composing the input styles in custom components.
+### With Leading Icon
 
-| Variant | Options | Default |
-|---------|---------|---------|
-| `variant` | `"filled"`, `"outline"`, `"outlined"` | `"filled"` |
-| `shape` | `"pill"`, `"round"`, `"rounded"`, `"square"` | `"pill"` |
-| `size` | `"sm"`, `"default"`, `"md"`, `"lg"` | `"default"` |
+<ComponentPreview name="p-input-6" />
 
----
+### Password Toggle
 
-### `InputPrimitive`
+<ComponentPreview name="p-input-7" />
 
-Re-exported Base UI `Input` primitive for advanced use cases where you need direct access to the unstyled primitive. See the [Base UI Input docs](https://base-ui.com/react/components/input) for its full API.
+### Invalid
+
+<ComponentPreview name="p-input-8" />
+
+### Disabled
+
+<ComponentPreview name="p-input-9" />
+
+### File
+
+<ComponentPreview name="p-input-10" />
+
+## API Reference
+
+### Input
+
+Wraps Base UI `Input` inside a styled container that automatically sizes trailing buttons, badges, and leading addons.
+
+| Prop          | Type                                          | Default     | Description                                                                   |
+| ------------- | --------------------------------------------- | ----------- | ----------------------------------------------------------------------------- |
+| `variant`     | `"filled" \| "outline" \| "outlined"`         | `"filled"`  | `"filled"` uses a solid tonal surface; `"outline"` adds an inset border       |
+| `shape`       | `"pill" \| "round" \| "rounded" \| "square"`  | `"pill"`    | Border-radius shape of the container and nested buttons/badges                |
+| `size`        | `"sm" \| "default" \| "md" \| "lg" \| number` | `"default"` | Height and padding preset; pass a number to forward the HTML `size` attribute |
+| `startAddon`  | `React.ReactNode`                             | -           | Leading element (such as an icon) rendered before the input                   |
+| `children`    | `React.ReactNode`                             | -           | Trailing elements (buttons, badges, icons) rendered inside the container      |
+| `unstyled`    | `boolean`                                     | `false`     | Suppresses default variant styling on the outer wrapper                       |
+| `nativeInput` | `boolean`                                     | `false`     | Renders a plain `<input>` instead of Base UI's `Input` primitive              |
+| `className`   | `string`                                      | -           | Additional CSS classes applied to the outer container                         |
+| `...props`    | Base UI Input props                           | -           | All standard input attributes (`type`, `disabled`, `aria-invalid`, etc.)      |
+
+### inputVariants
+
+A `cva` helper exported for composing consistent input surfaces in other components (such as `AutocompleteInput`).
