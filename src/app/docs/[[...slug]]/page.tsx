@@ -57,6 +57,7 @@ export default async function Page(props: {
           className="flex flex-1 flex-col bg-background px-4 py-6 motion-reduce:transition-none! sm:px-8 lg:rounded-4xl lg:border lg:border-border/60 lg:p-8 lg:data-[docked=true]:rounded-t-none lg:data-[docked=true]:border-t-transparent xl:p-10 lg:[transition:border-radius_150ms_cubic-bezier(0.16,1,0.3,1),border-top-color_100ms_ease-out]"
           data-docked="false"
           data-slot="docs-surface"
+          suppressHydrationWarning
         >
           <div className="mx-auto w-full max-w-3xl flex-1">
             <div className="flex min-w-0 flex-col gap-10">
