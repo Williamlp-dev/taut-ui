@@ -175,16 +175,16 @@ export function DrawerPopup({
       <DrawerViewport position={position} variant={variant}>
         <DrawerPrimitive.Popup
           className={cn(
-            "relative flex max-h-full min-h-0 w-full min-w-0 flex-col bg-popover not-dark:bg-clip-padding text-popover-foreground shadow-lg/5 outline-none transition-[transform,box-shadow,height,background-color] duration-450 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform [--peek:calc(--spacing(6)-0.0625rem)] [--scale-base:calc(max(0,1-(var(--nested-drawers)*var(--stack-step))))] [--scale:clamp(0,calc(var(--scale-base)+(var(--stack-step)*var(--stack-progress))),1)] [--shrink:calc(1-var(--scale))] [--stack-peek-offset:max(0rem,calc((var(--nested-drawers)-var(--stack-progress))*var(--peek)))] [--stack-progress:clamp(0,var(--drawer-swipe-progress),1)] [--stack-step:0.05] before:pointer-events-none before:absolute before:inset-0 before:shadow-[0_0.0625rem_--theme(--color-black/4%)] after:pointer-events-none after:absolute after:bg-popover data-swiping:select-none data-nested-drawer-open:overflow-hidden data-nested-drawer-open:bg-[color-mix(in_srgb,var(--popover),var(--color-black)_calc(2%*(var(--nested-drawers)-var(--stack-progress))))] data-ending-style:shadow-transparent data-starting-style:shadow-transparent data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] dark:data-nested-drawer-open:bg-[color-mix(in_srgb,var(--popover),var(--color-black)_calc(6%*(var(--nested-drawers)-var(--stack-progress))))] dark:before:shadow-[0_-0.0625rem_--theme(--color-white/6%)]",
+            "relative flex max-h-full min-h-0 w-full min-w-0 flex-col bg-popover text-popover-foreground shadow-[0_12px_36px_rgb(0_0_0/0.24),0_2px_8px_rgb(0_0_0/0.12)] outline-none transition-[transform,box-shadow,height] duration-450 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform [--peek:calc(--spacing(6)-0.0625rem)] [--scale-base:calc(max(0,1-(var(--nested-drawers)*var(--stack-step))))] [--scale:clamp(0,calc(var(--scale-base)+(var(--stack-step)*var(--stack-progress))),1)] [--shrink:calc(1-var(--scale))] [--stack-peek-offset:max(0rem,calc((var(--nested-drawers)-var(--stack-progress))*var(--peek)))] [--stack-progress:clamp(0,var(--drawer-swipe-progress),1)] [--stack-step:0.05] after:pointer-events-none after:absolute after:bg-popover data-swiping:select-none data-nested-drawer-open:overflow-hidden data-nested-drawer-open:bg-[color-mix(in_srgb,var(--popover),var(--color-black)_calc(2%*(var(--nested-drawers)-var(--stack-progress))))] data-ending-style:shadow-transparent data-starting-style:shadow-transparent data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] dark:data-nested-drawer-open:bg-[color-mix(in_srgb,var(--popover),var(--color-black)_calc(6%*(var(--nested-drawers)-var(--stack-progress))))]",
             "touch-none",
             position === "bottom" &&
-              "transform-[translateY(calc(var(--drawer-snap-point-offset)+var(--drawer-swipe-movement-y)))] data-ending-style:transform-[translateY(calc(100%+env(safe-area-inset-bottom,0rem)+var(--inset)))] data-starting-style:transform-[translateY(calc(100%+env(safe-area-inset-bottom,0rem)+var(--inset)))] row-start-2 -mb-[max(0rem,calc(var(--drawer-snap-point-offset,0rem)+clamp(0,1,var(--drawer-snap-point-offset,0rem)/0.0625rem)*var(--drawer-swipe-movement-y,0rem)))] border-t pb-[max(0rem,calc(env(safe-area-inset-bottom,0rem)+var(--drawer-snap-point-offset,0rem)+clamp(0,1,var(--drawer-snap-point-offset,0rem)/0.0625rem)*var(--drawer-swipe-movement-y,0rem)))] not-data-starting-style:not-data-ending-style:transition-[transform,box-shadow,height,background-color,margin,padding] after:inset-x-0 after:top-full after:h-(--bleed) has-data-[slot=drawer-bar]:pt-2 data-ending-style:mb-0 data-starting-style:mb-0 data-ending-style:pb-0 data-starting-style:pb-0",
+              "transform-[translateY(calc(var(--drawer-snap-point-offset)+var(--drawer-swipe-movement-y)))] data-ending-style:transform-[translateY(calc(100%+env(safe-area-inset-bottom,0rem)+var(--inset)))] data-starting-style:transform-[translateY(calc(100%+env(safe-area-inset-bottom,0rem)+var(--inset)))] row-start-2 -mb-[max(0rem,calc(var(--drawer-snap-point-offset,0rem)+clamp(0,1,var(--drawer-snap-point-offset,0rem)/0.0625rem)*var(--drawer-swipe-movement-y,0rem)))] pb-[max(0rem,calc(env(safe-area-inset-bottom,0rem)+var(--drawer-snap-point-offset,0rem)+clamp(0,1,var(--drawer-snap-point-offset,0rem)/0.0625rem)*var(--drawer-swipe-movement-y,0rem)))] not-data-starting-style:not-data-ending-style:transition-[transform,box-shadow,height,margin,padding] after:inset-x-0 after:top-full after:h-(--bleed) has-data-[slot=drawer-bar]:pt-2 data-ending-style:mb-0 data-starting-style:mb-0 data-ending-style:pb-0 data-starting-style:pb-0",
             position === "top" &&
-              "data-starting-style:transform-[translateY(calc(-100%-var(--inset)))] data-ending-style:transform-[translateY(calc(-100%-var(--inset)))] transform-[translateY(var(--drawer-swipe-movement-y))] border-b after:inset-x-0 after:bottom-full after:h-(--bleed) has-data-[slot=drawer-bar]:pb-2",
+              "data-starting-style:transform-[translateY(calc(-100%-var(--inset)))] data-ending-style:transform-[translateY(calc(-100%-var(--inset)))] transform-[translateY(var(--drawer-swipe-movement-y))] after:inset-x-0 after:bottom-full after:h-(--bleed) has-data-[slot=drawer-bar]:pb-2",
             position === "left" &&
-              "data-starting-style:transform-[translateX(calc(-100%-var(--inset)))] data-ending-style:transform-[translateX(calc(-100%-var(--inset)))] transform-[translateX(var(--drawer-swipe-movement-x))] w-[calc(100%-(--spacing(12)))] max-w-md border-e after:inset-y-0 after:end-full after:w-(--bleed) has-data-[slot=drawer-bar]:pe-2",
+              "data-starting-style:transform-[translateX(calc(-100%-var(--inset)))] data-ending-style:transform-[translateX(calc(-100%-var(--inset)))] transform-[translateX(var(--drawer-swipe-movement-x))] w-[calc(100%-(--spacing(12)))] max-w-md after:inset-y-0 after:end-full after:w-(--bleed) has-data-[slot=drawer-bar]:pe-2",
             position === "right" &&
-              "transform-[translateX(var(--drawer-swipe-movement-x))] data-ending-style:transform-[translateX(calc(100%+var(--inset)))] data-starting-style:transform-[translateX(calc(100%+var(--inset)))] col-start-2 w-[calc(100%-(--spacing(12)))] max-w-md border-s after:inset-y-0 after:start-full after:w-(--bleed) has-data-[slot=drawer-bar]:ps-2",
+              "transform-[translateX(var(--drawer-swipe-movement-x))] data-ending-style:transform-[translateX(calc(100%+var(--inset)))] data-starting-style:transform-[translateX(calc(100%+var(--inset)))] col-start-2 w-[calc(100%-(--spacing(12)))] max-w-md after:inset-y-0 after:start-full after:w-(--bleed) has-data-[slot=drawer-bar]:ps-2",
             variant !== "straight" &&
               cn(
                 position === "bottom" && "rounded-t-3xl",
@@ -195,18 +195,11 @@ export function DrawerPopup({
                 position === "right" &&
                   "rounded-s-3xl **:data-[slot=drawer-footer]:rounded-es-3xl",
               ),
-            variant === "default" &&
-              cn(
-                position === "bottom" && "before:rounded-t-3xl",
-                position === "top" && "before:rounded-b-3xl",
-                position === "left" && "before:rounded-e-3xl",
-                position === "right" && "before:rounded-s-3xl",
-              ),
             variant === "inset" &&
-              "before:hidden sm:rounded-3xl sm:border sm:after:bg-transparent sm:before:rounded-3xl sm:**:data-[slot=drawer-footer]:rounded-b-3xl",
+              "sm:rounded-3xl sm:after:bg-transparent sm:**:data-[slot=drawer-footer]:rounded-b-3xl",
             variant === "straight" && "[--stack-step:0]",
             (position === "bottom" || position === "top") &&
-              "h-(--drawer-height,auto) [--height:max(0rem,calc(var(--drawer-frontmost-height,var(--drawer-height))))] data-nested-drawer-open:h-(--height)",
+              "h-(--drawer-height,auto) max-h-[calc(100dvh-3rem)] [--height:max(0rem,calc(var(--drawer-frontmost-height,var(--drawer-height))))] data-nested-drawer-open:h-(--height)",
             position === "bottom" &&
               "data-nested-drawer-open:transform-[translateY(calc(var(--drawer-swipe-movement-y)-var(--stack-peek-offset)-(var(--shrink)*var(--height))))_scale(var(--scale))] origin-[50%_calc(100%-var(--inset))]",
             position === "top" &&
@@ -249,7 +242,7 @@ export function DrawerHeader({
 }): React.ReactElement {
   const defaultProps = {
     className: cn(
-      "flex flex-col gap-1.5 px-6 pt-6 in-[[data-slot=drawer-popup]:not(:has([data-slot=drawer-panel],[data-slot=drawer-footer]))]:pb-6 pb-4",
+      "flex shrink-0 flex-col gap-1.5 px-6 pt-6 in-[[data-slot=drawer-popup]:not(:has([data-slot=drawer-panel],[data-slot=drawer-footer]))]:pb-6 pb-4",
       !allowSelection && "cursor-default",
       className,
     ),
@@ -275,15 +268,16 @@ export function DrawerFooter({
 }): React.ReactElement {
   const defaultProps = {
     className: cn(
-      "mt-auto flex flex-col-reverse gap-2 px-6 pb-(--safe-area-inset-bottom,0rem) sm:flex-row sm:justify-end",
+      "mt-auto flex shrink-0 flex-col-reverse gap-2 px-6 pb-(--safe-area-inset-bottom,0rem) sm:flex-row sm:justify-end",
       !allowSelection && "cursor-default",
       variant === "default" &&
-        "border-t bg-muted/72 pt-4 pb-[calc(env(safe-area-inset-bottom,0rem)+--spacing(4))]",
+        "bg-[color-mix(in_oklab,var(--color-popover),var(--color-foreground)_4%)] pt-4 pb-[calc(env(safe-area-inset-bottom,0rem)+--spacing(4))] dark:bg-card",
       variant === "bare" &&
         "in-[[data-slot=drawer-popup]:has([data-slot=drawer-panel])]:pt-2 pt-4 pb-[calc(env(safe-area-inset-bottom,0rem)+--spacing(6))]",
       className,
     ),
     "data-slot": "drawer-footer",
+    "data-variant": variant,
   };
 
   return useRender({
@@ -336,7 +330,7 @@ export function DrawerPanel({
 }): React.ReactElement {
   const defaultProps = {
     className: cn(
-      "p-6 in-[[data-slot=drawer-popup]:has([data-slot=drawer-header])]:pt-2 in-[[data-slot=drawer-popup]:has([data-slot=drawer-footer]:not(.border-t))]:pb-2",
+      "p-6 in-[[data-slot=drawer-popup]:has([data-slot=drawer-header])]:pt-2 in-[[data-slot=drawer-popup]:has([data-slot=drawer-footer][data-variant=bare])]:pb-2",
       !allowSelection && "cursor-default",
       className,
     ),
@@ -352,7 +346,7 @@ export function DrawerPanel({
   if (scrollable) {
     return (
       <ScrollArea
-        className="touch-auto"
+        className="h-auto min-h-0 flex-1 touch-auto"
         overscrollContain
         scrollFade={scrollFade}
       >
@@ -378,7 +372,7 @@ export function DrawerBar({
   const defaultProps = {
     "aria-hidden": true as const,
     className: cn(
-      "absolute flex touch-none items-center justify-center p-3 before:rounded-full before:bg-muted-foreground/30",
+      "absolute flex touch-none items-center justify-center p-3 before:rounded-full before:bg-[color-mix(in_oklab,var(--color-popover),var(--color-muted-foreground)_35%)]",
       horizontal
         ? "inset-y-0 before:h-12 before:w-1"
         : "inset-x-0 before:h-1.5 before:w-12",
@@ -420,6 +414,7 @@ export function DrawerMenu({
 
 export function DrawerMenuItem({
   className,
+  children,
   variant = "default",
   render,
   disabled,
@@ -428,8 +423,14 @@ export function DrawerMenuItem({
   variant?: "default" | "destructive";
 }): React.ReactElement {
   const defaultProps = {
+    children: (
+      <>
+        {children}
+        <Ripple disabled={disabled} hoverOpacity={0} />
+      </>
+    ),
     className: cn(
-      "relative flex min-h-9 pointer-coarse:min-h-10 w-full cursor-default select-none items-center gap-2.5 overflow-hidden rounded-lg px-3 py-1.5 font-medium text-foreground text-sm leading-5 outline-none transition-[border-radius,background-color,color] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl hover:bg-accent hover:text-accent-foreground active:rounded-xl disabled:pointer-events-none disabled:opacity-38 data-[variant=destructive]:text-destructive data-[variant=destructive]:hover:bg-destructive/12 motion-reduce:transition-none [&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
+      "relative flex min-h-9 pointer-coarse:min-h-10 w-full cursor-default select-none items-center gap-2.5 overflow-hidden rounded-lg px-3 py-1.5 font-medium text-foreground text-sm leading-5 outline-none transition-[border-radius] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl hover:bg-accent hover:text-accent-foreground active:rounded-xl disabled:pointer-events-none disabled:opacity-38 data-[variant=destructive]:text-destructive data-[variant=destructive]:hover:bg-destructive-container data-[variant=destructive]:hover:text-destructive-container-foreground motion-reduce:transition-none [&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
       className,
     ),
     "data-slot": "drawer-menu-item",
@@ -507,7 +508,7 @@ export function DrawerMenuTrigger({
   return (
     <DrawerTrigger
       className={cn(
-        "relative flex min-h-9 pointer-coarse:min-h-10 w-full cursor-default select-none items-center gap-2.5 overflow-hidden rounded-lg px-3 py-1.5 font-medium text-foreground text-sm leading-5 outline-none transition-[border-radius,background-color,color] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl hover:bg-accent hover:text-accent-foreground active:rounded-xl data-popup-open:rounded-xl motion-reduce:transition-none [&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
+        "relative flex min-h-9 pointer-coarse:min-h-10 w-full cursor-default select-none items-center gap-2.5 overflow-hidden rounded-lg px-3 py-1.5 font-medium text-foreground text-sm leading-5 outline-none transition-[border-radius] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl hover:bg-accent hover:text-accent-foreground active:rounded-xl data-popup-open:rounded-xl motion-reduce:transition-none [&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
         className,
       )}
       data-slot="drawer-menu-trigger"
@@ -538,7 +539,7 @@ export function DrawerMenuCheckboxItem({
     <CheckboxPrimitive.Root
       checked={checked}
       className={cn(
-        "relative grid min-h-9 pointer-coarse:min-h-10 w-full cursor-default select-none items-center gap-2.5 overflow-hidden rounded-lg px-3 py-1.5 font-medium text-foreground text-sm leading-5 outline-none transition-[border-radius,background-color,color] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl hover:bg-accent hover:text-accent-foreground active:rounded-xl data-disabled:pointer-events-none data-checked:rounded-xl data-disabled:opacity-38 motion-reduce:transition-none [&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
+        "relative grid min-h-9 pointer-coarse:min-h-10 w-full cursor-default select-none items-center gap-2.5 overflow-hidden rounded-lg px-3 py-1.5 font-medium text-foreground text-sm leading-5 outline-none transition-[border-radius] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl hover:bg-accent hover:text-accent-foreground active:rounded-xl data-disabled:pointer-events-none data-checked:rounded-xl data-disabled:opacity-38 motion-reduce:transition-none [&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
         variant === "switch"
           ? "grid-cols-[minmax(0,1fr)_auto] pe-2"
           : "grid-cols-[1rem_minmax(0,1fr)] pe-3",
@@ -555,7 +556,7 @@ export function DrawerMenuCheckboxItem({
         <>
           <span className="wrap-anywhere col-start-1 min-w-0">{children}</span>
           <CheckboxPrimitive.Indicator
-            className="inset-shadow-[0_0.0625rem_--theme(--color-black/4%)] col-start-2 inline-flex h-5 w-9 shrink-0 items-center rounded-full p-0.5 outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-ring data-checked:bg-primary data-unchecked:bg-input"
+            className="inset-shadow-[0_0.0625rem_--theme(--color-black/4%)] col-start-2 inline-flex h-5 w-9 shrink-0 items-center rounded-full p-0.5 outline-none focus-visible:ring-2 focus-visible:ring-ring data-checked:bg-primary data-unchecked:bg-input"
             keepMounted
           >
             <span className="pointer-events-none block size-4 in-[[data-slot=drawer-menu-checkbox-item][data-checked]]:translate-x-4 rounded-full bg-background shadow-xs transition-transform duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)]" />
@@ -613,7 +614,7 @@ export function DrawerMenuRadioItem({
   return (
     <RadioPrimitive.Root
       className={cn(
-        "relative grid min-h-9 pointer-coarse:min-h-10 w-full cursor-default select-none grid-cols-[1rem_minmax(0,1fr)] items-center gap-2.5 overflow-hidden rounded-lg py-1.5 ps-3 pe-3 font-medium text-foreground text-sm leading-5 outline-none transition-[border-radius,background-color,color] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl hover:bg-accent hover:text-accent-foreground active:rounded-xl data-disabled:pointer-events-none data-checked:rounded-xl data-disabled:opacity-38 motion-reduce:transition-none [&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
+        "relative grid min-h-9 pointer-coarse:min-h-10 w-full cursor-default select-none grid-cols-[1rem_minmax(0,1fr)] items-center gap-2.5 overflow-hidden rounded-lg py-1.5 ps-3 pe-3 font-medium text-foreground text-sm leading-5 outline-none transition-[border-radius] duration-350 ease-[linear(0,0.42_6%,0.86_14%,1.06_24%,1.07_32%,1.02_46%,0.995_60%,1)] hover:rounded-xl hover:bg-accent hover:text-accent-foreground active:rounded-xl data-disabled:pointer-events-none data-checked:rounded-xl data-disabled:opacity-38 motion-reduce:transition-none [&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
         className,
       )}
       data-slot="drawer-menu-radio-item"

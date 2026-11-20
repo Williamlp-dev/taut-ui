@@ -1,11 +1,11 @@
 ---
 title: Drawer
-description: A panel that slides in from any edge of the screen, with swipe-to-close support, snap points, nested drawers, and rich menu primitives.
+description: A surface panel that slides in from any screen edge, with swipe gestures, snap points, nested stacking, and menu primitives.
 links:
-  doc: https://base-ui.com/react/components/drawer
+  doc: https://base-ui.com/react/components/drawer#api-reference
 ---
 
-<ComponentPreview name="drawer" />
+<ComponentPreview name="p-drawer-1" />
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm install @base-ui/react lucide-react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="drawer" />
+<ComponentSource name="drawer" title="components/ui/drawer.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -49,23 +49,24 @@ npm install @base-ui/react lucide-react
 ## Usage
 
 ```tsx
+import { Button } from "@/components/ui/button"
 import {
   Drawer,
-  DrawerPopup,
-  DrawerTrigger,
   DrawerClose,
-  DrawerHeader,
-  DrawerTitle,
   DrawerDescription,
-  DrawerPanel,
   DrawerFooter,
+  DrawerHeader,
+  DrawerPanel,
+  DrawerPopup,
+  DrawerTitle,
+  DrawerTrigger,
 } from "@/components/ui/drawer"
 ```
 
 ```tsx
 <Drawer>
-  <DrawerTrigger>Open</DrawerTrigger>
-  <DrawerPopup showBar showCloseButton>
+  <DrawerTrigger render={<Button variant="outline">Open Drawer</Button>} />
+  <DrawerPopup showBar>
     <DrawerHeader>
       <DrawerTitle>Title</DrawerTitle>
       <DrawerDescription>Description goes here.</DrawerDescription>
@@ -74,295 +75,100 @@ import {
       <p>Main content goes here.</p>
     </DrawerPanel>
     <DrawerFooter>
-      <DrawerClose>Close</DrawerClose>
+      <DrawerClose render={<Button variant="ghost" />}>Close</DrawerClose>
     </DrawerFooter>
   </DrawerPopup>
 </Drawer>
 ```
 
-## API
+## Examples
 
-### `Drawer`
+### Right Position
 
-Root component. Wraps Base UI's `Drawer.Root` and provides position context to all children.
+<ComponentPreview name="p-drawer-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `position` | `"bottom" \| "left" \| "right" \| "top"` | `"bottom"` | The edge from which the drawer slides in. Also sets the default swipe direction. |
-| `swipeDirection` | `"down" \| "left" \| "right" \| "up"` | — | Overrides the swipe direction derived from `position`. |
-| `className` | `string` | — | Passed through context and applied to the popup element. |
-| ...rest | `DrawerPrimitive.Root.Props` | — | All Base UI `Drawer.Root` props (e.g. `open`, `defaultOpen`, `onOpenChange`, `modal`, `dismissible`). |
+### Inset
 
----
+<ComponentPreview name="p-drawer-3" />
 
-### `DrawerTrigger`
+### With Menu
 
-Button that opens the drawer. Renders a Base UI `Drawer.Trigger`.
+<ComponentPreview name="p-drawer-4" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| ...props | `DrawerPrimitive.Trigger.Props` | — | All Base UI `Drawer.Trigger` props. |
+### Nested
 
----
+<ComponentPreview name="p-drawer-5" />
 
-### `DrawerClose`
+### Scrollable
 
-Button that closes the drawer. Renders a Base UI `Drawer.Close`.
+<ComponentPreview name="p-drawer-6" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| ...props | `DrawerPrimitive.Close.Props` | — | All Base UI `Drawer.Close` props. |
+## API Reference
 
----
+### Drawer
 
-### `DrawerPortal`
+Root component wrapping Base UI `Drawer.Root` and providing edge position context to its children.
 
-Re-export of `DrawerPrimitive.Portal`. Teleports the drawer content to the document body.
+| Prop             | Type                                       | Default    | Description                                                    |
+| ---------------- | ------------------------------------------ | ---------- | -------------------------------------------------------------- |
+| `position`       | `"bottom" \| "top" \| "left" \| "right"`   | `"bottom"` | Edge from which the drawer slides in                           |
+| `swipeDirection` | `"down" \| "up" \| "left" \| "right"`      | -          | Overrides the swipe direction inferred from `position`         |
+| `open`           | `boolean`                                  | -          | Controlled open state                                          |
+| `defaultOpen`    | `boolean`                                  | `false`    | Initial uncontrolled open state                                |
+| `onOpenChange`   | `(open: boolean) => void`                  | -          | Called when the open state changes                             |
+| `...props`       | Base UI Drawer Root props                  | -          | All other Drawer Root props are supported                      |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| ...props | `DrawerPrimitive.Portal.Props` | — | All Base UI `Drawer.Portal` props. |
+### DrawerPopup
 
----
+The sliding surface rendered inside `DrawerPortal`, `DrawerBackdrop`, and `DrawerViewport`.
 
-### `DrawerPopup`
+| Prop              | Type                                     | Default     | Description                                                   |
+| ----------------- | ---------------------------------------- | ----------- | ------------------------------------------------------------- |
+| `position`        | `"bottom" \| "top" \| "left" \| "right"` | -           | Overrides the `position` inherited from `Drawer`              |
+| `variant`         | `"default" \| "straight" \| "inset"`     | `"default"` | Surface geometry (`inset` floats with rounded corners on `sm+`) |
+| `showBar`         | `boolean`                                | `false`     | Renders the drag handle bar along the leading edge            |
+| `showCloseButton` | `boolean`                                | `false`     | Renders a top-end close icon button                           |
+| `closeProps`      | `Drawer.Close.Props`                     | -           | Props forwarded to the built-in close button                  |
+| `portalProps`     | `Drawer.Portal.Props`                    | -           | Props forwarded to the internal portal                        |
+| `...props`        | Base UI Drawer Popup props               | -           | All standard drawer popup props                               |
 
-The main drawer surface. Internally renders `DrawerPortal`, `DrawerBackdrop`, `DrawerViewport`, and `DrawerPrimitive.Popup` together as a single convenience component.
+### DrawerHeader
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `position` | `"bottom" \| "left" \| "right" \| "top"` | context value | Overrides the position from the `Drawer` context. |
-| `variant` | `"default" \| "straight" \| "inset"` | `"default"` | Visual style: `"default"` has rounded corners, `"straight"` has square corners and disables the stacking scale effect, `"inset"` floats the popup away from the edge on larger screens. |
-| `showCloseButton` | `boolean` | `false` | Renders an `×` icon button in the top-right corner. |
-| `showBar` | `boolean` | `false` | Renders a drag-handle bar (`DrawerBar`) inside the popup. |
-| `closeProps` | `DrawerPrimitive.Close.Props` | — | Extra props forwarded to the built-in close button. |
-| `portalProps` | `DrawerPrimitive.Portal.Props` | — | Extra props forwarded to the internal `DrawerPortal`. |
-| ...rest | `DrawerPrimitive.Popup.Props` | — | All Base UI `Drawer.Popup` props. |
+Header region for `DrawerTitle` and `DrawerDescription`.
 
----
+| Prop             | Type      | Default | Description                                        |
+| ---------------- | --------- | ------- | -------------------------------------------------- |
+| `allowSelection` | `boolean` | `false` | Allows text selection inside the header drag zone  |
 
-### `DrawerViewport`
+### DrawerPanel
 
-Invisible full-screen container that positions the popup. Use directly only when composing manually without `DrawerPopup`.
+Main body container, wrapped in a `ScrollArea` by default.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `position` | `"bottom" \| "left" \| "right" \| "top"` | context value | Determines layout direction. |
-| `variant` | `"default" \| "straight" \| "inset"` | `"default"` | Adds inset padding when set to `"inset"`. |
-| ...rest | `DrawerPrimitive.Viewport.Props` | — | All Base UI `Drawer.Viewport` props. |
+| Prop             | Type      | Default | Description                                       |
+| ---------------- | --------- | ------- | ------------------------------------------------- |
+| `scrollable`     | `boolean` | `true`  | Wraps the content in a `ScrollArea`               |
+| `scrollFade`     | `boolean` | `false` | Adds edge fade masks while scrolling              |
+| `allowSelection` | `boolean` | `true`  | Allows text selection inside the panel            |
 
----
+### DrawerFooter
 
-### `DrawerBackdrop`
+Action row anchored to the bottom of the drawer.
 
-Semi-transparent overlay behind the popup. Fades in/out and responds to swipe progress.
+| Prop             | Type                  | Default     | Description                                               |
+| ---------------- | --------------------- | ----------- | --------------------------------------------------------- |
+| `variant`        | `"default" \| "bare"` | `"default"` | `"default"` uses a contrasting footer surface; `"bare"` blends into the popup |
+| `allowSelection` | `boolean`             | `true`      | Allows text selection inside the footer                   |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional class names. |
-| ...rest | `DrawerPrimitive.Backdrop.Props` | — | All Base UI `Drawer.Backdrop` props. |
+### DrawerTrigger / DrawerClose / DrawerTitle / DrawerDescription / DrawerBar / DrawerSwipeArea
 
----
+Standard triggers, headings, drag handle bar, and edge swipe-area primitives.
 
-### `DrawerSwipeArea`
+### DrawerMenu Primitives
 
-Invisible hit area along an edge that initiates swipe-to-open from outside the popup.
+Composable touch-friendly menu items built for mobile and side drawers, all featuring spring corner morphing and ripple feedback:
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `position` | `"bottom" \| "left" \| "right" \| "top"` | context value | Edge where the swipe area is placed. |
-| ...rest | `DrawerPrimitive.SwipeArea.Props` | — | All Base UI `Drawer.SwipeArea` props. |
-
----
-
-### `DrawerBar`
-
-Visual drag-handle indicator (the "pill" bar). Rendered automatically by `DrawerPopup` when `showBar` is `true`, or placed manually inside a custom popup.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `position` | `"bottom" \| "left" \| "right" \| "top"` | context value | Determines bar orientation (horizontal for top/bottom, vertical for left/right) and which edge it anchors to. |
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<div>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerHeader`
-
-Top section for the title and description. Adds appropriate padding.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `allowSelection` | `boolean` | `false` | Enables text selection inside the header. When `true`, renders with `DrawerContent` as the inner element to allow selection on iOS. |
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<div>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerTitle`
-
-Accessible title rendered as a Base UI `Drawer.Title`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional class names. |
-| ...rest | `DrawerPrimitive.Title.Props` | — | All Base UI `Drawer.Title` props. |
-
----
-
-### `DrawerDescription`
-
-Accessible description rendered as a Base UI `Drawer.Description`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | — | Additional class names. |
-| ...rest | `DrawerPrimitive.Description.Props` | — | All Base UI `Drawer.Description` props. |
-
----
-
-### `DrawerPanel`
-
-Scrollable body area for arbitrary content. Wraps content in a `ScrollArea` by default.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `scrollable` | `boolean` | `true` | Wraps content in a `ScrollArea` when `true`. Set to `false` for non-scrolling layouts. |
-| `scrollFade` | `boolean` | `false` | Adds a fade gradient at the scroll edges (passed to `ScrollArea`). |
-| `allowSelection` | `boolean` | `true` | Enables text selection. When `true`, renders with `DrawerContent` as the inner element. |
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<div>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerFooter`
-
-Sticky bottom section for action buttons.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"default" \| "bare"` | `"default"` | `"default"` adds a top border and muted background; `"bare"` has no border or background. |
-| `allowSelection` | `boolean` | `true` | Enables text selection inside the footer. |
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<div>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerContent`
-
-Re-export of `DrawerPrimitive.Content`. Use as the `render` prop on header/panel/footer to enable text selection on touch devices.
-
----
-
-### `DrawerMenu`
-
-Navigation list container rendered as a `<nav>`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<nav>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerMenuItem`
-
-A single interactive row inside a `DrawerMenu`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"default" \| "destructive"` | `"default"` | `"destructive"` colors the item red to indicate a dangerous action. |
-| `disabled` | `boolean` | — | Disables pointer events and reduces opacity. |
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<button>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerMenuTrigger`
-
-A `DrawerMenuItem`-styled trigger that opens a nested drawer. Appends a `ChevronRight` icon automatically.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| ...props | `DrawerPrimitive.Trigger.Props` | — | All Base UI `Drawer.Trigger` props. |
-
----
-
-### `DrawerMenuSeparator`
-
-A thin horizontal divider between menu items or groups.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<div>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerMenuGroup`
-
-Groups related menu items with tighter vertical spacing.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<div>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerMenuGroupLabel`
-
-Small label displayed above a `DrawerMenuGroup`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `render` | `React.ReactElement` | — | Custom element to render instead of the default `<div>`. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerMenuCheckboxItem`
-
-A menu item with a built-in checkbox or toggle switch indicator.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"default" \| "switch"` | `"default"` | `"default"` shows a checkmark icon; `"switch"` shows a toggle switch on the trailing side. |
-| `checked` | `boolean` | — | Controlled checked state. |
-| `defaultChecked` | `boolean` | — | Uncontrolled initial checked state. |
-| `onCheckedChange` | `(checked: boolean) => void` | — | Called when the checked state changes. |
-| `disabled` | `boolean` | — | Disables the item. |
-| `render` | `React.ReactElement` | — | Custom root element. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerMenuRadioGroup`
-
-Wraps a set of `DrawerMenuRadioItem` components. Only one item can be selected at a time.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | — | Controlled selected value. |
-| `defaultValue` | `string` | — | Uncontrolled initial value. |
-| `onValueChange` | `(value: string) => void` | — | Called when the selection changes. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerMenuRadioItem`
-
-A single radio option inside a `DrawerMenuRadioGroup`.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | **required** | The value this item represents. |
-| `disabled` | `boolean` | — | Disables the item. |
-| `render` | `React.ReactElement` | — | Custom root element. |
-| `className` | `string` | — | Additional class names. |
-
----
-
-### `DrawerCreateHandle`
-
-Re-export of `DrawerPrimitive.createHandle`. Use to create an imperative handle for programmatic open/close control via a ref.
+- `DrawerMenu`, `DrawerMenuGroup`, `DrawerMenuGroupLabel`, `DrawerMenuSeparator`
+- `DrawerMenuItem` (`variant?: "default" | "destructive"`)
+- `DrawerMenuTrigger` (opens a nested `Drawer` with a trailing chevron)
+- `DrawerMenuCheckboxItem` (`variant?: "default" | "switch"`)
+- `DrawerMenuRadioGroup`, `DrawerMenuRadioItem`
