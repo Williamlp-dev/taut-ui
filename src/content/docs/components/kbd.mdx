@@ -1,9 +1,9 @@
 ---
 title: Kbd
-description: Displays keyboard keys and shortcuts with a styled key-cap appearance.
+description: Displays keyboard keys and shortcut combinations with a compact tonal key-cap style.
 ---
 
-<ComponentPreview name="kbd" />
+<ComponentPreview name="p-kbd-1" />
 
 ## Installation
 
@@ -28,7 +28,7 @@ npx shadcn@latest add @taut-ui/kbd
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="kbd" />
+<ComponentSource name="kbd" title="components/ui/kbd.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -45,36 +45,42 @@ import { Kbd, KbdGroup } from "@/components/ui/kbd"
 ```
 
 ```tsx
-{/* Single key */}
-<Kbd>⌘</Kbd>
-
-{/* Key combination */}
 <KbdGroup>
   <Kbd>⌘</Kbd>
   <Kbd>K</Kbd>
 </KbdGroup>
 ```
 
-## API
+## Examples
 
-### `Kbd`
+### Combination
 
-Renders a single keyboard key with a styled key-cap appearance. Accepts all standard HTML `<kbd>` element props.
+<ComponentPreview name="p-kbd-2" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes to merge with the default styles. |
-| `children` | `React.ReactNode` | `—` | The key label or symbol to display (e.g. `⌘`, `Ctrl`, `Enter`). |
-| `...props` | `React.ComponentProps<"kbd">` | `—` | All other native `<kbd>` HTML attributes are forwarded to the underlying element. |
+### In Button
 
----
+<ComponentPreview name="p-kbd-3" />
 
-### `KbdGroup`
+### In Input
 
-A wrapper that lays out multiple `Kbd` keys side by side with consistent spacing. Accepts all standard HTML `<kbd>` element props.
+<ComponentPreview name="p-kbd-4" />
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `—` | Additional CSS classes to merge with the default styles. |
-| `children` | `React.ReactNode` | `—` | One or more `Kbd` elements representing the keys in the shortcut. |
-| `...props` | `React.ComponentProps<"kbd">` | `—` | All other native `<kbd>` HTML attributes are forwarded to the underlying element. |
+## API Reference
+
+### Kbd
+
+Renders a single styled `<kbd>` element.
+
+| Prop        | Type                          | Description                               |
+| ----------- | ----------------------------- | ----------------------------------------- |
+| `className` | `string`                      | Additional CSS classes                    |
+| `...props`  | `React.ComponentProps<"kbd">` | All standard kbd attributes are supported |
+
+### KbdGroup
+
+Groups multiple `Kbd` keys inline with consistent spacing.
+
+| Prop        | Type                          | Description                               |
+| ----------- | ----------------------------- | ----------------------------------------- |
+| `className` | `string`                      | Additional CSS classes                    |
+| `...props`  | `React.ComponentProps<"kbd">` | All standard kbd attributes are supported |

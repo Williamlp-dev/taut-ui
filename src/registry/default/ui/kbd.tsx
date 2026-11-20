@@ -9,7 +9,7 @@ export function Kbd({
     <kbd
       className={cn(
         "pointer-events-none inline-flex h-5 min-w-5 select-none items-center justify-center gap-1 rounded-md px-1.5",
-        "bg-muted/70 text-foreground/80 shadow-[inset_0_0_0_0.0625rem_var(--color-border)]",
+        "bg-background text-muted-foreground shadow-[inset_0_0_0_0.0625rem_var(--color-border)]",
         "font-medium font-mono text-xs tabular-nums leading-4 tracking-tight",
         "[&_svg:not([class*='size-'])]:size-3 [&_svg]:shrink-0",
         className,
