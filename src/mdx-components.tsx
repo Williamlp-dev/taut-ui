@@ -1,4 +1,4 @@
-﻿import { InfoIcon } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +11,15 @@ import {
 } from "@/registry/default/ui/accordion";
 import { Button } from "@/registry/default/ui/button";
 import { ScrollArea } from "@/registry/default/ui/scroll-area";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/default/ui/table";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/registry/default/ui/tabs";
 import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
@@ -358,41 +367,42 @@ export const mdxComponents = {
     <TabsTab className={cn(className)} {...props} />
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <div className="my-6 overflow-hidden rounded-3xl border border-border/70 bg-card/50">
-      <ScrollArea scrollbarGutter>
-        <table
-          className={cn("relative w-full border-none text-sm", className)}
-          {...props}
-        />
-      </ScrollArea>
-    </div>
+    <Table
+      className={className}
+      render={<div className="my-6" />}
+      variant="default"
+      {...props}
+    />
+  ),
+  tbody: ({ className, ...props }: React.ComponentProps<"tbody">) => (
+    <TableBody className={className} {...props} />
   ),
   td: ({ className, ...props }: React.ComponentProps<"td">) => (
-    <td
+    <TableCell
       className={cn(
-        "whitespace-nowrap px-4 py-3 text-left text-muted-foreground [[align=center]]:text-center [[align=right]]:text-right",
+        "text-muted-foreground first:font-medium first:text-foreground last:min-w-48 last:whitespace-normal [[align=center]]:text-center [[align=right]]:text-right",
         className,
       )}
       {...props}
     />
+  ),
+  tfoot: ({ className, ...props }: React.ComponentProps<"tfoot">) => (
+    <TableFooter className={className} {...props} />
   ),
   th: ({ className, ...props }: React.ComponentProps<"th">) => (
-    <th
+    <TableHead
       className={cn(
-        "bg-secondary/50 px-4 py-3 text-left font-semibold text-foreground text-xs uppercase tracking-wider [[align=center]]:text-center [[align=right]]:text-right",
+        "[[align=center]]:text-center [[align=right]]:text-right",
         className,
       )}
       {...props}
     />
   ),
+  thead: ({ className, ...props }: React.ComponentProps<"thead">) => (
+    <TableHeader className={className} {...props} />
+  ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
-    <tr
-      className={cn(
-        "m-0 border-border/60 border-b transition-colors last:border-b-none hover:bg-secondary/20",
-        className,
-      )}
-      {...props}
-    />
+    <TableRow className={className} {...props} />
   ),
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
     <ul

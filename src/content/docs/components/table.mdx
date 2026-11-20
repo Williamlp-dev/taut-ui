@@ -1,0 +1,103 @@
+---
+title: Table
+description: Responsive data table with default and rounded card surface variants, solid row hover states, and footer summaries.
+---
+
+<ComponentPreview name="p-table-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/table
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="table" title="components/ui/table.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+```
+
+```tsx
+<Table variant="card">
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead className="text-right">Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Lucas Santos</TableCell>
+      <TableCell className="text-right">Maintainer</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+## Examples
+
+### Card Variant
+
+<ComponentPreview name="p-table-2" />
+
+### With Badges
+
+<ComponentPreview name="p-table-3" />
+
+## API Reference
+
+### Table
+
+Renders a horizontally scrollable container (`data-slot="table-container"`) wrapping a `<table>` element.
+
+| Prop        | Type                  | Default     | Description                                                |
+| ----------- | --------------------- | ----------- | ---------------------------------------------------------- |
+| `variant`   | `"default" \| "card"` | `"default"` | Flat row dividers or rounded tonal card body surface       |
+| `render`    | `React.ReactElement`  | -           | Custom outer container element                             |
+| `className` | `string`              | -           | Additional CSS classes applied to the `<table>` element    |
+
+### TableHeader / TableBody / TableFooter / TableRow / TableHead / TableCell / TableCaption
+
+Semantic HTML table subcomponents (`<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>`, `<td>`, `<caption>`) styled for both `default` and `card` variants.

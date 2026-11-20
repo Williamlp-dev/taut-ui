@@ -193,6 +193,16 @@ export const Index: Record<string, unknown> = {
     component: null,
     categories: ["ui"],
   },
+  "table": {
+    name: "table",
+    description: "table (ui)",
+    type: "registry:ui",
+    registryDependencies: ["scroll-area"],
+    dependencies: ["@base-ui/react"],
+    files: [{ path: "src/registry/default/ui/table.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
   "tabs": {
     name: "tabs",
     description: "tabs (ui)",
@@ -1785,6 +1795,51 @@ export const Index: Record<string, unknown> = {
       return { default: mod.default ?? mod[key] };
     }),
     categories: ["card","switch"],
+  },
+  "p-table-1": {
+    name: "p-table-1",
+    description: "Basic table",
+    type: "registry:example",
+    registryDependencies: ["table"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-table-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-table-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["table"],
+    meta: { className: "**:data-[slot=preview]:w-full" },
+  },
+  "p-table-2": {
+    name: "p-table-2",
+    description: "Table — Card Variant",
+    type: "registry:example",
+    registryDependencies: ["table"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-table-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-table-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["table"],
+    meta: { className: "**:data-[slot=preview]:w-full" },
+  },
+  "p-table-3": {
+    name: "p-table-3",
+    description: "Table — With Badges",
+    type: "registry:example",
+    registryDependencies: ["badge","table"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-table-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-table-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["badge","table"],
+    meta: { className: "**:data-[slot=preview]:w-full" },
   },
   "p-tabs-1": {
     name: "p-tabs-1",

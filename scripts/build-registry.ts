@@ -87,6 +87,7 @@ const GROUP_PREVIEW_CLASS: Record<string, string> = {
   separator: CENTERED,
   skeleton: CENTERED,
   slider: FIELD_W,
+  table: FULL,
   textarea: FIELD_W,
 };
 

@@ -39,6 +39,7 @@ export const registryCategories = [
   "slider",
   "spinner",
   "switch",
+  "table",
   "tabs",
   "textarea",
   "toast",
