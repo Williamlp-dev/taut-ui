@@ -2,7 +2,7 @@ export const appConfig = {
   description:
     "Tactile, spring-driven React components on Base UI engineered for developers and AI to build interfaces that feel alive.",
   links: {
-    github: "https://github.com/taut-ui/taut-ui",
+    github: "https://github.com/Williamlp-dev/taut-ui",
   },
   name: "taut ui",
   navItems: [

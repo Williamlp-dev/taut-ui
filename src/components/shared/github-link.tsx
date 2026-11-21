@@ -2,7 +2,7 @@ import * as React from "react";
 import { Skeleton } from "@/registry/default/ui/skeleton";
 import { GitHubLinkClient } from "@/components/shared/github-link-client";
 
-const REPO_API_URL = "https://api.github.com/repos/taut-ui/taut-ui";
+const REPO_API_URL = "https://api.github.com/repos/Williamlp-dev/taut-ui";
 
 function formatCompactCount(count: number): string {
   if (count >= 1000) {
