@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "registry:index": "bun scripts/build-registry.ts",
+    "registry:build": "bun scripts/build-registry.ts --publish",
     "dev": "next dev",
-    "build": "next build",
+    "build": "bun run registry:build && next build",
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write"
@@ -38,6 +39,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "shadcn": "^4.1.0",
     "tailwindcss": "4.3.3",
     "typescript": "^5"
   },

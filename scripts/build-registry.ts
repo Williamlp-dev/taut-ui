@@ -11,6 +11,8 @@ const REGISTRY_DIR = path.join(ROOT, "src/registry/default");
 const DOCS_COMPONENTS_DIR = path.join(ROOT, "src/content/docs/components");
 const INDEX_OUTPUT = path.join(ROOT, "src/registry/__index__.ts");
 const REGISTRY_JSON = path.join(ROOT, "registry.json");
+const PUBLIC_REGISTRY_DIR = path.join(ROOT, "public/r");
+const PUBLIC_REGISTRY_JSON = path.join(PUBLIC_REGISTRY_DIR, "registry.json");
 const PUBLISH = process.argv.includes("--publish");
 
 type Group = {
@@ -439,7 +441,9 @@ try {
     await writeRegistryJson(items);
     console.log("💅 registry.json gerado");
     await shadcnBuild();
-    console.log("✅ public/r atualizado");
+    await fs.mkdir(PUBLIC_REGISTRY_DIR, { recursive: true });
+    await fs.copyFile(REGISTRY_JSON, PUBLIC_REGISTRY_JSON);
+    console.log("✅ public/r atualizado (incluindo public/r/registry.json)");
   }
 } catch (error) {
   console.error(error);

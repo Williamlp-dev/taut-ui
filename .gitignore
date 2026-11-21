@@ -42,3 +42,8 @@ next-env.d.ts
 
 # fumadocs
 .source/
+
+# registry build output
+/public/r/
+/registry.json
+
