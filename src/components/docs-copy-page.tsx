@@ -24,16 +24,11 @@ export function DocsCopyPage({
       variant="tonal"
     >
       {isCopied ? (
-        <>
-          <Check className="size-3.5 text-success" />
-          <span>Copied</span>
-        </>
+        <Check className="size-3.5 text-success" />
       ) : (
-        <>
-          <Copy className="size-3.5 opacity-75" />
-          <span>Copy page</span>
-        </>
+        <Copy className="size-3.5 opacity-75" />
       )}
+      <span>Copy page</span>
     </Button>
   );
 }
