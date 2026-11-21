@@ -1,4 +1,10 @@
-<h1 align="center">taut ui</h1>
+<p align="center">
+  <a href="https://taut-ui.com">
+    <img alt="taut ui" src="./public/logo.svg" width="64" />
+  </a>
+</p>
+
+<h1 align="center">Taut Ui</h1>
 
 <p align="center">
   <strong>Tactile, spring-driven React components on Base UI engineered for developers and AI to build interfaces that feel alive.</strong>
