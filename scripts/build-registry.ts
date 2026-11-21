@@ -13,6 +13,8 @@ const INDEX_OUTPUT = path.join(ROOT, "src/registry/__index__.ts");
 const REGISTRY_JSON = path.join(ROOT, "registry.json");
 const PUBLIC_REGISTRY_DIR = path.join(ROOT, "public/r");
 const PUBLIC_REGISTRY_JSON = path.join(PUBLIC_REGISTRY_DIR, "registry.json");
+const REGISTRY_HOMEPAGE = "https://taut-ui.com";
+const REGISTRY_BASE_URL = `${REGISTRY_HOMEPAGE}/r`;
 const PUBLISH = process.argv.includes("--publish");
 
 type Group = {
@@ -404,14 +406,16 @@ async function writeIndex(items: Item[]) {
 async function writeRegistryJson(items: Item[]) {
   const registry = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
-    homepage: "https://taut-ui.com",
+    homepage: REGISTRY_HOMEPAGE,
     items: items.map((i) => ({
       categories: i.categories,
       dependencies: i.dependencies,
       description: i.description,
       files: [{ path: i.file, type: i.type }],
       name: i.name,
-      registryDependencies: i.registryDependencies,
+      registryDependencies: i.registryDependencies.map(
+        (dep) => `${REGISTRY_BASE_URL}/${dep}.json`,
+      ),
       type: i.type,
     })),
     name: "taut-ui",
@@ -421,9 +425,7 @@ async function writeRegistryJson(items: Item[]) {
 
 function shadcnBuild() {
   return new Promise<void>((resolve, reject) => {
-    const child = exec(
-      "bunx --bun shadcn build registry.json --output public/r",
-    );
+    const child = exec("bun run shadcn build registry.json --output public/r");
     child.stdout?.pipe(process.stdout);
     child.stderr?.pipe(process.stderr);
     child.on("exit", (code) =>
