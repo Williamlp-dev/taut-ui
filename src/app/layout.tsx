@@ -1,18 +1,47 @@
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import type { Metadata } from "next";
 import {
   AnchoredToastProvider,
   ToastProvider,
 } from "@/registry/default/ui/toast";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { SiteHeader } from "@/components/site-header";
+import { appConfig } from "@/lib/config";
 import { fontMono, fontSans } from "@/lib/fonts";
 
+const defaultTitle = "Taut UI — Accessible, tactile Base UI components";
+
 export const metadata: Metadata = {
-  description:
-    "Taut Ui is a collection of accessible, composable React components built on Base UI with tactile, spring-driven motion. Copy, paste, and own.",
-  metadataBase: new URL("https://taut-ui.com"),
-  title: "Taut Ui - Accessible, tactile Base UI components",
+  authors: [{ name: "Williamlp-dev", url: appConfig.links.github }],
+  description: appConfig.description,
+  metadataBase: new URL(appConfig.url),
+  openGraph: {
+    locale: "en_US",
+    siteName: "Taut UI",
+    type: "website",
+  },
+  robots: {
+    follow: true,
+    googleBot: {
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+    index: true,
+  },
+  title: {
+    default: defaultTitle,
+    template: "%s — Taut UI",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { color: "#ffffff", media: "(prefers-color-scheme: light)" },
+    { color: "#141414", media: "(prefers-color-scheme: dark)" },
+  ],
 };
 
 export default function RootLayout({

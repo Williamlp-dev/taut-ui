@@ -7,15 +7,19 @@ import { getCategoryThumbnail } from "@/components/category-thumbnails";
 import { SiteFooter } from "@/components/shared/site-footer";
 import { TerminalInstall } from "@/components/terminal-install";
 import { PAGES_NEW } from "@/lib/docs";
+import { createPageMetadata, SiteJsonLd } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { categories } from "@/config/categories";
 
+const title = "Taut UI — Base UI components for humans and AI agents";
 const description =
   "Base UI components with tactile spring motion. Typed, copy-paste, and written so your AI agent gets it right the first time.";
 
 export const metadata: Metadata = {
-  description,
-  title: "Taut Ui — Base UI components for humans and AI agents",
+  ...createPageMetadata({ description, path: "/", title }),
+  title: {
+    absolute: title,
+  },
 };
 
 const WIDE_INDICES = new Set([0, 11, 12]);
@@ -23,6 +27,7 @@ const WIDE_INDICES = new Set([0, 11, 12]);
 export default function Page(): React.ReactElement {
   return (
     <>
+      <SiteJsonLd description={description} />
       <section className="container w-full pt-14 pb-12 lg:pt-22 lg:pb-16">
         <h1 className="max-w-4xl font-bold font-heading text-5xl leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
           Components with shape.

@@ -5,10 +5,13 @@ import { Button } from "@/registry/default/ui/button";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { SiteFooter } from "@/components/shared/site-footer";
+import { getMarkdownPath } from "@/lib/llms";
+import { createPageMetadata, DocJsonLd, getDocsOgPath } from "@/lib/seo";
 import { source } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 
-// Docs are fully prerendered via generateStaticParams, so the page may block.
+const DEFAULT_DESCRIPTION = "Component documentation for Taut UI.";
+
 export const instant = false;
 
 export function generateStaticParams() {
@@ -26,10 +29,18 @@ export async function generateMetadata(props: {
   }
 
   const doc = page.data;
+  const title = doc.title || page.slugs.join(" / ") || "Documentation";
 
   return {
-    description: doc.description || "Component documentation for Taut Ui.",
-    title: `${doc.title || page.slugs.join(" / ")} - Taut Ui`,
+    ...createPageMetadata({
+      description: doc.description || DEFAULT_DESCRIPTION,
+      image: getDocsOgPath(page.slugs),
+      markdownPath: getMarkdownPath(page.url),
+      path: page.url,
+      title: `${title} — Taut UI`,
+      type: "article",
+    }),
+    title,
   };
 }
 
@@ -49,9 +60,16 @@ export default async function Page(props: {
   const links = doc.links;
   const sectionLabel =
     page.slugs[0] === "components" ? "Components" : "Documentation";
+  const pageTitle = doc.title || page.slugs[page.slugs.length - 1] || "Docs";
 
   return (
     <div className="flex items-stretch gap-6 xl:w-full" data-slot="docs">
+      <DocJsonLd
+        description={doc.description || DEFAULT_DESCRIPTION}
+        slugs={page.slugs}
+        title={pageTitle}
+        url={page.url}
+      />
       <div className="relative flex w-full min-w-0 flex-1 flex-col lg:mt-5 lg:mb-4">
         <div
           className="flex flex-1 flex-col bg-background px-4 py-6 motion-reduce:transition-none! sm:px-8 lg:rounded-4xl lg:border lg:border-border/60 lg:p-8 lg:data-[docked=true]:rounded-t-none lg:data-[docked=true]:border-t-transparent xl:p-10 lg:[transition:border-radius_150ms_cubic-bezier(0.16,1,0.3,1),border-top-color_100ms_ease-out]"

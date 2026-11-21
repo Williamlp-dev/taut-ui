@@ -9,6 +9,7 @@ import {
   PageHeaderHeading,
 } from "@/components/shared/page-header";
 import { SiteFooter } from "@/components/shared/site-footer";
+import { createPageMetadata } from "@/lib/seo";
 import { ParticlesDisplay } from "./particles-display";
 import SearchContainer from "./search-container";
 
@@ -19,8 +20,12 @@ const particleCount = (Object.values(Index) as Array<{ type?: string }>).filter(
 const description = `Discover ${particleCount} ready-to-use particles, the building blocks of your design system. Filter by category to find the perfect component for your project.`;
 
 export const metadata: Metadata = {
-  description,
-  title: "Browse Particles - taut ui",
+  ...createPageMetadata({
+    description,
+    path: "/particles",
+    title: "Browse Particles — Taut UI",
+  }),
+  title: "Browse Particles",
 };
 
 async function ParticlesDisplayServer({
