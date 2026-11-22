@@ -1,0 +1,125 @@
+---
+title: Avatar
+description: Circular user image with solid tonal fallback, four sizes, and an overlapping group that fans out on hover.
+links:
+  doc: https://base-ui.com/react/components/avatar#api-reference
+---
+
+<ComponentPreview name="p-avatar-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/avatar
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="avatar" title="components/ui/avatar.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+```
+
+```tsx
+<Avatar>
+  <AvatarImage alt="Lucas Santos" src="/avatar.jpg" />
+  <AvatarFallback>LS</AvatarFallback>
+</Avatar>
+```
+
+## Examples
+
+### Fallback
+
+<ComponentPreview name="p-avatar-2" />
+
+### Small
+
+<ComponentPreview name="p-avatar-3" />
+
+### Large
+
+<ComponentPreview name="p-avatar-4" />
+
+### Extra Large
+
+<ComponentPreview name="p-avatar-5" />
+
+### Group
+
+<ComponentPreview name="p-avatar-6" />
+
+## API Reference
+
+### Avatar
+
+Wraps Base UI `Avatar.Root`.
+
+| Prop        | Type                             | Default     | Description                         |
+| ----------- | -------------------------------- | ----------- | ----------------------------------- |
+| `size`      | `"sm" \| "default" \| "lg" \| "xl"` | `"default"` | Avatar diameter and fallback font size |
+| `className` | `string`                         | -           | Additional CSS classes              |
+
+### AvatarImage
+
+Wraps Base UI `Avatar.Image`. Renders the image and hides automatically while loading or on error.
+
+| Prop                  | Type                                    | Default | Description                           |
+| --------------------- | --------------------------------------- | ------- | ------------------------------------- |
+| `src`                 | `string`                                | -       | Image source URL                      |
+| `alt`                 | `string`                                | -       | Accessible alternative text           |
+| `onLoadingStatusChange` | `(status: ImageLoadingStatus) => void` | -       | Callback fired when loading state changes |
+
+### AvatarFallback
+
+Wraps Base UI `Avatar.Fallback`. Displayed when the image has not loaded or failed to load.
+
+| Prop        | Type     | Default | Description                                        |
+| ----------- | -------- | ------- | -------------------------------------------------- |
+| `delay`     | `number` | -       | Delay in milliseconds before showing the fallback  |
+| `className` | `string` | -       | Additional CSS classes                             |
+
+### AvatarGroup
+
+Overlaps multiple `Avatar` elements with a cutout ring and fans them out smoothly on hover.
+
+| Prop        | Type                                | Default     | Description                                       |
+| ----------- | ----------------------------------- | ----------- | ------------------------------------------------- |
+| `size`      | `"sm" \| "default" \| "lg" \| "xl"` | `"default"` | Uniform size, overlap, ring width, and hover spread |
+| `className` | `string`                            | -           | Additional CSS classes                            |
