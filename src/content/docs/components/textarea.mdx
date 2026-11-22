@@ -1,0 +1,94 @@
+---
+title: Textarea
+description: Auto-sizing multiline text input with filled and outline variants, four corner shapes, three sizes, and Field integration.
+links:
+  doc: https://base-ui.com/react/components/field#api-reference
+---
+
+<ComponentPreview name="p-textarea-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/textarea
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="textarea" title="components/ui/textarea.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Textarea } from "@/components/ui/textarea"
+```
+
+```tsx
+<Textarea placeholder="Write your message..." />
+```
+
+## Examples
+
+### Outline
+
+<ComponentPreview name="p-textarea-2" />
+
+### Small
+
+<ComponentPreview name="p-textarea-3" />
+
+### Large
+
+<ComponentPreview name="p-textarea-4" />
+
+### With Field & Counter
+
+<ComponentPreview name="p-textarea-5" />
+
+### Non-Resizable
+
+<ComponentPreview name="p-textarea-6" />
+
+## API Reference
+
+### Textarea
+
+Wraps Base UI `Field.Control` rendering a `field-sizing-content` `<textarea>` inside a styled container.
+
+| Prop        | Type                                         | Default      | Description                                      |
+| ----------- | -------------------------------------------- | ------------ | ------------------------------------------------ |
+| `variant`   | `"filled" \| "outline" \| "outlined"`        | `"filled"`   | Tonal filled surface or crisp outlined surface   |
+| `shape`     | `"rounded" \| "round" \| "pill" \| "square"` | `"rounded"`  | Corner radius preset                             |
+| `size`      | `"sm" \| "default" \| "lg"`                  | `"default"`  | Minimum height, padding, and font size           |
+| `resize`    | `"none" \| "vertical" \| "horizontal" \| "both"` | `"vertical"` | Controls the browser resize handle behavior   |
+| `unstyled`  | `boolean`                                    | `false`      | Strips container chrome for custom composition   |
+| `className` | `string`                                     | -            | Additional CSS classes on the outer container    |
