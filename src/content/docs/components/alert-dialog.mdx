@@ -1,0 +1,113 @@
+---
+title: Alert Dialog
+description: Interruptive confirmation dialog that requires an explicit user decision before continuing.
+links:
+  doc: https://base-ui.com/react/components/alert-dialog#api-reference
+---
+
+<ComponentPreview name="p-alert-dialog-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/alert-dialog
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="alert-dialog" title="components/ui/alert-dialog.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogClose,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogPopup,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+```
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger>Delete</AlertDialogTrigger>
+  <AlertDialogPopup>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogClose>Cancel</AlertDialogClose>
+      <AlertDialogClose>Continue</AlertDialogClose>
+    </AlertDialogFooter>
+  </AlertDialogPopup>
+</AlertDialog>
+```
+
+## Examples
+
+### Destructive with Icon
+
+<ComponentPreview name="p-alert-dialog-2" />
+
+### Async Action
+
+<ComponentPreview name="p-alert-dialog-3" />
+
+## API Reference
+
+### AlertDialog
+
+Re-exports `AlertDialog.Root` from `@base-ui/react/alert-dialog`. Unlike `Dialog`, clicking the backdrop does not dismiss the dialog.
+
+| Prop           | Type                      | Default | Description                        |
+| -------------- | ------------------------- | ------- | ---------------------------------- |
+| `open`         | `boolean`                 | -       | Controlled open state              |
+| `defaultOpen`  | `boolean`                 | `false` | Initial uncontrolled open state    |
+| `onOpenChange` | `(open: boolean) => void` | -       | Called when the open state changes |
+
+### AlertDialogPopup / AlertDialogContent
+
+Composes `AlertDialogPortal`, `AlertDialogBackdrop`, `AlertDialogViewport`, and `AlertDialog.Popup`.
+
+| Prop          | Type                      | Default | Description                                    |
+| ------------- | ------------------------- | ------- | ---------------------------------------------- |
+| `portalProps` | `AlertDialog.Portal.Props`| -       | Props forwarded to `AlertDialogPortal`         |
+| `className`   | `string`                  | -       | Additional CSS classes                         |
+
+### AlertDialogHeader / AlertDialogIcon / AlertDialogTitle / AlertDialogDescription / AlertDialogFooter / AlertDialogTrigger / AlertDialogClose
+
+Composable layout and action primitives built on `Dialog` header/footer slots and Base UI `AlertDialog`.
