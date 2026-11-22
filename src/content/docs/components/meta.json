@@ -1,13 +1,20 @@
 {
   "pages": [
     "accordion",
+    "alert-dialog",
     "autocomplete",
+    "avatar",
     "badge",
     "button",
     "card",
+    "checkbox",
+    "checkbox-group",
     "command",
+    "dialog",
     "drawer",
     "empty",
+    "field",
+    "form",
     "input",
     "kbd",
     "menu",
@@ -21,6 +28,7 @@
     "switch",
     "table",
     "tabs",
+    "textarea",
     "toast",
     "tooltip"
   ],

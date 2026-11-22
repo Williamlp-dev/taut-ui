@@ -13,6 +13,16 @@ export const Index: Record<string, unknown> = {
     component: null,
     categories: ["ui"],
   },
+  "alert-dialog": {
+    name: "alert-dialog",
+    description: "alert dialog (ui)",
+    type: "registry:ui",
+    registryDependencies: ["dialog"],
+    dependencies: ["@base-ui/react"],
+    files: [{ path: "src/registry/default/ui/alert-dialog.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
   "autocomplete": {
     name: "autocomplete",
     description: "autocomplete (ui)",
@@ -20,6 +30,16 @@ export const Index: Record<string, unknown> = {
     registryDependencies: ["button","input","menu"],
     dependencies: ["@base-ui/react","class-variance-authority","lucide-react"],
     files: [{ path: "src/registry/default/ui/autocomplete.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
+  "avatar": {
+    name: "avatar",
+    description: "avatar (ui)",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@base-ui/react","class-variance-authority"],
+    files: [{ path: "src/registry/default/ui/avatar.tsx", type: "registry:ui" }],
     component: null,
     categories: ["ui"],
   },
@@ -53,6 +73,26 @@ export const Index: Record<string, unknown> = {
     component: null,
     categories: ["ui"],
   },
+  "checkbox-group": {
+    name: "checkbox-group",
+    description: "checkbox group (ui)",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@base-ui/react"],
+    files: [{ path: "src/registry/default/ui/checkbox-group.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
+  "checkbox": {
+    name: "checkbox",
+    description: "checkbox (ui)",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@base-ui/react"],
+    files: [{ path: "src/registry/default/ui/checkbox.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
   "command": {
     name: "command",
     description: "command (ui)",
@@ -60,6 +100,16 @@ export const Index: Record<string, unknown> = {
     registryDependencies: ["autocomplete","ripple"],
     dependencies: ["@base-ui/react","lucide-react"],
     files: [{ path: "src/registry/default/ui/command.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
+  "dialog": {
+    name: "dialog",
+    description: "dialog (ui)",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    dependencies: ["@base-ui/react","lucide-react"],
+    files: [{ path: "src/registry/default/ui/dialog.tsx", type: "registry:ui" }],
     component: null,
     categories: ["ui"],
   },
@@ -80,6 +130,26 @@ export const Index: Record<string, unknown> = {
     registryDependencies: [],
     dependencies: ["class-variance-authority"],
     files: [{ path: "src/registry/default/ui/empty.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
+  "field": {
+    name: "field",
+    description: "field (ui)",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@base-ui/react"],
+    files: [{ path: "src/registry/default/ui/field.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
+  "form": {
+    name: "form",
+    description: "form (ui)",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@base-ui/react"],
+    files: [{ path: "src/registry/default/ui/form.tsx", type: "registry:ui" }],
     component: null,
     categories: ["ui"],
   },
@@ -210,6 +280,16 @@ export const Index: Record<string, unknown> = {
     registryDependencies: [],
     dependencies: ["@base-ui/react","class-variance-authority"],
     files: [{ path: "src/registry/default/ui/tabs.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
+  "textarea": {
+    name: "textarea",
+    description: "textarea (ui)",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@base-ui/react","class-variance-authority"],
+    files: [{ path: "src/registry/default/ui/textarea.tsx", type: "registry:ui" }],
     component: null,
     categories: ["ui"],
   },
@@ -358,6 +438,48 @@ export const Index: Record<string, unknown> = {
     categories: ["accordion"],
     meta: { className: "**:data-[slot=preview]:w-full sm:**:data-[slot=preview]:max-w-[80%]" },
   },
+  "p-alert-dialog-1": {
+    name: "p-alert-dialog-1",
+    description: "Basic alert dialog",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-alert-dialog-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-alert-dialog-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["alert dialog","button"],
+  },
+  "p-alert-dialog-2": {
+    name: "p-alert-dialog-2",
+    description: "Alert Dialog — Destructive with Icon",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    dependencies: ["lucide-react"],
+    files: [{ path: "src/registry/default/particles/p-alert-dialog-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-alert-dialog-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["alert dialog","button"],
+  },
+  "p-alert-dialog-3": {
+    name: "p-alert-dialog-3",
+    description: "Alert Dialog — Async Action",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-alert-dialog-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-alert-dialog-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["alert dialog","button","async"],
+  },
   "p-autocomplete-1": {
     name: "p-autocomplete-1",
     description: "Basic autocomplete",
@@ -462,6 +584,90 @@ export const Index: Record<string, unknown> = {
     }),
     categories: ["autocomplete"],
     meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-avatar-1": {
+    name: "p-avatar-1",
+    description: "Basic avatar",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-avatar-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-avatar-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["avatar"],
+  },
+  "p-avatar-2": {
+    name: "p-avatar-2",
+    description: "Avatar — Fallback",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-avatar-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-avatar-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["avatar"],
+  },
+  "p-avatar-3": {
+    name: "p-avatar-3",
+    description: "Avatar — Small",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-avatar-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-avatar-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["avatar"],
+  },
+  "p-avatar-4": {
+    name: "p-avatar-4",
+    description: "Avatar — Large",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-avatar-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-avatar-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["avatar"],
+  },
+  "p-avatar-5": {
+    name: "p-avatar-5",
+    description: "Avatar — Extra Large",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-avatar-5.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-avatar-5");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["avatar"],
+  },
+  "p-avatar-6": {
+    name: "p-avatar-6",
+    description: "Avatar — Group",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-avatar-6.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-avatar-6");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["avatar"],
   },
   "p-badge-1": {
     name: "p-badge-1",
@@ -819,6 +1025,104 @@ export const Index: Record<string, unknown> = {
     categories: ["button","card"],
     meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:flex **:data-[slot=preview]:justify-center" },
   },
+  "p-checkbox-1": {
+    name: "p-checkbox-1",
+    description: "Basic checkbox",
+    type: "registry:example",
+    registryDependencies: ["checkbox","field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-checkbox-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-checkbox-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["checkbox","field"],
+  },
+  "p-checkbox-2": {
+    name: "p-checkbox-2",
+    description: "Checkbox — With Description",
+    type: "registry:example",
+    registryDependencies: ["checkbox","field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-checkbox-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-checkbox-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["checkbox","field"],
+  },
+  "p-checkbox-3": {
+    name: "p-checkbox-3",
+    description: "Checkbox — Indeterminate",
+    type: "registry:example",
+    registryDependencies: ["checkbox","field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-checkbox-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-checkbox-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["checkbox","field"],
+  },
+  "p-checkbox-4": {
+    name: "p-checkbox-4",
+    description: "Checkbox — Invalid",
+    type: "registry:example",
+    registryDependencies: ["checkbox","field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-checkbox-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-checkbox-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["checkbox","field","error"],
+  },
+  "p-checkbox-5": {
+    name: "p-checkbox-5",
+    description: "Checkbox — Disabled",
+    type: "registry:example",
+    registryDependencies: ["checkbox","field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-checkbox-5.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-checkbox-5");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["checkbox","field","disabled"],
+  },
+  "p-checkbox-group-1": {
+    name: "p-checkbox-group-1",
+    description: "Basic checkbox group",
+    type: "registry:example",
+    registryDependencies: ["checkbox","checkbox-group"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-checkbox-group-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-checkbox-group-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["checkbox","checkbox group"],
+  },
+  "p-checkbox-group-2": {
+    name: "p-checkbox-group-2",
+    description: "Checkbox Group — Nested Parent",
+    type: "registry:example",
+    registryDependencies: ["checkbox","checkbox-group"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-checkbox-group-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-checkbox-group-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["checkbox","checkbox group"],
+  },
   "p-command-1": {
     name: "p-command-1",
     description: "Basic command",
@@ -846,6 +1150,90 @@ export const Index: Record<string, unknown> = {
       return { default: mod.default ?? mod[key] };
     }),
     categories: ["button","command","kbd"],
+  },
+  "p-dialog-1": {
+    name: "p-dialog-1",
+    description: "Basic dialog",
+    type: "registry:example",
+    registryDependencies: ["button","dialog","field","form","input"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-dialog-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-dialog-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["button","dialog","field","form","input"],
+  },
+  "p-dialog-2": {
+    name: "p-dialog-2",
+    description: "Dialog — From Menu",
+    type: "registry:example",
+    registryDependencies: ["button","dialog","menu"],
+    dependencies: ["lucide-react"],
+    files: [{ path: "src/registry/default/particles/p-dialog-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-dialog-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["button","dialog","menu"],
+  },
+  "p-dialog-3": {
+    name: "p-dialog-3",
+    description: "Dialog — Nested Dialog",
+    type: "registry:example",
+    registryDependencies: ["button","dialog","field","input"],
+    dependencies: ["lucide-react"],
+    files: [{ path: "src/registry/default/particles/p-dialog-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-dialog-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["button","dialog","field","input"],
+  },
+  "p-dialog-4": {
+    name: "p-dialog-4",
+    description: "Dialog — Close Confirmation",
+    type: "registry:example",
+    registryDependencies: ["alert-dialog","button","dialog","field","form","textarea"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-dialog-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-dialog-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["alert dialog","button","dialog","field","form","textarea"],
+  },
+  "p-dialog-5": {
+    name: "p-dialog-5",
+    description: "Dialog — Scrollable Content",
+    type: "registry:example",
+    registryDependencies: ["button","dialog","scroll-area"],
+    dependencies: ["lucide-react"],
+    files: [{ path: "src/registry/default/particles/p-dialog-5.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-dialog-5");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["button","dialog","scroll area"],
+  },
+  "p-dialog-6": {
+    name: "p-dialog-6",
+    description: "Dialog — With Icon",
+    type: "registry:example",
+    registryDependencies: ["button","dialog"],
+    dependencies: ["lucide-react"],
+    files: [{ path: "src/registry/default/particles/p-dialog-6.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-dialog-6");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["button","dialog"],
   },
   "p-drawer-1": {
     name: "p-drawer-1",
@@ -990,6 +1378,96 @@ export const Index: Record<string, unknown> = {
     }),
     categories: ["button","empty","input"],
     meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:flex **:data-[slot=preview]:justify-center" },
+  },
+  "p-field-1": {
+    name: "p-field-1",
+    description: "Basic field",
+    type: "registry:example",
+    registryDependencies: ["field","input"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-field-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-field-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["field","input"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-field-2": {
+    name: "p-field-2",
+    description: "Field — Validation Error",
+    type: "registry:example",
+    registryDependencies: ["field","input"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-field-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-field-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["field","input","error","validation"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-field-3": {
+    name: "p-field-3",
+    description: "Field — Disabled",
+    type: "registry:example",
+    registryDependencies: ["field","input"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-field-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-field-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["field","input","disabled"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-field-4": {
+    name: "p-field-4",
+    description: "Field — With Checkbox",
+    type: "registry:example",
+    registryDependencies: ["checkbox","field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-field-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-field-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["checkbox","field"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-form-1": {
+    name: "p-form-1",
+    description: "Basic form",
+    type: "registry:example",
+    registryDependencies: ["button","field","form","input","textarea","toast"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-form-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-form-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["button","field","form","input","textarea","toast"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-form-2": {
+    name: "p-form-2",
+    description: "Form — Controlled Errors",
+    type: "registry:example",
+    registryDependencies: ["button","field","form","input"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-form-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-form-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["button","field","form","input"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
   },
   "p-input-1": {
     name: "p-input-1",
@@ -1940,6 +2418,96 @@ export const Index: Record<string, unknown> = {
       return { default: mod.default ?? mod[key] };
     }),
     categories: ["tabs"],
+  },
+  "p-textarea-1": {
+    name: "p-textarea-1",
+    description: "Basic textarea",
+    type: "registry:example",
+    registryDependencies: ["textarea"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-textarea-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-textarea-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["textarea"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-textarea-2": {
+    name: "p-textarea-2",
+    description: "Textarea — Outline",
+    type: "registry:example",
+    registryDependencies: ["textarea"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-textarea-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-textarea-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["textarea"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-textarea-3": {
+    name: "p-textarea-3",
+    description: "Textarea — Small",
+    type: "registry:example",
+    registryDependencies: ["textarea"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-textarea-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-textarea-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["textarea"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-textarea-4": {
+    name: "p-textarea-4",
+    description: "Textarea — Large",
+    type: "registry:example",
+    registryDependencies: ["textarea"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-textarea-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-textarea-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["textarea"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-textarea-5": {
+    name: "p-textarea-5",
+    description: "Textarea — With Field & Counter",
+    type: "registry:example",
+    registryDependencies: ["field","textarea"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-textarea-5.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-textarea-5");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["field","textarea"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-textarea-6": {
+    name: "p-textarea-6",
+    description: "Textarea — Non-Resizable",
+    type: "registry:example",
+    registryDependencies: ["textarea"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-textarea-6.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-textarea-6");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["textarea"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
   },
   "p-toast-1": {
     name: "p-toast-1",
