@@ -46,7 +46,7 @@ export const inputVariants = cva(
       },
       variant: {
         filled:
-          "bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_6%)]",
+          "bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_6%)] shadow-[inset_0_0_0_0.0625rem_var(--color-border)]",
         outline:
           "bg-background shadow-[inset_0_0_0_0.0625rem_var(--color-input)]",
         outlined:
