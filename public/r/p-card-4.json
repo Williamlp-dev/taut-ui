@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-card-4",
+  "description": "Card — Horizontal",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/card.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-card-4.tsx",
+      "content": "import { ArrowRightIcon, FolderIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Card,\n  CardAction,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\";\n\nexport default function Particle() {\n  return (\n    <Card className=\"w-80\" orientation=\"horizontal\" variant=\"filled\">\n      <div className=\"flex size-11 shrink-0 items-center justify-center rounded-2xl bg-card text-foreground\">\n        <FolderIcon className=\"size-5\" />\n      </div>\n      <CardHeader>\n        <CardTitle>Design Assets</CardTitle>\n        <CardDescription>24 files · Updated 2h ago</CardDescription>\n        <CardAction>\n          <Button aria-label=\"Open folder\" size=\"icon-sm\" variant=\"ghost\">\n            <ArrowRightIcon />\n          </Button>\n        </CardAction>\n      </CardHeader>\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "card"
+  ],
+  "type": "registry:example"
+}

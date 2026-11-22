@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-button-5",
+  "description": "Button — Ghost",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-button-5.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\n\nexport default function Particle() {\n  return <Button variant=\"ghost\">Ghost</Button>;\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:example"
+}

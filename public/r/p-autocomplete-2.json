@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-autocomplete-2",
+  "description": "Autocomplete — Grouped Items",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/autocomplete.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-autocomplete-2.tsx",
+      "content": "\"use client\";\n\nimport { Fragment } from \"react\";\nimport {\n  Autocomplete,\n  AutocompleteCollection,\n  AutocompleteEmpty,\n  AutocompleteGroup,\n  AutocompleteGroupLabel,\n  AutocompleteInput,\n  AutocompleteItem,\n  AutocompleteList,\n  AutocompletePopup,\n} from \"@/registry/default/ui/autocomplete\";\n\ninterface FoodGroup {\n  value: string;\n  items: string[];\n}\n\nconst groups: FoodGroup[] = [\n  {\n    items: [\"Apple\", \"Banana\", \"Blueberry\", \"Mango\"],\n    value: \"Fruits\",\n  },\n  {\n    items: [\"Broccoli\", \"Carrot\", \"Spinach\", \"Tomato\"],\n    value: \"Vegetables\",\n  },\n];\n\nexport default function Particle() {\n  return (\n    <Autocomplete items={groups}>\n      <AutocompleteInput\n        className=\"w-64\"\n        placeholder=\"Search foods…\"\n        showClear\n      />\n      <AutocompletePopup>\n        <AutocompleteEmpty>No results found.</AutocompleteEmpty>\n        <AutocompleteList>\n          {(group: FoodGroup) => (\n            <Fragment key={group.value}>\n              <AutocompleteGroup items={group.items}>\n                <AutocompleteGroupLabel>{group.value}</AutocompleteGroupLabel>\n                <AutocompleteCollection>\n                  {(item: string) => (\n                    <AutocompleteItem key={item} value={item}>\n                      {item}\n                    </AutocompleteItem>\n                  )}\n                </AutocompleteCollection>\n              </AutocompleteGroup>\n            </Fragment>\n          )}\n        </AutocompleteList>\n      </AutocompletePopup>\n    </Autocomplete>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "autocomplete"
+  ],
+  "type": "registry:example"
+}

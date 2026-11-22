@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-drawer-4",
+  "description": "Drawer — With Menu",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/drawer.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-drawer-4.tsx",
+      "content": "\"use client\";\n\nimport { BellIcon, LogOutIcon, SettingsIcon, UserIcon } from \"lucide-react\";\nimport { useState } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Drawer,\n  DrawerHeader,\n  DrawerMenu,\n  DrawerMenuCheckboxItem,\n  DrawerMenuGroup,\n  DrawerMenuGroupLabel,\n  DrawerMenuItem,\n  DrawerMenuSeparator,\n  DrawerPanel,\n  DrawerPopup,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/registry/default/ui/drawer\";\n\nexport default function Particle() {\n  const [notifications, setNotifications] = useState(true);\n\n  return (\n    <Drawer>\n      <DrawerTrigger render={<Button variant=\"outline\">Open Menu</Button>} />\n      <DrawerPopup showBar>\n        <DrawerHeader>\n          <DrawerTitle>Account</DrawerTitle>\n        </DrawerHeader>\n        <DrawerPanel>\n          <DrawerMenu>\n            <DrawerMenuGroup>\n              <DrawerMenuGroupLabel>General</DrawerMenuGroupLabel>\n              <DrawerMenuItem>\n                <UserIcon />\n                Profile\n              </DrawerMenuItem>\n              <DrawerMenuItem>\n                <SettingsIcon />\n                Preferences\n              </DrawerMenuItem>\n              <DrawerMenuCheckboxItem\n                checked={notifications}\n                onCheckedChange={setNotifications}\n                variant=\"switch\"\n              >\n                <span className=\"inline-flex items-center gap-2.5\">\n                  <BellIcon className=\"size-4 shrink-0\" />\n                  Notifications\n                </span>\n              </DrawerMenuCheckboxItem>\n            </DrawerMenuGroup>\n            <DrawerMenuSeparator />\n            <DrawerMenuItem variant=\"destructive\">\n              <LogOutIcon />\n              Sign out\n            </DrawerMenuItem>\n          </DrawerMenu>\n        </DrawerPanel>\n      </DrawerPopup>\n    </Drawer>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "drawer"
+  ],
+  "type": "registry:example"
+}

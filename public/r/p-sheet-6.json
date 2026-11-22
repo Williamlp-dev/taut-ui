@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-sheet-6",
+  "description": "Sheet — Scrollable Panel",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/separator.json",
+    "https://taut-ui.com/r/sheet.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-sheet-6.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { Separator } from \"@/registry/default/ui/separator\";\nimport {\n  Sheet,\n  SheetClose,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetPanel,\n  SheetPopup,\n  SheetTitle,\n  SheetTrigger,\n} from \"@/registry/default/ui/sheet\";\n\nconst activities = Array.from({ length: 20 }, (_, i) => ({\n  detail: `Automated build #${1420 - i} completed in 38s`,\n  id: `act-${i + 1}`,\n  time: `${(i + 1) * 12}m ago`,\n  title: `Production release v2.4.${20 - i}`,\n}));\n\nexport default function Particle() {\n  return (\n    <Sheet>\n      <SheetTrigger\n        render={<Button variant=\"outline\">Open Scrollable</Button>}\n      />\n      <SheetPopup side=\"right\">\n        <SheetHeader>\n          <SheetTitle>Activity stream</SheetTitle>\n          <SheetDescription>\n            Recent deployments and automated checks across your workspace.\n          </SheetDescription>\n        </SheetHeader>\n        <SheetPanel className=\"px-0\" scrollFade>\n          <div className=\"flex flex-col\">\n            {activities.map((item, index) => (\n              <div key={item.id}>\n                {index > 0 && <Separator />}\n                <div className=\"flex items-baseline justify-between gap-4 px-6 py-3 text-sm\">\n                  <div className=\"grid gap-0.5\">\n                    <span className=\"font-medium text-foreground\">\n                      {item.title}\n                    </span>\n                    <span className=\"text-muted-foreground text-xs\">\n                      {item.detail}\n                    </span>\n                  </div>\n                  <span className=\"shrink-0 font-mono text-muted-foreground text-xs\">\n                    {item.time}\n                  </span>\n                </div>\n              </div>\n            ))}\n          </div>\n        </SheetPanel>\n        <SheetFooter>\n          <SheetClose render={<Button variant=\"ghost\" />}>Close</SheetClose>\n        </SheetFooter>\n      </SheetPopup>\n    </Sheet>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "separator",
+    "sheet"
+  ],
+  "type": "registry:example"
+}

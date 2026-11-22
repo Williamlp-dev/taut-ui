@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-input-1",
+  "description": "Basic input",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-input-1.tsx",
+      "content": "import { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  return <Input className=\"w-72\" placeholder=\"Enter your email\" type=\"email\" />;\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "input"
+  ],
+  "type": "registry:example"
+}

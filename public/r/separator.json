@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "description": "separator (ui)",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/default/ui/separator.tsx",
+      "content": "\"use client\";\n\nimport { Separator as SeparatorPrimitive } from \"@base-ui/react/separator\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport type React from \"react\";\nimport { cn } from \"@/registry/default/lib/utils\";\n\nexport const separatorVariants = cva(\n  \"shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-[calc(100%-var(--inset,0rem))] data-[orientation=vertical]:w-px data-[orientation=vertical]:not-[[class^='h-']]:not-[[class*='_h-']]:self-stretch\",\n  {\n    variants: {\n      inset: {\n        both: \"[--inset:2rem] data-[orientation=horizontal]:mx-4 data-[orientation=vertical]:my-4\",\n        end: \"[--inset:1rem] data-[orientation=horizontal]:me-4 data-[orientation=vertical]:mb-4\",\n        start:\n          \"[--inset:1rem] data-[orientation=horizontal]:ms-4 data-[orientation=vertical]:mt-4\",\n      },\n    },\n  },\n);\n\nexport type SeparatorProps = SeparatorPrimitive.Props &\n  VariantProps<typeof separatorVariants>;\n\nexport function Separator({\n  className,\n  orientation = \"horizontal\",\n  inset,\n  ...props\n}: SeparatorProps): React.ReactElement {\n  return (\n    <SeparatorPrimitive\n      className={cn(separatorVariants({ inset }), className)}\n      data-slot=\"separator\"\n      orientation={orientation}\n      {...props}\n    />\n  );\n}\n\nexport { SeparatorPrimitive };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-switch-6",
+  "description": "Switch — Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/switch.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-switch-6.tsx",
+      "content": "import { Switch } from \"@/registry/default/ui/switch\";\n\nexport default function Particle() {\n  return <Switch aria-label=\"Disabled switch\" disabled />;\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "switch",
+    "disabled"
+  ],
+  "type": "registry:example"
+}

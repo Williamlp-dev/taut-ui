@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-sheet-2",
+  "description": "Sheet — Left Side",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/sheet.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-sheet-2.tsx",
+      "content": "\"use client\";\n\nimport {\n  CreditCardIcon,\n  LayoutDashboardIcon,\n  RocketIcon,\n  UsersIcon,\n} from \"lucide-react\";\nimport { useState } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Sheet,\n  SheetClose,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetPanel,\n  SheetPopup,\n  SheetTitle,\n  SheetTrigger,\n} from \"@/registry/default/ui/sheet\";\n\nconst navItems = [\n  { icon: LayoutDashboardIcon, id: \"overview\", label: \"Overview\" },\n  { icon: RocketIcon, id: \"deployments\", label: \"Deployments\" },\n  { icon: UsersIcon, id: \"team\", label: \"Team members\" },\n  { icon: CreditCardIcon, id: \"billing\", label: \"Billing & usage\" },\n];\n\nexport default function Particle() {\n  const [active, setActive] = useState(\"overview\");\n\n  return (\n    <Sheet>\n      <SheetTrigger render={<Button variant=\"outline\">Open Left</Button>} />\n      <SheetPopup side=\"left\">\n        <SheetHeader>\n          <SheetTitle>Workspace navigation</SheetTitle>\n          <SheetDescription>\n            Switch between projects, environments, and shared views.\n          </SheetDescription>\n        </SheetHeader>\n        <SheetPanel className=\"grid gap-1\">\n          {navItems.map((item) => (\n            <Button\n              className=\"w-full justify-start\"\n              key={item.id}\n              onClick={() => setActive(item.id)}\n              selected={active === item.id}\n              variant={active === item.id ? \"secondary\" : \"ghost\"}\n            >\n              <item.icon />\n              {item.label}\n            </Button>\n          ))}\n        </SheetPanel>\n        <SheetFooter>\n          <SheetClose render={<Button variant=\"outline\" />}>Close</SheetClose>\n        </SheetFooter>\n      </SheetPopup>\n    </Sheet>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "sheet"
+  ],
+  "type": "registry:example"
+}

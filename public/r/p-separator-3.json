@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-separator-3",
+  "description": "Separator — Start Inset",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/card.json",
+    "https://taut-ui.com/r/separator.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-separator-3.tsx",
+      "content": "import { BellIcon, ShieldIcon, UserIcon } from \"lucide-react\";\nimport { Card } from \"@/registry/default/ui/card\";\nimport { Separator } from \"@/registry/default/ui/separator\";\n\nconst items = [\n  { icon: UserIcon, label: \"Profile\" },\n  { icon: BellIcon, label: \"Notifications\" },\n  { icon: ShieldIcon, label: \"Privacy & Security\" },\n];\n\nexport default function Particle() {\n  return (\n    <Card className=\"w-72 py-1\">\n      {items.map((item, index) => (\n        <div key={item.label}>\n          <div className=\"flex items-center gap-3 px-4 py-3 text-foreground text-sm\">\n            <item.icon className=\"size-4 shrink-0 text-muted-foreground\" />\n            <span>{item.label}</span>\n          </div>\n          {index < items.length - 1 && <Separator inset=\"start\" />}\n        </div>\n      ))}\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card",
+    "separator"
+  ],
+  "type": "registry:example"
+}

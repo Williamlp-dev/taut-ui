@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-popover-1",
+  "description": "Basic popover",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/popover.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-popover-1.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Popover,\n  PopoverDescription,\n  PopoverPopup,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/registry/default/ui/popover\";\n\nexport default function Particle() {\n  return (\n    <Popover>\n      <PopoverTrigger\n        render={<Button variant=\"outline\">Open Popover</Button>}\n      />\n      <PopoverPopup>\n        <PopoverTitle>What&apos;s new</PopoverTitle>\n        <PopoverDescription>\n          We just shipped a major update with new components and improved\n          performance across the board.\n        </PopoverDescription>\n      </PopoverPopup>\n    </Popover>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "popover"
+  ],
+  "type": "registry:example"
+}

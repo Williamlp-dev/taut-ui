@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "description": "spinner (ui)",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/default/ui/spinner.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport type React from \"react\";\nimport { cn } from \"@/registry/default/lib/utils\";\n\nconst styles = `\n@property --taut {\n  syntax: \"<angle>\";\n  inherits: false;\n  initial-value: 0deg;\n}\n@keyframes taut-pull {\n  50% { --taut: 80deg; rotate: 130deg; }\n  to { rotate: 360deg; }\n}\n`;\n\nexport const spinnerVariants = cva(\n  \"inline-block shrink-0 animate-[spin_5s_linear_infinite] rounded-full align-middle text-current\",\n  {\n    defaultVariants: {\n      size: \"default\",\n    },\n    variants: {\n      size: {\n        default: \"size-8\",\n        lg: \"size-10\",\n        sm: \"size-6\",\n        xl: \"size-12\",\n        xs: \"size-4\",\n      },\n    },\n  },\n);\n\nexport interface SpinnerProps\n  extends Omit<React.ComponentProps<\"svg\">, \"children\">,\n    VariantProps<typeof spinnerVariants> {}\n\nexport function Spinner({\n  className,\n  size = \"default\",\n  \"aria-label\": ariaLabel = \"Loading\",\n  ...props\n}: SpinnerProps): React.ReactElement {\n  return (\n    <>\n      <style href=\"taut-spinner\" precedence=\"default\">\n        {styles}\n      </style>\n      <svg\n        aria-label={ariaLabel}\n        className={cn(spinnerVariants({ size }), className)}\n        data-size={size}\n        data-slot=\"spinner\"\n        fill=\"none\"\n        height={32}\n        role=\"status\"\n        viewBox=\"0 0 100 100\"\n        width={32}\n        {...props}\n      >\n        <circle\n          className=\"opacity-20\"\n          cx=\"50\"\n          cy=\"50\"\n          r=\"44\"\n          stroke=\"currentColor\"\n          strokeWidth=\"12\"\n        />\n        <rect\n          className=\"origin-center animate-[taut-pull_1.5s_cubic-bezier(0.65,0,0.35,1)_infinite] fill-current forced-color-adjust-none [width:calc(88%*sin(var(--taut))+12%)] [x:calc(44%*(1-sin(var(--taut))))] [y:calc(44%*(1-cos(var(--taut))))] motion-reduce:animate-none motion-reduce:[--taut:60deg]\"\n          height=\"12\"\n          rx=\"6\"\n        />\n      </svg>\n    </>\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}

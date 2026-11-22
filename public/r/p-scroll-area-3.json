@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-scroll-area-3",
+  "description": "Scroll Area — Horizontal",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/scroll-area.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-scroll-area-3.tsx",
+      "content": "import { ScrollArea } from \"@/registry/default/ui/scroll-area\";\n\nconst items = [\n  { label: \"Surface\", value: \"01\" },\n  { label: \"Motion\", value: \"02\" },\n  { label: \"Shape\", value: \"03\" },\n  { label: \"Color\", value: \"04\" },\n  { label: \"Type\", value: \"05\" },\n  { label: \"Depth\", value: \"06\" },\n  { label: \"Focus\", value: \"07\" },\n];\n\nexport default function Particle() {\n  return (\n    <div className=\"w-80\">\n      <ScrollArea overscrollContain>\n        <div className=\"flex w-max gap-3 py-1\">\n          {items.map((item) => (\n            <div\n              className=\"flex h-24 w-28 shrink-0 flex-col justify-between rounded-2xl bg-muted p-3.5 dark:bg-card\"\n              key={item.value}\n            >\n              <span className=\"font-mono text-muted-foreground text-xs\">\n                {item.value}\n              </span>\n              <span className=\"font-medium text-foreground text-sm\">\n                {item.label}\n              </span>\n            </div>\n          ))}\n        </div>\n      </ScrollArea>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "scroll area"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-tooltip-1",
+  "description": "Basic tooltip",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/tooltip.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-tooltip-1.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Tooltip,\n  TooltipPopup,\n  TooltipTrigger,\n} from \"@/registry/default/ui/tooltip\";\n\nexport default function Particle() {\n  return (\n    <Tooltip>\n      <TooltipTrigger\n        render={<Button variant=\"outline\">Hover or focus</Button>}\n      />\n      <TooltipPopup>Add to library</TooltipPopup>\n    </Tooltip>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "tooltip"
+  ],
+  "type": "registry:example"
+}

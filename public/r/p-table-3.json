@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-table-3",
+  "description": "Table — With Badges",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/badge.json",
+    "https://taut-ui.com/r/table.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-table-3.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\";\nimport {\n  Table,\n  TableBody,\n  TableCell,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from \"@/registry/default/ui/table\";\n\nconst deployments = [\n  {\n    branch: \"main\",\n    commit: \"f5eedba\",\n    duration: \"34s\",\n    env: \"Production\",\n    status: \"Ready\",\n    variant: \"success\" as const,\n  },\n  {\n    branch: \"feat/table-card\",\n    commit: \"8a2a43d\",\n    duration: \"28s\",\n    env: \"Preview\",\n    status: \"Building\",\n    variant: \"warning\" as const,\n  },\n  {\n    branch: \"fix/edge-cache\",\n    commit: \"a887b08\",\n    duration: \"19s\",\n    env: \"Preview\",\n    status: \"Failed\",\n    variant: \"error\" as const,\n  },\n];\n\nexport default function Particle() {\n  return (\n    <Table variant=\"card\">\n      <TableHeader>\n        <TableRow>\n          <TableHead>Environment</TableHead>\n          <TableHead>Branch</TableHead>\n          <TableHead>Status</TableHead>\n          <TableHead className=\"text-right\">Duration</TableHead>\n        </TableRow>\n      </TableHeader>\n      <TableBody>\n        {deployments.map((item) => (\n          <TableRow key={item.commit}>\n            <TableCell className=\"font-medium\">{item.env}</TableCell>\n            <TableCell className=\"font-mono text-muted-foreground text-xs\">\n              {item.branch} ({item.commit})\n            </TableCell>\n            <TableCell>\n              <Badge size=\"sm\" variant={item.variant}>\n                {item.status}\n              </Badge>\n            </TableCell>\n            <TableCell className=\"text-right font-mono text-muted-foreground\">\n              {item.duration}\n            </TableCell>\n          </TableRow>\n        ))}\n      </TableBody>\n    </Table>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge",
+    "table"
+  ],
+  "type": "registry:example"
+}

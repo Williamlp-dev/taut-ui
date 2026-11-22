@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-empty-2",
+  "description": "Empty — Vibrant",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/empty.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-empty-2.tsx",
+      "content": "import { FolderPlusIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/default/ui/empty\";\n\nexport default function Particle() {\n  return (\n    <Empty>\n      <EmptyMedia variant=\"vibrant\">\n        <FolderPlusIcon />\n      </EmptyMedia>\n      <EmptyHeader>\n        <EmptyTitle>No projects yet</EmptyTitle>\n        <EmptyDescription>\n          Create your first project to organize components, themes, and team\n          releases.\n        </EmptyDescription>\n      </EmptyHeader>\n      <EmptyContent>\n        <Button>New project</Button>\n        <Button variant=\"ghost\">Import repository</Button>\n      </EmptyContent>\n    </Empty>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "empty"
+  ],
+  "type": "registry:example"
+}

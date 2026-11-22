@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-empty-4",
+  "description": "Empty — With Input",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/empty.json",
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-empty-4.tsx",
+      "content": "import { UsersIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/default/ui/empty\";\nimport { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  return (\n    <Empty>\n      <EmptyMedia>\n        <UsersIcon />\n      </EmptyMedia>\n      <EmptyHeader>\n        <EmptyTitle>No team members</EmptyTitle>\n        <EmptyDescription>\n          Invite collaborators by email to start working together in this\n          workspace.\n        </EmptyDescription>\n      </EmptyHeader>\n      <EmptyContent className=\"flex-nowrap\">\n        <Input placeholder=\"name@company.com\" type=\"email\" />\n        <Button>Invite</Button>\n      </EmptyContent>\n    </Empty>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "empty",
+    "input"
+  ],
+  "type": "registry:example"
+}

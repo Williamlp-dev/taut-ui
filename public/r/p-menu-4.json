@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-menu-4",
+  "description": "Menu — Checkboxes & Switch",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/menu.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-menu-4.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Menu,\n  MenuCheckboxItem,\n  MenuGroup,\n  MenuGroupLabel,\n  MenuPopup,\n  MenuSeparator,\n  MenuTrigger,\n} from \"@/registry/default/ui/menu\";\n\nexport default function Particle() {\n  const [statusBar, setStatusBar] = useState(true);\n  const [lineNumbers, setLineNumbers] = useState(true);\n  const [wordWrap, setWordWrap] = useState(false);\n\n  return (\n    <Menu>\n      <MenuTrigger render={<Button variant=\"outline\">View Options</Button>} />\n      <MenuPopup>\n        <MenuGroup>\n          <MenuGroupLabel>Panels</MenuGroupLabel>\n          <MenuCheckboxItem checked={statusBar} onCheckedChange={setStatusBar}>\n            Status bar\n          </MenuCheckboxItem>\n          <MenuCheckboxItem\n            checked={lineNumbers}\n            onCheckedChange={setLineNumbers}\n          >\n            Line numbers\n          </MenuCheckboxItem>\n        </MenuGroup>\n        <MenuSeparator />\n        <MenuCheckboxItem\n          checked={wordWrap}\n          onCheckedChange={setWordWrap}\n          variant=\"switch\"\n        >\n          Word wrap\n        </MenuCheckboxItem>\n      </MenuPopup>\n    </Menu>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "menu"
+  ],
+  "type": "registry:example"
+}

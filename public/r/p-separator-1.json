@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-separator-1",
+  "description": "Basic separator",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/separator.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-separator-1.tsx",
+      "content": "import { Separator } from \"@/registry/default/ui/separator\";\n\nexport default function Particle() {\n  return (\n    <div className=\"w-72 space-y-4\">\n      <div className=\"space-y-1\">\n        <h4 className=\"font-medium text-sm\">Taut UI</h4>\n        <p className=\"text-muted-foreground text-sm\">\n          Beautiful components built with Base UI.\n        </p>\n      </div>\n      <Separator />\n      <div className=\"flex h-5 items-center gap-4 text-sm\">\n        <span>Blog</span>\n        <Separator orientation=\"vertical\" />\n        <span>Docs</span>\n        <Separator orientation=\"vertical\" />\n        <span>GitHub</span>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "separator"
+  ],
+  "type": "registry:example"
+}

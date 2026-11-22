@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-tooltip-2",
+  "description": "Tooltip — Vibrant",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/tooltip.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-tooltip-2.tsx",
+      "content": "import { ZapIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Tooltip,\n  TooltipPopup,\n  TooltipTrigger,\n} from \"@/registry/default/ui/tooltip\";\n\nexport default function Particle() {\n  return (\n    <Tooltip>\n      <TooltipTrigger\n        render={\n          <Button variant=\"secondary\">\n            <ZapIcon />\n            Quick Action\n          </Button>\n        }\n      />\n      <TooltipPopup variant=\"vibrant\">\n        Run automated checks on current branch\n      </TooltipPopup>\n    </Tooltip>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "tooltip"
+  ],
+  "type": "registry:example"
+}

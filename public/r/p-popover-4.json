@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-popover-4",
+  "description": "Popover — With Form",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/input.json",
+    "https://taut-ui.com/r/popover.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-popover-4.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { Input } from \"@/registry/default/ui/input\";\nimport {\n  Popover,\n  PopoverActions,\n  PopoverClose,\n  PopoverDescription,\n  PopoverPopup,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/registry/default/ui/popover\";\n\nexport default function Particle() {\n  return (\n    <Popover>\n      <PopoverTrigger\n        render={<Button variant=\"outline\">Invite member</Button>}\n      />\n      <PopoverPopup className=\"w-80\">\n        <PopoverTitle>Invite collaborator</PopoverTitle>\n        <PopoverDescription>\n          Send an invite link directly to their inbox.\n        </PopoverDescription>\n        <div className=\"mt-2\">\n          <Input placeholder=\"name@company.com\" size=\"sm\" type=\"email\" />\n        </div>\n        <PopoverActions>\n          <PopoverClose render={<Button size=\"xs\" variant=\"ghost\" />}>\n            Cancel\n          </PopoverClose>\n          <PopoverClose render={<Button size=\"xs\" />}>Send invite</PopoverClose>\n        </PopoverActions>\n      </PopoverPopup>\n    </Popover>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "input",
+    "popover"
+  ],
+  "type": "registry:example"
+}

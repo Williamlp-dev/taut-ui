@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-badge-5",
+  "description": "Badge — With Icon",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/badge.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-badge-5.tsx",
+      "content": "import { CheckIcon } from \"lucide-react\";\nimport { Badge } from \"@/registry/default/ui/badge\";\n\nexport default function Particle() {\n  return (\n    <Badge variant=\"success\">\n      <CheckIcon />\n      Verified\n    </Badge>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge"
+  ],
+  "type": "registry:example"
+}

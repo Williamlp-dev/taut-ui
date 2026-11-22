@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-empty-3",
+  "description": "Empty — In Card",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/card.json",
+    "https://taut-ui.com/r/empty.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-empty-3.tsx",
+      "content": "import { SearchXIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Card } from \"@/registry/default/ui/card\";\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/default/ui/empty\";\n\nexport default function Particle() {\n  return (\n    <Card className=\"w-full max-w-md\">\n      <Empty className=\"py-10\">\n        <EmptyMedia>\n          <SearchXIcon />\n        </EmptyMedia>\n        <EmptyHeader>\n          <EmptyTitle>No matching results</EmptyTitle>\n          <EmptyDescription>\n            Try adjusting your search query or clearing active filters.\n          </EmptyDescription>\n        </EmptyHeader>\n        <EmptyContent>\n          <Button size=\"sm\" variant=\"outline\">\n            Clear filters\n          </Button>\n        </EmptyContent>\n      </Empty>\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "card",
+    "empty"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-autocomplete-3",
+  "description": "Autocomplete — With Trigger & Leading Icon",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/autocomplete.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-autocomplete-3.tsx",
+      "content": "\"use client\";\n\nimport { SearchIcon } from \"lucide-react\";\nimport {\n  Autocomplete,\n  AutocompleteEmpty,\n  AutocompleteInput,\n  AutocompleteItem,\n  AutocompleteList,\n  AutocompletePopup,\n} from \"@/registry/default/ui/autocomplete\";\n\nconst frameworks = [\n  \"Next.js\",\n  \"Remix\",\n  \"Astro\",\n  \"Vite\",\n  \"Nuxt\",\n  \"SvelteKit\",\n  \"SolidStart\",\n];\n\nexport default function Particle() {\n  return (\n    <Autocomplete items={frameworks}>\n      <AutocompleteInput\n        className=\"w-64\"\n        placeholder=\"Select framework…\"\n        showClear\n        showTrigger\n        startAddon={<SearchIcon />}\n      />\n      <AutocompletePopup>\n        <AutocompleteEmpty>No frameworks found.</AutocompleteEmpty>\n        <AutocompleteList>\n          {(framework: string) => (\n            <AutocompleteItem key={framework} value={framework}>\n              {framework}\n            </AutocompleteItem>\n          )}\n        </AutocompleteList>\n      </AutocompletePopup>\n    </Autocomplete>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "autocomplete"
+  ],
+  "type": "registry:example"
+}

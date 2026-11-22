@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-tabs-4",
+  "description": "Tabs — Primary Stacked",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/tabs.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-tabs-4.tsx",
+      "content": "import { BookmarkIcon, CompassIcon, FlameIcon } from \"lucide-react\";\nimport { Tabs, TabsList, TabsPanel, TabsTab } from \"@/registry/default/ui/tabs\";\n\nexport default function Particle() {\n  return (\n    <Tabs className=\"w-80 max-w-full\" defaultValue=\"explore\">\n      <TabsList stacked variant=\"primary\">\n        <TabsTab value=\"explore\">\n          <CompassIcon />\n          Explore\n        </TabsTab>\n        <TabsTab value=\"trending\">\n          <FlameIcon />\n          Trending\n        </TabsTab>\n        <TabsTab value=\"saved\">\n          <BookmarkIcon />\n          Saved\n        </TabsTab>\n      </TabsList>\n      <TabsPanel className=\"min-h-14 pt-3 text-center\" value=\"explore\">\n        <p className=\"text-muted-foreground text-sm\">\n          Curated collections and new releases.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"min-h-14 pt-3 text-center\" value=\"trending\">\n        <p className=\"text-muted-foreground text-sm\">\n          Most popular picks across the community.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"min-h-14 pt-3 text-center\" value=\"saved\">\n        <p className=\"text-muted-foreground text-sm\">\n          Bookmarked items from your recent activity.\n        </p>\n      </TabsPanel>\n    </Tabs>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "tabs"
+  ],
+  "type": "registry:example"
+}

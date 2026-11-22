@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-accordion-3",
+  "description": "Accordion — With Icons",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/accordion.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-accordion-3.tsx",
+      "content": "import { PaletteIcon, ShieldCheckIcon, ZapIcon } from \"lucide-react\";\nimport {\n  Accordion,\n  AccordionItem,\n  AccordionPanel,\n  AccordionTrigger,\n} from \"@/registry/default/ui/accordion\";\n\nconst items = [\n  {\n    content:\n      \"Built on tonal surfaces and CSS tokens that adapt cleanly between light and dark themes.\",\n    icon: PaletteIcon,\n    id: \"1\",\n    title: \"Surface-first design\",\n  },\n  {\n    content:\n      \"Keyboard navigation, ARIA attributes, and focus management are handled out of the box by Base UI.\",\n    icon: ShieldCheckIcon,\n    id: \"2\",\n    title: \"Accessible by default\",\n  },\n  {\n    content:\n      \"Spring-based height, corner morphing, and ripple feedback respect prefers-reduced-motion.\",\n    icon: ZapIcon,\n    id: \"3\",\n    title: \"Expressive motion\",\n  },\n];\n\nexport default function Particle() {\n  return (\n    <Accordion className=\"w-full\" defaultValue={[\"1\"]}>\n      {items.map((item) => (\n        <AccordionItem key={item.id} value={item.id}>\n          <AccordionTrigger>\n            <span className=\"flex items-center gap-3\">\n              <item.icon className=\"size-4 shrink-0 text-muted-foreground\" />\n              <span>{item.title}</span>\n            </span>\n          </AccordionTrigger>\n          <AccordionPanel>{item.content}</AccordionPanel>\n        </AccordionItem>\n      ))}\n    </Accordion>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "accordion"
+  ],
+  "type": "registry:example"
+}

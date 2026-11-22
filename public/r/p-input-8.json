@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-input-8",
+  "description": "Input — Invalid",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-input-8.tsx",
+      "content": "import { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  return (\n    <Input\n      aria-invalid=\"true\"\n      className=\"w-72\"\n      defaultValue=\"invalid-email\"\n      placeholder=\"Enter your email\"\n      type=\"email\"\n    />\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "input",
+    "error"
+  ],
+  "type": "registry:example"
+}

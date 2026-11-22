@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-badge-4",
+  "description": "Badge — Destructive",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/badge.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-badge-4.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\";\n\nexport default function Particle() {\n  return <Badge variant=\"destructive\">Destructive</Badge>;\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge"
+  ],
+  "type": "registry:example"
+}

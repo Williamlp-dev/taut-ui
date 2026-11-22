@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-input-6",
+  "description": "Input — With Leading Icon",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-input-6.tsx",
+      "content": "import { SearchIcon } from \"lucide-react\";\nimport { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  return (\n    <Input\n      className=\"w-72\"\n      placeholder=\"Search components…\"\n      startAddon={<SearchIcon />}\n      type=\"search\"\n    />\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "input"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-kbd-2",
+  "description": "Kbd — Combination",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/kbd.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-kbd-2.tsx",
+      "content": "import { Kbd, KbdGroup } from \"@/registry/default/ui/kbd\";\n\nexport default function Particle() {\n  return (\n    <KbdGroup>\n      <Kbd>Ctrl</Kbd>\n      <Kbd>Shift</Kbd>\n      <Kbd>P</Kbd>\n    </KbdGroup>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "kbd"
+  ],
+  "type": "registry:example"
+}

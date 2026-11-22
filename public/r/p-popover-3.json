@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-popover-3",
+  "description": "Popover — Vibrant",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/popover.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-popover-3.tsx",
+      "content": "import { ZapIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Popover,\n  PopoverActions,\n  PopoverClose,\n  PopoverDescription,\n  PopoverPopup,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/registry/default/ui/popover\";\n\nexport default function Particle() {\n  return (\n    <Popover>\n      <PopoverTrigger\n        render={\n          <Button variant=\"secondary\">\n            <ZapIcon />\n            Quick tip\n          </Button>\n        }\n      />\n      <PopoverPopup colorScheme=\"vibrant\">\n        <PopoverTitle>Keyboard shortcuts</PopoverTitle>\n        <PopoverDescription>\n          Press Ctrl+Space inside Autocomplete inputs to open suggestions\n          without a trigger button.\n        </PopoverDescription>\n        <PopoverActions>\n          <PopoverClose render={<Button size=\"xs\" />}>Nice</PopoverClose>\n        </PopoverActions>\n      </PopoverPopup>\n    </Popover>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "popover"
+  ],
+  "type": "registry:example"
+}

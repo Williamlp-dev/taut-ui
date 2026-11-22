@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-card-1",
+  "description": "Basic card",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/card.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-card-1.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\";\n\nexport default function Particle() {\n  return (\n    <Card className=\"w-80\">\n      <CardHeader>\n        <CardTitle>Project Update</CardTitle>\n        <CardDescription>\n          Your project has been successfully deployed to production.\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <p className=\"text-muted-foreground text-sm\">\n          All 42 tests passed. Build time: 1m 23s.\n        </p>\n      </CardContent>\n      <CardFooter className=\"gap-2\">\n        <Button size=\"sm\">View Details</Button>\n        <Button size=\"sm\" variant=\"ghost\">\n          Dismiss\n        </Button>\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "card"
+  ],
+  "type": "registry:example"
+}

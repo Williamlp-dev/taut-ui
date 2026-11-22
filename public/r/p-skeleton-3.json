@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-skeleton-3",
+  "description": "Skeleton — List",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/skeleton.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-skeleton-3.tsx",
+      "content": "import { Skeleton } from \"@/registry/default/ui/skeleton\";\n\nexport default function Particle() {\n  return (\n    <div className=\"flex w-80 flex-col gap-3.5\">\n      {[\"row-1\", \"row-2\", \"row-3\"].map((id) => (\n        <div className=\"flex items-center gap-3\" key={id}>\n          <Skeleton className=\"size-10 shrink-0 rounded-xl\" />\n          <div className=\"flex-1 space-y-1.5\">\n            <Skeleton className=\"h-3.5 w-3/4\" />\n            <Skeleton className=\"h-3 w-1/2\" />\n          </div>\n          <Skeleton className=\"h-5 w-12 shrink-0 rounded-full\" />\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "skeleton"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-card-6",
+  "description": "Card — Card Frame",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/card.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-card-6.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  CardFrame,\n  CardFrameAction,\n  CardFrameDescription,\n  CardFrameFooter,\n  CardFrameHeader,\n  CardFramePanel,\n  CardFrameTitle,\n} from \"@/registry/default/ui/card\";\n\nexport default function Particle() {\n  return (\n    <CardFrame className=\"w-96\">\n      <CardFrameHeader>\n        <CardFrameTitle>Notifications</CardFrameTitle>\n        <CardFrameDescription>\n          Choose how you want to be notified.\n        </CardFrameDescription>\n        <CardFrameAction>\n          <Button size=\"xs\" variant=\"outline\">\n            Reset\n          </Button>\n        </CardFrameAction>\n      </CardFrameHeader>\n      <CardFramePanel>\n        <p className=\"text-muted-foreground text-sm\">\n          Receive product updates, weekly digests, and security alerts directly\n          in your inbox.\n        </p>\n      </CardFramePanel>\n      <CardFrameFooter>\n        <span className=\"text-muted-foreground text-xs\">\n          Last updated just now\n        </span>\n        <Button size=\"xs\">Save</Button>\n      </CardFrameFooter>\n    </CardFrame>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "card"
+  ],
+  "type": "registry:example"
+}

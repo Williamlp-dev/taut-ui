@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-scroll-area-1",
+  "description": "Basic scroll area",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/card.json",
+    "https://taut-ui.com/r/scroll-area.json",
+    "https://taut-ui.com/r/separator.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-scroll-area-1.tsx",
+      "content": "import { Card } from \"@/registry/default/ui/card\";\nimport { ScrollArea } from \"@/registry/default/ui/scroll-area\";\nimport { Separator } from \"@/registry/default/ui/separator\";\n\nconst tags = [\n  \"Base UI\",\n  \"Tailwind CSS\",\n  \"Next.js\",\n  \"React\",\n  \"TypeScript\",\n  \"Class Variance Authority\",\n  \"Lucide Icons\",\n  \"Biome\",\n  \"Jotai\",\n  \"Fumadocs\",\n  \"Shiki\",\n  \"Zod\",\n];\n\nexport default function Particle() {\n  return (\n    <Card className=\"h-56 w-64 overflow-hidden\">\n      <ScrollArea overscrollContain>\n        <div className=\"p-4\">\n          <h4 className=\"mb-2 font-medium text-foreground text-sm\">Stack</h4>\n          {tags.map((tag, index) => (\n            <div key={tag}>\n              <p className=\"py-2 text-muted-foreground text-sm\">{tag}</p>\n              {index < tags.length - 1 && <Separator />}\n            </div>\n          ))}\n        </div>\n      </ScrollArea>\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card",
+    "scroll area",
+    "separator"
+  ],
+  "type": "registry:example"
+}

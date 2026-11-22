@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-tabs-1",
+  "description": "Basic tabs",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/tabs.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-tabs-1.tsx",
+      "content": "import { Tabs, TabsList, TabsPanel, TabsTab } from \"@/registry/default/ui/tabs\";\n\nexport default function Particle() {\n  return (\n    <Tabs className=\"w-80 max-w-full items-center\" defaultValue=\"account\">\n      <TabsList>\n        <TabsTab value=\"account\">Account</TabsTab>\n        <TabsTab value=\"password\">Password</TabsTab>\n        <TabsTab value=\"settings\">Settings</TabsTab>\n      </TabsList>\n      <TabsPanel className=\"min-h-14 pt-2 text-center\" value=\"account\">\n        <p className=\"text-muted-foreground text-sm\">\n          Manage your account and preferences.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"min-h-14 pt-2 text-center\" value=\"password\">\n        <p className=\"text-muted-foreground text-sm\">\n          Update your password and security.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"min-h-14 pt-2 text-center\" value=\"settings\">\n        <p className=\"text-muted-foreground text-sm\">\n          Configure your workspace settings.\n        </p>\n      </TabsPanel>\n    </Tabs>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "tabs"
+  ],
+  "type": "registry:example"
+}

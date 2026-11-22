@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-sheet-4",
+  "description": "Sheet — Inset",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/sheet.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-sheet-4.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Sheet,\n  SheetClose,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetPanel,\n  SheetPopup,\n  SheetTitle,\n  SheetTrigger,\n} from \"@/registry/default/ui/sheet\";\n\nexport default function Particle() {\n  return (\n    <Sheet>\n      <SheetTrigger render={<Button variant=\"outline\">Open Inset</Button>} />\n      <SheetPopup side=\"right\" variant=\"inset\">\n        <SheetHeader>\n          <SheetTitle>Inspector</SheetTitle>\n          <SheetDescription>\n            Floating surface detached from the viewport edges.\n          </SheetDescription>\n        </SheetHeader>\n        <SheetPanel className=\"grid gap-3 text-sm\">\n          <div className=\"flex items-center justify-between\">\n            <span className=\"text-muted-foreground\">Status</span>\n            <span className=\"font-medium\">Healthy</span>\n          </div>\n          <div className=\"flex items-center justify-between\">\n            <span className=\"text-muted-foreground\">Region</span>\n            <span className=\"font-medium\">gru1 (São Paulo)</span>\n          </div>\n          <div className=\"flex items-center justify-between\">\n            <span className=\"text-muted-foreground\">Latency</span>\n            <span className=\"font-medium\">14 ms</span>\n          </div>\n        </SheetPanel>\n        <SheetFooter>\n          <SheetClose render={<Button variant=\"ghost\" />}>Dismiss</SheetClose>\n          <SheetClose render={<Button />}>View logs</SheetClose>\n        </SheetFooter>\n      </SheetPopup>\n    </Sheet>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "sheet"
+  ],
+  "type": "registry:example"
+}

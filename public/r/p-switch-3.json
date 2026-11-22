@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-switch-3",
+  "description": "Switch — Both Icons",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/switch.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-switch-3.tsx",
+      "content": "import { Switch } from \"@/registry/default/ui/switch\";\n\nexport default function Particle() {\n  return <Switch aria-label=\"Both icons\" defaultChecked icons=\"both\" />;\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "switch"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-table-1",
+  "description": "Basic table",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/table.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-table-1.tsx",
+      "content": "import {\n  Table,\n  TableBody,\n  TableCell,\n  TableFooter,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from \"@/registry/default/ui/table\";\n\nconst invoices = [\n  { amount: \"$250.00\", id: \"INV-001\", method: \"Credit Card\", status: \"Paid\" },\n  { amount: \"$150.00\", id: \"INV-002\", method: \"PIX\", status: \"Pending\" },\n  { amount: \"$350.00\", id: \"INV-003\", method: \"Bank Transfer\", status: \"Paid\" },\n  { amount: \"$450.00\", id: \"INV-004\", method: \"Credit Card\", status: \"Paid\" },\n];\n\nexport default function Particle() {\n  return (\n    <Table>\n      <TableHeader>\n        <TableRow>\n          <TableHead className=\"w-28\">Invoice</TableHead>\n          <TableHead>Status</TableHead>\n          <TableHead>Method</TableHead>\n          <TableHead className=\"text-right\">Amount</TableHead>\n        </TableRow>\n      </TableHeader>\n      <TableBody>\n        {invoices.map((invoice) => (\n          <TableRow key={invoice.id}>\n            <TableCell className=\"font-medium\">{invoice.id}</TableCell>\n            <TableCell>{invoice.status}</TableCell>\n            <TableCell className=\"text-muted-foreground\">\n              {invoice.method}\n            </TableCell>\n            <TableCell className=\"text-right font-mono\">\n              {invoice.amount}\n            </TableCell>\n          </TableRow>\n        ))}\n      </TableBody>\n      <TableFooter>\n        <TableRow>\n          <TableCell colSpan={3}>Total</TableCell>\n          <TableCell className=\"text-right font-mono\">$1,200.00</TableCell>\n        </TableRow>\n      </TableFooter>\n    </Table>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "table"
+  ],
+  "type": "registry:example"
+}

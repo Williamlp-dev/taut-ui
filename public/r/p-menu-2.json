@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-menu-2",
+  "description": "Menu — Segmented (gap)",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/menu.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-menu-2.tsx",
+      "content": "import { CopyIcon, PencilIcon, Share2Icon, Trash2Icon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Menu,\n  MenuGroup,\n  MenuItem,\n  MenuPopup,\n  MenuTrigger,\n} from \"@/registry/default/ui/menu\";\n\nexport default function Particle() {\n  return (\n    <Menu>\n      <MenuTrigger render={<Button variant=\"outline\">Actions</Button>} />\n      <MenuPopup gap>\n        <MenuGroup>\n          <MenuItem>\n            <PencilIcon />\n            Rename\n          </MenuItem>\n          <MenuItem>\n            <CopyIcon />\n            Duplicate\n          </MenuItem>\n          <MenuItem>\n            <Share2Icon />\n            Share\n          </MenuItem>\n        </MenuGroup>\n        <MenuGroup>\n          <MenuItem variant=\"destructive\">\n            <Trash2Icon />\n            Delete\n          </MenuItem>\n        </MenuGroup>\n      </MenuPopup>\n    </Menu>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "menu"
+  ],
+  "type": "registry:example"
+}

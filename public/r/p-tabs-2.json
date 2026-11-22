@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-tabs-2",
+  "description": "Tabs — Pill",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/tabs.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-tabs-2.tsx",
+      "content": "import { Tabs, TabsList, TabsPanel, TabsTab } from \"@/registry/default/ui/tabs\";\n\nexport default function Particle() {\n  return (\n    <Tabs className=\"w-80 max-w-full items-center\" defaultValue=\"overview\">\n      <TabsList variant=\"pill\">\n        <TabsTab value=\"overview\">Overview</TabsTab>\n        <TabsTab value=\"analytics\">Analytics</TabsTab>\n        <TabsTab value=\"reports\">Reports</TabsTab>\n      </TabsList>\n      <TabsPanel className=\"min-h-14 pt-2 text-center\" value=\"overview\">\n        <p className=\"text-muted-foreground text-sm\">\n          Summary of workspace activity and metrics.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"min-h-14 pt-2 text-center\" value=\"analytics\">\n        <p className=\"text-muted-foreground text-sm\">\n          Traffic trends, funnels, and retention.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"min-h-14 pt-2 text-center\" value=\"reports\">\n        <p className=\"text-muted-foreground text-sm\">\n          Monthly exports and scheduled summaries.\n        </p>\n      </TabsPanel>\n    </Tabs>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "tabs"
+  ],
+  "type": "registry:example"
+}

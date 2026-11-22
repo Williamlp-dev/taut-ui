@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-spinner-5",
+  "description": "Spinner — Extra Large",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/spinner.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-spinner-5.tsx",
+      "content": "import { Spinner } from \"@/registry/default/ui/spinner\";\n\nexport default function Particle() {\n  return <Spinner size=\"xl\" />;\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "spinner",
+    "loading"
+  ],
+  "type": "registry:example"
+}

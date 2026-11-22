@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-command-2",
+  "description": "Command — With Keyboard Shortcut",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/command.json",
+    "https://taut-ui.com/r/kbd.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-command-2.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Command,\n  CommandDialog,\n  CommandDialogPopup,\n  CommandDialogTrigger,\n  CommandEmpty,\n  CommandInput,\n  CommandItem,\n  CommandList,\n  CommandPanel,\n  CommandShortcut,\n} from \"@/registry/default/ui/command\";\nimport { Kbd, KbdGroup } from \"@/registry/default/ui/kbd\";\n\ninterface Item {\n  value: string;\n  label: string;\n  shortcut: string;\n}\n\nconst items: Item[] = [\n  { label: \"New File\", shortcut: \"⌘N\", value: \"new-file\" },\n  { label: \"Open Folder\", shortcut: \"⌘O\", value: \"open-folder\" },\n  { label: \"Save\", shortcut: \"⌘S\", value: \"save\" },\n  { label: \"Toggle Sidebar\", shortcut: \"⌘B\", value: \"toggle-sidebar\" },\n];\n\nexport default function Particle() {\n  const [open, setOpen] = useState(false);\n\n  useEffect(() => {\n    const down = (e: KeyboardEvent): void => {\n      if (e.key === \"j\" && (e.metaKey || e.ctrlKey)) {\n        e.preventDefault();\n        setOpen((prev) => !prev);\n      }\n    };\n\n    document.addEventListener(\"keydown\", down);\n    return () => document.removeEventListener(\"keydown\", down);\n  }, []);\n\n  return (\n    <CommandDialog onOpenChange={setOpen} open={open}>\n      <CommandDialogTrigger render={<Button variant=\"outline\" />}>\n        Search\n        <KbdGroup>\n          <Kbd>⌘</Kbd>\n          <Kbd>J</Kbd>\n        </KbdGroup>\n      </CommandDialogTrigger>\n      <CommandDialogPopup aria-label=\"Command palette\">\n        <Command items={items}>\n          <CommandInput placeholder=\"Search commands…\" />\n          <CommandPanel>\n            <CommandEmpty>No results found.</CommandEmpty>\n            <CommandList>\n              {(item: Item) => (\n                <CommandItem\n                  key={item.value}\n                  onClick={() => setOpen(false)}\n                  value={item.value}\n                >\n                  <span className=\"flex-1\">{item.label}</span>\n                  <CommandShortcut>{item.shortcut}</CommandShortcut>\n                </CommandItem>\n              )}\n            </CommandList>\n          </CommandPanel>\n        </Command>\n      </CommandDialogPopup>\n    </CommandDialog>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "command",
+    "kbd"
+  ],
+  "type": "registry:example"
+}

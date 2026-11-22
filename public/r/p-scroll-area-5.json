@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-scroll-area-5",
+  "description": "Scroll Area — Scrollbar Gutter",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/badge.json",
+    "https://taut-ui.com/r/card.json",
+    "https://taut-ui.com/r/scroll-area.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-scroll-area-5.tsx",
+      "content": "import { Badge } from \"@/registry/default/ui/badge\";\nimport { Card } from \"@/registry/default/ui/card\";\nimport { ScrollArea } from \"@/registry/default/ui/scroll-area\";\n\nconst endpoints = [\n  { method: \"GET\", path: \"/api/projects\", status: \"200\" },\n  { method: \"POST\", path: \"/api/deployments\", status: \"201\" },\n  { method: \"GET\", path: \"/api/tokens\", status: \"200\" },\n  { method: \"PATCH\", path: \"/api/settings\", status: \"200\" },\n  { method: \"DELETE\", path: \"/api/sessions\", status: \"204\" },\n  { method: \"GET\", path: \"/api/members\", status: \"200\" },\n  { method: \"POST\", path: \"/api/invites\", status: \"201\" },\n  { method: \"GET\", path: \"/api/webhooks\", status: \"200\" },\n  { method: \"GET\", path: \"/api/audit-logs\", status: \"200\" },\n];\n\nexport default function Particle() {\n  return (\n    <Card className=\"h-56 w-80 overflow-hidden\">\n      <ScrollArea overscrollContain scrollbarGutter>\n        <div className=\"flex flex-col gap-1 p-3\">\n          {endpoints.map((ep) => (\n            <div\n              className=\"flex items-center justify-between gap-2 rounded-xl px-2.5 py-1.5 text-xs\"\n              key={`${ep.method}-${ep.path}`}\n            >\n              <span className=\"truncate font-mono text-foreground\">\n                <span className=\"me-2 text-muted-foreground\">{ep.method}</span>\n                {ep.path}\n              </span>\n              <Badge size=\"sm\" variant=\"success\">\n                {ep.status}\n              </Badge>\n            </div>\n          ))}\n        </div>\n      </ScrollArea>\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge",
+    "card",
+    "scroll area"
+  ],
+  "type": "registry:example"
+}

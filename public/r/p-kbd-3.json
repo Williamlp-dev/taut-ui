@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-kbd-3",
+  "description": "Kbd — In Button",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/kbd.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-kbd-3.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { Kbd, KbdGroup } from \"@/registry/default/ui/kbd\";\n\nexport default function Particle() {\n  return (\n    <Button variant=\"outline\">\n      Save\n      <KbdGroup>\n        <Kbd>⌘</Kbd>\n        <Kbd>S</Kbd>\n      </KbdGroup>\n    </Button>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "kbd"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-sheet-1",
+  "description": "Basic sheet",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/input.json",
+    "https://taut-ui.com/r/sheet.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-sheet-1.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport { Input } from \"@/registry/default/ui/input\";\nimport {\n  Sheet,\n  SheetClose,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetPanel,\n  SheetPopup,\n  SheetTitle,\n  SheetTrigger,\n} from \"@/registry/default/ui/sheet\";\n\nexport default function Particle() {\n  return (\n    <Sheet>\n      <SheetTrigger render={<Button variant=\"outline\">Open Sheet</Button>} />\n      <SheetPopup side=\"right\">\n        <SheetHeader>\n          <SheetTitle>Edit profile</SheetTitle>\n          <SheetDescription>\n            Update your personal details and public handle.\n          </SheetDescription>\n        </SheetHeader>\n        <SheetPanel className=\"grid gap-4\">\n          <div className=\"grid gap-1.5\">\n            <label className=\"font-medium text-sm\" htmlFor=\"sheet-name\">\n              Display name\n            </label>\n            <Input\n              defaultValue=\"Lucas Santos\"\n              id=\"sheet-name\"\n              variant=\"outline\"\n            />\n          </div>\n          <div className=\"grid gap-1.5\">\n            <label className=\"font-medium text-sm\" htmlFor=\"sheet-handle\">\n              Username\n            </label>\n            <Input defaultValue=\"@lucas\" id=\"sheet-handle\" variant=\"outline\" />\n          </div>\n        </SheetPanel>\n        <SheetFooter>\n          <SheetClose render={<Button variant=\"ghost\" />}>Cancel</SheetClose>\n          <SheetClose render={<Button />}>Save changes</SheetClose>\n        </SheetFooter>\n      </SheetPopup>\n    </Sheet>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "input",
+    "sheet"
+  ],
+  "type": "registry:example"
+}

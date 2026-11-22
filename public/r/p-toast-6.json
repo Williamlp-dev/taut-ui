@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-toast-6",
+  "description": "Toast — Anchored",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/toast.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-toast-6.tsx",
+      "content": "\"use client\";\n\nimport { CopyIcon } from \"lucide-react\";\nimport { useRef } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { anchoredToastManager } from \"@/registry/default/ui/toast\";\n\nexport default function Particle() {\n  const buttonRef = useRef<HTMLButtonElement | null>(null);\n\n  return (\n    <Button\n      onClick={() =>\n        anchoredToastManager.add({\n          data: { tooltipStyle: true },\n          positionerProps: { anchor: buttonRef.current, sideOffset: 8 },\n          timeout: 1800,\n          title: \"Copied to clipboard\",\n        })\n      }\n      ref={buttonRef}\n      variant=\"outline\"\n    >\n      <CopyIcon />\n      Copy Token\n    </Button>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "toast"
+  ],
+  "type": "registry:example"
+}

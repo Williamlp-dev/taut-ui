@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-drawer-3",
+  "description": "Drawer — Inset",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/drawer.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-drawer-3.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Drawer,\n  DrawerClose,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerHeader,\n  DrawerPanel,\n  DrawerPopup,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/registry/default/ui/drawer\";\n\nexport default function Particle() {\n  return (\n    <Drawer position=\"right\">\n      <DrawerTrigger render={<Button variant=\"outline\">Inset Drawer</Button>} />\n      <DrawerPopup showCloseButton variant=\"inset\">\n        <DrawerHeader>\n          <DrawerTitle>Quick Settings</DrawerTitle>\n          <DrawerDescription>\n            Floating surface with rounded corners on all sides.\n          </DrawerDescription>\n        </DrawerHeader>\n        <DrawerPanel>\n          <p className=\"text-muted-foreground text-sm\">\n            The inset variant adds outer breathing room on larger screens while\n            remaining full-bleed on compact viewports.\n          </p>\n        </DrawerPanel>\n        <DrawerFooter variant=\"bare\">\n          <DrawerClose render={<Button variant=\"ghost\" />}>Dismiss</DrawerClose>\n          <DrawerClose render={<Button />}>Done</DrawerClose>\n        </DrawerFooter>\n      </DrawerPopup>\n    </Drawer>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "drawer"
+  ],
+  "type": "registry:example"
+}

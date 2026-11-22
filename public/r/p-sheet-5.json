@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-sheet-5",
+  "description": "Sheet — Bare Footer",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/sheet.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-sheet-5.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Sheet,\n  SheetClose,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetPanel,\n  SheetPopup,\n  SheetTitle,\n  SheetTrigger,\n} from \"@/registry/default/ui/sheet\";\n\nexport default function Particle() {\n  return (\n    <Sheet>\n      <SheetTrigger\n        render={<Button variant=\"outline\">Open Bare Footer</Button>}\n      />\n      <SheetPopup side=\"right\">\n        <SheetHeader>\n          <SheetTitle>Revoke API key</SheetTitle>\n          <SheetDescription>\n            Any services authenticating with this token will immediately lose\n            access.\n          </SheetDescription>\n        </SheetHeader>\n        <SheetPanel>\n          <p className=\"text-muted-foreground text-sm\">\n            Key fingerprint:{\" \"}\n            <span className=\"font-mono text-foreground\">\n              taut_live_98f2...c41a\n            </span>\n          </p>\n        </SheetPanel>\n        <SheetFooter variant=\"bare\">\n          <SheetClose render={<Button variant=\"ghost\" />}>Cancel</SheetClose>\n          <SheetClose render={<Button variant=\"destructive\" />}>\n            Revoke key\n          </SheetClose>\n        </SheetFooter>\n      </SheetPopup>\n    </Sheet>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "sheet"
+  ],
+  "type": "registry:example"
+}

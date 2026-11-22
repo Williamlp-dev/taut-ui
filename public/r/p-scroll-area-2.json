@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-scroll-area-2",
+  "description": "Scroll Area — Scroll Fade",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/card.json",
+    "https://taut-ui.com/r/scroll-area.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-scroll-area-2.tsx",
+      "content": "import { Card } from \"@/registry/default/ui/card\";\nimport { ScrollArea } from \"@/registry/default/ui/scroll-area\";\n\nexport default function Particle() {\n  return (\n    <Card className=\"h-56 w-80 overflow-hidden\">\n      <ScrollArea overscrollContain scrollFade>\n        <div className=\"space-y-3 p-5 text-muted-foreground text-sm leading-6\">\n          <p>\n            ScrollArea applies smooth edge fade masks automatically whenever\n            content overflows along the vertical or horizontal axis.\n          </p>\n          <p>\n            As you scroll down, the top mask fades in proportionally to the\n            scroll offset, while the bottom mask fades out once you reach the\n            end of the container.\n          </p>\n          <p>\n            Combined with overscrollContain, wheel and touch gestures stay\n            contained inside the panel without pulling the parent page along.\n          </p>\n          <p>\n            Overlay scrollbars remain hidden at rest and appear cleanly on hover\n            or active scrolling, keeping dense interfaces uncluttered.\n          </p>\n        </div>\n      </ScrollArea>\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card",
+    "scroll area"
+  ],
+  "type": "registry:example"
+}

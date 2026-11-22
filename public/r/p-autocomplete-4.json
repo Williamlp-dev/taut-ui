@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-autocomplete-4",
+  "description": "Autocomplete — Small",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/autocomplete.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-autocomplete-4.tsx",
+      "content": "\"use client\";\n\nimport {\n  Autocomplete,\n  AutocompleteEmpty,\n  AutocompleteInput,\n  AutocompleteItem,\n  AutocompleteList,\n  AutocompletePopup,\n} from \"@/registry/default/ui/autocomplete\";\n\nconst languages = [\"TypeScript\", \"JavaScript\", \"Rust\", \"Go\", \"Python\"];\n\nexport default function Particle() {\n  return (\n    <Autocomplete items={languages}>\n      <AutocompleteInput\n        className=\"w-64\"\n        placeholder=\"Search language…\"\n        size=\"sm\"\n      />\n      <AutocompletePopup>\n        <AutocompleteEmpty>No results found.</AutocompleteEmpty>\n        <AutocompleteList>\n          {(lang: string) => (\n            <AutocompleteItem key={lang} value={lang}>\n              {lang}\n            </AutocompleteItem>\n          )}\n        </AutocompleteList>\n      </AutocompletePopup>\n    </Autocomplete>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "autocomplete"
+  ],
+  "type": "registry:example"
+}

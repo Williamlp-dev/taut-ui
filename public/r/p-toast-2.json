@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-toast-2",
+  "description": "Toast — Success",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/toast.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-toast-2.tsx",
+      "content": "\"use client\";\n\nimport { Button } from \"@/registry/default/ui/button\";\nimport { toastManager } from \"@/registry/default/ui/toast\";\n\nexport default function Particle() {\n  return (\n    <Button\n      onClick={() =>\n        toastManager.add({\n          description: \"Your deployment is now live on gru1.\",\n          title: \"Deployment succeeded\",\n          type: \"success\",\n        })\n      }\n      variant=\"outline\"\n    >\n      Success Toast\n    </Button>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "toast",
+    "success"
+  ],
+  "type": "registry:example"
+}

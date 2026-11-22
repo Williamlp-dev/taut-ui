@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-drawer-6",
+  "description": "Drawer — Scrollable",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/drawer.json",
+    "https://taut-ui.com/r/separator.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-drawer-6.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Drawer,\n  DrawerClose,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerHeader,\n  DrawerPanel,\n  DrawerPopup,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/registry/default/ui/drawer\";\nimport { Separator } from \"@/registry/default/ui/separator\";\n\nconst releases = [\n  { notes: \"Added Ctrl+Space trigger to Autocomplete.\", version: \"v1.24.0\" },\n  {\n    notes: \"Redesigned Accordion with M3 expressive segmented surfaces.\",\n    version: \"v1.23.0\",\n  },\n  { notes: \"Introduced optional ripple prop on Card.\", version: \"v1.22.0\" },\n  {\n    notes: \"Removed color transitions for instant dark/light theme switching.\",\n    version: \"v1.21.0\",\n  },\n  {\n    notes: \"Added BadgeAnchor for dot and counter badges.\",\n    version: \"v1.20.0\",\n  },\n  {\n    notes: \"Improved Ripple diagonal fill across wide buttons.\",\n    version: \"v1.19.0\",\n  },\n  { notes: \"Added nested stacking support to Drawer.\", version: \"v1.18.0\" },\n  {\n    notes: \"Introduced Command palette with grouped items.\",\n    version: \"v1.17.0\",\n  },\n  { notes: \"Added ScrollArea edge fade masks.\", version: \"v1.16.0\" },\n  { notes: \"Added spring corner morphing to Button.\", version: \"v1.15.0\" },\n  { notes: \"Migrated primitives to Base UI v1.\", version: \"v1.14.0\" },\n  { notes: \"Added dark, light, and taut theme presets.\", version: \"v1.13.0\" },\n  { notes: \"Added DrawerMenu checkbox and radio items.\", version: \"v1.12.0\" },\n  {\n    notes: \"Added inset variant with floating rounded corners.\",\n    version: \"v1.11.0\",\n  },\n  {\n    notes: \"Added CardFrame layout for grouped settings panels.\",\n    version: \"v1.10.0\",\n  },\n  {\n    notes: \"Switched Badge semantic variants to solid color-mix surfaces.\",\n    version: \"v1.9.0\",\n  },\n  {\n    notes: \"Fixed Spinner alignment inside loading Button.\",\n    version: \"v1.8.0\",\n  },\n  {\n    notes: \"Removed contain: paint from Ripple to fix subpixel edge clipping.\",\n    version: \"v1.7.0\",\n  },\n  {\n    notes: \"Added instant exit option to Autocomplete popup.\",\n    version: \"v1.6.0\",\n  },\n  { notes: \"Added keyboard shortcut hints to Command.\", version: \"v1.5.0\" },\n  { notes: \"Added horizontal orientation to Card.\", version: \"v1.4.0\" },\n  {\n    notes: \"Added swipe-to-dismiss gestures on all four edges.\",\n    version: \"v1.3.0\",\n  },\n  {\n    notes: \"Added reduced-motion fallbacks across components.\",\n    version: \"v1.2.0\",\n  },\n  { notes: \"Initial public release of taut-ui.\", version: \"v1.0.0\" },\n];\n\nexport default function Particle() {\n  return (\n    <Drawer>\n      <DrawerTrigger\n        render={<Button variant=\"outline\">Scrollable Drawer</Button>}\n      />\n      <DrawerPopup className=\"max-h-[60dvh]\" showBar>\n        <DrawerHeader>\n          <DrawerTitle>Changelog</DrawerTitle>\n          <DrawerDescription>\n            Recent updates and improvements across the library.\n          </DrawerDescription>\n        </DrawerHeader>\n        <DrawerPanel className=\"px-0\" scrollFade>\n          <div className=\"flex flex-col\">\n            {releases.map((release, index) => (\n              <div key={release.version}>\n                <div className=\"flex flex-col gap-0.5 px-6 py-3\">\n                  <span className=\"font-medium font-mono text-foreground text-xs\">\n                    {release.version}\n                  </span>\n                  <p className=\"text-muted-foreground text-sm\">\n                    {release.notes}\n                  </p>\n                </div>\n                {index < releases.length - 1 && <Separator />}\n              </div>\n            ))}\n          </div>\n        </DrawerPanel>\n        <DrawerFooter>\n          <DrawerClose render={<Button />}>Got it</DrawerClose>\n        </DrawerFooter>\n      </DrawerPopup>\n    </Drawer>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "drawer",
+    "separator"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-drawer-5",
+  "description": "Drawer — Nested",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/drawer.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-drawer-5.tsx",
+      "content": "import { KeyRoundIcon, ShieldIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Drawer,\n  DrawerClose,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerHeader,\n  DrawerMenu,\n  DrawerMenuTrigger,\n  DrawerPanel,\n  DrawerPopup,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/registry/default/ui/drawer\";\n\nexport default function Particle() {\n  return (\n    <Drawer>\n      <DrawerTrigger\n        render={<Button variant=\"outline\">Nested Drawer</Button>}\n      />\n      <DrawerPopup className=\"mx-auto min-h-80 max-w-[1440px]\" showBar>\n        <DrawerHeader>\n          <DrawerTitle>Workspace</DrawerTitle>\n          <DrawerDescription>\n            Stack up to three nested drawers to preview the depth and scale\n            transitions.\n          </DrawerDescription>\n        </DrawerHeader>\n        <DrawerPanel>\n          <DrawerMenu>\n            <Drawer>\n              <DrawerMenuTrigger>\n                <ShieldIcon />\n                Security settings\n              </DrawerMenuTrigger>\n              <DrawerPopup className=\"mx-auto min-h-72 max-w-[1440px]\" showBar>\n                <DrawerHeader>\n                  <DrawerTitle>Security</DrawerTitle>\n                  <DrawerDescription>\n                    Manage authentication methods and device sessions.\n                  </DrawerDescription>\n                </DrawerHeader>\n                <DrawerPanel>\n                  <DrawerMenu>\n                    <Drawer>\n                      <DrawerMenuTrigger>\n                        <KeyRoundIcon />\n                        Recovery keys\n                      </DrawerMenuTrigger>\n                      <DrawerPopup\n                        className=\"mx-auto min-h-64 max-w-[1440px]\"\n                        showBar\n                      >\n                        <DrawerHeader>\n                          <DrawerTitle>Recovery Keys</DrawerTitle>\n                          <DrawerDescription>\n                            Store these one-time codes in a safe place in case\n                            you lose access to your authenticator.\n                          </DrawerDescription>\n                        </DrawerHeader>\n                        <DrawerPanel>\n                          <p className=\"text-muted-foreground text-sm\">\n                            You have 6 unused recovery codes remaining.\n                            Generating a new set will invalidate all previous\n                            codes.\n                          </p>\n                        </DrawerPanel>\n                        <DrawerFooter>\n                          <DrawerClose render={<Button variant=\"ghost\" />}>\n                            Back\n                          </DrawerClose>\n                          <DrawerClose render={<Button />}>\n                            Regenerate\n                          </DrawerClose>\n                        </DrawerFooter>\n                      </DrawerPopup>\n                    </Drawer>\n                  </DrawerMenu>\n                </DrawerPanel>\n                <DrawerFooter>\n                  <DrawerClose render={<Button variant=\"ghost\" />}>\n                    Back\n                  </DrawerClose>\n                </DrawerFooter>\n              </DrawerPopup>\n            </Drawer>\n          </DrawerMenu>\n        </DrawerPanel>\n        <DrawerFooter>\n          <DrawerClose render={<Button variant=\"ghost\" />}>Close</DrawerClose>\n        </DrawerFooter>\n      </DrawerPopup>\n    </Drawer>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "drawer"
+  ],
+  "type": "registry:example"
+}

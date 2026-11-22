@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-autocomplete-7",
+  "description": "Autocomplete — Open with Ctrl + Space",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/autocomplete.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-autocomplete-7.tsx",
+      "content": "\"use client\";\n\nimport {\n  Autocomplete,\n  AutocompleteEmpty,\n  AutocompleteInput,\n  AutocompleteItem,\n  AutocompleteList,\n  AutocompletePopup,\n} from \"@/registry/default/ui/autocomplete\";\n\nconst commands = [\n  \"git status\",\n  \"git commit\",\n  \"git push\",\n  \"git pull\",\n  \"git checkout\",\n  \"git branch\",\n];\n\nexport default function Particle() {\n  return (\n    <Autocomplete items={commands} openOnCtrlSpace>\n      <AutocompleteInput\n        className=\"w-64\"\n        placeholder=\"Press Ctrl+Space…\"\n        showClear\n      />\n      <AutocompletePopup>\n        <AutocompleteEmpty>No commands found.</AutocompleteEmpty>\n        <AutocompleteList>\n          {(cmd: string) => (\n            <AutocompleteItem key={cmd} value={cmd}>\n              {cmd}\n            </AutocompleteItem>\n          )}\n        </AutocompleteList>\n      </AutocompletePopup>\n    </Autocomplete>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "autocomplete"
+  ],
+  "type": "registry:example"
+}

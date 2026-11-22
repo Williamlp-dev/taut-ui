@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-card-5",
+  "description": "Card — Interactive",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/card.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-card-5.tsx",
+      "content": "import { ArrowUpRightIcon } from \"lucide-react\";\nimport {\n  Card,\n  CardAction,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\";\n\nexport default function Particle() {\n  return (\n    <Card\n      className=\"w-80\"\n      render={<button type=\"button\" />}\n      ripple\n      variant=\"outlined\"\n    >\n      <CardHeader>\n        <CardTitle>Getting Started</CardTitle>\n        <CardDescription>\n          Install components and configure your theme tokens in minutes.\n        </CardDescription>\n        <CardAction>\n          <ArrowUpRightIcon className=\"size-4 text-muted-foreground\" />\n        </CardAction>\n      </CardHeader>\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card"
+  ],
+  "type": "registry:example"
+}

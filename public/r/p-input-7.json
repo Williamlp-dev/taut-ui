@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-input-7",
+  "description": "Input — Password Toggle",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-input-7.tsx",
+      "content": "\"use client\";\n\nimport { EyeIcon, EyeOffIcon } from \"lucide-react\";\nimport { useState } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  const [visible, setVisible] = useState(false);\n\n  return (\n    <Input\n      className=\"w-72\"\n      defaultValue=\"s3cr3t-p@ss\"\n      placeholder=\"Password\"\n      type={visible ? \"text\" : \"password\"}\n    >\n      <Button\n        aria-label={visible ? \"Hide password\" : \"Show password\"}\n        onClick={() => setVisible((prev) => !prev)}\n        size=\"icon\"\n        variant=\"ghost\"\n      >\n        {visible ? <EyeOffIcon /> : <EyeIcon />}\n      </Button>\n    </Input>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "input",
+    "password"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-tabs-5",
+  "description": "Tabs — Dot",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/tabs.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-tabs-5.tsx",
+      "content": "import { Tabs, TabsList, TabsPanel, TabsTab } from \"@/registry/default/ui/tabs\";\n\nexport default function Particle() {\n  return (\n    <Tabs className=\"w-72 max-w-full\" defaultValue=\"all\">\n      <TabsList variant=\"dot\">\n        <TabsTab value=\"all\">All</TabsTab>\n        <TabsTab value=\"unread\">Unread</TabsTab>\n        <TabsTab value=\"archived\">Archived</TabsTab>\n      </TabsList>\n      <TabsPanel className=\"min-h-14 pt-3 text-center\" value=\"all\">\n        <p className=\"text-muted-foreground text-sm\">\n          Showing all 24 conversations.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"min-h-14 pt-3 text-center\" value=\"unread\">\n        <p className=\"text-muted-foreground text-sm\">\n          3 unread messages waiting for review.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"min-h-14 pt-3 text-center\" value=\"archived\">\n        <p className=\"text-muted-foreground text-sm\">\n          Archived threads kept for 90 days.\n        </p>\n      </TabsPanel>\n    </Tabs>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "tabs"
+  ],
+  "type": "registry:example"
+}

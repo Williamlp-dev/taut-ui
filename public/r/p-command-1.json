@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-command-1",
+  "description": "Basic command",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/command.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-command-1.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Command,\n  CommandCollection,\n  CommandDialog,\n  CommandDialogPopup,\n  CommandDialogTrigger,\n  CommandEmpty,\n  CommandGroup,\n  CommandGroupLabel,\n  CommandInput,\n  CommandItem,\n  CommandList,\n  CommandPanel,\n} from \"@/registry/default/ui/command\";\n\ninterface Item {\n  value: string;\n  label: string;\n}\n\ninterface Group {\n  value: string;\n  items: Item[];\n}\n\nconst groups: Group[] = [\n  {\n    items: [\n      { label: \"Calendar\", value: \"calendar\" },\n      { label: \"Search Emoji\", value: \"search-emoji\" },\n      { label: \"Calculator\", value: \"calculator\" },\n    ],\n    value: \"Suggestions\",\n  },\n  {\n    items: [\n      { label: \"Profile\", value: \"profile\" },\n      { label: \"Billing\", value: \"billing\" },\n      { label: \"Settings\", value: \"settings\" },\n    ],\n    value: \"Account\",\n  },\n];\n\nexport default function Particle() {\n  const [open, setOpen] = useState(false);\n\n  return (\n    <CommandDialog onOpenChange={setOpen} open={open}>\n      <CommandDialogTrigger render={<Button variant=\"outline\" />}>\n        Open Command\n      </CommandDialogTrigger>\n      <CommandDialogPopup aria-label=\"Command palette\">\n        <Command items={groups}>\n          <CommandInput placeholder=\"Type a command or search…\" />\n          <CommandPanel>\n            <CommandEmpty>No results found.</CommandEmpty>\n            <CommandList>\n              {(group: Group) => (\n                <CommandGroup items={group.items} key={group.value}>\n                  <CommandGroupLabel>{group.value}</CommandGroupLabel>\n                  <CommandCollection>\n                    {(item: Item) => (\n                      <CommandItem\n                        key={item.value}\n                        onClick={() => setOpen(false)}\n                        value={item.value}\n                      >\n                        {item.label}\n                      </CommandItem>\n                    )}\n                  </CommandCollection>\n                </CommandGroup>\n              )}\n            </CommandList>\n          </CommandPanel>\n        </Command>\n      </CommandDialogPopup>\n    </CommandDialog>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "command"
+  ],
+  "type": "registry:example"
+}

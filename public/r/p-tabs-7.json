@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-tabs-7",
+  "description": "Tabs — Vertical",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/tabs.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-tabs-7.tsx",
+      "content": "import { Tabs, TabsList, TabsPanel, TabsTab } from \"@/registry/default/ui/tabs\";\n\nexport default function Particle() {\n  return (\n    <Tabs\n      className=\"w-80 max-w-full\"\n      defaultValue=\"profile\"\n      orientation=\"vertical\"\n    >\n      <TabsList variant=\"underline\">\n        <TabsTab value=\"profile\">Profile</TabsTab>\n        <TabsTab value=\"security\">Security</TabsTab>\n        <TabsTab value=\"api\">API Keys</TabsTab>\n      </TabsList>\n      <TabsPanel className=\"py-1\" value=\"profile\">\n        <p className=\"text-muted-foreground text-sm\">\n          Edit your display name, avatar, and public bio.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"py-1\" value=\"security\">\n        <p className=\"text-muted-foreground text-sm\">\n          Configure two-factor auth and recovery codes.\n        </p>\n      </TabsPanel>\n      <TabsPanel className=\"py-1\" value=\"api\">\n        <p className=\"text-muted-foreground text-sm\">\n          Create and revoke personal access tokens.\n        </p>\n      </TabsPanel>\n    </Tabs>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "tabs"
+  ],
+  "type": "registry:example"
+}

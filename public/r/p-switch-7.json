@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-switch-7",
+  "description": "Switch — In Card",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/card.json",
+    "https://taut-ui.com/r/switch.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-switch-7.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Card } from \"@/registry/default/ui/card\";\nimport { Switch } from \"@/registry/default/ui/switch\";\n\nexport default function Particle() {\n  const [enabled, setEnabled] = useState(true);\n\n  return (\n    <Card className=\"w-80 flex-row items-center justify-between gap-4 p-4\">\n      <div className=\"space-y-0.5\">\n        <p className=\"font-medium text-foreground text-sm\">Auto-save</p>\n        <p className=\"text-muted-foreground text-xs\">\n          Automatically persist changes as you edit.\n        </p>\n      </div>\n      <Switch\n        aria-label=\"Auto-save\"\n        checked={enabled}\n        icons=\"checked\"\n        onCheckedChange={setEnabled}\n      />\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card",
+    "switch"
+  ],
+  "type": "registry:example"
+}

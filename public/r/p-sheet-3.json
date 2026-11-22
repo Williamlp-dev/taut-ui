@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-sheet-3",
+  "description": "Sheet — Bottom Side",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/sheet.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-sheet-3.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Sheet,\n  SheetClose,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetPanel,\n  SheetPopup,\n  SheetTitle,\n  SheetTrigger,\n} from \"@/registry/default/ui/sheet\";\n\nexport default function Particle() {\n  return (\n    <Sheet>\n      <SheetTrigger render={<Button variant=\"outline\">Open Bottom</Button>} />\n      <SheetPopup className=\"mx-auto max-w-[1440px]\" side=\"bottom\">\n        <SheetHeader>\n          <SheetTitle>Export dataset</SheetTitle>\n          <SheetDescription>\n            Download a snapshot of your analytics events for offline analysis.\n          </SheetDescription>\n        </SheetHeader>\n        <SheetPanel>\n          <p className=\"text-muted-foreground text-sm\">\n            Exports include all raw event payloads from the last 30 days in\n            compressed NDJSON format.\n          </p>\n        </SheetPanel>\n        <SheetFooter>\n          <SheetClose render={<Button variant=\"ghost\" />}>Cancel</SheetClose>\n          <SheetClose render={<Button />}>Start export</SheetClose>\n        </SheetFooter>\n      </SheetPopup>\n    </Sheet>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "sheet"
+  ],
+  "type": "registry:example"
+}

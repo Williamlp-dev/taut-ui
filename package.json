@@ -6,7 +6,7 @@
     "registry:index": "bun scripts/build-registry.ts",
     "registry:build": "bun scripts/build-registry.ts --publish",
     "dev": "next dev",
-    "build": "bun run registry:build && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write"

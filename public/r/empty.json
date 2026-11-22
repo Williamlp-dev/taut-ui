@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty",
+  "description": "empty (ui)",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/default/ui/empty.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport type React from \"react\";\nimport { cn } from \"@/registry/default/lib/utils\";\n\nconst emptyMediaVariants = cva(\n  \"relative mb-3 flex shrink-0 items-center justify-center rounded-[30%]\",\n  {\n    defaultVariants: { variant: \"icon\" },\n    variants: {\n      variant: {\n        default: \"\",\n        icon: \"size-16\",\n        vibrant: \"size-16\",\n      },\n    },\n  },\n);\n\nexport function Empty({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">): React.ReactElement {\n  return (\n    <div\n      className={cn(\n        \"flex min-w-0 flex-1 flex-col items-center justify-center gap-5 text-balance px-6 py-12 text-center md:py-16\",\n        className,\n      )}\n      data-slot=\"empty\"\n      {...props}\n    />\n  );\n}\n\nexport function EmptyMedia({\n  className,\n  variant = \"icon\",\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> &\n  VariantProps<typeof emptyMediaVariants>): React.ReactElement {\n  return (\n    <div\n      className={cn(emptyMediaVariants({ variant }), className)}\n      data-slot=\"empty-media\"\n      data-variant={variant}\n      {...props}\n    >\n      {variant === \"default\" ? (\n        children\n      ) : (\n        <>\n          <span\n            aria-hidden=\"true\"\n            className={cn(\n              \"pointer-events-none absolute inset-0 rotate-12 scale-105 rounded-[inherit]\",\n              variant === \"vibrant\"\n                ? \"bg-[color-mix(in_oklab,var(--color-background),var(--color-primary)_26%)]\"\n                : \"bg-[color-mix(in_oklab,var(--color-background),var(--color-foreground)_6%)]\",\n            )}\n          />\n          <span\n            className={cn(\n              \"relative flex size-full items-center justify-center rounded-[inherit] [&_svg:not([class*='size-'])]:size-7 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n              variant === \"vibrant\"\n                ? \"bg-primary text-primary-foreground\"\n                : \"bg-[color-mix(in_oklab,var(--color-card),var(--color-foreground)_10%)] text-secondary-foreground\",\n            )}\n          >\n            {children}\n          </span>\n        </>\n      )}\n    </div>\n  );\n}\n\nexport function EmptyHeader({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">): React.ReactElement {\n  return (\n    <div\n      className={cn(\n        \"flex max-w-sm flex-col items-center gap-1.5 text-center\",\n        className,\n      )}\n      data-slot=\"empty-header\"\n      {...props}\n    />\n  );\n}\n\nexport function EmptyTitle({\n  className,\n  ...props\n}: React.ComponentProps<\"h3\">): React.ReactElement {\n  return (\n    <h3\n      className={cn(\n        \"font-heading font-semibold text-foreground text-xl leading-7 tracking-tight\",\n        className,\n      )}\n      data-slot=\"empty-title\"\n      {...props}\n    />\n  );\n}\n\nexport function EmptyDescription({\n  className,\n  ...props\n}: React.ComponentProps<\"p\">): React.ReactElement {\n  return (\n    <p\n      className={cn(\n        \"max-w-[36ch] text-pretty text-muted-foreground text-sm leading-5 [&>a:hover]:underline [&>a]:text-primary [&>a]:underline-offset-4\",\n        className,\n      )}\n      data-slot=\"empty-description\"\n      {...props}\n    />\n  );\n}\n\nexport function EmptyContent({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">): React.ReactElement {\n  return (\n    <div\n      className={cn(\n        \"flex w-full min-w-0 max-w-sm flex-wrap items-center justify-center gap-2\",\n        className,\n      )}\n      data-slot=\"empty-content\"\n      {...props}\n    />\n  );\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}

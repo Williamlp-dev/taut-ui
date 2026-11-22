@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-button-7",
+  "description": "Button — With Icon",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-button-7.tsx",
+      "content": "import { MailIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\n\nexport default function Particle() {\n  return (\n    <Button>\n      <MailIcon />\n      Send email\n    </Button>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:example"
+}

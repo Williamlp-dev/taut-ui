@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-button-11",
+  "description": "Button — As Link",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-button-11.tsx",
+      "content": "\"use client\";\n\nimport { ArrowUpRightIcon } from \"lucide-react\";\nimport Link from \"next/link\";\nimport { Button } from \"@/registry/default/ui/button\";\n\nexport default function Particle() {\n  return (\n    <Button\n      render={\n        <Link\n          href=\"#as-link\"\n          onClick={(e) => e.preventDefault()}\n          prefetch={false}\n        />\n      }\n      variant=\"outline\"\n    >\n      Documentation\n      <ArrowUpRightIcon />\n    </Button>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-menu-6",
+  "description": "Menu — Submenu",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/menu.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-menu-6.tsx",
+      "content": "import {\n  FileTextIcon,\n  FolderIcon,\n  MailIcon,\n  MessageSquareIcon,\n  Share2Icon,\n} from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Menu,\n  MenuItem,\n  MenuPopup,\n  MenuSeparator,\n  MenuSub,\n  MenuSubPopup,\n  MenuSubTrigger,\n  MenuTrigger,\n} from \"@/registry/default/ui/menu\";\n\nexport default function Particle() {\n  return (\n    <Menu>\n      <MenuTrigger render={<Button variant=\"outline\">File</Button>} />\n      <MenuPopup>\n        <MenuItem>\n          <FileTextIcon />\n          New document\n        </MenuItem>\n        <MenuItem>\n          <FolderIcon />\n          New folder\n        </MenuItem>\n        <MenuSeparator />\n        <MenuSub>\n          <MenuSubTrigger>\n            <Share2Icon />\n            Share via\n          </MenuSubTrigger>\n          <MenuSubPopup>\n            <MenuItem>\n              <MailIcon />\n              Email\n            </MenuItem>\n            <MenuItem>\n              <MessageSquareIcon />\n              Message\n            </MenuItem>\n          </MenuSubPopup>\n        </MenuSub>\n      </MenuPopup>\n    </Menu>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "menu"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-badge-6",
+  "description": "Badge — Anchored Dot",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/badge.json",
+    "https://taut-ui.com/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-badge-6.tsx",
+      "content": "import { BellIcon } from \"lucide-react\";\nimport { Badge, BadgeAnchor } from \"@/registry/default/ui/badge\";\nimport { Button } from \"@/registry/default/ui/button\";\n\nexport default function Particle() {\n  return (\n    <BadgeAnchor>\n      <Button aria-label=\"Notifications\" size=\"icon\" variant=\"outline\">\n        <BellIcon />\n      </Button>\n      <Badge size=\"dot\" variant=\"destructive\" />\n    </BadgeAnchor>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge",
+    "button"
+  ],
+  "type": "registry:example"
+}

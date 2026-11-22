@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-popover-2",
+  "description": "Popover — With Actions",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/popover.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-popover-2.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Popover,\n  PopoverActions,\n  PopoverClose,\n  PopoverDescription,\n  PopoverPopup,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/registry/default/ui/popover\";\n\nexport default function Particle() {\n  return (\n    <Popover>\n      <PopoverTrigger render={<Button variant=\"outline\">Updates</Button>} />\n      <PopoverPopup>\n        <PopoverTitle>Sync completed</PopoverTitle>\n        <PopoverDescription>\n          All workspace tokens and registry files are up to date with the latest\n          release.\n        </PopoverDescription>\n        <PopoverActions>\n          <PopoverClose render={<Button size=\"xs\" variant=\"ghost\" />}>\n            Dismiss\n          </PopoverClose>\n          <PopoverClose render={<Button size=\"xs\" />}>Got it</PopoverClose>\n        </PopoverActions>\n      </PopoverPopup>\n    </Popover>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "popover"
+  ],
+  "type": "registry:example"
+}

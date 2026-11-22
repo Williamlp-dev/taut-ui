@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-drawer-2",
+  "description": "Drawer — Right Position",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/drawer.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-drawer-2.tsx",
+      "content": "import { Button } from \"@/registry/default/ui/button\";\nimport {\n  Drawer,\n  DrawerClose,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerHeader,\n  DrawerPanel,\n  DrawerPopup,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/registry/default/ui/drawer\";\n\nexport default function Particle() {\n  return (\n    <Drawer position=\"right\">\n      <DrawerTrigger render={<Button variant=\"outline\">Right Drawer</Button>} />\n      <DrawerPopup showCloseButton>\n        <DrawerHeader>\n          <DrawerTitle>Notifications</DrawerTitle>\n          <DrawerDescription>\n            Manage how you receive alerts across devices.\n          </DrawerDescription>\n        </DrawerHeader>\n        <DrawerPanel>\n          <p className=\"text-muted-foreground text-sm\">\n            You are all caught up. New notifications will show up here.\n          </p>\n        </DrawerPanel>\n        <DrawerFooter>\n          <DrawerClose render={<Button variant=\"ghost\" />}>Close</DrawerClose>\n        </DrawerFooter>\n      </DrawerPopup>\n    </Drawer>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "drawer"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-badge-8",
+  "description": "Badge — As Link",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/badge.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-badge-8.tsx",
+      "content": "\"use client\";\n\nimport { ArrowUpRightIcon } from \"lucide-react\";\nimport Link from \"next/link\";\nimport { Badge } from \"@/registry/default/ui/badge\";\n\nexport default function Particle() {\n  return (\n    <Badge\n      render={\n        <Link\n          href=\"#as-link\"\n          onClick={(e) => e.preventDefault()}\n          prefetch={false}\n        />\n      }\n      variant=\"secondary\"\n    >\n      Release notes\n      <ArrowUpRightIcon />\n    </Badge>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "badge"
+  ],
+  "type": "registry:example"
+}

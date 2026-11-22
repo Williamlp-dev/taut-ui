@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-card-2",
+  "description": "Card — Elevated",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/card.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-card-2.tsx",
+      "content": "import {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\";\n\nexport default function Particle() {\n  return (\n    <Card className=\"w-80\" variant=\"elevated\">\n      <CardHeader>\n        <CardTitle>Storage Usage</CardTitle>\n        <CardDescription>14.2 GB of 20 GB used</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <p className=\"text-muted-foreground text-sm\">\n          Upgrade your plan anytime to unlock unlimited workspace storage.\n        </p>\n      </CardContent>\n    </Card>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card"
+  ],
+  "type": "registry:example"
+}

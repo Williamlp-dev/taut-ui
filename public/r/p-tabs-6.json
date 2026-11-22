@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-tabs-6",
+  "description": "Tabs — Circular",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/tabs.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-tabs-6.tsx",
+      "content": "import { MonitorIcon, MoonIcon, SunIcon } from \"lucide-react\";\nimport { Tabs, TabsList, TabsTab } from \"@/registry/default/ui/tabs\";\n\nexport default function Particle() {\n  return (\n    <Tabs defaultValue=\"system\">\n      <TabsList variant=\"circular\">\n        <TabsTab aria-label=\"Light theme\" value=\"light\">\n          <SunIcon />\n        </TabsTab>\n        <TabsTab aria-label=\"Dark theme\" value=\"dark\">\n          <MoonIcon />\n        </TabsTab>\n        <TabsTab aria-label=\"System theme\" value=\"system\">\n          <MonitorIcon />\n        </TabsTab>\n      </TabsList>\n    </Tabs>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "tabs"
+  ],
+  "type": "registry:example"
+}
