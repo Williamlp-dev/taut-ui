@@ -1,0 +1,139 @@
+---
+title: Dialog
+description: Expressive modal dialog with spring scale motion, solid surface ring, scrollable panel, nested stacking, and mobile fullscreen mode.
+links:
+  doc: https://base-ui.com/react/components/dialog#api-reference
+---
+
+<ComponentPreview name="p-dialog-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/dialog
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dialog" title="components/ui/dialog.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Dialog,
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogPanel,
+  DialogPopup,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+```
+
+```tsx
+<Dialog>
+  <DialogTrigger>Open</DialogTrigger>
+  <DialogPopup>
+    <DialogHeader>
+      <DialogTitle>Edit workspace</DialogTitle>
+      <DialogDescription>Update your workspace settings.</DialogDescription>
+    </DialogHeader>
+    <DialogPanel>{/* content */}</DialogPanel>
+    <DialogFooter>
+      <DialogClose>Cancel</DialogClose>
+    </DialogFooter>
+  </DialogPopup>
+</Dialog>
+```
+
+## Examples
+
+### From Menu
+
+<ComponentPreview name="p-dialog-2" />
+
+### Nested Dialog
+
+<ComponentPreview name="p-dialog-3" />
+
+### Close Confirmation
+
+<ComponentPreview name="p-dialog-4" />
+
+### Scrollable Content
+
+<ComponentPreview name="p-dialog-5" />
+
+### With Icon
+
+<ComponentPreview name="p-dialog-6" />
+
+## API Reference
+
+### Dialog
+
+Re-exports `Dialog.Root` from `@base-ui/react/dialog`.
+
+| Prop           | Type                      | Default | Description                                       |
+| -------------- | ------------------------- | ------- | ------------------------------------------------- |
+| `open`         | `boolean`                 | -       | Controlled open state                             |
+| `defaultOpen`  | `boolean`                 | `false` | Initial uncontrolled open state                   |
+| `onOpenChange` | `(open: boolean) => void` | -       | Called when the open state changes                |
+| `modal`        | `boolean \| "trap-focus"` | `true`  | Blocks outside interaction and traps focus        |
+
+### DialogPopup / DialogContent
+
+Composes `DialogPortal`, `DialogBackdrop`, `DialogViewport`, and `Dialog.Popup`.
+
+| Prop                 | Type                 | Default | Description                                        |
+| -------------------- | -------------------- | ------- | -------------------------------------------------- |
+| `showCloseButton`    | `boolean`            | `false` | Renders a top-right ghost close button             |
+| `fullscreenOnMobile` | `boolean`            | `false` | Expands to full screen on viewports below `sm`     |
+| `closeProps`         | `Dialog.Close.Props` | -       | Props forwarded to the built-in close button       |
+| `portalProps`        | `Dialog.Portal.Props`| -       | Props forwarded to the internal `DialogPortal`     |
+| `className`          | `string`             | -       | Additional CSS classes                             |
+
+### DialogPanel
+
+Scrollable body container with overscroll containment and thin scrollbar styling.
+
+| Prop        | Type                 | Default | Description                                 |
+| ----------- | -------------------- | ------- | ------------------------------------------- |
+| `render`    | `React.ReactElement` | -       | Custom element to render instead of `<div>` |
+| `className` | `string`             | -       | Additional CSS classes                      |
+
+### DialogHeader / DialogIcon / DialogTitle / DialogDescription / DialogFooter / DialogTrigger / DialogClose
+
+Composable header, centered icon slot (`DialogIcon`), accessible typography, and action footer primitives.
