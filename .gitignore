@@ -45,5 +45,4 @@ next-env.d.ts
 
 # registry build output
 /public/r/
-/registry.json
 
