@@ -1,0 +1,94 @@
+---
+title: Checkbox
+description: Material 3 Expressive checkbox with animated checkmark and indeterminate stroke, invalid styling, and state-layer halo.
+links:
+  doc: https://base-ui.com/react/components/checkbox#api-reference
+---
+
+<ComponentPreview name="p-checkbox-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/checkbox
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox" title="components/ui/checkbox.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+```
+
+```tsx
+<label className="inline-flex items-center gap-2.5 text-sm">
+  <Checkbox defaultChecked />
+  Accept terms
+</label>
+```
+
+## Examples
+
+### With Description
+
+<ComponentPreview name="p-checkbox-2" />
+
+### Indeterminate
+
+<ComponentPreview name="p-checkbox-3" />
+
+### Invalid
+
+<ComponentPreview name="p-checkbox-4" />
+
+### Disabled
+
+<ComponentPreview name="p-checkbox-5" />
+
+## API Reference
+
+### Checkbox
+
+Wraps Base UI `Checkbox.Root` with built-in animated check and indeterminate indicators.
+
+| Prop              | Type                       | Default | Description                                             |
+| ----------------- | -------------------------- | ------- | ------------------------------------------------------- |
+| `checked`         | `boolean`                  | -       | Controlled checked state                                |
+| `defaultChecked`  | `boolean`                  | `false` | Initial uncontrolled checked state                      |
+| `onCheckedChange` | `(checked: boolean) => void` | -     | Called when the checked state changes                   |
+| `indeterminate`   | `boolean`                  | `false` | Renders the horizontal indeterminate bar                |
+| `parent`          | `boolean`                  | `false` | Marks the checkbox as the parent inside `CheckboxGroup` |
+| `disabled`        | `boolean`                  | `false` | Disables interaction and dims the control               |
+| `className`       | `string`                   | -       | Additional CSS classes                                  |
