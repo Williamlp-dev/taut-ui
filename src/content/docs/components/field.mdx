@@ -1,0 +1,99 @@
+---
+title: Field
+description: Accessible form field container pairing labels, descriptions, and spring-animated validation errors with controls.
+links:
+  doc: https://base-ui.com/react/components/field#api-reference
+---
+
+<ComponentPreview name="p-field-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/field
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="field" title="components/ui/field.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+```
+
+```tsx
+<Field name="email">
+  <FieldLabel>Email</FieldLabel>
+  <Input required type="email" />
+  <FieldDescription>We will never share your email.</FieldDescription>
+  <FieldError />
+</Field>
+```
+
+## Examples
+
+### Validation Error
+
+<ComponentPreview name="p-field-2" />
+
+### Disabled
+
+<ComponentPreview name="p-field-3" />
+
+### With Checkbox
+
+<ComponentPreview name="p-field-4" />
+
+## API Reference
+
+### Field
+
+Wraps Base UI `Field.Root`. Connects label, description, error, and control IDs automatically.
+
+| Prop       | Type      | Default | Description                                        |
+| ---------- | --------- | ------- | -------------------------------------------------- |
+| `name`     | `string`  | -       | Field identifier used for `Form` error mapping     |
+| `disabled` | `boolean` | `false` | Disables the field and all descendant controls     |
+| `invalid`  | `boolean` | `false` | Forces invalid visual styling across child slots   |
+| `validate` | `(value: unknown) => string \| string[] \| null` | - | Custom validation function |
+
+### FieldLabel / FieldDescription / FieldError / FieldItem / FieldControl / FieldValidity
+
+Composable primitives from `@base-ui/react/field`. `FieldDescription` automatically hides when a `FieldError` is active.
