@@ -1,0 +1,116 @@
+---
+title: Number Field
+description: Numeric input with increment/decrement steppers, horizontal label scrubbing, locale formatting, and Input variants.
+links:
+  doc: https://base-ui.com/react/components/number-field#api-reference
+---
+
+<ComponentPreview name="p-number-field-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/number-field
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="number-field" title="components/ui/number-field.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  NumberField,
+  NumberFieldDecrement,
+  NumberFieldGroup,
+  NumberFieldIncrement,
+  NumberFieldInput,
+} from "@/components/ui/number-field"
+```
+
+```tsx
+<NumberField defaultValue={1}>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+## Examples
+
+### With Scrub Area
+
+<ComponentPreview name="p-number-field-2" />
+
+### Outline
+
+<ComponentPreview name="p-number-field-3" />
+
+### Currency Formatting
+
+<ComponentPreview name="p-number-field-4" />
+
+### With Field & Bounds
+
+<ComponentPreview name="p-number-field-5" />
+
+## API Reference
+
+### NumberField
+
+Wraps Base UI `NumberField.Root` and provides shared `variant`, `shape`, `size`, and `fieldId` context to child slots.
+
+| Prop            | Type                                         | Default     | Description                                                |
+| --------------- | -------------------------------------------- | ----------- | ---------------------------------------------------------- |
+| `value`         | `number \| null`                             | -           | Controlled numeric value                                   |
+| `defaultValue`  | `number`                                     | -           | Initial uncontrolled numeric value                         |
+| `onValueChange` | `(value: number \| null, eventDetails) => void` | -        | Callback fired when the numeric value changes              |
+| `min`           | `number`                                     | -           | Minimum allowed value                                      |
+| `max`           | `number`                                     | -           | Maximum allowed value                                      |
+| `step`          | `number \| "any"`                            | `1`         | Base increment/decrement step amount                       |
+| `smallStep`     | `number`                                     | `0.1`       | Step amount when holding `Alt`                             |
+| `largeStep`     | `number`                                     | `10`        | Step amount when holding `Shift`                           |
+| `format`        | `Intl.NumberFormatOptions`                   | -           | Number formatting options (currency, percent, units, etc.) |
+| `variant`       | `"filled" \| "outline" \| "outlined"`        | `"filled"`  | Surface style passed to `NumberFieldGroup`                 |
+| `shape`         | `"pill" \| "round" \| "rounded" \| "square"` | `"pill"`    | Corner radius preset                                       |
+| `size`          | `"sm" \| "default" \| "md" \| "lg"`          | `"default"` | Field height, padding, and stepper button size             |
+| `disabled`      | `boolean`                                    | `false`     | Disables input, steppers, and scrub area                   |
+
+### Subcomponents
+
+- `NumberFieldGroup` — styled container inheriting `inputVariants` (can override `variant`, `shape`, `size`).
+- `NumberFieldInput` — centered tabular-nums numeric input.
+- `NumberFieldDecrement` / `NumberFieldIncrement` — ghost icon stepper buttons.
+- `NumberFieldScrubArea` — interactive drag-to-scrub label (`label: string`) with horizontal resize cursor.
