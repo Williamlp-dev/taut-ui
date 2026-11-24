@@ -1,0 +1,136 @@
+---
+title: Select
+description: Accessible dropdown picker with filled and outline triggers, standard and vibrant popups, groups, and Field integration.
+links:
+  doc: https://base-ui.com/react/components/select#api-reference
+---
+
+<ComponentPreview name="p-select-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/select
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="select" title="components/ui/select.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Select,
+  SelectItem,
+  SelectPopup,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+```
+
+```tsx
+<Select items={items}>
+  <SelectTrigger>
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectPopup>
+    <SelectItem value="a">Option A</SelectItem>
+    <SelectItem value="b">Option B</SelectItem>
+  </SelectPopup>
+</Select>
+```
+
+## Examples
+
+### Outline
+
+<ComponentPreview name="p-select-2" />
+
+### Grouped Items
+
+<ComponentPreview name="p-select-3" />
+
+### Vibrant Popup
+
+<ComponentPreview name="p-select-4" />
+
+### Align Item With Trigger
+
+<ComponentPreview name="p-select-5" />
+
+### With Field
+
+<ComponentPreview name="p-select-6" />
+
+## API Reference
+
+### Select
+
+Alias for Base UI `Select.Root`.
+
+| Prop            | Type                                                        | Default | Description                                        |
+| --------------- | ----------------------------------------------------------- | ------- | -------------------------------------------------- |
+| `value`         | `Value`                                                     | -       | Controlled selected value                          |
+| `defaultValue`  | `Value`                                                     | -       | Initial uncontrolled value                         |
+| `onValueChange` | `(value: Value, eventDetails) => void`                      | -       | Callback fired when the selected value changes     |
+| `items`         | `Record<string, ReactNode> \| Array<{ label, value }>`      | -       | Maps values to display labels inside `SelectValue` |
+| `multiple`      | `boolean`                                                   | `false` | Allows selecting multiple items                    |
+| `disabled`      | `boolean`                                                   | `false` | Disables the select control                        |
+| `required`      | `boolean`                                                   | `false` | Requires a selection for form submission           |
+
+### SelectTrigger
+
+Styled trigger button inheriting `Input` variants.
+
+| Prop         | Type                                         | Default     | Description                                    |
+| ------------ | -------------------------------------------- | ----------- | ---------------------------------------------- |
+| `variant`    | `"filled" \| "outline" \| "outlined"`        | `"filled"`  | Tonal filled surface or crisp outlined surface |
+| `shape`      | `"pill" \| "round" \| "rounded" \| "square"` | `"pill"`    | Corner radius preset                           |
+| `size`       | `"sm" \| "default" \| "md" \| "lg"`          | `"default"` | Trigger height, padding, and icon size         |
+| `startAddon` | `React.ReactNode`                            | -           | Leading element (such as an icon)              |
+
+### SelectPopup
+
+Portal, positioner, popup surface, and scrollable list (`SelectContent` is also exported as an alias).
+
+| Prop                   | Type                                          | Default      | Description                                              |
+| ---------------------- | --------------------------------------------- | ------------ | -------------------------------------------------------- |
+| `colorScheme`          | `"standard" \| "vibrant"`                     | `"standard"` | Tonal popup palette inherited from `menuPopupVariants`   |
+| `side`                 | `"top" \| "bottom" \| "left" \| "right"`      | `"bottom"`   | Preferred side relative to the trigger                   |
+| `sideOffset`           | `number`                                      | `6`          | Gap in pixels between trigger and popup                  |
+| `align`                | `"start" \| "center" \| "end"`                | `"start"`    | Alignment along the trigger axis                         |
+| `alignItemWithTrigger` | `boolean`                                     | `false`      | Overlays the popup so the active item aligns over trigger |
+
+### Subcomponents
+
+`SelectValue`, `SelectButton`, `SelectItem`, `SelectGroup`, `SelectGroupLabel`, `SelectLabel`, `SelectSeparator`, and `SelectPortal`.
