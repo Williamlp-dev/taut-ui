@@ -1,0 +1,108 @@
+---
+title: Slider
+description: Material 3 expressive slider with single or range thumbs, ticks, value indicator tooltips, icons, and six track sizes.
+links:
+  doc: https://base-ui.com/react/components/slider#api-reference
+---
+
+<ComponentPreview name="p-slider-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/slider
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="slider" title="components/ui/slider.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Slider, SliderValue } from "@/components/ui/slider"
+```
+
+```tsx
+<Slider defaultValue={50}>
+  <SliderValue />
+</Slider>
+```
+
+## Examples
+
+### Range
+
+<ComponentPreview name="p-slider-2" />
+
+### Steps & Ticks
+
+<ComponentPreview name="p-slider-3" />
+
+### With Icons
+
+<ComponentPreview name="p-slider-4" />
+
+### Expressive Large
+
+<ComponentPreview name="p-slider-5" />
+
+### Vertical
+
+<ComponentPreview name="p-slider-6" />
+
+## API Reference
+
+### Slider
+
+Wraps Base UI `Slider.Root` along with its control, track, indicator, and thumbs.
+
+| Prop                 | Type                                               | Default        | Description                                            |
+| -------------------- | -------------------------------------------------- | -------------- | ------------------------------------------------------ |
+| `value`              | `number \| readonly number[]`                      | -              | Controlled value or range tuple                        |
+| `defaultValue`       | `number \| readonly number[]`                      | -              | Initial uncontrolled value or range tuple              |
+| `onValueChange`      | `(value, eventDetails) => void`                    | -              | Callback fired when the slider value changes           |
+| `min`                | `number`                                           | `0`            | Minimum allowed value                                  |
+| `max`                | `number`                                           | `100`          | Maximum allowed value                                  |
+| `step`               | `number`                                           | `1`            | Increment granularity for discrete stepping            |
+| `size`               | `"xs" \| "default" \| "sm" \| "md" \| "lg" \| "xl"` | `"default"`   | Track thickness and handle proportions                 |
+| `orientation`        | `"horizontal" \| "vertical"`                       | `"horizontal"` | Slider axis orientation                                |
+| `showValueIndicator` | `boolean`                                          | `false`        | Shows a floating value pill while dragging or focused  |
+| `showTicks`          | `boolean`                                          | `false`        | Renders step tick dots along the track (up to 50 steps) |
+| `startIcon`          | `React.ReactNode`                                  | -              | Leading icon beside the track                          |
+| `endIcon`            | `React.ReactNode`                                  | -              | Trailing icon beside the track                         |
+| `getThumbAriaLabel`  | `(index: number) => string`                        | -              | Accessible label generator for each thumb              |
+| `disabled`           | `boolean`                                          | `false`        | Disables pointer and keyboard interaction              |
+
+### SliderValue
+
+Renders the formatted current value(s) from Base UI `Slider.Value`. Accepts a custom render function `children?: (formattedValues, values) => React.ReactNode`.
