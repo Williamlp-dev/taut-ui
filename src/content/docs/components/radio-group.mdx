@@ -1,0 +1,106 @@
+---
+title: Radio Group
+description: Accessible group of mutually exclusive radio controls with expressive spring dot animation and state layers.
+links:
+  doc: https://base-ui.com/react/components/radio-group#api-reference
+---
+
+<ComponentPreview name="p-radio-group-1" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTab value="cli">CLI</TabsTab>
+  <TabsTab value="manual">Manual</TabsTab>
+</TabsList>
+
+<TabsPanel value="cli">
+
+```bash
+npx shadcn@latest add @taut-ui/radio-group
+```
+
+</TabsPanel>
+
+<TabsPanel value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="radio-group" title="components/ui/radio-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsPanel>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Radio, RadioGroup } from "@/components/ui/radio-group"
+```
+
+```tsx
+<RadioGroup defaultValue="a">
+  <label className="flex items-center gap-2.5 text-sm">
+    <Radio value="a" />
+    <span>Option A</span>
+  </label>
+  <label className="flex items-center gap-2.5 text-sm">
+    <Radio value="b" />
+    <span>Option B</span>
+  </label>
+</RadioGroup>
+```
+
+## Examples
+
+### With Descriptions
+
+<ComponentPreview name="p-radio-group-2" />
+
+### Card Selection
+
+<ComponentPreview name="p-radio-group-3" />
+
+### Disabled
+
+<ComponentPreview name="p-radio-group-4" />
+
+## API Reference
+
+### RadioGroup
+
+Wraps Base UI `RadioGroup`.
+
+| Prop            | Type                                   | Default | Description                                        |
+| --------------- | -------------------------------------- | ------- | -------------------------------------------------- |
+| `value`         | `Value`                                | -       | Controlled selected value                          |
+| `defaultValue`  | `Value`                                | -       | Initial uncontrolled selected value                |
+| `onValueChange` | `(value: Value, eventDetails) => void` | -       | Callback fired when the selected option changes    |
+| `name`          | `string`                               | -       | Field name submitted with a form                   |
+| `disabled`      | `boolean`                              | `false` | Disables all radio buttons in the group            |
+| `readOnly`      | `boolean`                              | `false` | Prevents changing the current selection            |
+| `required`      | `boolean`                              | `false` | Marks the group as required for form submission    |
+
+### Radio
+
+Wraps Base UI `Radio.Root` (`RadioGroupItem` is also exported as an alias).
+
+| Prop       | Type      | Default | Description                                |
+| ---------- | --------- | ------- | ------------------------------------------ |
+| `value`    | `Value`   | -       | Unique value represented by this radio     |
+| `disabled` | `boolean` | `false` | Disables interaction for this radio button |
+| `readOnly` | `boolean` | `false` | Prevents changing this radio button        |
