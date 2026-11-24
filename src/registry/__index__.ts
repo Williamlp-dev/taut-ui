@@ -183,6 +183,16 @@ export const Index: Record<string, unknown> = {
     component: null,
     categories: ["ui"],
   },
+  "number-field": {
+    name: "number-field",
+    description: "number field (ui)",
+    type: "registry:ui",
+    registryDependencies: ["button","input"],
+    dependencies: ["@base-ui/react","class-variance-authority","lucide-react"],
+    files: [{ path: "src/registry/default/ui/number-field.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
   "popover": {
     name: "popover",
     description: "popover (ui)",
@@ -193,6 +203,16 @@ export const Index: Record<string, unknown> = {
     component: null,
     categories: ["ui"],
   },
+  "radio-group": {
+    name: "radio-group",
+    description: "radio group (ui)",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@base-ui/react"],
+    files: [{ path: "src/registry/default/ui/radio-group.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
   "scroll-area": {
     name: "scroll-area",
     description: "scroll area (ui)",
@@ -200,6 +220,16 @@ export const Index: Record<string, unknown> = {
     registryDependencies: [],
     dependencies: ["@base-ui/react"],
     files: [{ path: "src/registry/default/ui/scroll-area.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
+  "select": {
+    name: "select",
+    description: "select (ui)",
+    type: "registry:ui",
+    registryDependencies: ["input","menu"],
+    dependencies: ["@base-ui/react","class-variance-authority","lucide-react"],
+    files: [{ path: "src/registry/default/ui/select.tsx", type: "registry:ui" }],
     component: null,
     categories: ["ui"],
   },
@@ -240,6 +270,16 @@ export const Index: Record<string, unknown> = {
     registryDependencies: [],
     dependencies: [],
     files: [{ path: "src/registry/default/ui/skeleton.tsx", type: "registry:ui" }],
+    component: null,
+    categories: ["ui"],
+  },
+  "slider": {
+    name: "slider",
+    description: "slider (ui)",
+    type: "registry:ui",
+    registryDependencies: [],
+    dependencies: ["@base-ui/react","class-variance-authority"],
+    files: [{ path: "src/registry/default/ui/slider.tsx", type: "registry:ui" }],
     component: null,
     categories: ["ui"],
   },
@@ -1759,6 +1799,81 @@ export const Index: Record<string, unknown> = {
     }),
     categories: ["button","menu"],
   },
+  "p-number-field-1": {
+    name: "p-number-field-1",
+    description: "Basic number field",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-number-field-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-number-field-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["number field"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-number-field-2": {
+    name: "p-number-field-2",
+    description: "Number Field — With Scrub Area",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-number-field-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-number-field-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["number field"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-number-field-3": {
+    name: "p-number-field-3",
+    description: "Number Field — Outline",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-number-field-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-number-field-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["number field"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-number-field-4": {
+    name: "p-number-field-4",
+    description: "Number Field — Currency Formatting",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-number-field-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-number-field-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["number field"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-number-field-5": {
+    name: "p-number-field-5",
+    description: "Number Field — With Field & Bounds",
+    type: "registry:example",
+    registryDependencies: ["field","number-field"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-number-field-5.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-number-field-5");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["field","number field"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
   "p-popover-1": {
     name: "p-popover-1",
     description: "Basic popover",
@@ -1814,6 +1929,62 @@ export const Index: Record<string, unknown> = {
       return { default: mod.default ?? mod[key] };
     }),
     categories: ["button","input","popover"],
+  },
+  "p-radio-group-1": {
+    name: "p-radio-group-1",
+    description: "Basic radio group",
+    type: "registry:example",
+    registryDependencies: ["radio-group"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-radio-group-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-radio-group-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["radio group"],
+  },
+  "p-radio-group-2": {
+    name: "p-radio-group-2",
+    description: "Radio Group — With Descriptions",
+    type: "registry:example",
+    registryDependencies: ["radio-group"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-radio-group-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-radio-group-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["radio group"],
+  },
+  "p-radio-group-3": {
+    name: "p-radio-group-3",
+    description: "Radio Group — Card Selection",
+    type: "registry:example",
+    registryDependencies: ["card","radio-group"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-radio-group-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-radio-group-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["card","radio group"],
+  },
+  "p-radio-group-4": {
+    name: "p-radio-group-4",
+    description: "Radio Group — Disabled",
+    type: "registry:example",
+    registryDependencies: ["radio-group"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-radio-group-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-radio-group-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["radio group","disabled"],
   },
   "p-scroll-area-1": {
     name: "p-scroll-area-1",
@@ -1889,6 +2060,96 @@ export const Index: Record<string, unknown> = {
     }),
     categories: ["badge","card","scroll area"],
     meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:flex **:data-[slot=preview]:justify-center" },
+  },
+  "p-select-1": {
+    name: "p-select-1",
+    description: "Basic select",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-select-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-select-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["select"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-select-2": {
+    name: "p-select-2",
+    description: "Select — Outline",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-select-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-select-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["select"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-select-3": {
+    name: "p-select-3",
+    description: "Select — Grouped Items",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    dependencies: ["lucide-react"],
+    files: [{ path: "src/registry/default/particles/p-select-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-select-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["select"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-select-4": {
+    name: "p-select-4",
+    description: "Select — Vibrant Popup",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    dependencies: ["lucide-react"],
+    files: [{ path: "src/registry/default/particles/p-select-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-select-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["select"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-select-5": {
+    name: "p-select-5",
+    description: "Select — Align Item With Trigger",
+    type: "registry:example",
+    registryDependencies: ["select"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-select-5.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-select-5");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["select"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-select-6": {
+    name: "p-select-6",
+    description: "Select — With Field",
+    type: "registry:example",
+    registryDependencies: ["field","select"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-select-6.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-select-6");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["field","select"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
   },
   "p-separator-1": {
     name: "p-separator-1",
@@ -2105,6 +2366,96 @@ export const Index: Record<string, unknown> = {
     }),
     categories: ["skeleton"],
     meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:flex **:data-[slot=preview]:justify-center" },
+  },
+  "p-slider-1": {
+    name: "p-slider-1",
+    description: "Basic slider",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-slider-1.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-slider-1");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["slider"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-slider-2": {
+    name: "p-slider-2",
+    description: "Slider — Range",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-slider-2.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-slider-2");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["slider"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-slider-3": {
+    name: "p-slider-3",
+    description: "Slider — Steps & Ticks",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-slider-3.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-slider-3");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["slider"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-slider-4": {
+    name: "p-slider-4",
+    description: "Slider — With Icons",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    dependencies: ["lucide-react"],
+    files: [{ path: "src/registry/default/particles/p-slider-4.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-slider-4");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["slider"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-slider-5": {
+    name: "p-slider-5",
+    description: "Slider — Expressive Large",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-slider-5.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-slider-5");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["slider"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
+  },
+  "p-slider-6": {
+    name: "p-slider-6",
+    description: "Slider — Vertical",
+    type: "registry:example",
+    registryDependencies: ["slider"],
+    dependencies: [],
+    files: [{ path: "src/registry/default/particles/p-slider-6.tsx", type: "registry:example" }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/particles/p-slider-6");
+      const key = Object.keys(mod).find((k) => typeof mod[k] === "function");
+      return { default: mod.default ?? mod[key] };
+    }),
+    categories: ["slider"],
+    meta: { className: "**:data-[slot=preview]:w-full **:data-[slot=preview]:max-w-64" },
   },
   "p-spinner-1": {
     name: "p-spinner-1",
