@@ -10,6 +10,10 @@
   <strong>Tactile, spring-driven React components on Base UI engineered for developers and AI to build interfaces that feel alive.</strong>
 </p>
 
+<p align="center">
+  <img alt="Taut UI components showcase" src="https://github.com/user-attachments/assets/7d6048c1-566b-4200-b830-592017411051" width="100%" />
+</p>
+
 ## What is taut ui?
 
 **taut ui** is a component library for React 19 applications built on [Base UI](https://base-ui.com/) and [Tailwind CSS v4](https://tailwindcss.com/). It gives developers and AI workflows a responsive, tactile alternative to static component kits: you add components directly into your codebase, own the source, and get fast, satisfying animations out of the box without shipping an external motion library.
