@@ -6,6 +6,7 @@
 @source "../../node_modules/fumadocs-ui/dist/**/*.js";
 @source "../../node_modules/@fumadocs/base-ui/dist/**/*.js";
 @source "../**/*.{ts,tsx}";
+@source not inline("[&_::highlight(fd-search)]:text-fd-primary [&_::highlight(fd-search)]:underline");
 
 @custom-variant dark (&:is(.dark, .dark *, .taut, .taut *));
 @custom-variant fixed (&:is(.layout-fixed *));
