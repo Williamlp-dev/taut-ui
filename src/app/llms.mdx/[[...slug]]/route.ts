@@ -3,6 +3,8 @@ import { appConfig } from "@/lib/config";
 import { getPageMarkdownBySlug } from "@/lib/llms";
 import { source } from "@/lib/source";
 
+export const dynamic = "force-static";
+
 export function generateStaticParams() {
   return source.generateParams();
 }

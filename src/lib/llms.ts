@@ -44,7 +44,8 @@ async function toPlainMarkdown(mdx: string): Promise<string> {
       const title = attrs.match(/title="([^"]*)"/)?.[1];
       const code = name ? await readRegistrySource(name) : "";
       if (!code) return "";
-      const info = tag === "ComponentSource" && title ? `tsx title="${title}"` : "tsx";
+      const info =
+        tag === "ComponentSource" && title ? `tsx title="${title}"` : "tsx";
       return `\`\`\`${info}\n${code}\n\`\`\``;
     }),
   );
@@ -53,8 +54,10 @@ async function toPlainMarkdown(mdx: string): Promise<string> {
   return mdx
     .replace(tagPattern, () => blocks[i++] ?? "")
     .replace(/<TabsList>[\s\S]*?<\/TabsList>/g, "")
-    .replace(/<TabsPanel value="([^"]+)">/g, (_m, v: string) =>
-      `**${v === "cli" ? "CLI" : `${v.charAt(0).toUpperCase()}${v.slice(1)}`}**\n`,
+    .replace(
+      /<TabsPanel value="([^"]+)">/g,
+      (_m, v: string) =>
+        `**${v === "cli" ? "CLI" : `${v.charAt(0).toUpperCase()}${v.slice(1)}`}**\n`,
     )
     .replace(/<\/?(?:CodeTabs|TabsPanel|Steps)>/g, "")
     .replace(/<Step>\s*([\s\S]*?)\s*<\/Step>/g, "- $1")
@@ -80,7 +83,6 @@ async function renderPageMarkdown(page: DocPage): Promise<string> {
 export async function getPageMarkdownBySlug(
   slug?: string[],
 ): Promise<{ content: string; url: string } | null> {
-  "use cache";
   const page = source.getPage(slug);
   if (!page) return null;
 
@@ -119,7 +121,6 @@ Taut UI is an open-source (MIT) React component library built on Base UI, Tailwi
 - The complete documentation in a single file: ${SITE}/llms-full.txt`;
 
 export async function getLlmsTxt(): Promise<string> {
-  "use cache";
   const sections = source.pageTree.children.flatMap((node) => {
     if (node.type !== "folder") return [];
     const pages = pagesOf(node);
@@ -128,7 +129,9 @@ export async function getLlmsTxt(): Promise<string> {
     const list = pages
       .map((p) => {
         const link = `[${p.data.title}](${SITE}${getMarkdownPath(p.url)})`;
-        return p.data.description ? `- ${link}: ${p.data.description}` : `- ${link}`;
+        return p.data.description
+          ? `- ${link}: ${p.data.description}`
+          : `- ${link}`;
       })
       .join("\n");
     return [`## ${name}\n\n${list}`];
@@ -143,7 +146,6 @@ export async function getLlmsTxt(): Promise<string> {
 }
 
 export async function getLlmsFullTxt(): Promise<string> {
-  "use cache";
   const pages = await Promise.all(source.getPages().map(renderPageMarkdown));
   return `${INTRO}\n\n---\n\n${pages.join("\n---\n\n")}`;
 }

@@ -12,8 +12,6 @@ import { mdxComponents } from "@/mdx-components";
 
 const DEFAULT_DESCRIPTION = "Component documentation for Taut UI.";
 
-export const instant = false;
-
 export function generateStaticParams() {
   return source.generateParams();
 }
