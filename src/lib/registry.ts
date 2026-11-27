@@ -1,7 +1,5 @@
 import { promises as fs } from "node:fs";
-import { tmpdir } from "node:os";
 import path from "node:path";
-import { Project, ScriptKind } from "ts-morph";
 import { Index } from "@/registry/__index__";
 
 type RegistryFile = {
@@ -101,23 +99,14 @@ export async function getRegistryItem(name: string) {
 async function getFileContent(file: RegistryFile) {
   const filePath = path.isAbsolute(file.path)
     ? file.path
-    : path.join(process.cwd(), file.path);
+    : path.join(
+        /* turbopackIgnore: true */ process.cwd(),
+        "src",
+        file.path.replace(/^src[\\/]/, ""),
+      );
   const raw = await fs.readFile(filePath, "utf-8");
 
-  const project = new Project({
-    compilerOptions: {},
-  });
-
-  const tempFile = await createTempSourceFile(path.basename(file.path));
-  const sourceFile = project.createSourceFile(tempFile, raw, {
-    scriptKind: ScriptKind.TSX,
-  });
-
-  let code = sourceFile.getFullText();
-
-  code = fixImport(code);
-
-  return code;
+  return fixImport(raw);
 }
 
 function getFileTarget(file: RegistryFile) {
@@ -149,11 +138,6 @@ function getFileTarget(file: RegistryFile) {
   }
 
   return target ?? "";
-}
-
-async function createTempSourceFile(filename: string) {
-  const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"));
-  return path.join(dir, filename);
 }
 
 function fixFilePaths(files: RegistryFile[]) {
