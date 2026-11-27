@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-field-3",
+  "description": "Field — Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-field-3.tsx",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/default/ui/field\";\nimport { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  return (\n    <Field disabled>\n      <FieldLabel>Organization ID</FieldLabel>\n      <Input defaultValue=\"org_01J8K9M2N4P6\" />\n      <FieldDescription>\n        Managed automatically by your workspace administrator.\n      </FieldDescription>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "input",
+    "disabled"
+  ],
+  "type": "registry:example"
+}

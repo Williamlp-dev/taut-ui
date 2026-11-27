@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-avatar-6",
+  "description": "Avatar — Group",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/avatar.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-avatar-6.tsx",
+      "content": "import {\n  Avatar,\n  AvatarFallback,\n  AvatarGroup,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\";\n\nexport default function Particle() {\n  return (\n    <AvatarGroup>\n      <Avatar>\n        <AvatarImage\n          alt=\"Lucas Santos\"\n          src=\"https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=128&h=128&dpr=2&q=80\"\n        />\n        <AvatarFallback>LS</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage\n          alt=\"Ana Costa\"\n          src=\"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&dpr=2&q=80\"\n        />\n        <AvatarFallback>AC</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage\n          alt=\"Rafael Lima\"\n          src=\"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&dpr=2&q=80\"\n        />\n        <AvatarFallback>RL</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage\n          alt=\"Clara Mendes\"\n          src=\"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=128&h=128&dpr=2&q=80\"\n        />\n        <AvatarFallback>CM</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarFallback>+3</AvatarFallback>\n      </Avatar>\n    </AvatarGroup>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar"
+  ],
+  "type": "registry:example"
+}

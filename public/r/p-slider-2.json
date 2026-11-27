@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-slider-2",
+  "description": "Slider — Range",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/slider.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-slider-2.tsx",
+      "content": "import { Slider, SliderValue } from \"@/registry/default/ui/slider\";\n\nexport default function Particle() {\n  return (\n    <Slider\n      className=\"w-full max-w-xs\"\n      defaultValue={[25, 75]}\n      minStepsBetweenValues={10}\n      showValueIndicator\n    >\n      <div className=\"mb-1 flex items-center justify-between gap-2\">\n        <span className=\"font-medium text-sm\">Price range</span>\n        <SliderValue className=\"text-muted-foreground tabular-nums\" />\n      </div>\n    </Slider>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "slider"
+  ],
+  "type": "registry:example"
+}

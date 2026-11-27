@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-dialog-6",
+  "description": "Dialog — With Icon",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/dialog.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-dialog-6.tsx",
+      "content": "import { RocketIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Dialog,\n  DialogClose,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogIcon,\n  DialogPanel,\n  DialogPopup,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/default/ui/dialog\";\n\nexport default function Particle() {\n  return (\n    <Dialog>\n      <DialogTrigger render={<Button variant=\"tonal\" />}>\n        <RocketIcon className=\"size-4\" />\n        Upgrade to Pro\n      </DialogTrigger>\n      <DialogPopup className=\"sm:max-w-sm\" showCloseButton>\n        <DialogHeader>\n          <DialogIcon>\n            <RocketIcon />\n          </DialogIcon>\n          <DialogTitle>Unlock Taut Pro</DialogTitle>\n          <DialogDescription>\n            Take your interfaces to the next level with advanced fluid motions,\n            custom sound design, and priority support.\n          </DialogDescription>\n        </DialogHeader>\n        <DialogPanel>\n          <div className=\"flex flex-col gap-1\">\n            <div className=\"flex items-center justify-between rounded-xl bg-[color-mix(in_oklab,var(--color-popover),var(--color-foreground)_5%)] px-4 py-3 text-xs first:rounded-t-2xl dark:bg-card\">\n              <span className=\"text-muted-foreground\">Billing Cycle</span>\n              <span className=\"font-medium text-foreground\">\n                Annual ($12/mo)\n              </span>\n            </div>\n            <div className=\"flex items-center justify-between rounded-xl bg-[color-mix(in_oklab,var(--color-popover),var(--color-foreground)_5%)] px-4 py-3 text-xs last:rounded-b-2xl dark:bg-card\">\n              <span className=\"text-muted-foreground\">Workspace Seats</span>\n              <span className=\"font-medium text-foreground\">Unlimited</span>\n            </div>\n          </div>\n        </DialogPanel>\n        <DialogFooter className=\"justify-center sm:justify-between\">\n          <DialogClose render={<Button variant=\"ghost\" />}>\n            Maybe later\n          </DialogClose>\n          <Button>Start 14-Day Free Trial</Button>\n        </DialogFooter>\n      </DialogPopup>\n    </Dialog>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "dialog"
+  ],
+  "type": "registry:example"
+}

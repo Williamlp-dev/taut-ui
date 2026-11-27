@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-form-2",
+  "description": "Form — Controlled Errors",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/form.json",
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-form-2.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport { Field, FieldError, FieldLabel } from \"@/registry/default/ui/field\";\nimport { Form } from \"@/registry/default/ui/form\";\nimport { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  const [errors, setErrors] = useState<Record<string, string>>({\n    domain: \"This custom domain is already linked to another project.\",\n  });\n\n  return (\n    <Form\n      errors={errors}\n      onFormSubmit={(formValues) => {\n        const domain = String(formValues.domain ?? \"\").trim();\n        if (!domain.includes(\".\")) {\n          setErrors({\n            domain: \"Enter a valid hostname (e.g. docs.taut.app).\",\n          });\n          return;\n        }\n        setErrors({});\n      }}\n    >\n      <Field name=\"domain\">\n        <FieldLabel>Custom domain</FieldLabel>\n        <Input defaultValue=\"app.taut.dev\" placeholder=\"docs.taut.app\" />\n        <FieldError />\n      </Field>\n      <Button className=\"w-full\" type=\"submit\">\n        Verify domain\n      </Button>\n    </Form>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "field",
+    "form",
+    "input"
+  ],
+  "type": "registry:example"
+}

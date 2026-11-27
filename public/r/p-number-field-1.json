@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-number-field-1",
+  "description": "Basic number field",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/number-field.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-number-field-1.tsx",
+      "content": "import {\n  NumberField,\n  NumberFieldDecrement,\n  NumberFieldGroup,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/registry/default/ui/number-field\";\n\nexport default function Particle() {\n  return (\n    <NumberField className=\"w-full max-w-52\" defaultValue={5}>\n      <NumberFieldGroup>\n        <NumberFieldDecrement />\n        <NumberFieldInput aria-label=\"Quantity\" />\n        <NumberFieldIncrement />\n      </NumberFieldGroup>\n    </NumberField>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "number field"
+  ],
+  "type": "registry:example"
+}

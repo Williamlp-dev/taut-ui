@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-textarea-6",
+  "description": "Textarea — Non-Resizable",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/textarea.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-textarea-6.tsx",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\";\n\nexport default function Particle() {\n  return (\n    <Textarea\n      placeholder=\"Auto-grows with content without a resize handle...\"\n      resize=\"none\"\n    />\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "textarea"
+  ],
+  "type": "registry:example"
+}

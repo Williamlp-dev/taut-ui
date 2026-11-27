@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-select-5",
+  "description": "Select — Align Item With Trigger",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/select.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-select-5.tsx",
+      "content": "import {\n  Select,\n  SelectItem,\n  SelectPopup,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\";\n\nconst fonts = [\n  { label: \"Sans-serif\", value: \"sans\" },\n  { label: \"Serif\", value: \"serif\" },\n  { label: \"Monospace\", value: \"mono\" },\n  { label: \"System UI\", value: \"system\" },\n];\n\nexport default function Particle() {\n  return (\n    <Select defaultValue=\"sans\" items={fonts}>\n      <SelectTrigger aria-label=\"Font family\" className=\"w-full max-w-56\">\n        <SelectValue placeholder=\"Choose a font\" />\n      </SelectTrigger>\n      <SelectPopup alignItemWithTrigger>\n        {fonts.map((font) => (\n          <SelectItem key={font.value} value={font.value}>\n            {font.label}\n          </SelectItem>\n        ))}\n      </SelectPopup>\n    </Select>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "select"
+  ],
+  "type": "registry:example"
+}

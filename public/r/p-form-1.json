@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-form-1",
+  "description": "Basic form",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/form.json",
+    "https://taut-ui.com/r/input.json",
+    "https://taut-ui.com/r/textarea.json",
+    "https://taut-ui.com/r/toast.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-form-1.tsx",
+      "content": "\"use client\";\n\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Field,\n  FieldDescription,\n  FieldError,\n  FieldLabel,\n} from \"@/registry/default/ui/field\";\nimport { Form } from \"@/registry/default/ui/form\";\nimport { Input } from \"@/registry/default/ui/input\";\nimport { Textarea } from \"@/registry/default/ui/textarea\";\nimport { toastManager } from \"@/registry/default/ui/toast\";\n\nexport default function Particle() {\n  return (\n    <Form\n      onSubmit={(event) => {\n        event.preventDefault();\n        const data = new FormData(event.currentTarget);\n        const name = String(data.get(\"name\") ?? \"\");\n        toastManager.add({\n          description: `Project \"${name}\" has been created.`,\n          title: \"Project created\",\n          type: \"success\",\n        });\n      }}\n    >\n      <Field name=\"name\">\n        <FieldLabel>Project name</FieldLabel>\n        <Input placeholder=\"taut-ui\" required />\n        <FieldError match=\"valueMissing\">Project name is required.</FieldError>\n      </Field>\n      <Field name=\"notes\">\n        <FieldLabel>Description</FieldLabel>\n        <Textarea placeholder=\"Short summary of the project...\" size=\"sm\" />\n        <FieldDescription>\n          Optional internal notes for your team.\n        </FieldDescription>\n      </Field>\n      <Button className=\"self-end\" type=\"submit\">\n        Create project\n      </Button>\n    </Form>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "field",
+    "form",
+    "input",
+    "textarea",
+    "toast"
+  ],
+  "type": "registry:example"
+}

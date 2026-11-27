@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-dialog-5",
+  "description": "Dialog — Scrollable Content",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/dialog.json",
+    "https://taut-ui.com/r/scroll-area.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-dialog-5.tsx",
+      "content": "import { FileTextIcon } from \"lucide-react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Dialog,\n  DialogClose,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogPanel,\n  DialogPopup,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/default/ui/dialog\";\nimport { ScrollArea } from \"@/registry/default/ui/scroll-area\";\n\nexport default function Particle() {\n  return (\n    <Dialog>\n      <DialogTrigger render={<Button variant=\"outline\" />}>\n        <FileTextIcon className=\"size-4\" />\n        View Terms of Service\n      </DialogTrigger>\n      <DialogPopup className=\"sm:max-w-lg\" showCloseButton>\n        <DialogHeader>\n          <DialogTitle>Terms of Service</DialogTitle>\n          <DialogDescription>\n            Please read these terms and conditions carefully before using our\n            services.\n          </DialogDescription>\n        </DialogHeader>\n        <DialogPanel className=\"overflow-hidden p-0\">\n          <ScrollArea className=\"h-72 px-6\" scrollFade>\n            <div className=\"space-y-4 py-3 text-xs leading-relaxed\">\n              <section className=\"space-y-1.5\">\n                <h4 className=\"font-semibold text-foreground text-sm\">\n                  1. Acceptance of Terms\n                </h4>\n                <p>\n                  By accessing or using our platform, you agree to be bound by\n                  these Terms. If you disagree with any part of the terms, you\n                  may not access the service.\n                </p>\n              </section>\n\n              <section className=\"space-y-1.5\">\n                <h4 className=\"font-semibold text-foreground text-sm\">\n                  2. User Accounts & Security\n                </h4>\n                <p>\n                  When you create an account with us, you must provide accurate\n                  and complete information. You are responsible for safeguarding\n                  the password that you use to access the service and for any\n                  activities or actions under your password.\n                </p>\n                <p>\n                  You agree not to disclose your password to any third party.\n                  You must notify us immediately upon becoming aware of any\n                  breach of security or unauthorized use of your account.\n                </p>\n              </section>\n\n              <section className=\"space-y-1.5\">\n                <h4 className=\"font-semibold text-foreground text-sm\">\n                  3. Intellectual Property\n                </h4>\n                <p>\n                  The Service and its original content, features, and\n                  functionality are and will remain the exclusive property of\n                  our organization and its licensors. Our trademarks may not be\n                  used in connection with any product or service without prior\n                  written consent.\n                </p>\n              </section>\n\n              <section className=\"space-y-1.5\">\n                <h4 className=\"font-semibold text-foreground text-sm\">\n                  4. Termination\n                </h4>\n                <p>\n                  We may terminate or suspend your account immediately, without\n                  prior notice or liability, for any reason whatsoever,\n                  including without limitation if you breach the Terms.\n                </p>\n              </section>\n\n              <section className=\"space-y-1.5\">\n                <h4 className=\"font-semibold text-foreground text-sm\">\n                  5. Limitation of Liability\n                </h4>\n                <p>\n                  In no event shall the company, nor its directors, employees,\n                  partners, agents, suppliers, or affiliates, be liable for any\n                  indirect, incidental, special, consequential, or punitive\n                  damages.\n                </p>\n              </section>\n            </div>\n          </ScrollArea>\n        </DialogPanel>\n        <DialogFooter>\n          <DialogClose render={<Button variant=\"ghost\" />}>Decline</DialogClose>\n          <DialogClose render={<Button />}>I Accept</DialogClose>\n        </DialogFooter>\n      </DialogPopup>\n    </Dialog>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "dialog",
+    "scroll area"
+  ],
+  "type": "registry:example"
+}

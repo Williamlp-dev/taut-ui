@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "description": "field (ui)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/default/ui/field.tsx",
+      "content": "\"use client\";\n\nimport { Field as FieldPrimitive } from \"@base-ui/react/field\";\nimport type React from \"react\";\nimport { cn } from \"@/registry/default/lib/utils\";\n\nexport function Field({\n  className,\n  ...props\n}: FieldPrimitive.Root.Props): React.ReactElement {\n  return (\n    <FieldPrimitive.Root\n      className={cn(\n        \"group/field flex w-full flex-col items-start gap-1.5 has-[>[data-slot=field-label]>[data-slot=checkbox]]:gap-1\",\n        className,\n      )}\n      data-slot=\"field\"\n      {...props}\n    />\n  );\n}\n\nexport function FieldLabel({\n  className,\n  ...props\n}: FieldPrimitive.Label.Props): React.ReactElement {\n  return (\n    <FieldPrimitive.Label\n      className={cn(\n        \"inline-flex select-none items-center gap-2.5 font-medium text-foreground text-sm leading-5 has-data-[slot=checkbox]:cursor-pointer has-data-[slot=radio]:cursor-pointer has-data-[slot=switch]:cursor-pointer has-[+[data-shape=pill]]:px-1 data-disabled:pointer-events-none data-disabled:opacity-38 group-data-invalid/field:text-destructive\",\n        className,\n      )}\n      data-slot=\"field-label\"\n      {...props}\n    />\n  );\n}\n\nexport function FieldItem({\n  className,\n  ...props\n}: FieldPrimitive.Item.Props): React.ReactElement {\n  return (\n    <FieldPrimitive.Item\n      className={cn(\"flex items-center gap-2.5\", className)}\n      data-slot=\"field-item\"\n      {...props}\n    />\n  );\n}\n\nexport function FieldDescription({\n  className,\n  ...props\n}: FieldPrimitive.Description.Props): React.ReactElement {\n  return (\n    <FieldPrimitive.Description\n      className={cn(\n        \"in-[[data-slot=field]:has(>[data-slot=field-label]>[data-slot=checkbox])]:px-0 px-1 in-[[data-slot=field]:has(>[data-slot=field-label]>[data-slot=checkbox])]:ps-7 text-muted-foreground text-xs leading-4 group-has-data-[slot=field-error]/field:hidden data-disabled:opacity-38 group-data-disabled/field:opacity-38 [&>a:hover]:underline [&>a]:text-primary [&>a]:underline-offset-4\",\n        className,\n      )}\n      data-slot=\"field-description\"\n      {...props}\n    />\n  );\n}\n\nexport function FieldError({\n  className,\n  ...props\n}: FieldPrimitive.Error.Props): React.ReactElement {\n  return (\n    <FieldPrimitive.Error\n      className={cn(\n        \"starting:-translate-y-1 in-[[data-slot=field]:has(>[data-slot=field-label]>[data-slot=checkbox])]:px-0 px-1 in-[[data-slot=field]:has(>[data-slot=field-label]>[data-slot=checkbox])]:ps-7 text-destructive text-xs leading-4 starting:opacity-0 [transition-duration:350ms,150ms] [transition-property:translate,opacity] [transition-timing-function:linear(0,0.5_8%,0.9_20%,1.02_34%,1_60%,1),ease] motion-reduce:transition-none\",\n        className,\n      )}\n      data-slot=\"field-error\"\n      {...props}\n    />\n  );\n}\n\nexport const FieldControl: typeof FieldPrimitive.Control =\n  FieldPrimitive.Control;\nexport const FieldValidity: typeof FieldPrimitive.Validity =\n  FieldPrimitive.Validity;\n\nexport { FieldPrimitive };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}

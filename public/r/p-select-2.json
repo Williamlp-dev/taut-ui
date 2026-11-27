@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-select-2",
+  "description": "Select — Outline",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/select.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-select-2.tsx",
+      "content": "import {\n  Select,\n  SelectItem,\n  SelectLabel,\n  SelectPopup,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\";\n\nconst roles = [\n  { label: \"Owner\", value: \"owner\" },\n  { label: \"Admin\", value: \"admin\" },\n  { label: \"Editor\", value: \"editor\" },\n  { label: \"Viewer\", value: \"viewer\" },\n];\n\nexport default function Particle() {\n  return (\n    <div className=\"flex w-full max-w-60 flex-col\">\n      <Select defaultValue=\"editor\" items={roles}>\n        <SelectLabel>Role</SelectLabel>\n        <SelectTrigger variant=\"outline\">\n          <SelectValue placeholder=\"Select a role\" />\n        </SelectTrigger>\n        <SelectPopup>\n          {roles.map((role) => (\n            <SelectItem key={role.value} value={role.value}>\n              {role.label}\n            </SelectItem>\n          ))}\n        </SelectPopup>\n      </Select>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "select"
+  ],
+  "type": "registry:example"
+}

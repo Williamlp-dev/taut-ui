@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-radio-group-2",
+  "description": "Radio Group — With Descriptions",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/radio-group.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-radio-group-2.tsx",
+      "content": "import { Radio, RadioGroup } from \"@/registry/default/ui/radio-group\";\n\nconst plans = [\n  {\n    description: \"Essential tools for personal projects.\",\n    label: \"Starter\",\n    value: \"starter\",\n  },\n  {\n    description: \"Collaboration and analytics for growing teams.\",\n    label: \"Pro\",\n    value: \"pro\",\n  },\n  {\n    description: \"Custom limits, SSO, and dedicated support.\",\n    label: \"Enterprise\",\n    value: \"enterprise\",\n  },\n];\n\nexport default function Particle() {\n  return (\n    <RadioGroup className=\"w-full max-w-xs gap-3.5\" defaultValue=\"pro\">\n      {plans.map((plan) => (\n        <label\n          className=\"flex cursor-pointer items-start gap-3\"\n          key={plan.value}\n        >\n          <Radio className=\"mt-0.5\" value={plan.value} />\n          <span className=\"flex flex-col gap-0.5\">\n            <span className=\"font-medium text-foreground text-sm leading-5\">\n              {plan.label}\n            </span>\n            <span className=\"text-muted-foreground text-xs leading-4\">\n              {plan.description}\n            </span>\n          </span>\n        </label>\n      ))}\n    </RadioGroup>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "radio group"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-textarea-5",
+  "description": "Textarea — With Field & Counter",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/textarea.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-textarea-5.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/default/ui/field\";\nimport { Textarea } from \"@/registry/default/ui/textarea\";\n\nconst MAX_LENGTH = 160;\n\nexport default function Particle() {\n  const [bio, setBio] = useState(\n    \"Building expressive interfaces with Base UI.\",\n  );\n\n  return (\n    <Field>\n      <FieldLabel>Public bio</FieldLabel>\n      <Textarea\n        maxLength={MAX_LENGTH}\n        onChange={(event) => setBio(event.target.value)}\n        placeholder=\"Tell people a bit about yourself...\"\n        value={bio}\n      />\n      <FieldDescription>\n        {bio.length} / {MAX_LENGTH} characters\n      </FieldDescription>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "textarea"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-radio-group-1",
+  "description": "Basic radio group",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/radio-group.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-radio-group-1.tsx",
+      "content": "import { Radio, RadioGroup } from \"@/registry/default/ui/radio-group\";\n\nexport default function Particle() {\n  return (\n    <RadioGroup defaultValue=\"comfortable\">\n      <label className=\"flex cursor-pointer items-center gap-2.5 text-sm\">\n        <Radio value=\"compact\" />\n        <span>Compact</span>\n      </label>\n      <label className=\"flex cursor-pointer items-center gap-2.5 text-sm\">\n        <Radio value=\"comfortable\" />\n        <span>Comfortable</span>\n      </label>\n      <label className=\"flex cursor-pointer items-center gap-2.5 text-sm\">\n        <Radio value=\"spacious\" />\n        <span>Spacious</span>\n      </label>\n    </RadioGroup>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "radio group"
+  ],
+  "type": "registry:example"
+}

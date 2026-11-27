@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-field-2",
+  "description": "Field — Validation Error",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-field-2.tsx",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldError,\n  FieldLabel,\n} from \"@/registry/default/ui/field\";\nimport { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  return (\n    <Field invalid>\n      <FieldLabel>Work email</FieldLabel>\n      <Input defaultValue=\"lucas@invalid\" type=\"email\" />\n      <FieldDescription>Use your company email address.</FieldDescription>\n      <FieldError match>Please enter a valid email address.</FieldError>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "input",
+    "error",
+    "validation"
+  ],
+  "type": "registry:example"
+}

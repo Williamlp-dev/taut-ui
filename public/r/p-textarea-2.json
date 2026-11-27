@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-textarea-2",
+  "description": "Textarea — Outline",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/textarea.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-textarea-2.tsx",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\";\n\nexport default function Particle() {\n  return <Textarea placeholder=\"Add release notes...\" variant=\"outline\" />;\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "textarea"
+  ],
+  "type": "registry:example"
+}

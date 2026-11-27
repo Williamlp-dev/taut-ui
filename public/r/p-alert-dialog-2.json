@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-alert-dialog-2",
+  "description": "Alert Dialog — Destructive with Icon",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/alert-dialog.json",
+    "https://taut-ui.com/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-alert-dialog-2.tsx",
+      "content": "import { Trash2Icon } from \"lucide-react\";\nimport {\n  AlertDialog,\n  AlertDialogClose,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogIcon,\n  AlertDialogPopup,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"@/registry/default/ui/alert-dialog\";\nimport { Button } from \"@/registry/default/ui/button\";\n\nexport default function Particle() {\n  return (\n    <AlertDialog>\n      <AlertDialogTrigger render={<Button variant=\"destructive\" />}>\n        Delete Workspace\n      </AlertDialogTrigger>\n      <AlertDialogPopup className=\"sm:max-w-md\">\n        <AlertDialogHeader>\n          <AlertDialogIcon className=\"bg-[color-mix(in_oklab,var(--color-popover),var(--color-destructive)_16%)] text-destructive\">\n            <Trash2Icon />\n          </AlertDialogIcon>\n          <AlertDialogTitle>Delete workspace permanently?</AlertDialogTitle>\n          <AlertDialogDescription>\n            This action cannot be undone. All projects, deployments, and API\n            keys inside this workspace will be permanently erased.\n          </AlertDialogDescription>\n        </AlertDialogHeader>\n        <AlertDialogFooter>\n          <AlertDialogClose render={<Button variant=\"ghost\" />}>\n            Cancel\n          </AlertDialogClose>\n          <AlertDialogClose render={<Button variant=\"destructive\" />}>\n            Delete forever\n          </AlertDialogClose>\n        </AlertDialogFooter>\n      </AlertDialogPopup>\n    </AlertDialog>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "alert dialog",
+    "button"
+  ],
+  "type": "registry:example"
+}

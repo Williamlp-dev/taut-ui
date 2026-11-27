@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-select-3",
+  "description": "Select — Grouped Items",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/select.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-select-3.tsx",
+      "content": "import { GlobeIcon } from \"lucide-react\";\nimport {\n  Select,\n  SelectGroup,\n  SelectGroupLabel,\n  SelectItem,\n  SelectPopup,\n  SelectSeparator,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\";\n\nconst timezones = [\n  { label: \"Pacific Time (PT)\", value: \"america-los_angeles\" },\n  { label: \"Eastern Time (ET)\", value: \"america-new_york\" },\n  { label: \"Brasilia Time (BRT)\", value: \"america-sao_paulo\" },\n  { label: \"Greenwich Mean Time (GMT)\", value: \"europe-london\" },\n  { label: \"Central European Time (CET)\", value: \"europe-paris\" },\n  { label: \"Japan Standard Time (JST)\", value: \"asia-tokyo\" },\n];\n\nexport default function Particle() {\n  return (\n    <Select defaultValue=\"america-sao_paulo\" items={timezones}>\n      <SelectTrigger\n        aria-label=\"Timezone\"\n        className=\"w-full max-w-64\"\n        startAddon={<GlobeIcon />}\n      >\n        <SelectValue placeholder=\"Select a timezone\" />\n      </SelectTrigger>\n      <SelectPopup>\n        <SelectGroup>\n          <SelectGroupLabel>Americas</SelectGroupLabel>\n          <SelectItem value=\"america-los_angeles\">Pacific Time (PT)</SelectItem>\n          <SelectItem value=\"america-new_york\">Eastern Time (ET)</SelectItem>\n          <SelectItem value=\"america-sao_paulo\">Brasilia Time (BRT)</SelectItem>\n        </SelectGroup>\n        <SelectSeparator />\n        <SelectGroup>\n          <SelectGroupLabel>Europe &amp; Asia</SelectGroupLabel>\n          <SelectItem value=\"europe-london\">\n            Greenwich Mean Time (GMT)\n          </SelectItem>\n          <SelectItem value=\"europe-paris\">\n            Central European Time (CET)\n          </SelectItem>\n          <SelectItem value=\"asia-tokyo\">Japan Standard Time (JST)</SelectItem>\n        </SelectGroup>\n      </SelectPopup>\n    </Select>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "select"
+  ],
+  "type": "registry:example"
+}

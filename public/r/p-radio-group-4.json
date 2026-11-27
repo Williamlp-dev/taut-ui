@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-radio-group-4",
+  "description": "Radio Group — Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/radio-group.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-radio-group-4.tsx",
+      "content": "import { Radio, RadioGroup } from \"@/registry/default/ui/radio-group\";\n\nexport default function Particle() {\n  return (\n    <RadioGroup defaultValue=\"email\" disabled>\n      <label className=\"flex cursor-not-allowed items-center gap-2.5 text-muted-foreground text-sm\">\n        <Radio value=\"email\" />\n        <span>Email notifications</span>\n      </label>\n      <label className=\"flex cursor-not-allowed items-center gap-2.5 text-muted-foreground text-sm\">\n        <Radio value=\"sms\" />\n        <span>SMS notifications</span>\n      </label>\n    </RadioGroup>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "radio group",
+    "disabled"
+  ],
+  "type": "registry:example"
+}

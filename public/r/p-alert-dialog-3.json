@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-alert-dialog-3",
+  "description": "Alert Dialog — Async Action",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/alert-dialog.json",
+    "https://taut-ui.com/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-alert-dialog-3.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport {\n  AlertDialog,\n  AlertDialogClose,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogPopup,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"@/registry/default/ui/alert-dialog\";\nimport { Button } from \"@/registry/default/ui/button\";\n\nexport default function Particle() {\n  const [open, setOpen] = useState(false);\n  const [isPending, setIsPending] = useState(false);\n\n  function handleRevoke() {\n    setIsPending(true);\n    setTimeout(() => {\n      setIsPending(false);\n      setOpen(false);\n    }, 1200);\n  }\n\n  return (\n    <AlertDialog onOpenChange={setOpen} open={open}>\n      <AlertDialogTrigger render={<Button variant=\"outline\" />}>\n        Revoke Sessions\n      </AlertDialogTrigger>\n      <AlertDialogPopup className=\"sm:max-w-md\">\n        <AlertDialogHeader>\n          <AlertDialogTitle>Sign out all devices?</AlertDialogTitle>\n          <AlertDialogDescription>\n            Every active session except this browser will be signed out\n            immediately.\n          </AlertDialogDescription>\n        </AlertDialogHeader>\n        <AlertDialogFooter>\n          <AlertDialogClose\n            disabled={isPending}\n            render={<Button variant=\"ghost\" />}\n          >\n            Cancel\n          </AlertDialogClose>\n          <Button\n            loading={isPending}\n            onClick={handleRevoke}\n            variant=\"destructive\"\n          >\n            Revoke all\n          </Button>\n        </AlertDialogFooter>\n      </AlertDialogPopup>\n    </AlertDialog>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "alert dialog",
+    "button",
+    "async"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-slider-5",
+  "description": "Slider — Expressive Large",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/slider.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-slider-5.tsx",
+      "content": "import { Slider } from \"@/registry/default/ui/slider\";\n\nexport default function Particle() {\n  return (\n    <Slider\n      aria-label=\"Brightness\"\n      className=\"w-full max-w-xs\"\n      defaultValue={65}\n      showValueIndicator\n      size=\"lg\"\n    />\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "slider"
+  ],
+  "type": "registry:example"
+}

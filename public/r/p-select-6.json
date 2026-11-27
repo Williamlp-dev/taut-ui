@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-select-6",
+  "description": "Select — With Field",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/select.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-select-6.tsx",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/default/ui/field\";\nimport {\n  Select,\n  SelectItem,\n  SelectPopup,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\";\n\nconst regions = [\n  { label: \"US East (Virginia)\", value: \"us-east-1\" },\n  { label: \"South America (São Paulo)\", value: \"sa-east-1\" },\n  { label: \"Europe (Frankfurt)\", value: \"eu-central-1\" },\n  { label: \"Asia Pacific (Tokyo)\", value: \"ap-northeast-1\" },\n];\n\nexport default function Particle() {\n  return (\n    <Field className=\"w-full max-w-64\">\n      <FieldLabel>Deployment region</FieldLabel>\n      <Select defaultValue=\"sa-east-1\" items={regions}>\n        <SelectTrigger>\n          <SelectValue placeholder=\"Select a region\" />\n        </SelectTrigger>\n        <SelectPopup>\n          {regions.map((region) => (\n            <SelectItem key={region.value} value={region.value}>\n              {region.label}\n            </SelectItem>\n          ))}\n        </SelectPopup>\n      </Select>\n      <FieldDescription>\n        Choose the region closest to your users.\n      </FieldDescription>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "select"
+  ],
+  "type": "registry:example"
+}

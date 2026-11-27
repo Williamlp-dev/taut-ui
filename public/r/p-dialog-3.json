@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-dialog-3",
+  "description": "Dialog — Nested Dialog",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/button.json",
+    "https://taut-ui.com/r/dialog.json",
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-dialog-3.tsx",
+      "content": "\"use client\";\n\nimport { KeyIcon, ShieldCheckIcon } from \"lucide-react\";\nimport { useState } from \"react\";\nimport { Button } from \"@/registry/default/ui/button\";\nimport {\n  Dialog,\n  DialogClose,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogPanel,\n  DialogPopup,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/default/ui/dialog\";\nimport { Field, FieldLabel } from \"@/registry/default/ui/field\";\nimport { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  const [nestedOpen, setNestedOpen] = useState(false);\n\n  return (\n    <Dialog>\n      <DialogTrigger render={<Button variant=\"outline\" />}>\n        Project Settings\n      </DialogTrigger>\n      <DialogPopup className=\"sm:max-w-md\" showCloseButton>\n        <DialogHeader>\n          <DialogTitle>Project Settings</DialogTitle>\n          <DialogDescription>\n            Manage team access, security policies, and API keys.\n          </DialogDescription>\n        </DialogHeader>\n        <DialogPanel className=\"space-y-4\">\n          <div className=\"flex items-center justify-between rounded-2xl border p-4\">\n            <div className=\"space-y-0.5\">\n              <p className=\"font-medium text-foreground text-sm\">\n                API Credentials\n              </p>\n              <p className=\"text-muted-foreground text-xs\">\n                Active keys used in production environments.\n              </p>\n            </div>\n            <Button\n              onClick={() => setNestedOpen(true)}\n              size=\"sm\"\n              variant=\"secondary\"\n            >\n              <KeyIcon className=\"size-3.5\" />\n              Generate\n            </Button>\n          </div>\n\n          <div className=\"flex items-center justify-between rounded-2xl border p-4\">\n            <div className=\"space-y-0.5\">\n              <p className=\"font-medium text-foreground text-sm\">\n                Two-Factor Auth\n              </p>\n              <p className=\"text-muted-foreground text-xs\">\n                Enforce 2FA for all organization members.\n              </p>\n            </div>\n            <ShieldCheckIcon className=\"size-5 text-primary\" />\n          </div>\n        </DialogPanel>\n        <DialogFooter>\n          <DialogClose render={<Button />}>Close</DialogClose>\n        </DialogFooter>\n\n        {/* Nested Dialog */}\n        <Dialog onOpenChange={setNestedOpen} open={nestedOpen}>\n          <DialogPopup className=\"sm:max-w-sm\" showCloseButton>\n            <DialogHeader>\n              <DialogTitle>Create API Key</DialogTitle>\n              <DialogDescription>\n                Provide a name for your API key. It will only be visible once.\n              </DialogDescription>\n            </DialogHeader>\n            <DialogPanel className=\"space-y-3\">\n              <Field>\n                <FieldLabel>Key Name</FieldLabel>\n                <Input\n                  defaultValue=\"Production Service Key\"\n                  placeholder=\"e.g. CI/CD\"\n                />\n              </Field>\n            </DialogPanel>\n            <DialogFooter>\n              <DialogClose render={<Button variant=\"ghost\" />}>\n                Cancel\n              </DialogClose>\n              <Button onClick={() => setNestedOpen(false)}>Create Key</Button>\n            </DialogFooter>\n          </DialogPopup>\n        </Dialog>\n      </DialogPopup>\n    </Dialog>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "button",
+    "dialog",
+    "field",
+    "input"
+  ],
+  "type": "registry:example"
+}

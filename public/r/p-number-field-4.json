@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-number-field-4",
+  "description": "Number Field — Currency Formatting",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/number-field.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-number-field-4.tsx",
+      "content": "import {\n  NumberField,\n  NumberFieldDecrement,\n  NumberFieldGroup,\n  NumberFieldIncrement,\n  NumberFieldInput,\n  NumberFieldScrubArea,\n} from \"@/registry/default/ui/number-field\";\n\nexport default function Particle() {\n  return (\n    <NumberField\n      className=\"w-full max-w-52\"\n      defaultValue={120}\n      format={{ currency: \"USD\", style: \"currency\" }}\n      min={0}\n      step={5}\n    >\n      <NumberFieldScrubArea label=\"Budget\" />\n      <NumberFieldGroup>\n        <NumberFieldDecrement />\n        <NumberFieldInput />\n        <NumberFieldIncrement />\n      </NumberFieldGroup>\n    </NumberField>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "number field"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-checkbox-5",
+  "description": "Checkbox — Disabled",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/checkbox.json",
+    "https://taut-ui.com/r/field.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-checkbox-5.tsx",
+      "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\";\nimport { Field, FieldLabel } from \"@/registry/default/ui/field\";\n\nexport default function Particle() {\n  return (\n    <Field className=\"w-auto\" disabled>\n      <FieldLabel>\n        <Checkbox defaultChecked disabled />\n        Enforced by organization policy\n      </FieldLabel>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "checkbox",
+    "field",
+    "disabled"
+  ],
+  "type": "registry:example"
+}

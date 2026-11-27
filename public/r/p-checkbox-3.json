@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-checkbox-3",
+  "description": "Checkbox — Indeterminate",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/checkbox.json",
+    "https://taut-ui.com/r/field.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-checkbox-3.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { Checkbox } from \"@/registry/default/ui/checkbox\";\nimport { Field, FieldLabel } from \"@/registry/default/ui/field\";\n\ntype SelectionState = \"indeterminate\" | \"checked\" | \"unchecked\";\n\nexport default function Particle() {\n  const [state, setState] = useState<SelectionState>(\"indeterminate\");\n\n  function handleChange() {\n    setState((prev) =>\n      prev === \"indeterminate\"\n        ? \"checked\"\n        : prev === \"checked\"\n          ? \"unchecked\"\n          : \"indeterminate\",\n    );\n  }\n\n  return (\n    <Field className=\"w-auto\">\n      <FieldLabel>\n        <Checkbox\n          checked={state === \"checked\"}\n          indeterminate={state === \"indeterminate\"}\n          onCheckedChange={handleChange}\n        />\n        Select all items\n      </FieldLabel>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "checkbox",
+    "field"
+  ],
+  "type": "registry:example"
+}

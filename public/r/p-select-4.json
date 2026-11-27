@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-select-4",
+  "description": "Select — Vibrant Popup",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/select.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-select-4.tsx",
+      "content": "\"use client\";\n\nimport { MonitorIcon, MoonIcon, SunIcon } from \"lucide-react\";\nimport {\n  Select,\n  SelectItem,\n  SelectPopup,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\";\n\nconst themes = [\n  { icon: MonitorIcon, label: \"System\", value: \"system\" },\n  { icon: SunIcon, label: \"Light\", value: \"light\" },\n  { icon: MoonIcon, label: \"Dark\", value: \"dark\" },\n] as const;\n\nexport default function Particle() {\n  return (\n    <Select defaultValue=\"system\" items={themes}>\n      <SelectTrigger aria-label=\"Theme\" className=\"w-full max-w-52\">\n        <SelectValue>\n          {(value: string | null) => {\n            const selected = themes.find((t) => t.value === value);\n            if (!selected) return \"Select theme\";\n            const Icon = selected.icon;\n            return (\n              <>\n                <Icon />\n                <span>{selected.label}</span>\n              </>\n            );\n          }}\n        </SelectValue>\n      </SelectTrigger>\n      <SelectPopup colorScheme=\"vibrant\">\n        {themes.map((theme) => {\n          const Icon = theme.icon;\n          return (\n            <SelectItem key={theme.value} value={theme.value}>\n              <Icon />\n              <span>{theme.label}</span>\n            </SelectItem>\n          );\n        })}\n      </SelectPopup>\n    </Select>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "select"
+  ],
+  "type": "registry:example"
+}

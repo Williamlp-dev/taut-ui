@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-select-1",
+  "description": "Basic select",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/select.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-select-1.tsx",
+      "content": "import {\n  Select,\n  SelectItem,\n  SelectPopup,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/default/ui/select\";\n\nconst frameworks = [\n  { label: \"Next.js\", value: \"nextjs\" },\n  { label: \"Remix\", value: \"remix\" },\n  { label: \"Astro\", value: \"astro\" },\n  { label: \"Nuxt\", value: \"nuxt\" },\n  { label: \"SvelteKit\", value: \"sveltekit\" },\n];\n\nexport default function Particle() {\n  return (\n    <Select items={frameworks}>\n      <SelectTrigger aria-label=\"Select framework\" className=\"w-full max-w-60\">\n        <SelectValue placeholder=\"Select a framework\" />\n      </SelectTrigger>\n      <SelectPopup>\n        {frameworks.map((framework) => (\n          <SelectItem key={framework.value} value={framework.value}>\n            {framework.label}\n          </SelectItem>\n        ))}\n      </SelectPopup>\n    </Select>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "select"
+  ],
+  "type": "registry:example"
+}

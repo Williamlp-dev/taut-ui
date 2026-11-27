@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-radio-group-3",
+  "description": "Radio Group — Card Selection",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/card.json",
+    "https://taut-ui.com/r/radio-group.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-radio-group-3.tsx",
+      "content": "import {\n  Card,\n  CardAction,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/default/ui/card\";\nimport { Radio, RadioGroup } from \"@/registry/default/ui/radio-group\";\n\nconst options = [\n  {\n    description: \"Delivered in 3–5 business days\",\n    label: \"Standard shipping\",\n    price: \"Free\",\n    value: \"standard\",\n  },\n  {\n    description: \"Delivered in 1–2 business days\",\n    label: \"Express shipping\",\n    price: \"$12\",\n    value: \"express\",\n  },\n];\n\nexport default function Particle() {\n  return (\n    <RadioGroup className=\"w-full max-w-sm gap-2.5\" defaultValue=\"standard\">\n      {options.map((option) => (\n        <Card\n          className=\"w-full cursor-pointer rounded-2xl has-data-checked:bg-[color-mix(in_oklab,var(--color-card),var(--color-primary)_14%)] has-data-checked:shadow-[inset_0_0_0_0.0625rem_var(--color-primary)]\"\n          key={option.value}\n          orientation=\"horizontal\"\n          render={<label />}\n          ripple\n        >\n          <Radio value={option.value} />\n          <CardHeader className=\"gap-0.5\">\n            <CardTitle className=\"text-sm leading-5\">{option.label}</CardTitle>\n            <CardDescription className=\"text-xs leading-4\">\n              {option.description}\n            </CardDescription>\n            <CardAction className=\"font-medium text-foreground text-sm tabular-nums\">\n              {option.price}\n            </CardAction>\n          </CardHeader>\n        </Card>\n      ))}\n    </RadioGroup>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "card",
+    "radio group"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-checkbox-group-2",
+  "description": "Checkbox Group — Nested Parent",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/checkbox.json",
+    "https://taut-ui.com/r/checkbox-group.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-checkbox-group-2.tsx",
+      "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\";\nimport { CheckboxGroup } from \"@/registry/default/ui/checkbox-group\";\n\nconst permissions = [\n  { label: \"Read repositories\", value: \"read\" },\n  { label: \"Write deployments\", value: \"write\" },\n  { label: \"Manage billing\", value: \"billing\" },\n];\n\nexport default function Particle() {\n  return (\n    <CheckboxGroup\n      allValues={permissions.map((item) => item.value)}\n      defaultValue={[\"read\"]}\n    >\n      <label className=\"inline-flex cursor-pointer select-none items-center gap-2.5 text-foreground text-sm leading-5\">\n        <Checkbox parent />\n        Workspace permissions\n      </label>\n      {permissions.map((permission) => (\n        <label\n          className=\"inline-flex cursor-pointer select-none items-center gap-2.5 text-foreground text-sm leading-5\"\n          key={permission.value}\n        >\n          <Checkbox value={permission.value} />\n          {permission.label}\n        </label>\n      ))}\n    </CheckboxGroup>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "checkbox",
+    "checkbox group"
+  ],
+  "type": "registry:example"
+}

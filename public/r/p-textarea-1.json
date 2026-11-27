@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-textarea-1",
+  "description": "Basic textarea",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/textarea.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-textarea-1.tsx",
+      "content": "import { Textarea } from \"@/registry/default/ui/textarea\";\n\nexport default function Particle() {\n  return <Textarea placeholder=\"Write your message...\" />;\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "textarea"
+  ],
+  "type": "registry:example"
+}

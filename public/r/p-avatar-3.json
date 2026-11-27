@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-avatar-3",
+  "description": "Avatar — Small",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/avatar.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-avatar-3.tsx",
+      "content": "import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\";\n\nexport default function Particle() {\n  return (\n    <Avatar size=\"sm\">\n      <AvatarImage\n        alt=\"Ana Costa\"\n        src=\"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&dpr=2&q=80\"\n      />\n      <AvatarFallback>AC</AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar"
+  ],
+  "type": "registry:example"
+}

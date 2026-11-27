@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-group",
+  "description": "checkbox group (ui)",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/registry/default/ui/checkbox-group.tsx",
+      "content": "\"use client\";\n\nimport { CheckboxGroup as CheckboxGroupPrimitive } from \"@base-ui/react/checkbox-group\";\nimport type React from \"react\";\nimport { cn } from \"@/registry/default/lib/utils\";\n\nexport type CheckboxGroupProps = CheckboxGroupPrimitive.Props;\n\nexport function CheckboxGroup({\n  className,\n  ...props\n}: CheckboxGroupPrimitive.Props): React.ReactElement {\n  return (\n    <CheckboxGroupPrimitive\n      className={cn(\n        \"relative flex flex-col items-start gap-2.5\",\n        \"[&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])]:font-medium\",\n        \"[&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:relative [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:ms-6\",\n        \"[&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*:last-child]:before:rounded-bl-sm [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:pointer-events-none [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:absolute [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:-start-3.5 [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:-top-3 [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:h-5.5 [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:w-2.5 [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:border-border [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:border-s [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*]:before:border-b\",\n        \"[&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*:not(:last-child)]:after:pointer-events-none [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*:not(:last-child)]:after:absolute [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*:not(:last-child)]:after:-start-3.5 [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*:not(:last-child)]:after:top-2.5 [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*:not(:last-child)]:after:bottom-0 [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*:not(:last-child)]:after:w-px [&>:is(label,[data-slot=label],[data-slot=field-label]):has([data-parent])~*:not(:last-child)]:after:bg-border\",\n        className,\n      )}\n      data-slot=\"checkbox-group\"\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxGroupPrimitive };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}

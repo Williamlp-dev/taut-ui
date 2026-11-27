@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-slider-4",
+  "description": "Slider — With Icons",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://taut-ui.com/r/slider.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-slider-4.tsx",
+      "content": "import { Volume1Icon, Volume2Icon } from \"lucide-react\";\nimport { Slider } from \"@/registry/default/ui/slider\";\n\nexport default function Particle() {\n  return (\n    <Slider\n      aria-label=\"Volume\"\n      className=\"w-full max-w-xs\"\n      defaultValue={60}\n      endIcon={<Volume2Icon />}\n      showValueIndicator\n      startIcon={<Volume1Icon />}\n    />\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "slider"
+  ],
+  "type": "registry:example"
+}

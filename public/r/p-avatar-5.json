@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-avatar-5",
+  "description": "Avatar — Extra Large",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/avatar.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-avatar-5.tsx",
+      "content": "import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\";\n\nexport default function Particle() {\n  return (\n    <Avatar size=\"xl\">\n      <AvatarImage\n        alt=\"Clara Mendes\"\n        src=\"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=128&h=128&dpr=2&q=80\"\n      />\n      <AvatarFallback>CM</AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "avatar"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-number-field-5",
+  "description": "Number Field — With Field & Bounds",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/number-field.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-number-field-5.tsx",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/default/ui/field\";\nimport {\n  NumberField,\n  NumberFieldDecrement,\n  NumberFieldGroup,\n  NumberFieldIncrement,\n  NumberFieldInput,\n} from \"@/registry/default/ui/number-field\";\n\nexport default function Particle() {\n  return (\n    <Field className=\"w-full max-w-52\">\n      <FieldLabel>Team seats</FieldLabel>\n      <NumberField defaultValue={3} max={10} min={1}>\n        <NumberFieldGroup>\n          <NumberFieldDecrement />\n          <NumberFieldInput />\n          <NumberFieldIncrement />\n        </NumberFieldGroup>\n      </NumberField>\n      <FieldDescription>Choose between 1 and 10 seats.</FieldDescription>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "number field"
+  ],
+  "type": "registry:example"
+}

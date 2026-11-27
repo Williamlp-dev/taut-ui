@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-checkbox-group-1",
+  "description": "Basic checkbox group",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/checkbox.json",
+    "https://taut-ui.com/r/checkbox-group.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-checkbox-group-1.tsx",
+      "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\";\nimport { CheckboxGroup } from \"@/registry/default/ui/checkbox-group\";\n\nconst channels = [\n  { label: \"Email digest\", value: \"email\" },\n  { label: \"Slack alerts\", value: \"slack\" },\n  { label: \"Webhook events\", value: \"webhook\" },\n];\n\nexport default function Particle() {\n  return (\n    <CheckboxGroup defaultValue={[\"email\", \"slack\"]}>\n      {channels.map((channel) => (\n        <label\n          className=\"inline-flex cursor-pointer select-none items-center gap-2.5 text-foreground text-sm leading-5\"\n          key={channel.value}\n        >\n          <Checkbox value={channel.value} />\n          {channel.label}\n        </label>\n      ))}\n    </CheckboxGroup>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "checkbox",
+    "checkbox group"
+  ],
+  "type": "registry:example"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-field-4",
+  "description": "Field — With Checkbox",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/checkbox.json",
+    "https://taut-ui.com/r/field.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-field-4.tsx",
+      "content": "import { Checkbox } from \"@/registry/default/ui/checkbox\";\nimport {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/default/ui/field\";\n\nexport default function Particle() {\n  return (\n    <Field>\n      <FieldLabel>\n        <Checkbox defaultChecked />\n        Send release notes\n      </FieldLabel>\n      <FieldDescription>\n        Receive a weekly summary when new components ship.\n      </FieldDescription>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "checkbox",
+    "field"
+  ],
+  "type": "registry:example"
+}

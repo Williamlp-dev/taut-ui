@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "p-field-1",
+  "description": "Basic field",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://taut-ui.com/r/field.json",
+    "https://taut-ui.com/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/default/particles/p-field-1.tsx",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/default/ui/field\";\nimport { Input } from \"@/registry/default/ui/input\";\n\nexport default function Particle() {\n  return (\n    <Field>\n      <FieldLabel>Workspace URL</FieldLabel>\n      <Input placeholder=\"taut-studio\" />\n      <FieldDescription>\n        Your team will access projects at taut.app/taut-studio.\n      </FieldDescription>\n    </Field>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": [
+    "field",
+    "input"
+  ],
+  "type": "registry:example"
+}
