@@ -19,7 +19,7 @@ export async function CodeBlock({
   copyButton = true,
   showLineNumbers = true,
 }: CodeBlockProps): Promise<React.ReactElement> {
-  const highlightedContent = await highlightCode(code, language, {
+  const highlightedHtml = await highlightCode(code, language, {
     showLineNumbers,
   });
 
@@ -37,7 +37,10 @@ export async function CodeBlock({
       ) : null}
       {copyButton ? <CopyButton value={code} /> : null}
       <ScrollArea className="**:data-[slot=scroll-area-scrollbar]:data-[orientation=horizontal]:mx-2 **:data-[slot=scroll-area-scrollbar]:data-[orientation=vertical]:my-2">
-        {highlightedContent}
+        <div
+          className="contents"
+          dangerouslySetInnerHTML={{ __html: highlightedHtml }}
+        />
       </ScrollArea>
     </figure>
   );
