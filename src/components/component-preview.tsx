@@ -55,7 +55,11 @@ export function ComponentPreview({
     <ComponentPreviewTabs
       align={align}
       className={cn(entry?.meta?.className, className)}
-      component={<PreviewComponent />}
+      component={
+        <React.Suspense fallback={null}>
+          <PreviewComponent />
+        </React.Suspense>
+      }
       hideCode={hideCode}
       source={<ComponentSource collapsible={false} name={name} />}
       {...props}
